@@ -1,3 +1,27 @@
+/*!
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+
+*/
 /* Menu */
 
 .k-menu
@@ -6,7 +30,7 @@
 }
 
 .k-menu,
-.k-menu .k-group
+.k-menu .k-menu-group
 {
     list-style: none;
     margin: 0;
@@ -21,7 +45,19 @@
     width: 99%;
     height: 0;
     float: inherit;
-    overflow: hidden;
+    clear: both;
+}
+
+.k-menu .k-item
+{
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    user-select: none;
+}
+
+.k-menu .k-item div
+{
+    user-select: default;
 }
 
 .k-menu .k-item .k-item,
@@ -30,11 +66,6 @@ ul.k-menu-vertical > .k-item
     display: block;
     float: none;
     border-width: 0;
-}
-
-.k-ie7 .k-menu .k-item .k-item
-{
-    zoom: normal;
 }
 
 .k-menu .k-item > .k-link > .k-icon,
@@ -50,10 +81,6 @@ ul.k-menu-vertical > .k-item
     margin: -2px 0 0;
 }
 
-.k-ie7 .k-menu .k-item > .k-link > .k-i-arrow-s,
-.k-ie7 .k-menu .k-image,
-.k-ie7 .k-menu .k-sprite { margin-top: 0; }
-
 .k-menu .k-item > .k-link
 {
     display: block;
@@ -62,7 +89,7 @@ ul.k-menu-vertical > .k-item
     .prohibit-selection;
 }
 
-.k-menu .k-group
+.k-menu .k-menu-group
 {
     display: none;
     border-style: solid;
@@ -71,7 +98,7 @@ ul.k-menu-vertical > .k-item
     white-space: nowrap;
 }
 
-.k-menu .k-group .k-item
+.k-menu .k-menu-group > .k-item
 {
     display: block;
     border-width: 0;
@@ -89,14 +116,25 @@ ul.k-menu-vertical > .k-item
     .box-sizing(content-box);
 }
 
-.k-menu .k-group .k-item > .k-link
+.k-context-menu.k-menu-vertical > .k-item > .k-link,
+.k-menu .k-menu-group .k-item > .k-link
 {
     padding: .28em 1.8em .38em .9em;
 }
 
-.k-ie7 .k-menu .k-group .k-link
+.k-context-menu.k-menu-horizontal > .k-separator
 {
-    width: 100%;
+    display: none;
+}
+
+.k-context-menu.k-menu-horizontal > .k-item
+{
+    .box-sizing(border-box);
+}
+
+.k-context-menu.k-menu-horizontal > .k-last
+{
+    border: 0;
 }
 
 .k-menu .k-item > .k-link > .k-i-arrow-s
@@ -109,6 +147,7 @@ ul.k-menu-vertical > .k-item
     position: absolute;
     top: 50%;
     margin-top: -8px;
+    right: 2px;
     right: .2rem;
 }
 
@@ -118,22 +157,22 @@ ul.k-menu-vertical > .k-item
 }
 
 .k-menu .k-animation-container,
-.k-menu .k-group
+.k-menu .k-menu-group
 {
     position: absolute;
     left: 0;
 }
 
 .k-menu .k-animation-container .k-animation-container,
-.k-menu .k-group .k-group,
+.k-menu .k-menu-group .k-menu-group,
 .k-menu-vertical .k-animation-container,
-.k-menu-vertical .k-group
+.k-menu-vertical .k-menu-group
 {
     top: 0;
     left: 0;
 }
 
-.k-menu .k-animation-container .k-group
+.k-menu .k-animation-container .k-menu-group
 {
     top: auto;
     left: auto;
@@ -169,7 +208,7 @@ ul.k-menu .k-separator
 }
 
 ul.k-menu-vertical .k-separator,
-.k-menu .k-group .k-separator
+.k-menu .k-menu-group .k-separator
 {
     padding: 0;
     height: 1px;
@@ -177,4 +216,10 @@ ul.k-menu-vertical .k-separator,
     border-width: 1px 0 0;
 }
 
+/* Context Menu */
 
+.k-context-menu
+{
+    border: 0;
+    user-select: none;
+}

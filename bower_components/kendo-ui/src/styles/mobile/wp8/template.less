@@ -1,3 +1,27 @@
+/*!
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+
+*/
 /* Variables */
 
 @wp-main-background: Background;
@@ -20,12 +44,28 @@
 @wp-third-text-dark: #666;
 @wp-third-text-light: #ccc;
 
+@error: #f44336;
+@warning: #f52312;
 
 .km-wp,
 .km-wp .km-content,
 .km-wp .km-button
 {
 	background-color: @wp-main-background;
+}
+
+.km-wp-dark-force,
+.km-wp-dark-force .km-content,
+.km-wp-dark-force .km-button
+{
+	background-color: @wp-main-text-light;
+}
+
+.km-wp-light-force,
+.km-wp-light-force .km-content,
+.km-wp-light-force .km-button
+{
+	background-color: @wp-main-text-dark;
 }
 
 .km-wp-dark,
@@ -94,6 +134,7 @@
 .km-wp .km-button.km-state-active,
 .km-wp .km-actionsheet > li > a:hover,
 .km-wp .km-actionsheet > li > a:active,
+.km-wp .km-actionsheet > li > .k-state-active,
 .km-wp .km-popup li.k-item:active,
 .km-wp .km-popup li.k-state-selected
 {
@@ -106,6 +147,7 @@
 .km-wp *:not(.km-tabstrip) > .km-button.km-state-active,
 .km-wp .km-actionsheet > li > a:hover,
 .km-wp .km-actionsheet > li > a:active,
+.km-wp .km-actionsheet > li > .k-state-active,
 .km-wp .km-popup li.k-item:active,
 .km-wp .km-popup li.k-state-selected
 {
@@ -198,9 +240,22 @@
 	color: @wp-main-text-light;
 }
 
-.km-wp .km-navbar
+.km-wp .km-navbar,
+.km-wp .k-toolbar
 {
     background: @wp-main-background;
+}
+
+.km-wp-dark-force .km-navbar,
+.km-wp-dark-force .k-toolbar
+{
+    background: @wp-main-text-light;
+}
+
+.km-wp-light-force .km-navbar,
+.km-wp-light-force .k-toolbar
+{
+    background: @wp-main-text-dark;
 }
 
 .km-wp-dark .km-pages > li
@@ -287,12 +342,12 @@
     color: @wp-main-text-light;
 }
 
-.km-wp-dark .km-loader
+.km-wp-dark .km-loading-right
 {
     background: @wp-second-background-dark;
 }
 
-.km-wp-light .km-loader
+.km-wp-light .km-loading-right
 {
     background: @wp-second-background-light;
 }
@@ -354,6 +409,48 @@
 {
 	border-color: @wp-main-text-light;
     color: @wp-main-text-light;
+}
+
+.km-wp-dark-force input[type=password],
+.km-wp-dark-force input[type=search],
+.km-wp-dark-force input[type=number],
+.km-wp-dark-force input[type=tel],
+.km-wp-dark-force input[type=url],
+.km-wp-dark-force input[type=email],
+.km-wp-dark-force input[type=text]:not(.k-input),
+.km-wp-dark-force input[type=month],
+.km-wp-dark-force input[type=color],
+.km-wp-dark-force input[type=week],
+.km-wp-dark-force input[type=date],
+.km-wp-dark-force input[type=time],
+.km-wp-dark-force input[type=datetime],
+.km-wp-dark-force input[type=datetime-local],
+.km-wp-dark-force select:not([multiple]),
+.km-wp-dark-force .k-dropdown,
+.km-wp-dark-force textarea
+{
+    background: @wp-main-text-light;
+}
+
+.km-wp-light-force input[type=password],
+.km-wp-light-force input[type=search],
+.km-wp-light-force input[type=number],
+.km-wp-light-force input[type=tel],
+.km-wp-light-force input[type=url],
+.km-wp-light-force input[type=email],
+.km-wp-light-force input[type=text]:not(.k-input),
+.km-wp-light-force input[type=month],
+.km-wp-light-force input[type=color],
+.km-wp-light-force input[type=week],
+.km-wp-light-force input[type=date],
+.km-wp-light-force input[type=time],
+.km-wp-light-force input[type=datetime],
+.km-wp-light-force input[type=datetime-local],
+.km-wp-light-force select:not([multiple]),
+.km-wp-light-force .k-dropdown,
+.km-wp-light-force textarea
+{
+	background: @wp-main-text-dark;
 }
 
 .km-wp input[type=password]:focus,
@@ -423,3 +520,74 @@
     background: @wp-third-background-light;
 }
 
+/* Collapsible */
+
+.km-wp .km-collapsible-header,
+.km-wp .km-collapsible-content
+{
+    border-color: transparent;
+}
+
+.km-wp .km-collapsible-content
+{
+    color: #999;
+}
+
+/* Nova theme features */
+.km-wp label.km-required:after {
+    color: @error;
+}
+
+.km-wp .km-list .km-legend-button,
+.km-wp .km-list fieldset legend {
+    background-color: @wp-accent-background;
+    color: @wp-accent-text;
+}
+
+.km-wp {
+    .km-list {
+        fieldset,
+        .km-label-above {
+            input[type=password],
+            input[type=search], 
+            input[type=number], 
+            input[type=tel],
+            input[type=url],
+            input[type=email],
+            input[type=month],
+            input[type=color],
+            input[type=week], 
+            input[type=date], 
+            input[type=time], 
+            input[type=datetime], 
+            input[type=datetime-local], 
+            input[type=text]:not(.k-input), 
+            select:not([multiple]), 
+            .k-dropdown-wrap, 
+            textarea  {
+                color: @wp-main-text-light;
+                background: @wp-second-background-light;
+            }
+        }
+    }
+}
+
+.km-wp input.km-radio:checked+.km-radio-label:after {
+    background: @wp-main-text-dark;
+}
+
+.km-wp-light input.km-radio:checked+.km-radio-label:after {
+    background: @wp-main-text-light;
+}
+
+/* Validation */
+.km-wp .km-list > li label.km-invalid,
+.km-wp .km-list fieldset .km-legend-button.km-invalid,
+.km-wp .km-list > li label.km-invalid.km-required:after {
+    color: @warning;
+}
+
+.km-wp .km-invalid-msg {
+    color: #fff;
+    background: @warning;
+}

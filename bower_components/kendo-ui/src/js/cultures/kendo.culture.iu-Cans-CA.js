@@ -1,4 +1,36 @@
-﻿(function( window, undefined ) {
+/** 
+ * Copyright 2016 Telerik AD                                                                                                                                                                            
+ *                                                                                                                                                                                                      
+ * Licensed under the Apache License, Version 2.0 (the "License");                                                                                                                                      
+ * you may not use this file except in compliance with the License.                                                                                                                                     
+ * You may obtain a copy of the License at                                                                                                                                                              
+ *                                                                                                                                                                                                      
+ *     http://www.apache.org/licenses/LICENSE-2.0                                                                                                                                                       
+ *                                                                                                                                                                                                      
+ * Unless required by applicable law or agreed to in writing, software                                                                                                                                  
+ * distributed under the License is distributed on an "AS IS" BASIS,                                                                                                                                    
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.                                                                                                                             
+ * See the License for the specific language governing permissions and                                                                                                                                  
+ * limitations under the License.                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+
+*/
+
+(function(f){
+    if (typeof define === 'function' && define.amd) {
+        define([ "../kendo.core" ], f);
+    } else {
+        f();
+    }
+}(function(){
+(function( window, undefined ) {
     kendo.cultures["iu-Cans-CA"] = {
         name: "iu-Cans-CA",
         numberFormat: {
@@ -6,21 +38,23 @@
             decimals: 2,
             ",": ",",
             ".": ".",
-            groupSize: [3,0],
+            groupSize: [3],
             percent: {
                 pattern: ["-n%","n%"],
                 decimals: 2,
                 ",": ",",
                 ".": ".",
-                groupSize: [3,0],
+                groupSize: [3],
                 symbol: "%"
             },
             currency: {
+                name: "Canadian Dollar",
+                abbr: "CAD",
                 pattern: ["($n)","$n"],
                 decimals: 2,
                 ",": ",",
                 ".": ".",
-                groupSize: [3,0],
+                groupSize: [3],
                 symbol: "$"
             }
         },
@@ -32,8 +66,8 @@
                     namesShort: ["ᓈ","ᓇ","ᐊ","ᐱ","ᓯ","ᑕ","ᓯ"]
                 },
                 months: {
-                    names: ["ᔮᓐᓄᐊᕆ","ᕖᕝᕗᐊᕆ","ᒫᑦᓯ","ᐄᐳᕆ","ᒪᐃ","ᔫᓂ","ᔪᓚᐃ","ᐋᒡᒌᓯ","ᓯᑎᐱᕆ","ᐅᑐᐱᕆ","ᓄᕕᐱᕆ","ᑎᓯᐱᕆ",""],
-                    namesAbbr: ["ᔮᓐᓄ","ᕖᕝᕗ","ᒫᑦᓯ","ᐄᐳᕆ","ᒪᐃ","ᔫᓂ","ᔪᓚᐃ","ᐋᒡᒌ","ᓯᑎᐱ","ᐅᑐᐱ","ᓄᕕᐱ","ᑎᓯᐱ",""]
+                    names: ["ᔮᓐᓄᐊᕆ","ᕖᕝᕗᐊᕆ","ᒫᑦᓯ","ᐄᐳᕆ","ᒪᐃ","ᔫᓂ","ᔪᓚᐃ","ᐋᒡᒌᓯ","ᓯᑎᐱᕆ","ᐅᑐᐱᕆ","ᓄᕕᐱᕆ","ᑎᓯᐱᕆ"],
+                    namesAbbr: ["ᔮᓐᓄ","ᕖᕝᕗ","ᒫᑦᓯ","ᐄᐳᕆ","ᒪᐃ","ᔫᓂ","ᔪᓚᐃ","ᐋᒡᒌ","ᓯᑎᐱ","ᐅᑐᐱ","ᓄᕕᐱ","ᑎᓯᐱ"]
                 },
                 AM: ["AM","am","AM"],
                 PM: ["PM","pm","PM"],
@@ -43,8 +77,8 @@
                     F: "dddd,MMMM dd,yyyy h:mm:ss tt",
                     g: "d/M/yyyy h:mm tt",
                     G: "d/M/yyyy h:mm:ss tt",
-                    m: "MMMM dd",
-                    M: "MMMM dd",
+                    m: "d MMMM",
+                    M: "d MMMM",
                     s: "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
                     t: "h:mm tt",
                     T: "h:mm:ss tt",
@@ -59,3 +93,4 @@
         }
     }
 })(this);
+}));

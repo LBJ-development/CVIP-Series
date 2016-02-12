@@ -1,3 +1,27 @@
+/*!
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+
+*/
 /* Variables */
 
 @ios-widget-color: #fff;
@@ -14,10 +38,10 @@
 
 @tabstrip-icon-color: rgba(255,255,255,.3);
 @ios-tabstrip-active-icon-color: #43c5f5;
-@button-icon-gradient: top, rgba(255,255,255,.7), rgba(255,255,255,.9);
-@buttongroup-icon-gradient: top, rgba(0,0,0,.5), rgba(0,0,0,.3);
-@tabstrip-icon-gradient: top, rgba(255,255,255,.4), rgba(255,255,255,0);
-@tabstrip-active-icon-gradient: top, rgba(255,255,255,.6) 0, rgba(255,255,255,0) 50%, rgba(255,255,255,.3) 100%;
+@button-icon-gradient: to bottom, rgba(255,255,255,.7), rgba(255,255,255,.9);
+@buttongroup-icon-gradient: to bottom, rgba(0,0,0,.5), rgba(0,0,0,.3);
+@tabstrip-icon-gradient: to bottom, rgba(255,255,255,.4), rgba(255,255,255,0);
+@tabstrip-active-icon-gradient: to bottom, rgba(255,255,255,.6) 0, rgba(255,255,255,0) 50%, rgba(255,255,255,.3) 100%;
 
 @button-active-shadow: ~"inset 0 0 0 1px rgba(0,0,0,.3), inset 0 1px 3px rgba(0,0,0,.5), inset 0 0 0 1000px rgba(0,0,0,.2)";
 @buttongroup-active-shadow: ~"0 1px 0 0 rgba(255,255,255,.4), inset 0 0 0 1000px rgba(0,0,0,.2)";
@@ -25,20 +49,23 @@
 @ios-detail-active-shadow: ~"inset 0 0 0 .16rem #fff, 0 1px 3px rgba(0,0,0,.5), inset 0 0 0 1000px rgba(0,0,0,.2)";
 @transparent-color: rgba(0,0,0,0);
 
+@error: #f44336;
+@warning: #c60f0f;
+
 .km-ios,
 .km-ios .km-listview-wrapper .km-filter-wrap
 {
     background: @ios-content-background-color;
 }
 
-.km-ios .km-toolbar,
+.km-ios .k-toolbar,
 .km-ios .km-navbar,
 .km-ios .km-button,
 .km-ios .km-tabstrip,
 .km-ios .km-popup .k-item,
 .km-ios .km-actionsheet > li > a
 {
-    .linear-gradient-image(top, rgba(255,255,255,0.5), rgba(255,255,255,0.45) 6%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.15) 50%, rgba(100,100,100,0));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.45) 6%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.15) 50%, rgba(100,100,100,0));
     border-color: #2f3740 #394d68 #375073;
     background-color: @default-background-color;
 }
@@ -49,14 +76,16 @@
     .box-shadow(inset 0 -1px 0 rgba(0,0,0,.3));
 }
 
-.km-ios .km-toolbar,
+.km-ios .k-toolbar,
 .km-ios .km-navbar,
 .km-ios .km-button,
 .km-ios .km-tabstrip,
 .km-ios .km-view-title,
 .km-ios .km-dialog-title,
 .km-ios .km-popup .k-item,
-.km-ios .km-actionsheet > li > a
+.km-ios .km-actionsheet > li > a,
+.km-ios .k-split-container > li > .km-button,
+.km-ios .k-overflow-container > li > .km-button
 {
     color: @ios-widget-color;
     text-shadow: 0 -1px rgba(0,0,0,.3);
@@ -66,7 +95,12 @@
 {
     border-bottom-color: rgba(255,255,255,.5);
     background: transparent, @button-background-color;
-    .linear-gradient-image(top, rgba(255,255,255,0.35), rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.35), rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0));
+}
+
+.km-ios .km-button,
+.km-ios .k-toolbar .km-buttongroup
+{
     .box-shadow(~"inset 0 0 0 1px rgba(0,0,0,.3), inset 0 1px 3px rgba(0,0,0,.5)");
 }
 
@@ -96,18 +130,18 @@
 .km-ios .k-slider-selection
 {
     background-color: #007EE9;
-    .linear-gradient-image(top, rgb(219, 219, 219), rgb(238, 238, 238) 50%);
+    background-image: linear-gradient(to bottom, rgb(219, 219, 219), rgb(238, 238, 238) 50%);
 }
 
 .km-ios .km-switch-background:after
 {
-    .linear-gradient-image(top,  rgba(255,255,255,.14) 0, rgba(255,255,255,.4));
+    background-image: linear-gradient(to bottom,  rgba(255,255,255,.14) 0, rgba(255,255,255,.4));
 }
 
 .km-ios .km-switch-container
 {
     .box-shadow(~"inset 0 2px 2px 0 rgba(0,0,0,.3), inset 0 -1px 1px 0 rgba(0,0,0,.2)");
-    .linear-gradient-image(top, rgba(0,0,0,0), rgba(0,0,0,0) 95%, rgba(0,0,0,.2));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0) 95%, rgba(0,0,0,.2));
 }
 
 .km-ios .km-checkbox
@@ -119,7 +153,7 @@
 {
     border-color: #fff;
     background-color: #BB0000;
-    .linear-gradient-image(top, rgba(241, 150, 155, 1), rgba(230, 70, 78, .5) 50%, rgba(222, 11, 21, .5) 50%, rgba(183, 0, 0, 0));
+    background-image: linear-gradient(to bottom, rgba(241, 150, 155, 1), rgba(230, 70, 78, .5) 50%, rgba(222, 11, 21, .5) 50%, rgba(183, 0, 0, 0));
     .box-shadow(0 2px 3px #333);
 }
 
@@ -127,7 +161,7 @@
 {
     border-color: rgba(102,102,102,.8);
     .box-shadow(~"inset 0 0 0 1px #fff");
-    .linear-gradient-image(top, rgb(255, 255, 255), rgb(215, 215, 215) 5%, rgb(255, 255, 255));
+    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(215, 215, 215) 5%, rgb(255, 255, 255));
 }
 
 .km-ios .km-switch-label-off
@@ -144,7 +178,7 @@
 .km-ios .km-badge,
 .km-ios .km-detail
 {
-    .linear-gradient-image(top, rgba(255,255,255,.5), rgba(255,255,255,.2) 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.5), rgba(255,255,255,.2) 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0));
     color: #FFF;
     background-color: #bc0404;
 }
@@ -166,7 +200,7 @@
 .km-ios .km-filter-form
 {
     color: @ios-list-border-color;
-    .linear-gradient-image(top, rgba(255,255,255,.6), rgba(255,255,255,.3));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.6), rgba(255,255,255,.3));
 }
 
 .km-ios .km-filter-wrap:before,
@@ -209,7 +243,6 @@
     .box-shadow(0 1px 0 0 rgba(255,255,255,.4));
 }
 
-.km-tablet .km-ios .km-buttongroup .km-button:not(.km-state-active),
 .km-ios .km-header > .km-buttongroup .km-button:not(.km-state-active),
 .km-ios .km-footer > .km-buttongroup .km-button:not(.km-state-active),
 .km-ios .km-content .km-buttongroup .km-button:not(.km-state-active)
@@ -223,10 +256,10 @@
 .km-ios .km-content .km-buttongroup .km-button
 {
     background-color: #fff;
-    .linear-gradient-image(top, rgba(0,0,0,0), rgba(0,0,0,.12) 50%, rgba(0,0,0,.25));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.12) 50%, rgba(0,0,0,.25));
 }
 
-.km-ios .km-buttongroup .km-state-active
+.km-root .km-ios .km-buttongroup .km-state-active
 {
     -webkit-box-shadow: @buttongroup-active-shadow;
     box-shadow: @buttongroup-active-shadow;
@@ -239,14 +272,14 @@
     color: #fff;
     border-color: rgba(0,0,0,.4);
     background-color: #3D7EEB;
-    .linear-gradient-image(top, rgba(0,0,0,.3), rgba(0,0,0,0) 50%, rgba(255,255,255,.05) 50%, rgba(255,255,255,.25));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,0) 50%, rgba(255,255,255,.05) 50%, rgba(255,255,255,.25));
     .box-shadow(inset -1px 0 2px rgba(0,0,0,.3));
 }
 
 .km-ios .km-navbar,
-.km-ios .km-toolbar
+.km-ios .k-toolbar
 {
-    .linear-gradient-image(top, rgba(255,255,255,.65), rgba(255,255,255,0));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.65), rgba(255,255,255,0));
     background-color: #506D93;
     .box-shadow(inset 0 1px 0 rgba(255,255,255,.3));
 }
@@ -261,11 +294,11 @@
 .km-ios .km-tabstrip
 {
     border-top-color: rgba(255,255,255,.2);
-    .linear-gradient-image(top, rgba(46,46,46,.8), rgba(21,21,21,.5) 50%, rgba(0,0,0,.8) 50%, rgba(0,0,0,.8));
+    background-image: linear-gradient(to bottom, rgba(46,46,46,.8), rgba(21,21,21,.5) 50%, rgba(0,0,0,.8) 50%, rgba(0,0,0,.8));
     .box-shadow(0 -1px 0 0 #000);
     background-color: #1A1A1A;
     text-shadow: 0 1px 1px #000;
-    .linear-gradient-image(top, rgba(255,255,255,.18), rgba(255,255,255,0));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.18), rgba(255,255,255,0));
 }
 
 html .km-ios .km-tabstrip .km-button
@@ -282,8 +315,7 @@ html .km-ios .km-tabstrip .km-button:active:last-child
     color: #FFF;
     background-color: #1A1A1A;
     .box-shadow(~"0 0 2px rgba(255,255,255,.4)");
-    .linear-gradient-image(top, rgba(255,255,255,0), rgba(255,255,255,.18),
-                           left, rgba(0,0,0,.6), rgba(0,0,0,0) 3%, rgba(0,0,0,0) 97%, rgba(0,0,0,.6));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.18), to right, rgba(0,0,0,.6), rgba(0,0,0,0) 3%, rgba(0,0,0,0) 97%, rgba(0,0,0,.6));
 }
 
 /* ListView */
@@ -320,7 +352,7 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 {
     color: #fff;
     background: #0260E8;
-    .linear-gradient-image(top, rgba(255,255,255,.28), rgba(255,255,255,.1) 50%, rgba(255,255,255,0));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.28), rgba(255,255,255,.1) 50%, rgba(255,255,255,0));
 }
 
 .km-ios .km-listview-link:after
@@ -340,7 +372,7 @@ html .km-ios .km-tabstrip .km-button:active:last-child
     border-top-color: rgba(255,255,255,.2);
     border-bottom-color: rgba(0,0,0,0);
     background-color: #94A3AE;
-    .linear-gradient-image(top, rgba(255,255,255,0), rgba(255,255,255,.3));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.3));
     .box-shadow(0 -1px 0 #86929A);
 }
 
@@ -370,25 +402,26 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 /* Icons */
 
 .km-ios .km-button .km-icon,
+.km-ios .k-toolbar .km-button .km-icon,
 .km-ios .km-button.km-state-active .km-icon
 {
-    .linear-gradient-image(@button-icon-gradient);
+    background-image: linear-gradient(@button-icon-gradient);
 }
 
 .km-ios .km-buttongroup .km-icon
 {
-    .linear-gradient-image(@buttongroup-icon-gradient);
+    background-image: linear-gradient(@buttongroup-icon-gradient);
 }
 
 .km-ios .km-tabstrip .km-icon
 {
-    .linear-gradient-image(@tabstrip-icon-gradient);
+    background-image: linear-gradient(@tabstrip-icon-gradient);
     color: #666666;
 }
 
 .km-ios .km-tabstrip .km-state-active .km-icon
 {
-    .linear-gradient-image(@tabstrip-active-icon-gradient);
+    background-image: linear-gradient(@tabstrip-active-icon-gradient);
     color: #00B0FF;
 }
 
@@ -408,8 +441,10 @@ html .km-ios .km-tabstrip .km-button:active:last-child
     text-shadow: 0 1px 1px @pull-to-refresh-shadow;
 }
 
-.km-ios *:-webkit-any(.km-load-more) .km-icon:after,
-.km-ios *:-webkit-any(.km-scroller-pull) .km-icon:after
+.k-webkit .km-ios .km-load-more .km-icon:after,
+.k-safari .km-ios .km-load-more .km-icon:after,
+.k-webkit .km-ios .km-scroller-pull .km-icon:after,
+.k-safari .km-ios .km-scroller-pull .km-icon:after
 {
     background: @pull-to-refresh-shadow;
     text-shadow: 0 1px 1px @pull-to-refresh-color;
@@ -436,20 +471,18 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 .km-ios .k-slider .k-draghandle:hover
 {
     background-color: #fff;
-    .linear-gradient-image(top, #ccc, #fff);
+    background-image: linear-gradient(to bottom, #ccc, #fff);
     .box-shadow(~"inset 0 0 0 1px #f9f9f9, 1px 1px 3px rgba(0,0,0,.3)");
 }
 
 .km-ios .k-slider-selection
 {
-    .linear-gradient-image(top, rgba(0,0,0,.5), rgba(0,0,0,0) 15%, rgba(0,0,0,0) 90%, rgba(0,0,0,.4),
-                           top, rgb(42,93,178), rgb(109,169,247));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,0) 15%, rgba(0,0,0,0) 90%, rgba(0,0,0,.4), to bottom, rgb(42,93,178), rgb(109,169,247));
 }
 
 .km-ios .k-slider-track
 {
-    .linear-gradient-image(top, rgba(0,0,0,.3), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 90%, rgba(0,0,0,.4),
-                           top, rgb(219,219,219), rgb(255,255,255));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,0) 30%, rgba(0,0,0,0) 90%, rgba(0,0,0,.4), to bottom, rgb(219,219,219), rgb(255,255,255));
 }
 
 /* Dialog */
@@ -463,7 +496,7 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 
 .km-ios .km-dialog-title
 {
-    .linear-gradient-image(top, rgba(255,255,255,.3), rgba(255,255,255,0) 60%);
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.3), rgba(255,255,255,0) 60%);
     text-shadow: 0 -1px #333;
 }
 
@@ -482,7 +515,7 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 
 .km-ios .km-loader
 {
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(0,0,0,.1);
 }
 
 .km-ios .km-loader h1,
@@ -558,13 +591,15 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 }
 
 .km-ios .km-popup .k-item,
-.km-ios .km-actionsheet > li > a
+.km-ios .km-actionsheet > li > a,
+.km-ios .k-split-container.km-actionsheet > li > .km-button,
+.km-ios .k-overflow-container.km-actionsheet > li > .km-button
 {
     color: #000;
     .box-shadow(~"inset 0 1px 1px rgba(255,255,255,.5), 0 1px 1px rgba(255,255,255,.3)");
     border-color: rgba(40,40,40,.9);
     background: #fff;
-    .linear-gradient-image(top, rgba(0,0,0,0), rgba(0,0,0,.2) 50%, rgba(0,0,0,.25) 85%, rgba(0,0,0,.15));
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.2) 50%, rgba(0,0,0,.25) 85%, rgba(0,0,0,.15));
 }
 
 .km-root .km-ios .km-popup .k-item
@@ -573,6 +608,7 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 }
 
 .km-ios .km-actionsheet > li > a:active,
+.km-ios .km-actionsheet-wrapper .km-actionsheet > li > .km-state-active,
 .km-ios .km-actionsheet > li > a:hover,
 .km-ios li.km-actionsheet-cancel > a
 {
@@ -583,19 +619,20 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 .km-ios .km-popup .k-state-focused,
 .km-ios .km-popup .k-state-selected,
 .km-ios .km-actionsheet > li > a:active,
+.km-ios .km-actionsheet-wrapper .km-actionsheet > li > .km-state-active,
 .km-ios .km-actionsheet > li > a:hover,
 .km-ios li.km-actionsheet-cancel > a
 {
     color: #fff;
     background: #1537c6;
-    .linear-gradient-image(top, rgba(255,255,255,.45), rgba(255,255,255,.1) 60%, rgba(255,255,255,0) 80%, rgba(255,255,255,.15));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.45), rgba(255,255,255,.1) 60%, rgba(255,255,255,0) 80%, rgba(255,255,255,.15));
     text-shadow: 0 1px rgba(0,0,0,.3);
 }
 
 .km-ios li.km-actionsheet-cancel > a
 {
     background-color: #2b3038;
-    .linear-gradient-image(top, rgba(255,255,255,.3), rgba(255,255,255,0) 60%, rgba(255,255,255,0) 85%, rgba(255,255,255,.08));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.3), rgba(255,255,255,0) 60%, rgba(255,255,255,0) 85%, rgba(255,255,255,.08));
 }
 
 .km-ios .km-popup
@@ -604,18 +641,26 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 }
 
 .km-ios .km-actionsheet-wrapper,
+.km-ios .k-split-wrapper .km-actionsheet-wrapper,
+.km-ios .k-overflow-wrapper .km-actionsheet-wrapper,
 .km-ios .km-popup .k-list-container
 {
     color: #fff;
     border-top: 1px solid rgba(255,255,255,.5);
     background: rgba(23,37,64,.6);
-    .linear-gradient-image(top, rgba(255,255,255,0.5), rgba(255,255,255,0.2) 10%, rgba(255,255,255,0));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.2) 10%, rgba(255,255,255,0));
 }
 
 .km-phone .km-ios .km-actionsheet-wrapper,
 .km-phone .km-ios .km-popup .k-list-container
 {
     .box-shadow(~"0 -1px 2px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.5)");
+}
+
+.km-root .km-ios .k-split-container.km-actionsheet,
+.km-root .km-ios .k-overflow-container.km-actionsheet
+{
+    .box-shadow(none);
 }
 
 .km-ios .km-shim
@@ -647,28 +692,31 @@ html .km-ios .km-tabstrip .km-button:active:last-child
     text-shadow: 0 1px rgba(255,255,255,.8);
 }
 
+.km-tablet .km-ios .k-toolbar .km-buttongroup .km-button,
 .km-tablet .km-ios *:not(.km-tabstrip):not(.km-buttongroup) > .km-button
 {
-    background: #6A727D;
+    background-color: #6A727D;
 }
 
+.km-ios .k-toolbar .km-buttongroup .km-button,
 .km-ios *:not(.km-tabstrip):not(.km-buttongroup) > .km-button,
 .km-tablet .km-ios *:not(.km-tabstrip):not(.km-buttongroup) > .km-button
 {
-    .linear-gradient-image(top, rgba(255,255,255,.5), rgba(255,255,255,0));
+   background-image: linear-gradient(to bottom, rgba(255,255,255,.5), rgba(255,255,255,0));
 }
 
-.km-ios *:not(.km-tabstrip):not(.km-buttongroup) > .km-button,
+.km-ios .k-toolbar .km-buttongroup .km-button,
+.km-ios *:not(.km-tabstrip):not(.km-buttongroup) > .km-button
 {
     background-color: #44648f;
 }
 
 .km-tablet .km-ios .km-navbar,
-.km-tablet .km-ios .km-toolbar,
+.km-tablet .km-ios .k-toolbar,
 .km-tablet .km-ios .km-modalview .km-header
 {
     background: #A8ACB9;
-    .linear-gradient-image(top, rgba(255,255,255,.9), rgba(255,255,255,0));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.9), rgba(255,255,255,0));
 }
 
 .km-tablet .km-ios .km-content
@@ -683,7 +731,7 @@ html .km-ios .km-tabstrip .km-button:active:last-child
     background: #000;
 }
 
-.km-ios .km-splitview > .km-pane
+.km-ios .km-splitview > .km-split-content > .km-pane
 {
     border-right-color: #000;
     background: #fff;
@@ -693,7 +741,7 @@ html .km-ios .km-tabstrip .km-button:active:last-child
     .box-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
 }
 
-.km-ios .km-split-vertical > .km-pane
+.km-ios .km-split-vertical > .km-split-content > .km-pane
 {
     border-bottom-color: #000;
 }
@@ -701,6 +749,8 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 /* PopOver */
 
 .km-ios .km-popup.km-pane,
+.km-ios .k-split-wrapper .km-actionsheet-wrapper,
+.km-ios .k-overflow-wrapper .km-actionsheet-wrapper,
 .km-tablet .km-ios .km-actionsheet-wrapper
 {
     .box-shadow(~"0 0 15px rgba(0,0,0,.5), 0 0 2px rgba(0,0,0,.5)");
@@ -709,10 +759,12 @@ html .km-ios .km-tabstrip .km-button:active:last-child
 .km-ios .km-modalview .km-header,
 .km-ios .km-popup.km-pane .km-header
 {
-    .linear-gradient-image(top, rgba(255,255,255,0.35), rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.35), rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0));
 }
 
 .km-ios .km-popup.km-pane,
+.km-ios .k-split-wrapper .km-actionsheet-wrapper,
+.km-ios .k-overflow-wrapper .km-actionsheet-wrapper,
 .km-tablet .km-ios .km-actionsheet-wrapper,
 .km-ios .km-popup.km-pane .km-navbar .km-button
 {
@@ -749,3 +801,118 @@ html .km-ios .km-tabstrip .km-button:active:last-child
     .box-shadow(~"0 0 15px rgba(0,0,0,.5), 0 0 2px rgba(0,0,0,.5)");
 }
 
+/* Collapsible */
+
+.km-ios .km-collapsible-header,
+.km-ios .km-collapsible-content
+{
+    border-color: transparent;
+    .box-shadow(~"0 1px 0 0 rgba(255,255,255,.4), inset 0 1px 0 0 rgba(200,200,200,.4), inset 0 -1px 0 rgba(0,0,0,.2)");
+    background: #f7f7f7;
+}
+
+.km-ios .km-collapsible-header .km-icon
+{
+    color: #7f7f7f;
+}
+
+/* Nova theme features */
+.km-ios label.km-required:after {
+    color: @error;
+}
+
+.km-ios .km-label-above {
+    color: #7b7b7b;
+}
+
+.km-ios .km-list fieldset .km-inline-field {
+    border-color: @ios-list-border-color;
+}
+
+.km-ios .km-list fieldset legend {
+    color: #FFF;    
+    border-top-color: #86929A;
+    border-bottom-color: rgba(0,0,0,0);
+    background-color: #94A3AE;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.3));
+    .box-shadow(inset 0 1px 0 rgba(255, 255, 255, 0.2));
+}
+
+.km-ios .km-legend-button {
+   text-shadow: 0 1px 1px rgba(100,100,100,.8); 
+}
+
+.km-ios {
+    .km-list {
+        fieldset,
+        .km-icon-label,
+        .km-label-above {
+            input[type=password],
+            input[type=search], 
+            input[type=number], 
+            input[type=tel],
+            input[type=url],
+            input[type=email],
+            input[type=month],
+            input[type=color],
+            input[type=week], 
+            input[type=date], 
+            input[type=time], 
+            input[type=datetime], 
+            input[type=datetime-local], 
+            input[type=text]:not(.k-input), 
+            select:not([multiple]), 
+            .k-dropdown-wrap, 
+            textarea  {
+                color: darken(@ios-widget-color, 99%);
+            }
+        }
+
+    }
+}
+
+.km-ios .km-full-width-slider .k-slider-track {
+    border-color: @ios-list-border-color;
+    border-top-color: darken(@ios-list-border-color, 10%);
+    background: linear-gradient(to bottom, rgba(0,0,0,.3) 0%,rgb(255,255,255) 100%);
+}
+
+.km-ios .k-slider-horizontal .k-slider-selection {
+    background: linear-gradient(to bottom, darken(@button-background-color, 20%) 0%,lighten(@button-background-color, 20%) 100%);
+}
+
+.km-ios .k-slider.km-full-width-slider .k-draghandle,
+.km-ios .k-slider.km-full-width-slider .k-draghandle:hover {
+    border-color: @ios-list-border-color;
+    box-shadow: none;
+    background-image: linear-gradient(to bottom, #ccc, #fff);
+}
+
+.km-ios .km-checkbox-label:before,
+.km-ios .km-checkbox-label:after {
+    color: #3E4E65;
+    //border-color: @flat-active-background;
+}
+
+.km-ios .km-radio-label:before {
+    border-color: @ios-list-border-color;
+    background-color: @ios-widget-color;
+}
+
+.km-ios .km-radio-label:after {
+    background-color: #44648f;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,.9), rgba(255,255,255,0));
+    border-color: @button-active-background-color;
+}
+
+/* Validation */
+.km-ios .km-list > li label.km-invalid,
+.km-ios .km-list fieldset .km-legend-button.km-invalid,
+.km-ios .km-list > li label.km-invalid.km-required:after {
+    color: @warning;
+}
+
+.km-ios .km-invalid-msg {
+    color: @ios-widget-color;
+    background: @warning;
+}

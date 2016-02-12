@@ -1,4 +1,36 @@
-﻿(function( window, undefined ) {
+/** 
+ * Copyright 2016 Telerik AD                                                                                                                                                                            
+ *                                                                                                                                                                                                      
+ * Licensed under the Apache License, Version 2.0 (the "License");                                                                                                                                      
+ * you may not use this file except in compliance with the License.                                                                                                                                     
+ * You may obtain a copy of the License at                                                                                                                                                              
+ *                                                                                                                                                                                                      
+ *     http://www.apache.org/licenses/LICENSE-2.0                                                                                                                                                       
+ *                                                                                                                                                                                                      
+ * Unless required by applicable law or agreed to in writing, software                                                                                                                                  
+ * distributed under the License is distributed on an "AS IS" BASIS,                                                                                                                                    
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.                                                                                                                             
+ * See the License for the specific language governing permissions and                                                                                                                                  
+ * limitations under the License.                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+
+*/
+
+(function(f){
+    if (typeof define === 'function' && define.amd) {
+        define([ "../kendo.core" ], f);
+    } else {
+        f();
+    }
+}(function(){
+(function( window, undefined ) {
     kendo.cultures["uz-Cyrl"] = {
         name: "uz-Cyrl",
         numberFormat: {
@@ -16,6 +48,8 @@
                 symbol: "%"
             },
             currency: {
+                name: "",
+                abbr: "",
                 pattern: ["-n $","n $"],
                 decimals: 2,
                 ",": " ",
@@ -29,11 +63,11 @@
                 days: {
                     names: ["якшанба","душанба","сешанба","чоршанба","пайшанба","жума","шанба"],
                     namesAbbr: ["якш","дш","сш","чш","пш","ж","ш"],
-                    namesShort: ["я","д","с","ч","п","ж","ш"]
+                    namesShort: ["як","д","с","ч","п","ж","ш"]
                 },
                 months: {
-                    names: ["Январ","Феврал","Март","Апрел","Май","Июн","Июл","Август","Сентябр","Октябр","Ноябр","Декабр",""],
-                    namesAbbr: ["Янв","Фев","Мар","Апр","Май","Июн","Июл","Авг","Сен","Окт","Ноя","Дек",""]
+                    names: ["январ","феврал","март","апрел","май","июн","июл","август","сентябр","октябр","ноябр","декабр"],
+                    namesAbbr: ["Янв","Фев","Мар","Апр","Май","Июн","Июл","Авг","Сен","Окт","Ноя","Дек"]
                 },
                 AM: [""],
                 PM: [""],
@@ -43,8 +77,8 @@
                     F: "yyyy 'йил' d-MMMM HH:mm:ss",
                     g: "dd.MM.yyyy HH:mm",
                     G: "dd.MM.yyyy HH:mm:ss",
-                    m: "d-MMMM",
-                    M: "d-MMMM",
+                    m: "d MMMM",
+                    M: "d MMMM",
                     s: "yyyy'-'MM'-'dd'T'HH':'mm':'ss",
                     t: "HH:mm",
                     T: "HH:mm:ss",
@@ -59,3 +93,4 @@
         }
     }
 })(this);
+}));

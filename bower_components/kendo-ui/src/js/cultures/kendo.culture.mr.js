@@ -1,4 +1,36 @@
-﻿(function( window, undefined ) {
+/** 
+ * Copyright 2016 Telerik AD                                                                                                                                                                            
+ *                                                                                                                                                                                                      
+ * Licensed under the Apache License, Version 2.0 (the "License");                                                                                                                                      
+ * you may not use this file except in compliance with the License.                                                                                                                                     
+ * You may obtain a copy of the License at                                                                                                                                                              
+ *                                                                                                                                                                                                      
+ *     http://www.apache.org/licenses/LICENSE-2.0                                                                                                                                                       
+ *                                                                                                                                                                                                      
+ * Unless required by applicable law or agreed to in writing, software                                                                                                                                  
+ * distributed under the License is distributed on an "AS IS" BASIS,                                                                                                                                    
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.                                                                                                                             
+ * See the License for the specific language governing permissions and                                                                                                                                  
+ * limitations under the License.                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+
+*/
+
+(function(f){
+    if (typeof define === 'function' && define.amd) {
+        define([ "../kendo.core" ], f);
+    } else {
+        f();
+    }
+}(function(){
+(function( window, undefined ) {
     kendo.cultures["mr"] = {
         name: "mr",
         numberFormat: {
@@ -16,12 +48,14 @@
                 symbol: "%"
             },
             currency: {
+                name: "",
+                abbr: "",
                 pattern: ["$ -n","$ n"],
                 decimals: 2,
                 ",": ",",
-                ".": ".",
+                ".": "`",
                 groupSize: [3,2],
-                symbol: "रु"
+                symbol: "₹"
             }
         },
         calendars: {
@@ -29,11 +63,11 @@
                 days: {
                     names: ["रविवार","सोमवार","मंगळवार","बुधवार","गुरुवार","शुक्रवार","शनिवार"],
                     namesAbbr: ["रवि.","सोम.","मंगळ.","बुध.","गुरु.","शुक्र.","शनि."],
-                    namesShort: ["र","स","म","ब","ग","श","श"]
+                    namesShort: ["र","सो","मं","बु","गु","शु","श"]
                 },
                 months: {
-                    names: ["जानेवारी","फेब्रुवारी","मार्च","एप्रिल","मे","जून","जुलै","ऑगस्ट","सप्टेंबर","ऑक्टोबर","नोव्हेंबर","डिसेंबर",""],
-                    namesAbbr: ["जाने.","फेब्रु.","मार्च","एप्रिल","मे","जून","जुलै","ऑगस्ट","सप्टें.","ऑक्टो.","नोव्हें.","डिसें.",""]
+                    names: ["जानेवारी","फेब्रुवारी","मार्च","एप्रिल","मे","जून","जुलै","ऑगस्ट","सप्टेंबर","ऑक्टोबर","नोव्हेंबर","डिसेंबर"],
+                    namesAbbr: ["जाने.","फेब्रु.","मार्च","एप्रि","मे","जून","जुलै","ऑग.","सप्टें.","ऑक्टो.","नोव्हें.","डिसें."]
                 },
                 AM: ["म.पू.","म.पू.","म.पू."],
                 PM: ["म.नं.","म.नं.","म.नं."],
@@ -59,3 +93,4 @@
         }
     }
 })(this);
+}));

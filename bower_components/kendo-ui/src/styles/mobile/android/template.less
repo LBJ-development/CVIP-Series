@@ -1,3 +1,27 @@
+/*!
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+
+*/
 @android-main-color: #fff;
 @android-background-color: #000;
 @android-active-color: #fff;
@@ -13,6 +37,9 @@
 
 @android-light-main-color: #222;
 @android-light-background-color: #fcfcfc;
+
+@error: #ef5350;
+@warning: #ff0030;
 
 /* Colors */
 
@@ -55,7 +82,7 @@
 }
 
 .km-android .km-navbar,
-.km-android .km-toolbar,
+.km-android .k-toolbar,
 .km-android .km-button,
 .km-android .km-switch,
 .km-android .km-buttongroup,
@@ -69,7 +96,7 @@
 }
 
 .km-android-light .km-navbar,
-.km-android-light .km-toolbar,
+.km-android-light .k-toolbar,
 .km-android-light .km-button,
 .km-android-light .km-switch,
 .km-android-light .km-buttongroup,
@@ -83,7 +110,7 @@
 }
 
 .km-android-light .km-navbar,
-.km-android-light .km-toolbar,
+.km-android-light .k-toolbar,
 .km-android-light .km-switch,
 .km-android-light .km-tabstrip,
 .km-android-light .km-popup .k-item,
@@ -110,7 +137,7 @@
 }
 
 .km-android .km-navbar,
-.km-android .km-toolbar,
+.km-android .k-toolbar,
 .km-android .km-tabstrip
 {
     .box-shadow(~"0 0 1px @{android-gray}, 0 0 4px @{android-gray}");
@@ -150,7 +177,7 @@
 .km-android .km-detail,
 .km-android .km-rowdelete
 {
-    .linear-gradient-image(top, fade(@android-main-color, 50%), @android-light-border-color 50%, fade(@android-main-color, 10%) 50%, fade(@android-main-color, 0));
+    background-image: linear-gradient(to bottom, fade(@android-main-color, 50%), @android-light-border-color 50%, fade(@android-main-color, 10%) 50%, fade(@android-main-color, 0));
     border-color: @android-main-color;
     background-color: #B01B1A;
 }
@@ -159,7 +186,7 @@
 .km-android-light .km-detail,
 .km-android-light .km-rowdelete
 {
-    .linear-gradient-image(top, fade(@android-light-main-color, 50%), @android-light-border-color 50%, fade(@android-light-main-color, 10%) 50%, fade(@android-light-main-color, 0));
+    background-image: linear-gradient(to bottom, fade(@android-light-main-color, 50%), @android-light-border-color 50%, fade(@android-light-main-color, 10%) 50%, fade(@android-light-main-color, 0));
     border-color: @android-light-main-color;
 }
 
@@ -175,11 +202,13 @@
 
 /* TabStrip */
 
+.km-android .k-toolbar,
 .km-android .km-tabstrip
 {
     border-bottom-color: fade(@android-main-color, 40%);
 }
 
+.km-android-light .k-toolbar,
 .km-android-light .km-tabstrip
 {
     border-bottom-color: fade(@android-light-main-color, 40%);
@@ -262,7 +291,7 @@
 {
     border-color: @android-background-color;
     background-color: lighten(@android-background-color, 21%);
-    .linear-gradient-image(top, lighten(@android-background-color, 21%), lighten(@android-background-color, 17%));
+    background-image: linear-gradient(to bottom, lighten(@android-background-color, 21%), lighten(@android-background-color, 17%));
     .box-shadow(0 0 1px 2px #808080);
 }
 
@@ -270,7 +299,7 @@
 {
     border-color: @android-light-background-color;
     background-color: darken(@android-light-background-color, 21%);
-    .linear-gradient-image(top, darken(@android-light-background-color, 21%), darken(@android-light-background-color, 17%));
+    background-image: linear-gradient(to bottom, darken(@android-light-background-color, 21%), darken(@android-light-background-color, 17%));
     .box-shadow(0 0 1px 2px @android-gray);
 }
 
@@ -302,7 +331,25 @@
 
 .km-android .km-loader
 {
-    background-color: rgba(0,0,0,.2);
+    background: rgba(0,0,0,.1);
+}
+
+.km-android .km-loading
+{
+    border-color: @android-main-color fade(@android-main-color, 20%);
+    box-shadow: 0 1px 0 fade(@android-background-color, 10%),
+                0 -1px 0 fade(@android-background-color, 10%),
+                inset 0 1px 0 fade(@android-background-color, 10%),
+                inset 0 -1px 0 fade(@android-background-color, 10%);
+}
+
+.km-android-light .km-loading
+{
+    border-color: @android-light-main-color fade(@android-light-main-color, 20%);
+    box-shadow: 0 1px 0 fade(@android-light-background-color, 10%),
+                0 -1px 0 fade(@android-light-background-color, 10%),
+                inset 0 1px 0 fade(@android-light-background-color, 10%),
+                inset 0 -1px 0 fade(@android-light-background-color, 10%);
 }
 
 /* Forms */
@@ -394,7 +441,8 @@
 }
 
 .km-android .km-left .km-popup-arrow:before,
-.km-android .km-right .km-popup-arrow:before
+.km-android .km-right .km-popup-arrow:before,
+.km-android .k-toolbar .km-buttongroup
 {
     border-color: transparent @android-border-color;
 }
@@ -477,9 +525,23 @@
     border-color: @android-light-background-color;
 }
 
-.km-android-light .km-modalview .km-view-title
+/* Collapsible */
+
+.km-android .km-collapsible-header,
+.km-android .km-collapsible-content
 {
-    .box-shadow(inset 0 -2px fade(@android-light-main-color, 10%));
+    border-color: @android-dark-border-color;
+}
+
+.km-android-light .km-collapsible-header,
+.km-android-light .km-collapsible-content
+{
+    border-color: @android-light-border-color;
+}
+
+.km-android .km-collapsible-header .km-icon
+{
+    color: @android-gray;
 }
 
 /* Tablet Styles */
@@ -488,9 +550,6 @@
 {
     .box-shadow(0 0 7px @android-button-color);
 }
-
-
-
 
 /* Active States */
 
@@ -569,7 +628,7 @@
 .km-android .km-state-active .km-listview-label
 {
     color: @android-active-color;
-    background: inherit;
+    background: @android-active-background;
 }
 
 .km-android li.km-actionsheet-cancel > a:focus,
@@ -586,6 +645,15 @@
 .km-android2 .km-badge
 {
     text-shadow: 5000px 0 1px @android-active-color;
+}
+
+.km-android .k-split-container > li > a:focus,
+.km-android .k-split-container > li > a:active,
+.km-android .k-overflow-container > li > a:focus,
+.km-android .k-overflow-container > li > a:active
+{
+    text-indent: 0;
+    text-shadow: none;
 }
 
 .km-android .km-actionsheet > li > a:focus > *,
@@ -637,13 +705,31 @@
 .km-android .km-contactadd:before,
 .km-android .km-rowdelete:before,
 .km-android .km-rowinsert:before,
-.km-android .km-detaildisclose:before
+.km-android .km-detaildisclose:before,
+.km-android .k-overflow-container .km-state-disabled
 {
     display: block;
     color: @android-gray;
 }
 
+.km-android .k-overflow-container a.km-state-disabled
+{
+    color: @android-gray;
+    background-color: @android-background-color;
+    border-color: @android-border-color;
+}
 
+.km-android-light .k-overflow-container a.km-state-disabled
+{
+    color: @android-gray;
+    background-color: darken(@android-light-background-color, 7.5%);;
+    border-color: @android-light-border-color;
+}
+
+.km-android .km-state-active.km-state-disabled .km-text
+{
+    color: @android-gray;
+}
 
 .km-android .km-shim,
 .km-android .km-popup,
@@ -662,3 +748,75 @@
     color: @android-active-background;
 }
 
+/* Nova theme features */
+.km-android .km-required:after {
+    color: @error;
+}
+
+.km-android-light .km-list fieldset legend {
+    -webkit-box-shadow: 0 2px 0 0  fade(@android-light-main-color, 13.5%);
+    box-shadow: 0 2px 0 0 fade(@android-light-main-color, 13.5%);
+}
+
+.km-android-dark .km-list fieldset legend {
+    -webkit-box-shadow: 0 2px 0 0  fade(@android-main-color, 40%);
+    box-shadow: 0 2px 0 0 fade(@android-main-color, 40%);
+}
+
+.km-android-light .km-label-above,
+.km-android-light .km-icon-label,
+.km-android-light .km-radio-label:before,
+.km-android-light .km-radio-label:after,
+.km-android-light .km-checkbox-label:before,
+.km-android-light .km-checkbox-label:after {
+    color: fade(@android-light-main-color, 40%);
+}
+
+.km-android-dark .km-label-above,
+.km-android-dark .km-icon-label,
+.km-android-dark .km-radio-label:before,
+.km-android-dark .km-radio-label:after,
+.km-android-dark .km-checkbox-label:before,
+.km-android-dark .km-checkbox-label:after {
+    color: fade(@android-main-color, 40%);
+}
+
+.km-android .km-radio-label:after {
+    background-color: @android-active-background;
+}
+
+.km-android-dark .km-radio-label:before,
+.km-android-dark .km-checkbox-label:before,
+.km-android-dark .km-checkbox-label:after {
+    border-color: @android-button-color;
+}
+
+.km-android-light input.km-checkbox:checked + .km-checkbox-label:before {
+    border-color: @android-light-main-color;
+}
+
+.km-android input.km-checkbox:focus + .km-checkbox-label:before,
+.km-android input.km-checkbox:focus + .km-checkbox-label:before  {
+    .box-shadow(0 0 1px 2px @android-active-background);
+}
+
+.km-android input.km-checkbox:checked + .km-checkbox-label:after {
+    color: @android-active-background;
+}    
+
+.km-android input.km-radio:checked + .km-radio-label:after {
+    .box-shadow(0 0 16px 1px @android-active-background);
+    border-color: fade(@android-light-main-color, 40%);
+}
+
+/* Validation */
+.km-android .km-list > li label.km-invalid,
+.km-android .km-list fieldset .km-legend-button.km-invalid,
+.km-android .km-list > li label.km-invalid.km-required:after {
+    color: @warning;
+}
+
+.km-android .km-invalid-msg {
+    color: @android-active-color;
+    background: @warning;
+}

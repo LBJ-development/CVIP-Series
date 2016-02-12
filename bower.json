@@ -24,13 +24,16 @@
     "jquery": "^2.2.0",
     "grunt": "^0.4.5",
     "bootstrap": "^3.3.6",
-    "bootstrap-ui": "^1.1.2",
+    "bootstrap-ui": "ui-bootstrap#^1.1.2",
     "bootstrap-css": "^3.3.6",
     "kendo-ui-all": "*",
     "angular-kendo": "angular-kendo-ui#^1.0.3",
-    "jquery-ui": "^1.11.4"
+    "jquery-ui": "^1.11.4",
+    "angular-ui-router": "^0.2.18",
+    "kendo-ui": "^2016.1.212"
   },
   "resolutions": {
-    "jquery": ">=1.9.1 <=2.0.3"
+    "jquery": ">=1.9.1 <=2.0.3",
+    "kendo-ui": "^2016.1.212"
   }
 }

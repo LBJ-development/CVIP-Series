@@ -1,14 +1,14 @@
 {
   "name": "kendo-ui",
-  "version": "2014.1.318",
+  "version": "2016.1.212",
   "dependencies": {
-    "jquery": ">=1.9.1 <=2.0.3"
+    "jquery": ">=1.9.1 <=2.1.1"
   },
   "authors": [
     "Telerik"
   ],
   "description": "Everything you need to build sites and apps with HTML5 & JavaScript",
-  "main": "dist/kendo.ui.core.min.js",
+  "main": "js/kendo.ui.core.min.js",
   "moduleType": [
     "amd",
     "globals"

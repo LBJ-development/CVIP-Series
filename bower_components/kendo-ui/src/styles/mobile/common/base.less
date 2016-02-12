@@ -1,3 +1,27 @@
+/*!
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+
+*/
 @import "mixins.less";
 
 /* Common Platform CSS */
@@ -20,6 +44,13 @@
 .km-root
 {
     font-size: .92em;
+}
+
+.km-root.km-retina input,
+.km-root.km-retina select,
+.km-root.km-retina textarea
+{
+    font-size: 1em;
 }
 
 .km-root a
@@ -73,8 +104,7 @@
 .km-vertical .km-collapsible-pane {
     position: absolute;
     z-index: 2 !important;
-    -webkit-transition: -webkit-transform 350ms ease-out;
-    -ms-transition: -ms-transform 350ms ease-out;
+    .pTransition(transform 350ms ease-out);
     .transform(translatex(-100%));
 }
 
@@ -108,7 +138,13 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-.km-view
+.km-content
+{
+    display: block;
+}
+
+.km-view,
+.km-split-content
 {
     top: 0;
     left: 0;
@@ -116,7 +152,6 @@
     .flexbox();
     height: 100%;
     width: 100%;
-    .box-orient(vertical);
     .flex-direction(column);
     .flex-align-items(stretch);
     .flex-align-content(stretch);
@@ -148,7 +183,6 @@
     min-height: 1px;
     .flex(1);
     .flex-align(stretch);
-    display: block;
     width: auto;
     overflow: hidden;
     position: relative;
@@ -166,13 +200,8 @@
 {
     display: block;
     display: -moz-box;
-    -moz-box-orient: vertical;
+    flex-direction: column;
     width: 100%;
-}
-
-.k-ff .km-scrollview > div
-{
-    display: inline-block;
 }
 
 .km-header
@@ -190,7 +219,11 @@
     display: none;
 }
 
-[data-role="view"], [data-role="drawer"]
+/**
+ * The angular tags will be converted to div kendo-mobile-view
+ *
+ */
+[data-role="view"], [data-role="drawer"], kendo-mobile-view, kendo-mobile-split-view, kendo-mobile-drawer
 {
     visibility: hidden;
 }
@@ -215,7 +248,7 @@
   .km-header, .km-footer { height: 1px; }
 }
 
-.km-toolbar,
+.km-root .k-toolbar,
 .km-navbar,
 .km-button,
 .km-buttongroup,
@@ -235,7 +268,7 @@
 }
 
 .km-tabstrip,
-.km-toolbar,
+.km-root .k-toolbar,
 .km-navbar
 {
     display: block;
@@ -300,14 +333,13 @@
     left: 50%;
     width: 180px;
     height: 130px;
-    opacity: .85;
     z-index: 100000;
     padding: 30px 30px;
     position: absolute;
     margin-top: -70px;
     margin-left: -90px;
     .box-sizing(border-box);
-    background-color: black;
+    background-color: rgba(0,0,0,.5);
 }
 
 .km-loader h1
@@ -415,6 +447,14 @@
     width: 100%;
 }
 
+.km-stretched-view > .km-pane-wrapper {
+    position: static;
+}
+
+.km-stretched-view > .km-pane-wrapper > .km-pane {
+    position: static;
+}
+
 .km-overlay
 {
     position: absolute;
@@ -436,10 +476,16 @@
     overflow-x: visible;
 }
 
+.km-native-scrolling,
 .km-native-scrolling .km-pane,
 .km-native-scrolling .km-view
 {
     -ms-touch-action: auto;
+}
+
+.km-native-scrolling .km-pane,
+.km-native-scrolling .km-view
+{
     display: block;
 }
 
@@ -528,8 +574,6 @@
 .km-native-scrolling > .km-pane > .km-loader
 {
     position: fixed;
-    top: 50%;
-    margin-top: -2em;
 }
 
 .km-native-scrolling .km-header,

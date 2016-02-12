@@ -1,3 +1,27 @@
+/*!
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       
+
+*/
 /* ComboBox & DropDownList */
 
 span.k-datepicker,
@@ -6,7 +30,8 @@ span.k-datetimepicker,
 span.k-colorpicker,
 span.k-numerictextbox,
 span.k-combobox,
-span.k-dropdown
+span.k-dropdown,
+.k-toolbar .k-split-button
 {
     background-image: none;
 }
@@ -20,7 +45,8 @@ span.k-dropdown
 .k-numerictextbox,
 .k-dropdown,
 .k-selectbox,
-.k-textbox
+.k-textbox,
+.k-toolbar .k-split-button
 {
     position: relative;
     display: inline-block;
@@ -49,12 +75,14 @@ span.k-dropdown
 .k-colorpicker,
 .k-numerictextbox,
 .k-dropdown,
-.k-selectbox
+.k-selectbox,
+.k-toolbar .k-split-button
 {
     white-space: nowrap;
 }
 
-.k-colorpicker
+.k-colorpicker,
+.k-toolbar .k-split-button
 {
     width: auto;
 }
@@ -105,8 +133,15 @@ span.k-dropdown
 .k-treeview,
 .k-pager-wrap,
 .k-grid-header .k-link,
-.k-header-column-menu {
-  -webkit-touch-callout: none;
+.k-header-column-menu
+{
+    -webkit-touch-callout: none;
+}
+
+.k-list-scroller
+{
+    position: relative;
+    overflow: auto;
 }
 
 .k-popup.k-list-container,
@@ -183,6 +218,15 @@ span.k-dropdown
     right: 3px;
 }
 
+/*prevent missing bottom border at some zoom levels*/
+span.k-textbox:after
+{
+  content: "\a0";
+  display: block;
+  height: .4px;
+  overflow: hidden;
+}
+
 .k-autocomplete,
 .k-dropdown-wrap.k-state-focused,
 .k-dropdown-wrap.k-state-hover,
@@ -218,8 +262,6 @@ span.k-dropdown
 {
     background: transparent;
 }
-
-.k-ie7 .k-picker-wrap .k-input, .k-ie7 .k-numeric-wrap .k-input, .k-ie7 .k-combobox .k-input { margin: -1px 0; } /* removes excessive spacing */
 
 .k-picker-wrap .k-select,
 .k-numeric-wrap .k-select,
@@ -292,13 +334,38 @@ span.k-datetimepicker .k-select+.k-select
     margin: 0;
 }
 
-.k-ie7 .k-autocomplete .k-input,
-.k-ie7 .k-picker-wrap .k-input,
-.k-ie7 .k-numeric-wrap .k-input,
-.k-ie7 .k-dropdown-wrap .k-input,
-.k-ie7 .k-selectbox .k-input
+.k-combobox .k-dropdown-wrap:before,
+.k-picker-wrap:before,
+.k-numeric-wrap:before
 {
-    text-indent: 0;
+    content: "\a0";
+    display: inline-block;
+    width: 0;
+    height: @input-height;
+    padding-bottom: 0.3em;
+}
+
+/* fix missing bottom border on browser zoom in Chrome */
+.k-webkit .k-combobox .k-dropdown-wrap:before,
+.k-webkit .k-picker-wrap:before,
+.k-webkit .k-numeric-wrap:before
+{
+    padding-bottom: 0.38em;
+}
+
+/* above style breaks NumericTextBox layout due display:block style applied to the input */
+.km.root .k-combobox .k-dropdown-wrap:before,
+.km.root .k-picker-wrap:before,
+.km.root .k-numeric-wrap:before
+{
+    content: none;
+}
+
+.k-combobox .k-input,
+.k-picker-wrap .k-input,
+.k-numeric-wrap .k-input
+{
+    display: inline;
 }
 
 .k-picker-wrap .k-select,
@@ -324,15 +391,6 @@ body .k-datetimepicker .k-select
     border-radius: 0;
 }
 
-.k-ie7 .k-picker-wrap .k-icon,
-.k-ie7 .k-dropdown-wrap .k-icon
-{
-    line-height: 2em;
-    font-size: 1em;
-    padding-top: 16px;
-    height: 0;
-}
-
 .k-combobox .k-icon,
 .k-dropdown,
 .k-selectbox .k-icon
@@ -346,7 +404,8 @@ body .k-datetimepicker .k-select
     border-width: 1px;
 }
 
-.k-popup .k-item
+.k-popup .k-item,
+.k-list-optionlabel
 {
     cursor: default;
 }
@@ -358,23 +417,79 @@ body .k-datetimepicker .k-select
 
 .k-list
 {
-    height: 100%;
+    height: auto;
 }
 
-.k-popup .k-list .k-item
+.k-popup .k-list .k-item,
+.k-fieldselector .k-list .k-item,
+.k-list-optionlabel,
+.k-popup > .k-group-header,
+.k-popup > .k-virtual-wrap > .k-group-header
 {
     padding: 1px 5px 1px 5px;
     line-height: 1.8em;
     min-height: 1.8em;
 }
 
+.k-popup > .k-group-header,
+.k-popup > .k-virtual-wrap > .k-group-header
+{
+    padding-right: 22px;
+}
+
+.k-overflow-container .k-item
+{
+    padding: 1px;
+}
+
+.k-overflow-container > .k-state-disabled .k-button,
+.k-overflow-container .k-button.k-state-disabled,
+.k-overflow-container .k-button.k-state-disabled:hover
+{
+    border: 0 ;
+    background: none;
+}
+
 .k-popup .k-list .k-state-hover,
 .k-popup .k-list .k-state-focused,
-.k-popup .k-list .k-state-selected
+.k-popup .k-list .k-state-selected,
+.k-overflow-container .k-state-hover,
+.k-overflow-container .k-state-focused,
+.k-overflow-container .k-state-selected,
+.k-fieldselector .k-list .k-item,
+.k-list-optionlabel.k-state-focused,
+.k-list-optionlabel.k-state-selected
 {
     padding: 0 4px;
     border-width: 1px;
     border-style: solid;
+}
+
+.k-list-filter
+{
+    position: relative;
+    margin-bottom: 2px;
+}
+
+.k-list-filter > .k-textbox
+{
+    padding-right: 20px;
+    width: 100%;
+}
+
+.k-list-filter > .k-icon
+{
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.km-root .k-list-filter > .k-textbox {
+    padding-left: 0;
+    padding-right: 0;
+    border-left-width: 0;
+    border-right-width: 0;    
 }
 
 /* MultiSelect */
@@ -402,12 +517,18 @@ body .k-datetimepicker .k-select
     float: left;
 }
 
+.k-multiselect-wrap .k-input::-ms-clear
+{
+    display: none;
+}
+
 .k-multiselect-wrap li
 {
     margin: 1px 0 1px 1px;
-    padding: .1em .15em .1em .4em;
+    padding: .1em 1.6em .1em .4em;
     line-height: (@input-height - .15);
     float: left;
+    position: relative;
 }
 
 .k-autocomplete .k-loading,
@@ -421,6 +542,15 @@ body .k-datetimepicker .k-select
 .k-multiselect .k-loading-hidden
 {
     visibility: hidden;
+}
+
+.k-multiselect-wrap .k-select
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: .1em .2em;
 }
 
 /* Date/Time Pickers */
@@ -482,14 +612,19 @@ body .k-datetimepicker .k-select
 .k-textbox
 {
     outline: 0;
+}
+
+input.k-textbox,
+textarea.k-textbox
+{
     padding: 2px .3em;
-    line-height: 1.6em;
 }
 
 input.k-textbox
 {
     height: (@input-height + 0.48em);
     text-indent: @input-indent;
+    line-height: 1.6em;
 }
 
 .k-ie input.k-textbox
@@ -502,17 +637,9 @@ input.k-textbox
     height: 2.17em;
 }
 
-.k-ie7 input.k-textbox { line-height: 1.72em; height: 1.72em; text-indent: @input-indent; }
-
 textarea.k-textbox
 {
     height: auto;
-}
-
-.k-ie7 .k-textbox
-{
-    padding: 1px 0;
-    text-indent: 0;
 }
 
 /* NumericTextBox */
@@ -587,14 +714,9 @@ span.k-numerictextbox
             border-radius: 0 !important;
         }
     }
-    .k-icon {
+    .k-select {
         cursor: pointer;
     }
-}
-
-.box-shadow(...) {
-    -webkit-box-shadow: @arguments;
-    box-shadow: @arguments;
 }
 
 .k-disabled-overlay {
@@ -628,12 +750,19 @@ span.k-numerictextbox
         overflow: hidden;
         .disable-high-contrast();
 
-        &.k-state-selected {
+        &.k-state-selected,
+        &.k-state-selected:hover {
             z-index: 100;
             background: transparent;
-            box-shadow: 0 1px 4px #000, inset 0 0 3px #fff;
+            box-shadow: 0 1px 3px 1px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.45);
             position: relative;
         }
+    }
+
+    .k-item:hover {
+        z-index: 101;
+        position: relative;
+        box-shadow: 0 1px 3px 1px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.3);
     }
 }
 
@@ -650,7 +779,7 @@ span.k-numerictextbox
     }
 
     .k-selected-color {
-        background-image: url("textures/transtexture.png");
+        background-image: url("../textures/transtexture.png");
         background-position: 50% 50%;
         text-align: right;
 
@@ -725,18 +854,13 @@ span.k-numerictextbox
 
     .k-hue-slider {
         .k-slider-track {
-            background: -moz-linear-gradient(left,  #ff0000 0%, #ffff00 16%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 84%, #ff0004 100%); /* FF3.6+ */
-            background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff0000), color-stop(16%,#ffff00), color-stop(33%,#00ff00), color-stop(50%,#00ffff), color-stop(67%,#0000ff), color-stop(84%,#ff00ff), color-stop(100%,#ff0004)); /* Chrome,Safari4+ */
-            background: -webkit-linear-gradient(left,  #ff0000 0%,#ffff00 16%,#00ff00 33%,#00ffff 50%,#0000ff 67%,#ff00ff 84%,#ff0004 100%); /* Chrome10+,Safari5.1+ */
-            background: -o-linear-gradient(left,  #ff0000 0%,#ffff00 16%,#00ff00 33%,#00ffff 50%,#0000ff 67%,#ff00ff 84%,#ff0004 100%); /* Opera 11.10+ */
-            background: -ms-linear-gradient(left,  #ff0000 0%,#ffff00 16%,#00ff00 33%,#00ffff 50%,#0000ff 67%,#ff00ff 84%,#ff0004 100%); /* IE10+ */
-            background: linear-gradient(left,  #ff0000 0%,#ffff00 16%,#00ff00 33%,#00ffff 50%,#0000ff 67%,#ff00ff 84%,#ff0004 100%); /* W3C */
+            background: linear-gradient(to right,  #ff0000 0%, #ffff00 16%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 84%, #ff0004 100%);
         }
     }
 
     .k-transparency-slider {
         .k-slider-track {
-            background-image: url("textures/transparency.png");
+            background-image: url("../textures/transparency.png");
             background-size: 100% auto;
             background-position: 100% 50%;
             background-repeat: no-repeat;
@@ -754,30 +878,7 @@ span.k-numerictextbox
     }
 
     .k-hsv-gradient {
-        background:
-        -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), /* FF3.6+ */
-        -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
-
-        background:
-        -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1))), /* Chrome,Safari4+ */
-        -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-
-        background:
-        -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%), /* Chrome10+,Safari5.1+ */
-        -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
-
-        background:
-        -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%), /* Opera 11.10+ */
-        -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
-
-        background:
-        -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%), /* IE10+ */
-        -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
-
-        background:
-        linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%), /* W3C */
-        linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
-
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%), linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
         height: 180px;
         margin-bottom: 5px;
     }
@@ -798,16 +899,16 @@ span.k-numerictextbox
     }
 }
 
-.k-ie7, .k-ie8 {
+.k-ie8 {
     .k-flatcolorpicker {
         .k-hue-slider {
             .k-slider-track {
-                background: url("textures/hue.png") repeat 0 50%;
+                background: url("../textures/hue.png") repeat 0 50%;
             }
         }
         .k-transparency-slider {
             .k-slider-track {
-                background: url("textures/transparency.png") repeat 0 50%;
+                background: url("../textures/transparency.png") repeat 0 50%;
             }
         }
         .k-hsv-gradient {
