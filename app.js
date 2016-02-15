@@ -8,7 +8,8 @@ var app = angular.module('CVIPSMApp', [
 	'CVIPSMApp.utilities',
 	'CVIPSMApp.formatting',
 	'CVIPSMApp.config',
-	'CVIPSMApp.filters'
+	'CVIPSMApp.filters',
+	'kendo.directives' 
 
 	])
 	.config(function ($stateProvider, $urlRouterProvider) {

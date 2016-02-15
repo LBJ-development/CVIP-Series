@@ -1,24 +1,84 @@
-<div>Search for Series</div>
-<div>Create New Series</div>
-<div  class="content-wrapper">
 
-<!-- SEARCH RESULT  //////////////////////////////////////////////////////// -->
-	<div >
-		<span >Search Result</span>
+<div style="display: inline-block; float:left; width: 100%" >
+	<span class="sub-title" style="display: inline-block; float:left">Search for Series</span>
+	<span class="captionText" style="display: inline-block; float:left; padding: 5px 0 0 20px; text-align:left">Enter a search for a series. Searches can be wildcarded with '*' or '%'</span>
+</div>
 
+ <div class="row " >
+	<div class="col-sm-4 form-group">
+		<div style="float:left">
+			<label style="text-align:right; width:125px; padding:5px 5px 0 0">Series Name: </label>
+		</div>
+		<input type="text" class="form-control"  style="float:left; width:65%" />
+		
 	</div>
-	<div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
-		<div  class="clearfix">
-
-
-		</div>
 	
-		<div align="center" >
-
-			<div class="col-sm-12 form-group">
-					<div class="h-sep" style="margin:0 30px 10px 0" ></div>
-				<span style="font-size:0.9em; color:#65768a"> Footer</span>
-			</div>
+	<div class="col-sm-4 form-group">
+		<div style="float:left">
+			<label style="text-align:right;; width:125px; padding:5px 5px 0 0">or Series ID: </label>
 		</div>
-	</div>   
+		<input type="text" class="form-control"  style="float:left; width:65%"/>
+	</div>
+	<div class="col-sm-2 form-group">
+		<button class="btn-primary" style="float:left" ng-click="">SEARCH
+		</button>
+	</div>
+</div>
+
+<div class="h-sep" style="margin:10px 0px 10px 0" ></div>
+
+<div style="display: inline-block; float:left; width: 100%" >
+	<span class="sub-title" style="display: inline-block; float:left">Create New Series</span>
+	<span class="captionText" style="display: inline-block; float:left; padding: 5px 0 0 20px; text-align:left">If not actively traded, click "Use Series ID" to create series record. If actively traded, use "Series Name" to create series record. </span>
+</div>
+
+ <div class="row ">
+	<div class="col-sm-4 form-group">
+		<div style="float:left">
+			<label style="text-align:right; width:125px; padding:5px 5px 0 0">Use Series ID: </label>
+		</div>
+		<input type="checkbox" id="NCMECcase"  ng-click=" " style="float:left; margin-top:10px;"> 
+		
+        		
+	</div>
+	
+	<div class="col-sm-4 form-group">
+		<div style="float:left">
+			<label style="text-align:right;width:125px; padding:5px 5px 0 0">or Series Name: </label>
+		</div>
+		<input type="text" class="form-control"  style="float:left; width:65%"/>
+	</div>
+	<div class="col-sm-2 form-group">
+		<button class="btn-primary" style="float:left" ng-click="">CREATE
+		</button>
+	</div>
+</div>
+	<!-- <form name="dateRange-frm" ng-submit="changeDateRange()" role="form">
+		<span class="labelText" style="padding: 0 5px 0 0px" >From:</span> 
+		<input kendo-date-picker k-ng-model="startingDate" /> 
+		<span class="labelText" style="padding: 0 5px 0 20px">to:</span> 
+		<input kendo-date-picker k-ng-model="endingDate"/>
+		<span style="padding: 0 5px 0 20px">
+			<kendo-button  ng-model="button" class="k-button">SUBMIT</kendo-button>
+		</span>
+	</form> -->
+
+
+<div  class="content-wrapper">
+<!-- SEARCH RESULT  //////////////////////////////////////////////////////// -->
+	<div style="display: inline-block; float:left; width: 100%" >
+		<span class="sub-title" style="display: inline-block; float:left">Search Result</span>
+	
+	</div>
+
+	<div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
+		<div role="datagrid" class="grid-holder" >
+			<div kendo-grid="mainGrid" id="grid" k-options="mainGridOptions" k-rebind="mainGridOptions"  k-ng-delay="mainGridOptions"></div> 
+		</div> 
+	</div>
+</div>
+<div align="center" >
+	<div class="col-sm-12 form-group">  
+		<span style="font-size:0.9em; color:#65768a"> Footer</span>
+	</div>
 </div>

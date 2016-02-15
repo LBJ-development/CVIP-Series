@@ -1,10 +1,38 @@
 
 .baseText(@font-color: @basetextcolordark) {
 	font-size: @basefontsize;
-	letter-spacing: 0.03em;
+	letter-spacing: 0.02em;
 	font-family: @basefont;
 	color: @font-color;
 	text-decoration:none;
+}
+
+.baseTitle(@font-color: @basetextcolordark) {
+	font-family: Amaranth, serif;
+	letter-spacing: 0.03em;
+	color: @font-color;
+	text-decoration:none;
+}
+
+/*.title{
+	font-family: amaranth, serif;
+	font-size: 2em;
+  	line-height: 1.5em;
+  	color:#165d9a;
+  	padding-top: 60px;
+	padding-right: 130px;
+}
+*/
+.tab-title {
+	display:block;
+	float: left;
+	font-family: Amaranth, serif;
+	text-align: left;
+	font-size: 20px;
+	padding-left: 10px;
+	display:block;
+	height: 28px;
+	color:#ffffff;
 }
 
 
@@ -35,22 +63,23 @@
 }
 
 .sub-title{
-	.baseText;
+	.baseTitle;
 	font-size:1.2em;
 	color: @mediumblue;
-	width: 98%;
+	//width: 98%;
 	text-align: left;
-	padding-bottom: 20px;
-	background-image: url(../images/hr-sep.png);
-	background-repeat: repeat-x;
-	background-position: 0px 30px;
+	//padding-bottom: 20px;
+	//background-image: url(../images/hr-sep.png);
+	//background-repeat: repeat-x;
+	//background-position: 0px 30px;
 }
 
 
 
 .captionText{
 	.baseText;
-	font-size:.8em;
+	font-size: 0.9em;
+	font-style: italic;
 	color: @titlegray;
 }
 
