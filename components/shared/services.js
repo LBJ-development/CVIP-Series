@@ -47,8 +47,21 @@ angular.module('CVIPSMApp.services', [])
 			});
 			return deferred.promise;
 		};
-*/
+
+*/	
+	// TESTING START ////////////////
+	var getUser = function(id){
+
+		return $http.get('/users/' + id);
+	}
+
+	var getPromise = function(value) {
+      return $q.when(value);
+    }
+	// TESTING END ////////////////
+
 	var getData = function(url){
+
 		var $promise =  $http({
 			method: 'GET',
 			url:  url,
@@ -60,9 +73,14 @@ angular.module('CVIPSMApp.services', [])
 		$promise.then(function(result){
 			deferred.resolve(result.data);
 			});
-		return deferred.promise;
+			return deferred.promise;
 		};
+
 	return {
+		// TESTING START ////////////////
+		getUser: getUser,
+		getPromise: getPromise,
+		// TESTING END ////////////////
 		getData	: getData
 	};
 }]);
