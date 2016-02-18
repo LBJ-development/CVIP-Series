@@ -1,0 +1,58 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files (x86)\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'grunt-cli' ]
+2 info using npm@2.11.2
+3 info using node@v0.12.5
+4 verbose install initial load of C:\Users\ljablonski\package.json
+5 warn package.json ljablonski@1.0.0 No repository field.
+6 warn package.json ljablonski@1.0.0 No README data
+7 verbose readDependencies loading dependencies from C:\Users\ljablonski\package.json
+8 silly cache add args [ 'grunt-cli', null ]
+9 verbose cache add spec grunt-cli
+10 silly cache add parsed spec { raw: 'grunt-cli',
+10 silly cache add   scope: null,
+10 silly cache add   name: 'grunt-cli',
+10 silly cache add   rawSpec: '',
+10 silly cache add   spec: '*',
+10 silly cache add   type: 'range' }
+11 silly addNamed grunt-cli@*
+12 verbose addNamed "*" is a valid semver range for grunt-cli
+13 silly addNameRange { name: 'grunt-cli', range: '*', hasData: false }
+14 silly mapToRegistry name grunt-cli
+15 silly mapToRegistry using default registry
+16 silly mapToRegistry registry http://85.10.209.91/
+17 silly mapToRegistry uri http://85.10.209.91/grunt-cli
+18 verbose addNameRange registry:http://85.10.209.91/grunt-cli not in flight; fetching
+19 verbose request uri http://85.10.209.91/grunt-cli
+20 verbose request no auth needed
+21 info attempt registry request try #1 at 4:05:15 PM
+22 verbose request id 2dafe1899b0eb961
+23 http request GET http://85.10.209.91/grunt-cli
+24 info retry will retry, error on last attempt: Error: read ECONNRESET
+25 info attempt registry request try #2 at 4:05:25 PM
+26 http request GET http://85.10.209.91/grunt-cli
+27 info retry will retry, error on last attempt: Error: read ECONNRESET
+28 info attempt registry request try #3 at 4:06:25 PM
+29 http request GET http://85.10.209.91/grunt-cli
+30 verbose stack Error: read ECONNRESET
+30 verbose stack     at exports._errnoException (util.js:746:11)
+30 verbose stack     at TCP.onread (net.js:559:26)
+31 verbose cwd c:\Users\ljablonski\documents\workingProgress-L\CVIP\CVIP-Series
+32 error Windows_NT 6.1.7601
+33 error argv "c:\\Program Files (x86)\\nodejs\\node.exe" "c:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "grunt-cli"
+34 error node v0.12.5
+35 error npm  v2.11.2
+36 error code ECONNRESET
+37 error errno ECONNRESET
+38 error syscall read
+39 error network read ECONNRESET
+39 error network This is most likely not a problem with npm itself
+39 error network and is related to network connectivity.
+39 error network In most cases you are behind a proxy or have bad network settings.
+39 error network
+39 error network If you are behind a proxy, please make sure that the
+39 error network 'proxy' config is set properly.  See: 'npm help config'
+40 verbose exit [ 1, true ]

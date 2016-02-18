@@ -9,9 +9,17 @@
 		<div style="float:left">
 			<label style="text-align:right; width:125px; padding:5px 5px 0 0">Series Name: </label>
 		</div>
-		<input type="text" class="form-control"  style="float:left; width:65%" />
+		<input type="text" class="form-control"  style="float:left; width:65%"  ng-model="selectedSeriesName"  typeahead="series for series in seriesName | filter:$viewValue | limitTo:8" />
+
+
 		
 	</div>
+		<input name="states" id="states" type="text" placeholder="enter a state" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+
+		<form ng-submit="submitRegion()">
+        <input type="text" ng-model="currentRegion" id="region-typeahead" data-source="{{ defaultRegions }}"  data-provide="typeahead"/>
+        <button type="submit" class="btn">Add</button>
+    </form>
 	
 	<div class="col-sm-4 form-group">
 		<div style="float:left">

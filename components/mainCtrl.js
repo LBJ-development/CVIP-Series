@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state",  function($rootScope, $scope, $window, $state){
+app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVIPConfig", "DataFtry" , "States",  function($rootScope, $scope, $window, $state, CVIPConfig, DataFtry, States){
 
 /*	var win = angular.element($window);
 	$scope.stateName;
@@ -13,6 +13,36 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state",  funct
 		$scope.$apply();
 	});
 */
+	var url = CVIPConfig.contextPath + "names";
+	$scope.selectedSeriesName;
+	$scope.seriesName;
+	//$scope.seriesName = DataFtry.getData(url).then(function(result){ return result });
+	//$scope.testText;
+
+	/* DataFtry.getData(url).then(function(result){ 
+
+	 	$scope.seriesName  =  result ;
+		console.log(result)
+	 });
+
+
+*/
+	 $scope.seriesName = States;
+	 console.log(States)
+
+	//$scope.seriesName= "test"
+
+	 $scope.defaultRegions = ["Afghanistan", "Australia", "Bahrain", "New Zealand" ];
+
+    $scope.submitRegion = function(){
+        $scope.currentRegion = $('#region-typeahead').val();
+        $scope.addRegion(); //your add or click function you defined
+        $scope.currentRegion = ''; //clear
+    }
+
+	
+
+
 // GRID SETTINGS 
 	$scope.mainGridOptions =  {
 		 

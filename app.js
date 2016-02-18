@@ -4,6 +4,7 @@ var app = angular.module('CVIPSMApp', [
 	'ngAnimate',
 	'ngRoute',
 	'ui.router',
+	'ui.bootstrap',
 	'CVIPSMApp.services',
 	'CVIPSMApp.utilities',
 	'CVIPSMApp.formatting',
