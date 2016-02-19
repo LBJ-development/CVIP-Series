@@ -3,14 +3,6 @@
 //  SETTER AND GETTER FOR THE REQUESTOR ///////////////////////////////////////////////////////////
 angular.module('CVIPSMApp.services', [])
 
-.factory("States", function(){
-  var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Dakota", "North Carolina", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
-  
-  return states;
-  
-})
-
-
 //  DATA FACTORY ///////////////////////////////////////////////////////////
 .factory('DataFtry', [ '$http' , '$q' ,   function($http, $q) {
 
@@ -31,8 +23,18 @@ angular.module('CVIPSMApp.services', [])
 			});
 			return deferred.promise;
 		};
+*/	
+/*	// TESTING START ////////////////
+	var getUser = function(id){
 
-	var sendData = function(url, data){
+		return $http.get('/users/' + id);
+	}
+
+	var getPromise = function(value) {
+      return $q.when(value);
+    }
+	// TESTING END ////////////////
+*/	var sendData = function(url, data){
 
 		console.log("FROM DATA SEND");
 		console.log(url);
@@ -55,18 +57,6 @@ angular.module('CVIPSMApp.services', [])
 			return deferred.promise;
 		};
 
-*/	
-	// TESTING START ////////////////
-	var getUser = function(id){
-
-		return $http.get('/users/' + id);
-	}
-
-	var getPromise = function(value) {
-      return $q.when(value);
-    }
-	// TESTING END ////////////////
-
 	var getData = function(url){
 
 		var $promise =  $http({
@@ -85,10 +75,11 @@ angular.module('CVIPSMApp.services', [])
 
 	return {
 		// TESTING START ////////////////
-		getUser: getUser,
-		getPromise: getPromise,
+		//getUser: getUser,
+		//getPromise: getPromise,
 		// TESTING END ////////////////
-		getData	: getData
+		getData	: getData,
+		sendData: sendData
 	};
 }]);
 

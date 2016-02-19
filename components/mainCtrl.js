@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVIPConfig", "DataFtry" , "States",  function($rootScope, $scope, $window, $state, CVIPConfig, DataFtry, States){
+app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVIPConfig", "DataFtry" ,   function($rootScope, $scope, $window, $state, CVIPConfig, DataFtry ){
 
 /*	var win = angular.element($window);
 	$scope.stateName;
@@ -13,39 +13,23 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVI
 		$scope.$apply();
 	});
 */
-	var url = CVIPConfig.contextPath + "names";
+	
 	$scope.selectedSeriesName;
 	$scope.seriesName;
-	//$scope.seriesName = DataFtry.getData(url).then(function(result){ return result });
-	//$scope.testText;
+	var url = CVIPConfig.contextPath + "names";
+	DataFtry.getData(url).then(function(result){ 
+		$scope.seriesName  =  result ;
+	});
 
-	/* DataFtry.getData(url).then(function(result){ 
+	$scope.getSeries = function(){
 
-	 	$scope.seriesName  =  result ;
-		console.log(result)
-	 });
-
-
-*/
-	 $scope.seriesName = States;
-	 console.log(States)
-
-	//$scope.seriesName= "test"
-
-	 $scope.defaultRegions = ["Afghanistan", "Australia", "Bahrain", "New Zealand" ];
-
-    $scope.submitRegion = function(){
-        $scope.currentRegion = $('#region-typeahead').val();
-        $scope.addRegion(); //your add or click function you defined
-        $scope.currentRegion = ''; //clear
-    }
-
-	
-
+		
+		
+	} 
 
 // GRID SETTINGS 
 	$scope.mainGridOptions =  {
-		 
+	
 		dataSource: {
 			//data: result,
 			    schema: {
@@ -73,14 +57,14 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVI
 			pageSize: 15
 			},
 							
-		/*columnMenu: {
-   			messages	: {
-      			columns			: "Choose columns",
-      			filter			: "Apply filter",
-      			sortAscending	: "Sort (asc)",
-      			sortDescending	: "Sort (desc)"
-							}
-    				},*/
+		// columnMenu: {
+  //  			messages	: {
+  //     			columns			: "Choose columns",
+  //     			filter			: "Apply filter",
+  //     			sortAscending	: "Sort (asc)",
+  //     			sortDescending	: "Sort (desc)"
+		// 					}
+  //   				},
 		columns		: [{
 						field	: "name",
 						title	: "Series Name",

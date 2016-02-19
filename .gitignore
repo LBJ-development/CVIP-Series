@@ -46,3 +46,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Directories to ignore
+node_modules/*
+bower_components/*
+
+

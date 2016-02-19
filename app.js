@@ -26,7 +26,7 @@ var app = angular.module('CVIPSMApp', [
 					}
 				}
 			)
-			/*.state('mainSearch', {
+		/*.state('mainSearch', {
 				url: '/mainSearch',
 				templateUrl: 'components/mainSearch.html',
 				data: {
@@ -44,11 +44,11 @@ var app = angular.module('CVIPSMApp', [
 			)*/
 		})
 
-	.run(function ($rootScope, $state) {
+	/*.run(function ($rootScope, $state) {
 		
 		// MAY NEED LATER WHEN WE'LL CHECK FOR LOGIN CREDENTIAL BEFORE CHAGING STATE
 
-		/*$rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+		$rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
 			var requireLogin = toState.data.requireLogin;
 
 			if(requireLogin && typeof sessionStorage.userName === 'undefined') {
@@ -56,7 +56,7 @@ var app = angular.module('CVIPSMApp', [
 				event.preventDefault();
 				$state.go('login');
 		}
-	});*/
-});
+	});
+});*/
 
  
