@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"font-",
+				"font-style"
+			],
+			[
 				"Pa",
 				"PaginationCtrl"
 			],
@@ -104,74 +108,66 @@
 	"buffers":
 	[
 		{
-			"file": "CVIP_seriesManag.html",
+			"file": "CVIP_SM-app.html",
 			"settings":
 			{
-				"buffer_size": 3507,
+				"buffer_size": 3223,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/caseDisplay-tmp.html",
+			"file": "components/search.html",
 			"settings":
 			{
-				"buffer_size": 2118,
+				"buffer_size": 4340,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/services.js",
+			"file": "/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/components/summary.html",
 			"settings":
 			{
-				"buffer_size": 2506,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/links-mapped.html",
-			"settings":
-			{
-				"buffer_size": 786,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/mainCtrl.js",
-			"settings":
-			{
-				"buffer_size": 3240,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/caseDisplayCtrl.js",
-			"settings":
-			{
-				"buffer_size": 7647,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/utilities.js",
-			"settings":
-			{
-				"buffer_size": 5922,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/RFI-typography.less",
-			"settings":
-			{
-				"buffer_size": 1170,
+				"buffer_size": 5594,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/RFI-buttons.less",
+			"file": "assets/less/NCMEC-typography.less",
 			"settings":
 			{
-				"buffer_size": 3530,
+				"buffer_size": 1881,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/less/NCMEC-general.less",
+			"settings":
+			{
+				"buffer_size": 3648,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/less/NCMEC-buttons.less",
+			"settings":
+			{
+				"buffer_size": 3084,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/less/NCMEC-variables.less",
+			"settings":
+			{
+				"buffer_size": 1153,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "components/mainCtrl.js",
+			"settings":
+			{
+				"buffer_size": 2814,
 				"line_ending": "Windows"
 			}
 		}
@@ -260,13 +256,41 @@
 	},
 	"file_history":
 	[
+		"/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/components/children.html",
+		"/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/components/form.html",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/assets/less/ng-Animation.less",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/assets/less/CVIP-styles.less",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/components/mainCtrl.js",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/assets/less/NCMEC-bootstrap.less",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/app.js",
+		"/C/Users/ljablonski/Documents/workingProgress-L/ECMS/app/components/caseAdministration/caseAdministrationCtrl.js",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/components/shared/services.js",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/components/shared/config.js",
+		"/C/test/index.html",
+		"/C/test/package.json",
+		"/C/test/Gruntfile.js",
+		"/C/xampp/htdocs/.htaccess",
+		"/C/Users/ljablonski/Documents/workingProgress-L/ECMS/app/components/caseAdministration/caseAdministration.html",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/assets/less/NCMEC-general.less",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/assets/less/NCMEC-typography.less",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/.gitignore",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/assets/less/NCMEC-variables.less",
+		"/C/Users/ljablonski/Documents/workingProgress-L/ECMS/app/index.html",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/assets/less/NCMEC-kendoUI.less",
+		"/C/Users/ljablonski/Documents/workingProgress-L/CVIP/CVIP-Series/CVIP_seriesManag.html",
+		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/caseDisplay-tmp.html",
+		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/services.js",
+		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/links-mapped.html",
+		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/mainCtrl.js",
+		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/caseDisplayCtrl.js",
+		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/utilities.js",
+		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/RFI-typography.less",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/RFI-buttons.less",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/MCD-googleSearch.less",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/csaw-mapped.html",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/vehicle-mapped.html",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/guardian-mapped.html",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/lea-mapped.html",
-		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/links-mapped.html",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/children-mapped.html",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/summary-mapped.html",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/parent-mapped.html",
@@ -286,11 +310,8 @@
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/MCDSearch.js",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/formatting.js",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/config.js",
-		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/services.js",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/RFI-general.less",
-		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/RFI-typography.less",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/guardian-tmp.html",
-		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/caseDisplay-tmp.html",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/csaw-tmp.html",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/lea-tmp.html",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/case-tmp.html",
@@ -307,7 +328,6 @@
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/test.html",
 		"/D/workingProgress-D/RFI/RFI-FORM/assets/js/rfi.js",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/RFI-variables.less",
-		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/utilities.js",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/searchNCMEC.html",
 		"/D/workingProgress-D/Poster-Registration/WEB-forms/assets/js/CSTctrl.js",
 		"/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/NCMEC-bootstrap.less",
@@ -318,7 +338,6 @@
 		"/D/workingProgress-D/Poster-Registration/WEB-forms/components/CST-form.html",
 		"/D/workingProgress-D/Poster-Registration/WEB-forms/CST-form.html",
 		"/C/Users/ljablonski/Documents/workingProgress-L/Poster-Registration/WEB-forms/assets/js/CSTctrl.js",
-		"/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/components/children.html",
 		"/C/Users/ljablonski/Documents/workingProgress-L/MCD-googleSearch/MCD-Search/assets/js/config.js",
 		"/C/Users/ljablonski/Documents/workingProgress-L/MCD-googleSearch/MCD-Search/assets/js/loginCtrl.js",
 		"/C/Users/ljablonski/Documents/workingProgress-L/MCD-googleSearch/MCD-Search/components/requestor.html",
@@ -338,7 +357,6 @@
 		"/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/components/summary.html",
 		"/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/assets/js/rfi.js",
 		"/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/components/requestor.html",
-		"/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/components/form.html",
 		"/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/rfi.html",
 		"/D/workingProgress-D/ECMS-SVN/src/main/webapp/components/caseManagement/caseManagementCtrl.js",
 		"/C/Users/ljablonski/Desktop/rfi.js",
@@ -365,33 +383,11 @@
 		"/C/my.conf.js",
 		"/D/workingProgress-D/RFI/webapp/RFI.sublime-project",
 		"/D/workingProgress-D/RFI/webapp/assets/less/RFI-general.less",
-		"/D/workingProgress-D/RFI/webapp/assets/less/RFI-variables.less",
-		"/D/workingProgress-D/RFI/webapp/components/form.html",
-		"/D/workingProgress-D/ECMS-SVN/src/main/webapp/components/shared/mainMenu.html",
-		"/D/workingProgress-D/RFI/webapp/assets/js/loginCtrl.js",
-		"/D/workingProgress-D/RFI/fromPhu-0730/rfi_Ludwig/rfi.js",
-		"/D/workingProgress-D/RFI/fromPhu/pages/index.jsp",
-		"/D/workingProgress-D/RFI/fromPhu/pages/rfi.jsp",
-		"/D/workingProgress-D/ECMS-SVN/src/main/webapp/index.html",
-		"/D/workingProgress-D/ECMS-SVN/src/main/webapp/components/caseAdministration/shared/services.js",
-		"/D/workingProgress-D/ECMS-SVN/src/main/webapp/components/caseAdministration/assignCMCtrl.js",
-		"/D/workingProgress-D/RFI/fromPhu-0724/rfi.js",
-		"/D/workingProgress-D/RFI/fromPhu/pages/login.jsp",
-		"/D/workingProgress-D/RFI/fromPhu/pages/html/guardianPanel.html",
-		"/D/workingProgress-D/RFI/fromPhu/pages/html/csawPanel.html",
-		"/D/workingProgress-D/RFI/webapp/assets/less/ng-Animation.less",
-		"/D/workingProgress-D/RFI/webapp/assets/css/RFI-styles.css",
-		"/Y/ludwig/workingProgress/RFI/webapp/assets/js/rfi.js",
-		"/Z/UIDesigns/RFI-FORM/assets/js/rfi.js",
-		"/Z/UIDesigns/RFI-FORM/components/children.html",
-		"/D/workingProgress-D/ECMS-SVN/src/main/webapp/components/caseAdministration/caseAdministration.html",
-		"/D/workingProgress-D/RFI/fromPhu2/js/rfi.js",
-		"/D/workingProgress-D/RFI/fromPhu3/pages/rfi.jsp",
-		"/D/workingProgress-D/RFI/fromPhu2/rfi.html"
+		"/D/workingProgress-D/RFI/webapp/assets/less/RFI-variables.less"
 	],
 	"find":
 	{
-		"height": 36.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -410,6 +406,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"show",
+			"sm3",
+			"-2",
+			"span",
+			"label",
+			"span",
+			"model",
+			"right",
+			"div",
 			"caseLink",
 			"<",
 			"vehicle",
@@ -528,16 +533,7 @@
 			"6",
 			"csaw",
 			"csawList",
-			"csaw",
-			"child",
-			"childrenList",
-			"csawList",
-			"headerLabel",
-			"btn-primary",
-			"CSAW",
-			"NCMECcaseFlag",
-			"sfdsfsd",
-			"2"
+			"csaw"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -556,23 +552,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "CVIP_seriesManag.html",
+					"file": "CVIP_SM-app.html",
 					"settings":
 					{
-						"buffer_size": 3507,
+						"buffer_size": 3223,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2513,
+								2528
 							]
 						],
 						"settings":
@@ -671,25 +667,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 233.0,
+						"translation.y": 291.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/caseDisplay-tmp.html",
+					"file": "components/search.html",
 					"settings":
 					{
-						"buffer_size": 2118,
+						"buffer_size": 4340,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								376,
-								376
+								823,
+								823
 							]
 						],
 						"settings":
@@ -795,135 +791,18 @@
 				},
 				{
 					"buffer": 2,
-					"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/services.js",
+					"file": "/C/Users/ljablonski/Documents/workingProgress-L/RFI/RFI-FORM/components/summary.html",
 					"settings":
 					{
-						"buffer_size": 2506,
+						"buffer_size": 5594,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								660,
-								669
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"devel": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": "load-save",
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 39.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/components/links-mapped.html",
-					"settings":
-					{
-						"buffer_size": 786,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								812,
+								921
 							]
 						],
 						"settings":
@@ -1030,249 +909,132 @@
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
+					"buffer": 3,
+					"file": "assets/less/NCMEC-typography.less",
+					"settings":
+					{
+						"buffer_size": 1881,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1790,
+								1790
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1420.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
 					"buffer": 4,
-					"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/mainCtrl.js",
+					"file": "assets/less/NCMEC-general.less",
 					"settings":
 					{
-						"buffer_size": 3240,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2362,
-								2386
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"devel": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": "load-save",
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1027.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/caseDisplayCtrl.js",
-					"settings":
-					{
-						"buffer_size": 7647,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2170,
-								2170
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"devel": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": "load-save",
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 801.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/js/utilities.js",
-					"settings":
-					{
-						"buffer_size": 5922,
+						"buffer_size": 3648,
 						"regions":
 						{
 						},
@@ -1375,7 +1137,241 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "assets/less/NCMEC-buttons.less",
+					"settings":
+					{
+						"buffer_size": 3084,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1891,
+								1891
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "assets/less/NCMEC-variables.less",
+					"settings":
+					{
+						"buffer_size": 1153,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								409,
+								419
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"devel": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": "load-save",
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/LESS/LESS.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1385,18 +1381,18 @@
 				},
 				{
 					"buffer": 7,
-					"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/RFI-typography.less",
+					"file": "components/mainCtrl.js",
 					"settings":
 					{
-						"buffer_size": 1170,
+						"buffer_size": 2814,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								94,
-								94
+								387,
+								387
 							]
 						],
 						"settings":
@@ -1491,128 +1487,11 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/D/workingProgress-D/MCD-googleSearch/MCD-Search/assets/less/RFI-buttons.less",
-					"settings":
-					{
-						"buffer_size": 3530,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2433,
-								2433
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"devel": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": "load-save",
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/LESS/LESS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2070.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1648,7 +1527,7 @@
 		"cols":
 		[
 			0.0,
-			0.554827245996,
+			0.571819841753,
 			1.0
 		],
 		"rows":
@@ -1699,6 +1578,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 216.0,
+	"side_bar_width": 213.0,
 	"status_bar_visible": true
 }

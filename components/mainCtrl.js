@@ -21,10 +21,31 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVI
 		$scope.seriesName  =  result ;
 	});
 
-	$scope.getSeries = function(){
+	$scope.basicSearch 		= true;
+	$scope.advancedSearch 	= false;
+	$scope.createSeries		= false;
+	$scope.showGrid		= false;
 
-		
-		
+	$scope.selectSearch = function(evt){
+		$('.selectSearch-btn').removeClass('selectSearchActive');
+		$(evt.currentTarget).parent().addClass('selectSearchActive');
+
+		console.log($(evt.currentTarget).attr('id'))
+
+		$scope.basicSearch = $scope.advancedSearch = $scope.createSeries =  false;
+		switch($(evt.currentTarget).attr('id') ){
+			case "1":
+				$scope.basicSearch = true
+				break;
+			case "2":
+				$scope.advancedSearch = true
+				break;
+			case "3":
+				$scope.createSeries = true
+				break;
+			default:
+				$scope.basicSearch = true
+		}
 	} 
 
 // GRID SETTINGS 
