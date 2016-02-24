@@ -4,7 +4,27 @@
 @import "NCMEC-variables.less";
 @import "mixins.less";
 
-.hover-btn {
+// MAIN MENU ////////////////////////////////////////////////////
+ #mainMenu .k-state-selected, #caseMenu .k-state-selected  {
+	color: @veryverylightblue;
+	.vertical(@darkgradientstartcolor, @darkgradientendcolor)!important;
+}
+
+ #mainMenu .k-state-hover >.k-link, #caseMenu .k-state-hover{
+	color: @veryverylightblue;
+	.vertical(#375d94, #2e74d7);
+	border: none !important;
+}
+ .k-state-focused {
+ 	box-shadow: none  !important;
+ }
+
+
+
+ .hover-btn {
+	
+
+
 	background-color:rgb(255,255,255);
 	.vertical(@white, @verylightblue);
 	border:solid 1px @midblue;
@@ -12,12 +32,58 @@
 }
 
 
+.home-menu-btn{
+	background-image: url(../images/new-home-icn.png);
+	background-repeat:no-repeat;
+	background-position: 0px 0px;
+	background-size: 15px 35px;	
+}
+
+.home-menu-sel-btn{
+	background-image: url(../images/new-home-icn.png);
+	background-repeat:no-repeat;
+	background-position: 0px -21px;
+	background-size: 15px 35px;	
+}
+
+.sub-menu {
+	text-align:left;	
+	background-color: @dirtywhite;
+	border-bottom: solid 1px  @bordergray !important;
+	border-top: solid 1px  @white !important;
+}
+
 .k-button {
 	background-color:rgb(255,255,255);
 	.vertical(@white, @lightgradientendcolor);
 	border:solid 1px @lightblue;
 }
 
+.k-dropdown .k-input, .k-dropdown .k-state-focused .k-input, .k-menu .k-popup {
+   background-color:rgb(255,255,255);
+	.vertical(@white, @lightgradientendcolor);
+	border-color:  @bordergray;;
+}
+
+.k-autocomplete.k-state-default, .k-picker-wrap.k-state-default, .k-numeric-wrap.k-state-default, .k-dropdown-wrap.k-state-default, .k-link k-pager-nav, .k-link k-pager-nav k-pager-last {
+    background-color:rgb(255,255,255);
+	.vertical(@white, @lightgradientendcolor);
+    background-position: 50% 50%;
+    border-color:  @bordergray;
+}
+
+.k-dropdown .k-state-hover .k-input, k-pager-wrap k-link:hover, k-state-hover:hover {
+	background-color:rgb(255,255,255);
+	.vertical(@white, @verylightblue);
+
+}
+.k-pager-numbers .k-link, k-pager-nav .k-link{
+   background-color:rgb(255,255,255);
+	.vertical(@white, @lightgradientendcolor);
+}
+
+
+ 
 .k-button:hover, .k-button.k-state-hover, .k-item:hover, k-state-focus.k-state-hover, .k-multiselect.k-header.k-state-hover{
 	.hover-btn;
 
@@ -25,6 +91,7 @@
 
 .k-textbox:hover, .k-state-hover:hover {
 	border:solid 1px @lightblue;
+	.hover-btn;
 }
 
 .k-multiselect-wrap {
@@ -53,7 +120,24 @@
 	padding: 2px 13px 2px 13px;
 }
 
+.k-panelbar > li.k-state-default > .k-link {
+    color: #515967;
+    background-color: #dbe9f8;
+}
 
+[role="caseMenu"] .k-item:hover {
+	border:none;
+
+
+}
+/*[role="query-filter"] .k-button {
+	.k-button;
+	font-family: 'arial';
+	font-size:.9em;
+	color: @basefont;
+}
+
+*/
 .k-block, .k-header, .k-grid-header, .k-toolbar, .k-grouping-header, .k-pager-wrap, .k-button, .k-draghandle, .k-treemap-tile, html .km-pane-wrapper .k-header {
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fafcff), to(#d4ddea));
 	background-image: -webkit-linear-gradient(top, #fafcff, #d4ddea);
@@ -77,9 +161,9 @@
 }
 
 [role="rowgroup"] .k-header {
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@darkgradientstartcolor), to(@darkgradientendcolor));
+	background-color: @darkgradientendcolor;
+    	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@darkgradientstartcolor), to(@darkgradientendcolor));
 	background-image: -webkit-linear-gradient(top, @darkgradientstartcolor, @darkgradientendcolor);
-	background-color: @darkgradientstartcolor;
 	background-image: -moz-linear-gradient(top, @darkgradientstartcolor, @darkgradientendcolor);
 	background-image: -ms-linear-gradient(top, @darkgradientstartcolor, @darkgradientendcolor);
 	background-image: -o-linear-gradient(top, @darkgradientstartcolor, @darkgradientendcolor);
@@ -89,20 +173,6 @@
 
 .k-menu.k-header, .k-menu .k-item, .k-textbox, .k-autocomplete.k-header, .k-dropdown-wrap.k-state-active, .k-picker-wrap.k-state-active, .k-numeric-wrap.k-state-active, .k-block, .k-widget, .k-input, .k-textbox, .k-group, .k-content, .k-header, .k-filter-row > th, .k-editable-area, .k-separator, .k-colorpicker .k-i-arrow-s, .k-textbox > input, .k-autocomplete, .k-dropdown-wrap, .k-toolbar, .k-group-footer td, .k-grid-footer, .k-footer-template td, .k-state-default, .k-state-default .k-select, .k-state-disabled, .k-grid-header, .k-grid-header-wrap, .k-grid-header-locked, .k-grid-footer-locked, .k-grid-content-locked, .k-grid td, .k-grid td.k-state-selected, .k-grid-footer-wrap, .k-pager-wrap, .k-pager-wrap .k-link, .k-pager-refresh, .k-grouping-header, .k-grouping-header .k-group-indicator, .k-panelbar > .k-item > .k-link, .k-panel > .k-item > .k-link, .k-panelbar .k-panel, .k-panelbar .k-content, .k-treemap-tile, .k-calendar th, .k-slider-track, .k-splitbar, .k-dropzone-active, .k-tiles, .k-toolbar, .k-tooltip, .k-button-group .k-tool, .k-upload-files  {
     border-color:  @bordergray;
-}
-
-.home-menu-btn{
-	
-	background-image: url(../images/new-home-icn.png);
-	background-repeat:no-repeat;
-	background-position: 0px 0px;
-	background-size: 15px 14px;	
-}
-.sub-menu {
-	text-align:left;	
-	background-color: @dirtywhite;
-	border-bottom: solid 1px  @bordergray !important;
-	border-top: solid 1px  @white !important;
 }
 
 [role="gridcell"]  {
@@ -121,6 +191,36 @@ k-button:focus:acitve:not(.k-state-disabled):not([disabled]) {
 	//background-image: none;
 	//color:#ffffff;
 }
+
+.k-detail-row {
+	
+	background-color: #f1f6fb !important;
+	-webkit-box-shadow: inset 2px 2px 5px -1px rgba(0,0,0,0.30)!important;
+	-moz-box-shadow: inset 2px 2px 5px -1px rgba(0,0,0,0.30)!important;
+	box-shadow: inset 2px 2px 5px -1px rgba(0,0,0,0.30)!important;
+	
+}
+
+.k-tabstrip .k-tabstrip-items {
+	text-align: left;
+}
+
+.k-tabstrip-items .k-loading.k-complete {
+// REMOVE THE TOP LIGN OVER THE TABS
+	border: 0 none;
+}
+
+.k-window-titlebar {
+  	background-color: @darkgradientendcolor;
+    	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@darkgradientstartcolor), to(@darkgradientendcolor));
+	background-image: -webkit-linear-gradient(top, @darkgradientstartcolor, @darkgradientendcolor);
+	background-image: -moz-linear-gradient(top, @darkgradientstartcolor, @darkgradientendcolor);
+	background-image: -ms-linear-gradient(top, @darkgradientstartcolor, @darkgradientendcolor);
+	background-image: -o-linear-gradient(top, @darkgradientstartcolor, @darkgradientendcolor);
+	background-image: linear-gradient(top, @darkgradientstartcolor, @darkgradientendcolor);
+	background-repeat: repeat-x;
+}
+
 
 /*
 .k-icon, .k-tool-icon, .k-grouping-dropclue, .k-drop-hint, .k-column-menu .k-sprite, .k-grid-mobile .k-resize-handle-inner:before, .k-grid-mobile .k-resize-handle-inner:after {
