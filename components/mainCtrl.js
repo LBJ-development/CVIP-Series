@@ -17,9 +17,9 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVI
 	$scope.selectedSeriesName;
 	$scope.seriesName;
 	var url = CVIPConfig.contextPath + "names";
-	DataFtry.getData(url).then(function(result){ 
+	/*DataFtry.getData(url).then(function(result){ 
 		$scope.seriesName  =  result ;
-	});
+	});*/
 
 	$scope.basicSearch 		= true;
 	$scope.advancedSearch 	= false;
@@ -38,6 +38,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVI
 				$scope.basicSearch = true
 				break;
 			case "2":
+				$scope.basicSearch = true
 				$scope.advancedSearch = true
 				break;
 			case "3":
