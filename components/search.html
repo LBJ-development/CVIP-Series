@@ -10,18 +10,22 @@
 			<li class="tabPos-btn selectSearch-btn"><a href="" id="2"  ng-click="selectSearch($event)" > Advanced Search</a></li >
 		</ul>
 	</div>
-	<div class="col-sm-4 form-group" ng-if="advancedSearch" style="margin-top:0px">
-		<div class="col-sm-6 form-group">
+	<div class="col-sm-6 form-group" ng-if="advancedSearch" style="margin-top:0px">
+		<div class="col-sm-5 form-group">
 			
-				<select kendo-drop-down-list   class="form-control"  k-on-change=""></select>
-			
-		</div> 
-		<div class="col-sm-6 form-group">
-			
-				<select kendo-drop-down-list   class="form-control"  k-on-change=""></select>
+			<select kendo-drop-down-list class="form-control" k-options="DDTableOptions" ng-model="searchCriteria.table" k-on-change="selectTable()"></select>
 			
 		</div> 
+		<div class="col-sm-5 form-group" ng-if="showColumn">
+			<select kendo-drop-down-list id="DD-column"  ng-show="searchCriteria.table != ''"  k-options="DDColumnOptions"  class="form-control show-hide" ng-model="searchCriteria.column" k-on-change=""  ></select>
+		</div> 
+		<div class="col-sm-2 form-group" ng-if="searchCriteria.column != ''">
+			<button class="btn-primary" style="float:left; margin-top:2px"   ng-click="addSeachParam()">ADD
+			</button>
+		</div>
+		
 	</div> 
+	
 </div>
 <div class="row " ng-if="basicSearch">
 	<span class="captionText" style="display: inline-block; float:left; text-align:left">Search by Name can be wildcarded with '*'</span>

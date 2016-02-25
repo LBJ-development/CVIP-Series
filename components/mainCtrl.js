@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVIPConfig", "DataFtry" ,   function($rootScope, $scope, $window, $state, CVIPConfig, DataFtry ){
+app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "CVIPConfig", "DataFtry",  function($rootScope, $scope, $window, $state, $timeout, CVIPConfig, DataFtry){
 
 /*	var win = angular.element($window);
 	$scope.stateName;
@@ -25,6 +25,44 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVI
 	$scope.advancedSearch 	= false;
 	$scope.createSeries		= false;
 	$scope.showGrid		= false;
+	$scope.showColumn		= false;
+
+	$scope.searchCriteria = {table: "", column:""};
+
+
+	$scope.DDTableOptions = {
+		dataTextField: "disLabel",
+		dataValueField: "dbLabel",
+		optionLabel: {
+			disLabel : "Select a table",
+			dbLabel: ""
+		},
+		dataSource: DataFtry.fakeTable().data
+	}
+
+	var selectedTable;
+
+	$scope.DDColumnOptions = {
+		dataTextField: "disLabel",
+		dataValueField: "dbLabel",
+		autoBind: false,
+		optionLabel: {
+			disLabel : "Select a Column",
+			dbLabel: ""
+		},
+		//dataSource: DataFtry.fakeColumn(selectedTable).data
+	}
+
+	$scope.selectTable  = function(){
+
+		selectedTable = $scope.searchCriteria.table;
+		$scope.showColumn = false;
+		// ONLY TO REFRESH THE DATASOURCE!
+		$timeout(function(){
+			$scope.showColumn = true;
+			$scope.DDColumnOptions.dataSource  = DataFtry.fakeColumn(selectedTable).data;
+		}, 200);
+	} 
 
 	$scope.selectSearch = function(evt){
 		$('.selectSearch-btn').removeClass('selectSearchActive');
@@ -54,7 +92,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVI
 	
 		dataSource: {
 			//data: result,
-			    schema: {
+				schema: {
 					model: {
 						fields: {
 								name		: { type: "string" 	},
@@ -67,15 +105,15 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVI
 						},
 					},
 		//height		: 550,
-     //   dataBound	: onDataBound,
+	 //   dataBound	: onDataBound,
 		//toolbar		: ["create"],
 		sortable	: true,
 		scrollable	: false,
 
 		pageable	: {
-                     		refresh: true,
-                      		pageSizes: true,
-                     		buttonCount: 5,
+							refresh: true,
+							pageSizes: true,
+							buttonCount: 5,
 			pageSize: 15
 			},
 							
@@ -105,9 +143,9 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" ,  "CVI
 						width	: "70%"
 						}
 					]
-                	
-                	
-                }
+					
+					
+				}
 
 // LOGOUT & CLEANING /////////////////////////////////////////////////////////////////
 	$rootScope.logout = function(data) {
