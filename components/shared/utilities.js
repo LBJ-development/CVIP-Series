@@ -2,6 +2,30 @@
 
 angular.module('CVIPSMApp.utilities', [])
 
+.directive('searchField', function($parse, $compile){
+
+	return{
+		restrict: "A",
+		scope:{
+			label: '@',
+			type: '@',
+			model:'@'
+		},
+		template: function(elements, attrs){
+			return "<label>{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
+		},
+		link: function (scope, element, attrs){
+
+			var newElement;
+			var label = attrs.label;
+			if(attrs.type == "date"){
+				newElement = $compile("<label>" + attrs.label + "</label> <input kendo-date-picker k-ng-model='model' />")(scope);
+				element.replaceWith(newElement);  
+			}
+		}
+	}
+})
+
 /*
 // GOOGLE SEARCH DIRECTIVE ///////////////////////////////////////////////////////
 .directive ('searchNcmec', function () {
@@ -86,8 +110,8 @@ angular.module('CVIPSMApp.utilities', [])
 					scope.buttonClass = "btn-primary";
 					return;
 				} else {
- 					scope.isSearchable = false;
- 					scope.buttonClass = "btn-disabled";
+					scope.isSearchable = false;
+					scope.buttonClass = "btn-disabled";
 					}
 				}
 			for(var i=0; i<scope.csawList.length; i++){
@@ -96,8 +120,8 @@ angular.module('CVIPSMApp.utilities', [])
 					scope.buttonClass = "btn-primary";
 					return;
 				} else {
- 					scope.isSearchable = false;
- 					scope.buttonClass = "btn-disabled";
+					scope.isSearchable = false;
+					scope.buttonClass = "btn-disabled";
 					}
 				}
 			for(var i=0; i<scope.guardianList.length; i++){
@@ -106,8 +130,8 @@ angular.module('CVIPSMApp.utilities', [])
 					scope.buttonClass = "btn-primary";
 					return;
 				} else {
- 					scope.isSearchable = false;
- 					scope.buttonClass = "btn-disabled";
+					scope.isSearchable = false;
+					scope.buttonClass = "btn-disabled";
 					}
 				}
 			for(var i=0; i<scope.uhrList.length; i++){
@@ -116,8 +140,8 @@ angular.module('CVIPSMApp.utilities', [])
 					scope.buttonClass = "btn-primary";
 					return;
 				} else {
- 					scope.isSearchable = false;
- 					scope.buttonClass = "btn-disabled";
+					scope.isSearchable = false;
+					scope.buttonClass = "btn-disabled";
 					}
 				}
 			}
@@ -127,60 +151,60 @@ angular.module('CVIPSMApp.utilities', [])
 
 // EXT REQUESTOR  DIRECTIVE /////////////////////////////////////////////////////////
 .directive ('extRequestorDir',function () {
-    return {
-    restrict: 'E',
-    // scope :{},
+	return {
+	restrict: 'E',
+	// scope :{},
    // controller: 'SummaryCtrl',
-    templateUrl: 'components/extRequestor.html',
-    link: function (scope, element, attrs){
+	templateUrl: 'components/extRequestor.html',
+	link: function (scope, element, attrs){
 
-        scope.isNCMECCcase = function(evt) {
-            
-            scope.cleanCase();
+		scope.isNCMECCcase = function(evt) {
+			
+			scope.cleanCase();
 
-             if($(NCMECcase).is(":checked")) {
-                scope.addExtRequestor();
-                } else {
-                scope.extRequestorList = [];
-            }
-        };
-        scope.addExtRequestor = function(evt) {
-       
-                scope.extRequestorList.push({
-                    name:  {firstName: "",  lastName: ""},
-                    department: "",
-                    title: "",
-                    contactNumber: "",
-                    cellNumber: "",
-                    email: "",
-                     });
-                };
-            }
-       };
+			 if($(NCMECcase).is(":checked")) {
+				scope.addExtRequestor();
+				} else {
+				scope.extRequestorList = [];
+			}
+		};
+		scope.addExtRequestor = function(evt) {
+	   
+				scope.extRequestorList.push({
+					name:  {firstName: "",  lastName: ""},
+					department: "",
+					title: "",
+					contactNumber: "",
+					cellNumber: "",
+					email: "",
+					 });
+				};
+			}
+	   };
 })
 
 // CALENDAR DIRECTIVE ////////////////////////////////////////////////////////
 .directive("datepicker", function() {
-    return {
-        restrict: "A",
-        require: "ngModel",
-        link: function(scope, elem, attrs, ngModelCtrl) {
-            var updateModel = function(dateText) {
-                scope.$apply(function() {
-                    ngModelCtrl.$setViewValue(dateText);
-                });
-            };
-            var options = {
-                dateFormat: "dd/mm/yy",
-                changeMonth: true,
-                changeYear: true,
-                onSelect: function(dateText) {
-                    updateModel(dateText);
-                }
-            };
-           elem.datepicker(options);
-        }
-    }
+	return {
+		restrict: "A",
+		require: "ngModel",
+		link: function(scope, elem, attrs, ngModelCtrl) {
+			var updateModel = function(dateText) {
+				scope.$apply(function() {
+					ngModelCtrl.$setViewValue(dateText);
+				});
+			};
+			var options = {
+				dateFormat: "dd/mm/yy",
+				changeMonth: true,
+				changeYear: true,
+				onSelect: function(dateText) {
+					updateModel(dateText);
+				}
+			};
+		   elem.datepicker(options);
+		}
+	}
 })
 
 // WATCH THE VIEWPORT SIZE //////////////////////////////////////////////

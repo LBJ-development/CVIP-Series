@@ -27,13 +27,15 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 	$scope.showGrid		= false;
 	$scope.showColumn		= false;
 
-	$scope.fieldsToDisplay = [	{"label" : "Series Name",			"value" : "", "dataType" : "string"},
-								{"label" : "Date Series Created", 	"value" : "", "dataType" : "date"},
-								{"label" : "Series Type", 			"value" : "", "dataType" : "string"},
-								{"label" : "Previous Series Type", 	"value" : "", "dataType" : "string"},
+	$scope.searchCriteria = {table: "", column:""};
+
+	$scope.series = []
+
+	$scope.fieldsToDisplay = [	{"label" : "Series Name",			"model" : "seriesname",				"dataType" : "string"},
+								{"label" : "Date Series Created", 	"model" : "dateseriescreated",		"dataType" : "date"},
+								{"label" : "Series Type", 			"model" : "seriestype", 			"dataType" : "string"},
+								{"label" : "Previous Series Type", 	"model" : "previousseriestype",		"dataType" : "string"},
 							];
-
-
 
 	$scope.DDTableOptions = {
 		dataTextField: "disLabel",
@@ -91,6 +93,11 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 				$scope.basicSearch = true
 		}
 	} 
+
+	$scope.getSeries = function(){
+
+		console.log("FROM GET SERIES");
+	}
 
 // GRID SETTINGS 
 	$scope.mainGridOptions =  {

@@ -38,11 +38,16 @@
 	<div  ng-repeat="field in fieldsToDisplay track by $index">
 		<div class="col-sm-2 form-group">
 			<div class="sharedCol4">
-				<label>{{field.label}}: </label> 
-				<input type="text" class="form-control" ng-model="searchByID" />
+				<!-- <label>{{field.label}}: </label>  -->
+
+
+				<div search-field label={{field.label}} type={{field.dataType}} model={{field.model}}></div>
+				<!-- <input type="text" class="form-control" ng-model="searchByID" /> -->
 			</div>
 		</div>
 	</div>
+
+	<input kendo-date-picker k-ng-model="startingDate" />
 
 <!-- 	<div class="col-sm-2 form-group">
 		<div class="sharedCol4">
