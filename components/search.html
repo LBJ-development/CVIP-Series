@@ -27,14 +27,24 @@
 	</div> 
 	
 </div>
-<div class="row " ng-if="basicSearch">
+<!-- <div class="row " ng-if="basicSearch">
 	<span class="captionText" style="display: inline-block; float:left; text-align:left">Search by Name can be wildcarded with '*'</span>
-</div>
+</div> -->
 
 <!-- BASIC SEARCH ///////////////////////////////////////////////-->
+
 <div class="row show-hide" ng-if="basicSearch">
 
-	<div class="col-sm-2 form-group">
+	<div  ng-repeat="field in fieldsToDisplay track by $index">
+		<div class="col-sm-2 form-group">
+			<div class="sharedCol4">
+				<label>{{field.label}}: </label> 
+				<input type="text" class="form-control" ng-model="searchByID" />
+			</div>
+		</div>
+	</div>
+
+<!-- 	<div class="col-sm-2 form-group">
 		<div class="sharedCol4">
 			<label >Series Name: </label>
 			<input type="text" class="form-control"   ng-model="searchByName"  typeahead="series for series in seriesName | filter:$viewValue | limitTo:8" />
@@ -45,7 +55,7 @@
 			<label >Series ID: </label>
 			<input type="text" class="form-control"   ng-model="searchByID" />
 		</div>
-	</div>
+	</div> -->
 	<!-- <div class="col-sm-3 form-group">
 		<label >Series Type: </label>
 		<input type="text" class="form-control"   ng-model="searchByType" />

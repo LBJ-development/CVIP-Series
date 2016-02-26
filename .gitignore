@@ -16,6 +16,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.sublime-project
+*.sublime-workspace
 
 # =========================
 # Operating System Files
@@ -49,5 +51,8 @@ Temporary Items
 # Directories to ignore
 node_modules/*
 bower_components/*
+WEB-INF/*
+lib/*
+.svn/*
 
 

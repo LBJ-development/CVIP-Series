@@ -27,7 +27,12 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 	$scope.showGrid		= false;
 	$scope.showColumn		= false;
 
-	$scope.searchCriteria = {table: "", column:""};
+	$scope.fieldsToDisplay = [	{"label" : "Series Name",			"value" : "", "dataType" : "string"},
+								{"label" : "Date Series Created", 	"value" : "", "dataType" : "date"},
+								{"label" : "Series Type", 			"value" : "", "dataType" : "string"},
+								{"label" : "Previous Series Type", 	"value" : "", "dataType" : "string"},
+							];
+
 
 
 	$scope.DDTableOptions = {
