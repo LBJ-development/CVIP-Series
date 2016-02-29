@@ -20,7 +20,7 @@
 			<select kendo-drop-down-list id="DD-column"  ng-show="searchCriteria.table != ''"  k-options="DDColumnOptions"  class="form-control show-hide" ng-model="searchCriteria.column" k-on-change=""  ></select>
 		</div> 
 		<div class="col-sm-2 form-group" ng-if="searchCriteria.column != ''">
-			<button class="btn-primary" style="float:left; margin-top:2px"   ng-click="addSeachParam()">ADD
+			<button class="btn-primary" style="float:left; margin-top:2px"   ng-click="addField()">ADD
 			</button>
 		</div>
 		
@@ -39,15 +39,14 @@
 		<div class="col-sm-2 form-group">
 			<div class="sharedCol4">
 				<!-- <label>{{field.label}}: </label>  -->
-
-
-				<div search-field label={{field.label}} type={{field.dataType}} model={{field.model}}></div>
-				<!-- <input type="text" class="form-control" ng-model="searchByID" /> -->
+				<div ng-if="field.dataType === 'string'" search-field label={{field.label}} table={{field.table}}  model='field.model'></div>
+				<div ng-if="field.dataType === 'date'" date-field label={{field.label}} table={{field.table}}  model='field.model'></div>
 			</div>
 		</div>
 	</div>
 
-	<input kendo-date-picker k-ng-model="startingDate" />
+	<!-- <input kendo-date-picker k-ng-model="startingDate" />
+ -->
 
 <!-- 	<div class="col-sm-2 form-group">
 		<div class="sharedCol4">

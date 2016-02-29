@@ -56,3 +56,4 @@ lib/*
 .svn/*
 
 
+*.sublime-workspace

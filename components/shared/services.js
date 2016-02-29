@@ -9,20 +9,20 @@ angular.module('CVIPSMApp.services', [])
 	var fakeTable = function(){
 
 		return {
-				"data" : [
-					{"dbLabel": "series", "disLabel": "Series" },
-					{"dbLabel": "child", "disLabel": "Child" },
-					{"dbLabel": "suspect", "disLabel": "Suspect" },
-					{"dbLabel": "contact", "disLabel": "Contact" },
-					{"dbLabel": "childrenrelationship", "disLabel": "Children Relationship" },
-					{"dbLabel": "screenname", "disLabel": "Screen Name" },
-					{"dbLabel": "exif", "disLabel": "Exif" },
-					{"dbLabel": "Leacontact", "disLabel": "Lea Contact" },
-					{"dbLabel": "lead", "disLabel": "Lead" },
-					{"dbLabel": "note", "disLabel": "Note" },
-					{"dbLabel": "identifier", "disLabel": "Identifier" },
-					{"dbLabel": "filepartialname", "disLabel": "File Partial Name" },
-					{"dbLabel": "survey", "disLabel": "Survey" }
+				data : [
+					{dbLabel: "series", disLabel: "Series" },
+					{dbLabel: "child", disLabel: "Child" },
+					{dbLabel: "suspect", disLabel: "Suspect" },
+					{dbLabel: "contact", disLabel: "Contact" },
+					{dbLabel: "childrenrelationship", disLabel: "Children Relationship" },
+					{dbLabel: "screenname", disLabel: "Screen Name" },
+					{dbLabel: "exif", disLabel: "Exif" },
+					{dbLabel: "Leacontact", disLabel: "Lea Contact" },
+					{dbLabel: "lead", disLabel: "Lead" },
+					{dbLabel: "note", disLabel: "Note" },
+					{dbLabel: "identifier", disLabel: "Identifier" },
+					{dbLabel: "filepartialname", disLabel: "File Partial Name" },
+					{dbLabel: "survey", disLabel: "Survey" }
 				],
 			};
 		};
@@ -30,48 +30,52 @@ angular.module('CVIPSMApp.services', [])
 
 		var column = {};
 
-		var series = { "data" : [
-					{"dbLabel": "serieid", "disLabel": "Series ID" },
-					{"dbLabel": "seriesname", "disLabel": "Series Name" },
-					{"dbLabel": "dateseriesstarted", "disLabel": "Date Series Started" },
-					{"dbLabel": "dateserieslastmodified", "disLabel": "Date Series Last Modified" },
-					{"dbLabel": "seriestype", "disLabel": "Series Type" },
-					{"dbLabel": "alias", "disLabel": "Alias" },
-					{"dbLabel": "origincountry", "disLabel": "Origin Country" },
-					{"dbLabel": "periodofabuse", "disLabel": "Period of Abuse" }
+		var series = { 
+				data : [
+					{dbLabel: "serieid", disLabel: "Series ID" , dataType: "string"},
+					{dbLabel: "seriesname", disLabel: "Series Name", dataType: "string" },
+					{dbLabel: "dateseriesstarted", disLabel: "Date Series Started" , dataType: "date"},
+					{dbLabel: "dateserieslastmodified", disLabel: "Date Series Last Modified" , dataType: "date"},
+					{dbLabel: "seriestype", disLabel: "Series Type" , dataType: "string"},
+					{dbLabel: "alias", disLabel: "Alias" , dataType: "string"},
+					{dbLabel: "origincountry", disLabel: "Origin Country", dataType: "string" },
+					{dbLabel: "periodofabuse", disLabel: "Period of Abuse" , dataType: "string"}
 				],
 			}
-		var child = { "data" : [
-					{"dbLabel": "childname", "disLabel": "Child Name" },
-					{"dbLabel": "description", "disLabel": "Description" },
-					{"dbLabel": "gender", "disLabel": "Gender" },
-					{"dbLabel": "haircolor", "disLabel": "Hair Color" },
-					{"dbLabel": "agecategory", "disLabel": "Age Category" },
-					{"dbLabel": "childageinseries", "disLabel": "Child Age in Series" },
-					{"dbLabel": "ethnicity", "disLabel": "Ethnicity" },
-					{"dbLabel": "frekles", "disLabel": "Freckles" }
+		var child = { 
+				data : [
+					{dbLabel: "childname", disLabel: "Child Name" , dataType: "string"},
+					{dbLabel: "description", disLabel: "Description" , dataType: "string"},
+					{dbLabel: "gender", disLabel: "Gender" , dataType: "string"},
+					{dbLabel: "haircolor", disLabel: "Hair Color" , dataType: "string"},
+					{dbLabel: "agecategory", disLabel: "Age Category" , dataType: "string"},
+					{dbLabel: "childageinseries", disLabel: "Child Age in Series", dataType: "string"},
+					{dbLabel: "ethnicity", disLabel: "Ethnicity" , dataType: "string"},
+					{dbLabel: "frekles", disLabel: "Freckles", dataType: "string" }
 				],
 			}
-		var suspect = { "data" : [
-					{"dbLabel": "offendername", "disLabel": "Offender Name" },
-					{"dbLabel": "description", "disLabel": "Description" },
-					{"dbLabel": "gender", "disLabel": "Gender" },
-					{"dbLabel": "haircolor", "disLabel": "Hair Color" },
-					{"dbLabel": "agecategory", "disLabel": "Age Category" },
-					{"dbLabel": "childageinseries", "disLabel": "Child Age in Series" },
-					{"dbLabel": "ethnicity", "disLabel": "Ethnicity" },
-					{"dbLabel": "frekles", "disLabel": "Freckles" }
+		var suspect = { 
+				data : [
+					{dbLabel: "offendername", disLabel: "Offender Name" , dataType: "string"},
+					{dbLabel: "description", disLabel: "Description" , dataType: "string"},
+					{dbLabel: "gender", disLabel: "Gender", dataType: "string"},
+					{dbLabel: "haircolor", disLabel: "Hair Color", dataType: "string"},
+					{dbLabel: "agecategory", disLabel: "Age Category" , dataType: "string"},
+					{dbLabel: "childageinseries", disLabel: "Child Age in Series" , dataType: "string"},
+					{dbLabel: "ethnicity", disLabel: "Ethnicity" , dataType: "string"},
+					{dbLabel: "frekles", disLabel: "Freckles" , dataType: "string"}
 				],
 			}
-		var contact = { "data" : [
-					{"dbLabel": "agency", "disLabel": "Agency" },
-					{"dbLabel": "name", "disLabel": "Name" },
-					{"dbLabel": "phone", "disLabel": "Phone" },
-					{"dbLabel": "contactdate", "disLabel": "Contact Date" },
-					{"dbLabel": "state", "disLabel": "State" },
-					{"dbLabel": "email", "disLabel": "Email" },
-					{"dbLabel": "country", "disLabel": "Country" },
-					{"dbLabel": "notes", "disLabel": "Notes" }
+		var contact = { 
+				data : [
+					{dbLabel: "agency", disLabel: "Agency" , dataType: "string"},
+					{dbLabel: "name", disLabel: "Name" , dataType: "string"},
+					{dbLabel: "phone", disLabel: "Phone" , dataType: "string"},
+					{dbLabel: "contactdate", disLabel: "Contact Date", dataType: "date" },
+					{dbLabel: "state", disLabel: "State" , dataType: "string"},
+					{dbLabel: "email", disLabel: "Email" , dataType: "string"},
+					{dbLabel: "country", disLabel: "Country", dataType: "string" },
+					{dbLabel: "notes", disLabel: "Notes", dataType: "string" }
 				],
 			}
 			

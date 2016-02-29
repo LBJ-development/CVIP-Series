@@ -27,15 +27,21 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 	$scope.showGrid		= false;
 	$scope.showColumn		= false;
 
-	$scope.searchCriteria = {table: "", column:""};
+	$scope.searchCriteria = {table: "", column:"", };
 
-	$scope.series = []
+	$scope.series = [];
 
-	$scope.fieldsToDisplay = [	{"label" : "Series Name",			"model" : "seriesname",				"dataType" : "string"},
-								{"label" : "Date Series Created", 	"model" : "dateseriescreated",		"dataType" : "date"},
-								{"label" : "Series Type", 			"model" : "seriestype", 			"dataType" : "string"},
-								{"label" : "Previous Series Type", 	"model" : "previousseriestype",		"dataType" : "string"},
+	$scope.fieldsToDisplay = [	{label : "Series Name",			model : "",	table : "series", column: "seriesname",			dataType : "string"},
+								{label : "Date Series Created", model : "",	table : "series", column: "dateseriescreated",	dataType : "date"},
+								{label : "Series Type", 		model : "", table : "series", column: "seriestype",			dataType : "string"},
+								{label : "Previous Series Type", model :"",	table : "series", column: "previousseriestype",	dataType : "string"},
 							];
+
+	$scope.addField = function(){
+
+		console.log($scope.searchCriteria)
+	}
+
 
 	$scope.DDTableOptions = {
 		dataTextField: "disLabel",
@@ -47,7 +53,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		dataSource: DataFtry.fakeTable().data
 	}
 
-	var selectedTable;
+	var selectedTable, selectedColumn;
 
 	$scope.DDColumnOptions = {
 		dataTextField: "disLabel",
@@ -70,6 +76,11 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 			$scope.DDColumnOptions.dataSource  = DataFtry.fakeColumn(selectedTable).data;
 		}, 200);
 	} 
+
+	$scope.selectColumn = function(){
+
+
+	}
 
 	$scope.selectSearch = function(evt){
 		$('.selectSearch-btn').removeClass('selectSearchActive');
@@ -97,6 +108,8 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 	$scope.getSeries = function(){
 
 		console.log("FROM GET SERIES");
+		//console.log($scope.fieldsToDisplay[0].table + "." +  $scope.fieldsToDisplay[0].column + "." + $scope.fieldsToDisplay[0].model);
+		console.log($scope.fieldsToDisplay);
 	}
 
 // GRID SETTINGS 

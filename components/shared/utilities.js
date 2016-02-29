@@ -8,20 +8,45 @@ angular.module('CVIPSMApp.utilities', [])
 		restrict: "A",
 		scope:{
 			label: '@',
-			type: '@',
-			model:'@'
+			table: '@',
+			//type: '@',
+			model:'=model'
 		},
 		template: function(elements, attrs){
-			return "<label>{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
+			return "<label><span ng-show='false'>{{table}}</span><span ng-show='false'>: </span> {{label}}: </label><input type='text' class='form-control' ng-model='model' />"
+			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 		},
 		link: function (scope, element, attrs){
+
+			/*console.log("FROM LINK:");
+			console.log(attrs.model)
 
 			var newElement;
 			var label = attrs.label;
 			if(attrs.type == "date"){
-				newElement = $compile("<label>" + attrs.label + "</label> <input kendo-date-picker k-ng-model='model' />")(scope);
+				newElement = $compile("<label>" + attrs.label + "</label> <input kendo-date-picker k-ng-model='field.model' />")(scope);
 				element.replaceWith(newElement);  
-			}
+			}*/
+		}
+	}
+})
+
+.directive('dateField', function(){
+
+	return{
+		restrict: "A",
+		scope:{
+			label: '@',
+			table: '@',
+			//type: '@',
+			model:'=model'
+		},
+		template: function(elements, attrs){
+			return "<label><span ng-show='false'>{{table}}</span><span ng-show='false'>: </span> {{label}}: </label><input kendo-date-picker ng-model='model' />"
+			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
+		},
+		link: function (scope, element, attrs){
+
 		}
 	}
 })
