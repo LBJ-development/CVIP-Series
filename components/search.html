@@ -1,5 +1,5 @@
 <!-- SEARCH SELECTOR ///////////////////////////////////////////////-->
- <div class="row " style="margin-bottom:0px">
+ <div class="row " style="margin-bottom:0px" ng-init="init()">
 	<div class="form-group sub-title" style="float:left;padding-right:0,font-size:1.5em">
 		Create/Search for Series
 	</div>
@@ -11,82 +11,44 @@
 		</ul>
 	</div>
 	<div class="col-sm-6 form-group" ng-if="advancedSearch" style="margin-top:0px">
-		<div class="col-sm-5 form-group">
+		<div class="col-sm-4 form-group">
 			
-			<select kendo-drop-down-list class="form-control" k-options="DDTableOptions" ng-model="searchCriteria.table" k-on-change="selectTable()"></select>
+			<select kendo-drop-down-list class="form-control" k-options="DDTableOptions" ng-model="fieldData.table"  id="DD-table"  k-on-change="selectTable()"></select>
 			
 		</div> 
-		<div class="col-sm-5 form-group" ng-if="showColumn">
-			<select kendo-drop-down-list id="DD-column"  ng-show="searchCriteria.table != ''"  k-options="DDColumnOptions"  class="form-control show-hide" ng-model="searchCriteria.column" k-on-change=""  ></select>
+		<div class="col-sm-4 form-group" ng-if="showColumn">
+			<select kendo-drop-down-list id="DD-column"  ng-show="fieldData.table != ''"  k-options="DDColumnOptions"  class="form-control show-hide" ng-model="fieldData.column"  ></select>
 		</div> 
-		<div class="col-sm-2 form-group" ng-if="searchCriteria.column != ''">
-			<button class="btn-primary" style="float:left; margin-top:2px"   ng-click="addField()">ADD
+		<div class="col-sm-2 form-group" ng-if="fieldData.column != ''">
+			<button class="btn-primary" style="float:left; margin-top:2px"   ng-click="addToList(fieldsToDisplay)">ADD
 			</button>
 		</div>
 		
 	</div> 
+
 	
 </div>
 <!-- <div class="row " ng-if="basicSearch">
 	<span class="captionText" style="display: inline-block; float:left; text-align:left">Search by Name can be wildcarded with '*'</span>
 </div> -->
 
-<!-- BASIC SEARCH ///////////////////////////////////////////////-->
-
+<!-- BASIC / ADVANCED SEARCH ///////////////////////////////////////////////-->
 <div class="row show-hide" ng-if="basicSearch">
 
-	<div  ng-repeat="field in fieldsToDisplay track by $index">
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<!-- <label>{{field.label}}: </label>  -->
-				<div ng-if="field.dataType === 'string'" search-field label={{field.label}} table={{field.table}}  model='field.model'></div>
-				<div ng-if="field.dataType === 'date'" date-field label={{field.label}} table={{field.table}}  model='field.model'></div>
-			</div>
-		</div>
-	</div>
-
-	<!-- <input kendo-date-picker k-ng-model="startingDate" />
- -->
-
-<!-- 	<div class="col-sm-2 form-group">
+	<div class="col-sm-3 form-group"  ng-repeat="field in fieldsToDisplay track by $index">
 		<div class="sharedCol4">
-			<label >Series Name: </label>
-			<input type="text" class="form-control"   ng-model="searchByName"  typeahead="series for series in seriesName | filter:$viewValue | limitTo:8" />
+			<div ng-if="field.dataType === 'string'" search-field label={{field.label}} table={{field.table}} display='advancedSearch' model='field.model'></div>
+			<div ng-if="field.dataType === 'date'" date-field label={{field.label}} table={{field.table}}  display='advancedSearch'  model='field.model'></div>
+		</div>
+		<div >
+			<span class="remove-btn" ng-show="$index >0 && advancedSearch"><a href="" ng-click="removeFromList(fieldsToDisplay, $index)"></a></span>			
 		</div>
 	</div>
-	<div class="col-sm-2 form-group">
-		<div class="sharedCol4">
-			<label >Series ID: </label>
-			<input type="text" class="form-control"   ng-model="searchByID" />
-		</div>
-	</div> -->
-	<!-- <div class="col-sm-3 form-group">
-		<label >Series Type: </label>
-		<input type="text" class="form-control"   ng-model="searchByType" />
-	</div>
-	<div class="col-sm-3 form-group">
-		<label >LEA Agency: </label>
-		<input type="text" class="form-control"   ng-model="searchByLEAAgency" />
-	</div>
-	<div class="col-sm-3 form-group">
-		<label >LEA POC Name: </label>
-		<input type="text" class="form-control"   ng-model="searchByLEAPOCName" />
-	</div>
-	<div class="col-sm-3 form-group">
-		<label >LEA Contact Name: </label>
-		<input type="text" class="form-control"   ng-model="searchByLEAContactName" />
-	</div>
-	<div class="col-sm-3 form-group">
-		<label >Previous Series: </label>
-		<input type="text" class="form-control"   ng-model="searchByPreviousSeriesName" />
-	</div> -->
-	<div class="col-sm-3 form-group">
+	<div class="col-sm-3 form-group" style="float:left">
 		<button class="btn-primary" style="float:left; margin-top:23px" ng-click="getSeries()">SEARCH
 		</button>
 	</div>
 </div>
-
-
 
 <!-- CREATE NEW SERIES ///////////////////////////////////////////////-->
 <div  class="row show-hide" ng-if="createSeries">

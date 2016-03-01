@@ -13,7 +13,25 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		$scope.$apply();
 	});
 */
-	
+	$scope.init = function (){
+		 initializeDisplayList();
+	}
+
+	function initializeDisplayList(){
+		$scope.fieldsToDisplay = [];
+		$scope.fieldsToDisplay = 	
+				[	{label : "Series Name",		model : "",	table : "series", column: "seriesname",		dataType : "string"},
+					{label : "Date Series Created", 	model : "",	table : "series", column: "dateseriescreated",	dataType : "date"},
+					{label : "Series Type", 		model : "", 	table : "series", column: "seriestype",		dataType : "string"},
+					{label : "Previous Series Type",	model :"",	table : "series", column: "previousseriestype",	dataType : "string"},
+				];
+		
+		$scope.fieldData = {disLabel: "", table: "", column:"", dataType:"" };
+		// IF THE DROPDOWN DATA IS EXISTING => RESET
+		if($("#DD-table").data("kendoDropDownList") !== undefined) $("#DD-table").data("kendoDropDownList").value(-1);
+		if($("#DD-column").data("kendoDropDownList") !== undefined) $("#DD-column").data("kendoDropDownList").value(-1);
+	}
+
 	$scope.selectedSeriesName;
 	$scope.seriesName;
 	var url = CVIPConfig.contextPath + "names";
@@ -27,21 +45,9 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 	$scope.showGrid		= false;
 	$scope.showColumn		= false;
 
-	$scope.searchCriteria = {table: "", column:"", };
+	$scope.fieldData = {disLabel: "", table: "", column:"", dataType:"" };
 
 	$scope.series = [];
-
-	$scope.fieldsToDisplay = [	{label : "Series Name",			model : "",	table : "series", column: "seriesname",			dataType : "string"},
-								{label : "Date Series Created", model : "",	table : "series", column: "dateseriescreated",	dataType : "date"},
-								{label : "Series Type", 		model : "", table : "series", column: "seriestype",			dataType : "string"},
-								{label : "Previous Series Type", model :"",	table : "series", column: "previousseriestype",	dataType : "string"},
-							];
-
-	$scope.addField = function(){
-
-		console.log($scope.searchCriteria)
-	}
-
 
 	$scope.DDTableOptions = {
 		dataTextField: "disLabel",
@@ -63,12 +69,18 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 			disLabel : "Select a Column",
 			dbLabel: ""
 		},
-		//dataSource: DataFtry.fakeColumn(selectedTable).data
+		 select: function(e) {
+
+			var index = e.item.index() -1;
+			$scope.fieldData.dataType = DataFtry.fakeColumn(selectedTable).data[index].dataType;
+			$scope.fieldData.disLabel = DataFtry.fakeColumn(selectedTable).data[index].disLabel;
+		 }
 	}
 
 	$scope.selectTable  = function(){
 
-		selectedTable = $scope.searchCriteria.table;
+		selectedTable = $scope.fieldData.table;
+
 		$scope.showColumn = false;
 		// ONLY TO REFRESH THE DATASOURCE!
 		$timeout(function(){
@@ -77,28 +89,31 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		}, 200);
 	} 
 
-	$scope.selectColumn = function(){
-
-
-	}
-
 	$scope.selectSearch = function(evt){
 		$('.selectSearch-btn').removeClass('selectSearchActive');
 		$(evt.currentTarget).parent().addClass('selectSearchActive');
 
-		console.log($(evt.currentTarget).attr('id'))
+		//console.log($(evt.currentTarget).attr('id'))
 
 		$scope.basicSearch = $scope.advancedSearch = $scope.createSeries =  false;
 		switch($(evt.currentTarget).attr('id') ){
 			case "1":
-				$scope.basicSearch = true
+				$scope.basicSearch = true;
+				$scope.advancedSearch = false;
+				$scope.showColumn = false;
+				
+				 initializeDisplayList();
 				break;
 			case "2":
-				$scope.basicSearch = true
-				$scope.advancedSearch = true
+				$scope.basicSearch = true;
+				$scope.advancedSearch = true;
+			
 				break;
 			case "3":
-				$scope.createSeries = true
+				$scope.createSeries = true;
+				$scope.advancedSearch = false;
+				$scope.showColumn = false;
+				 initializeDisplayList();
 				break;
 			default:
 				$scope.basicSearch = true
@@ -107,10 +122,27 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 
 	$scope.getSeries = function(){
 
-		console.log("FROM GET SERIES");
-		//console.log($scope.fieldsToDisplay[0].table + "." +  $scope.fieldsToDisplay[0].column + "." + $scope.fieldsToDisplay[0].model);
-		console.log($scope.fieldsToDisplay);
+		var dataParam  = $scope.fieldsToDisplay.slice();
+
+		var jsonString = JSON.stringify({params: dataParam});
+				console.log("JSON = " + jsonString);	
 	}
+
+// ADD/REMOVE PERSON OBJECTS ///////////////////////////////////////////////
+
+	$scope.addToList = function(list) {
+		list.push({
+			label : $scope.fieldData.disLabel,	 
+			model :"",	
+			table : $scope.fieldData.table, 
+			column: $scope.fieldData.column,	
+			dataType : $scope.fieldData.dataType
+		});
+	};
+
+	$scope.removeFromList = function(list, index) {
+		list.splice(index, 1);
+	} ;
 
 // GRID SETTINGS 
 	$scope.mainGridOptions =  {

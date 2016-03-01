@@ -57,3 +57,5 @@ lib/*
 
 
 *.sublime-workspace
+*.sublime-project
+CVIP_seriesManagement.sublime-workspace

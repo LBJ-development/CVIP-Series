@@ -9,18 +9,15 @@ angular.module('CVIPSMApp.utilities', [])
 		scope:{
 			label: '@',
 			table: '@',
-			//type: '@',
+			display: '=',
 			model:'=model'
 		},
 		template: function(elements, attrs){
-			return "<label><span ng-show='false'>{{table}}</span><span ng-show='false'>: </span> {{label}}: </label><input type='text' class='form-control' ng-model='model' />"
+			return "<label><span ng-show='display'>{{table}}</span><span ng-show='display'>: </span> {{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 		},
 		link: function (scope, element, attrs){
-
-			/*console.log("FROM LINK:");
-			console.log(attrs.model)
-
+			/*
 			var newElement;
 			var label = attrs.label;
 			if(attrs.type == "date"){
@@ -38,11 +35,11 @@ angular.module('CVIPSMApp.utilities', [])
 		scope:{
 			label: '@',
 			table: '@',
-			//type: '@',
+			display: '=',
 			model:'=model'
 		},
 		template: function(elements, attrs){
-			return "<label><span ng-show='false'>{{table}}</span><span ng-show='false'>: </span> {{label}}: </label><input kendo-date-picker ng-model='model' />"
+			return "<label><span ng-show='display'>{{table}}</span><span ng-show='display'>: </span> {{label}}: </label><input kendo-date-picker ng-model='model' style='padding-bottom:1px' />"
 			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 		},
 		link: function (scope, element, attrs){
