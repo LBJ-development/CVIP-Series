@@ -1,5 +1,4 @@
 'use strict';
-
 app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "CVIPConfig", "DataFtry",  function($rootScope, $scope, $window, $state, $timeout, CVIPConfig, DataFtry){
 
 /*	var win = angular.element($window);
@@ -32,12 +31,14 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		if($("#DD-column").data("kendoDropDownList") !== undefined) $("#DD-column").data("kendoDropDownList").value(-1);
 	}
 
+	// SERIES NAME AUTO COMPLETE ///////////////////////
 	$scope.selectedSeriesName;
 	$scope.seriesName;
 	var url = CVIPConfig.contextPath + "names";
-	/*DataFtry.getData(url).then(function(result){ 
+/*	DataFtry.getData(url).then(function(result){ 
 		$scope.seriesName  =  result ;
 	});*/
+
 
 	$scope.basicSearch 		= true;
 	$scope.advancedSearch 	= false;
@@ -53,7 +54,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		dataTextField: "disLabel",
 		dataValueField: "dbLabel",
 		optionLabel: {
-			disLabel : "Select a table",
+			disLabel : "Select a Section",
 			dbLabel: ""
 		},
 		dataSource: DataFtry.fakeTable().data
@@ -66,7 +67,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		dataValueField: "dbLabel",
 		autoBind: false,
 		optionLabel: {
-			disLabel : "Select a Column",
+			disLabel : "Select a Criteria",
 			dbLabel: ""
 		},
 		 select: function(e) {
@@ -78,6 +79,10 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 	}
 
 	$scope.selectTable  = function(){
+
+		// RESET THE COLUMN /////////
+		$scope.fieldData.disLabel = "";
+		$scope.fieldData.column = "";
 
 		selectedTable = $scope.fieldData.table;
 
@@ -93,21 +98,17 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		$('.selectSearch-btn').removeClass('selectSearchActive');
 		$(evt.currentTarget).parent().addClass('selectSearchActive');
 
-		//console.log($(evt.currentTarget).attr('id'))
-
 		$scope.basicSearch = $scope.advancedSearch = $scope.createSeries =  false;
 		switch($(evt.currentTarget).attr('id') ){
 			case "1":
 				$scope.basicSearch = true;
 				$scope.advancedSearch = false;
 				$scope.showColumn = false;
-				
-				 initializeDisplayList();
+				initializeDisplayList();
 				break;
 			case "2":
 				$scope.basicSearch = true;
 				$scope.advancedSearch = true;
-			
 				break;
 			case "3":
 				$scope.createSeries = true;
@@ -123,7 +124,6 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 	$scope.getSeries = function(){
 
 		var dataParam  = $scope.fieldsToDisplay.slice();
-
 		var jsonString = JSON.stringify({params: dataParam});
 				console.log("JSON = " + jsonString);	
 	}
@@ -138,6 +138,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 			column: $scope.fieldData.column,	
 			dataType : $scope.fieldData.dataType
 		});
+		$("#DD-column").data("kendoDropDownList").value(-1);
 	};
 
 	$scope.removeFromList = function(list, index) {
@@ -200,8 +201,6 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 						width	: "70%"
 						}
 					]
-					
-					
 				}
 
 // LOGOUT & CLEANING /////////////////////////////////////////////////////////////////

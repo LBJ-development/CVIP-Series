@@ -1,0 +1,48 @@
+<div  class="row show-hide" ng-if="createSeries">
+
+	<div class="col-sm-2 form-group">
+		<div style="float:left">
+			<label style="text-align:right; width:125px; padding:5px 5px 0 0">Use Series ID: </label>
+		</div>
+		<input type="checkbox" id="NCMECcase"  ng-click=" " style="float:left; margin-top:8px;">  
+	</div>
+	<div style="display: inline-block; float:left; width: 100%" >
+		<span class="captionText" style="display: inline-block; float:left; padding: 5px 0 0 20px; text-align:left">If not actively traded, click "Use Series ID" to create series record. If actively traded, use "Series Name" to create series record. </span>
+	</div>
+	<div class="row ">
+		
+		<div class="col-sm-3 form-group">
+			<div class="sharedCol4">
+				<label>Series Name: </label>
+				<input type='text' class='form-control' ng-model='seriesname' />
+			</div>
+		</div>
+
+		<div class="col-sm-3 form-group" >
+			<div class="sharedCol4">
+				<label>Analyst Name: </label>
+				<select kendo-drop-down-list k-options="DDColumnOptions"  class="form-control field-k-dropDown" ng-model="fieldData.column"  ></select>
+			</div>
+		</div> 
+
+		<div class="col-sm-3 form-group" >
+			<div class="sharedCol4">
+				<label>Series Type: </label>
+				<select kendo-drop-down-list id="DD-column" k-options="DDColumnOptions"  class="form-control field-k-dropDown" ng-model="fieldData.column"  ></select>
+			</div>
+		</div> 
+
+		<div class="col-sm-3 form-group">
+			<div class="sharedCol4">
+				<label>Related to CT/TA: </label>
+				<input type='text' class='form-control' ng-model='seriesname' />
+			</div>
+		</div>
+
+	
+		<div class="col-sm-2 form-group">
+			<button class="btn-primary" style="float:left" ng-click="">CREATE
+			</button>
+		</div>
+	</div>
+</div>

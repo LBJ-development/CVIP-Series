@@ -10,6 +10,7 @@ var app = angular.module('CVIPSMApp', [
 	'CVIPSMApp.formatting',
 	'CVIPSMApp.config',
 	'CVIPSMApp.filters',
+	'CVIPSMApp.createsearch',
 	'kendo.directives' 
 
 	])

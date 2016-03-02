@@ -6,8 +6,8 @@ angular.module('CVIPSMApp.services', [])
 //  DATA FACTORY ///////////////////////////////////////////////////////////
 .factory('DataFtry', [ '$http' , '$q' ,   function($http, $q) {
 
+	// RETURN FAKE SECTIONS FOR ADVANDED SEARCH /////////////////////////////////////
 	var fakeTable = function(){
-
 		return {
 				data : [
 					{dbLabel: "series", disLabel: "Series" },
@@ -26,6 +26,7 @@ angular.module('CVIPSMApp.services', [])
 				],
 			};
 		};
+	// RETURN FAKE CRITERIAS FOR ADVANDED SEARCH /////////////////////////////////////
 	var fakeColumn = function(table){
 
 		var column = {};
@@ -97,6 +98,23 @@ angular.module('CVIPSMApp.services', [])
 		}
 		return  column
 		}
+
+// RETURN A TYPE SERIES LIST FOR THE DROPDOWN /////////////////////////
+	var seriesType = function(){
+		return {
+				data : [
+					{dbLabel: "awaitingcaseinfo", disLabel: "Awaiting Case Info" },
+					{dbLabel: "Iidentified", disLabel: "Identified" },
+					{dbLabel: "ncmecatrisk", disLabel: "NCMEC at Risk" },
+					{dbLabel: "unconfirmed", disLabel: "Unconfirmed" },
+					{dbLabel: "unfounded", disLabel: "Unfounded" },
+					{dbLabel: "unidendtified", disLabel: "Unidentified" },
+					{dbLabel: "null", disLabel: "Nullf" }
+				],
+			};
+		}
+
+
 
 /*	var getData = function(url){
 		var $promise =  $http({
@@ -171,9 +189,10 @@ angular.module('CVIPSMApp.services', [])
 		//getPromise: getPromise,
 		// TESTING END ////////////////
 		getData		: getData,
-		sendData		: sendData,
-		fakeTable		: fakeTable,
-		fakeColumn	: fakeColumn
+		sendData	: sendData,
+		fakeTable	: fakeTable,
+		fakeColumn	: fakeColumn,
+		seriesType 	: seriesType
 	};
 }]);
 
