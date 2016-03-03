@@ -40,7 +40,9 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "seriestype", disLabel: "Series Type" , dataType: "string"},
 					{dbLabel: "alias", disLabel: "Alias" , dataType: "string"},
 					{dbLabel: "origincountry", disLabel: "Origin Country", dataType: "string" },
-					{dbLabel: "periodofabuse", disLabel: "Period of Abuse" , dataType: "string"}
+					{dbLabel: "periodofabuse", disLabel: "Period of Abuse" , dataType: "string"},
+					{dbLabel: "submissiontype", disLabel: "Submission Type" , dataType: "dropdown"},
+					{dbLabel: "ncmecnseriesnameiisnotchildname", disLabel: "Series Name is not Child's Name" , dataType: "checkbox"}
 				],
 			}
 		var child = { 
@@ -48,11 +50,11 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "childname", disLabel: "Child Name" , dataType: "string"},
 					{dbLabel: "description", disLabel: "Description" , dataType: "string"},
 					{dbLabel: "gender", disLabel: "Gender" , dataType: "string"},
-					{dbLabel: "haircolor", disLabel: "Hair Color" , dataType: "string"},
+					{dbLabel: "haircolor", disLabel: "Hair Color" , dataType: "dropdown"},
 					{dbLabel: "agecategory", disLabel: "Age Category" , dataType: "string"},
 					{dbLabel: "childageinseries", disLabel: "Child Age in Series", dataType: "string"},
 					{dbLabel: "ethnicity", disLabel: "Ethnicity" , dataType: "string"},
-					{dbLabel: "frekles", disLabel: "Freckles", dataType: "string" }
+					{dbLabel: "deceased", disLabel: "Deceased", dataType: "checkbox" }
 				],
 			}
 		var suspect = { 
@@ -60,11 +62,12 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "offendername", disLabel: "Offender Name" , dataType: "string"},
 					{dbLabel: "description", disLabel: "Description" , dataType: "string"},
 					{dbLabel: "gender", disLabel: "Gender", dataType: "string"},
-					{dbLabel: "haircolor", disLabel: "Hair Color", dataType: "string"},
+					{dbLabel: "haircolor", disLabel: "Hair Color", dataType: "dropdown"},
 					{dbLabel: "agecategory", disLabel: "Age Category" , dataType: "string"},
 					{dbLabel: "childageinseries", disLabel: "Child Age in Series" , dataType: "string"},
 					{dbLabel: "ethnicity", disLabel: "Ethnicity" , dataType: "string"},
-					{dbLabel: "frekles", disLabel: "Freckles" , dataType: "string"}
+					{dbLabel: "frekles", disLabel: "Freckles" , dataType: "string"},
+					{dbLabel: "deceased", disLabel: "Deceased", dataType: "checkbox" }
 				],
 			}
 		var contact = { 
@@ -97,11 +100,15 @@ angular.module('CVIPSMApp.services', [])
 				column = series
 		}
 		return  column
-		}
+	}
 
-// RETURN A TYPE SERIES LIST FOR THE DROPDOWN /////////////////////////
-	var seriesType = function(){
-		return {
+// RETURN DATA FOR THE DROPDOWN /////////////////////////
+
+	var dropdownData = function(dropdown){
+
+		var data = {};
+
+		var seriestype =  {
 				data : [
 					{dbLabel: "awaitingcaseinfo", disLabel: "Awaiting Case Info" },
 					{dbLabel: "Iidentified", disLabel: "Identified" },
@@ -109,12 +116,61 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "unconfirmed", disLabel: "Unconfirmed" },
 					{dbLabel: "unfounded", disLabel: "Unfounded" },
 					{dbLabel: "unidendtified", disLabel: "Unidentified" },
-					{dbLabel: "null", disLabel: "Nullf" }
+					{dbLabel: "null", disLabel: "Null" }
 				],
 			};
+
+		var analysts =  {
+				data : [
+					{dbLabel: "analystName1", disLabel: "Analyst Name 1" },
+					{dbLabel: "analystName2", disLabel: "Analyst Name 2" },
+					{dbLabel: "analystName3", disLabel: "Analyst Name 3" },
+					{dbLabel: "analystName4", disLabel: "Analyst Name 4" },
+					{dbLabel: "analystName5", disLabel: "Analyst Name 5" },
+					{dbLabel: "analystName6", disLabel: "Analyst Name 6" },
+					{dbLabel: "analystName7", disLabel: "Analyst Name 7" }
+				],
+			};
+
+		var submissiontype =  {
+				data : [
+					{dbLabel: "federal", disLabel: "Federal" },
+					{dbLabel: "icac", disLabel: "ICAC" },
+					{dbLabel: "international", disLabel: "International" },
+					{dbLabel: "local", disLabel: "Local" },
+					{dbLabel: "military", disLabel: "Military" },
+					{dbLabel: "state", disLabel: "State" }
+				],
+			};
+
+		var haircolor =  {
+				data : [
+					{dbLabel: "blonde", disLabel: "Blonde" },
+					{dbLabel: "brown", disLabel: "brown" },
+					{dbLabel: "red", disLabel: "red" },
+					{dbLabel: "black", disLabel: "black" },
+					{dbLabel: "gray", disLabel: "gray" },
+					{dbLabel: "bald", disLabel: "bald" },
+					{dbLabel: "other", disLabel: "other" }
+				],
+			};
+
+		switch(dropdown){
+			case "seriestype" :
+				data = seriestype
+				break;
+			case "analystsname" :
+				data = analysts
+				break;
+			case "submissiontype" :
+				data = submissiontype
+				break;
+			case "haircolor" :
+				data = haircolor
+				break;
 		}
-
-
+		return  data
+	}
 
 /*	var getData = function(url){
 		var $promise =  $http({
@@ -189,10 +245,10 @@ angular.module('CVIPSMApp.services', [])
 		//getPromise: getPromise,
 		// TESTING END ////////////////
 		getData		: getData,
-		sendData	: sendData,
-		fakeTable	: fakeTable,
+		sendData		: sendData,
+		fakeTable		: fakeTable,
 		fakeColumn	: fakeColumn,
-		seriesType 	: seriesType
+		dropdownData	: dropdownData
 	};
 }]);
 

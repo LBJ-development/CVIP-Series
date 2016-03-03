@@ -2,7 +2,7 @@
 
 angular.module('CVIPSMApp.utilities', [])
 
-.directive('searchField', function($parse, $compile){
+.directive('textField', function($parse, $compile){
 
 	return{
 		restrict: "A",
@@ -29,7 +29,6 @@ angular.module('CVIPSMApp.utilities', [])
 })
 
 .directive('dateField', function(){
-
 	return{
 		restrict: "A",
 		scope:{
@@ -39,14 +38,78 @@ angular.module('CVIPSMApp.utilities', [])
 			model:'=model'
 		},
 		template: function(elements, attrs){
-			return "<label><span ng-show='display'>{{table}}</span><span ng-show='display'>: </span> {{label}}: </label><input kendo-date-picker ng-model='model' style='padding-bottom:1px' />"
-			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
+			return "<label><span ng-show='display'>{{table}}</span><span ng-show='display'>: </span> {{label}}: </label><input kendo-date-picker ng-model='model' />"
 		},
 		link: function (scope, element, attrs){
 
 		}
 	}
 })
+
+.directive('dropDown', function(DataFtry){
+	return{
+		restrict: "A",
+		scope:{
+			label: '@',
+			table: '@',
+			column: '@',
+			display: '=',
+			model:'=model'
+		},
+		template: function(elements, attrs){
+			return "<label><span ng-show='display'>{{table}}</span><span ng-show='display'>: </span> {{label}}: </label><select kendo-drop-down-list k-options='DDOptions'  class='form-control field-k-dropDown' ng-model='model'  ></select>"
+		},
+		link: function (scope, element, attrs){
+
+			var ddData = attrs.column;
+			var ddLabel = attrs.label;
+			console.log(ddData)
+
+			scope.DDOptions = {
+				dataTextField: "disLabel",
+				dataValueField: "dbLabel",
+				optionLabel: {
+					disLabel : "",
+					dbLabel: ""
+			},
+			dataSource: DataFtry.dropdownData(ddData).data
+			}
+		}
+	}
+})
+
+.directive('checkBox', function(DataFtry){
+	return{
+		restrict: "A",
+		scope:{
+			label: '@',
+			table: '@',
+			column: '@',
+			display: '=',
+			model:'=model'
+		},
+		template: function(elements, attrs){
+			return "<label style='padding:0px 0px 0 0'><span ng-show='display' style='float:left; clear:both'>{{table}}</span><span style='float:left' ng-show='display'>: </span>  <input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='model' >  <span style='float:left;'>{{label}} </span></label>"
+		},
+		link: function (scope, element, attrs){
+
+			var ddData = attrs.column;
+			var ddLabel = attrs.label;
+			console.log(ddData)
+
+			scope.DDOptions = {
+				dataTextField: "disLabel",
+				dataValueField: "dbLabel",
+				optionLabel: {
+					disLabel : "",
+					dbLabel: ""
+			},
+			dataSource: DataFtry.dropdownData(ddData).data
+			}
+		}
+	}
+})
+
 
 /*
 // GOOGLE SEARCH DIRECTIVE ///////////////////////////////////////////////////////

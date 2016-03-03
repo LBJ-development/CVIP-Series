@@ -10,7 +10,7 @@
 			<li class="tabPos-btn selectSearch-btn"><a href="" id="2"  ng-click="selectSearch($event)" > Advanced Search</a></li >
 		</ul>
 	</div>
-	<div class="col-sm-6 form-group" ng-if="advancedSearch" style="margin-top:0px">
+	<div class="col-sm-6 " ng-if="advancedSearch" style="margin-top:0px">
 		<div class="col-sm-4 form-group">
 			
 			<select kendo-drop-down-list class="form-control" k-options="DDTableOptions" ng-model="fieldData.table"  id="DD-table"  k-on-change="selectTable()"></select>
@@ -30,23 +30,30 @@
 </div> -->
 <!-- BASIC / ADVANCED SEARCH ///////////////////////////////////////////////-->
 <div class="row show-hide" ng-if="basicSearch">
-	<div class="col-sm-3 form-group"  ng-repeat="field in fieldsToDisplay track by $index">
+	<div class="col-sm-3  field-form-group"  ng-repeat="field in fieldsToDisplay track by $index">
 		<div class="sharedCol4">
-			<div ng-if="field.dataType === 'string'" search-field label={{field.label}} table={{field.table}} display='advancedSearch' model='field.model'></div>
+
+			<div ng-if="field.dataType === 'string'" text-field label={{field.label}} table={{field.table}} display='advancedSearch' model='field.model'></div>
+
 			<div ng-if="field.dataType === 'date'" date-field label={{field.label}} table={{field.table}}  display='advancedSearch'  model='field.model'></div>
+
+			<div ng-if="field.dataType === 'dropdown'" drop-down label={{field.label}} table={{field.table}}  column={{field.column}}  display='advancedSearch'  model='field.model'></div>
+
+			<div ng-if="field.dataType === 'checkbox'" check-box label={{field.label}} table={{field.table}}  column={{field.column}}  display='advancedSearch'  model='field.model'></div>
+
 		</div>
 		<div >
 			<span class="remove-btn" ng-show="$index >0 && advancedSearch"><a href="" ng-click="removeFromList(fieldsToDisplay, $index)"></a></span>			
 		</div>
 	</div>
-	<div class="col-sm-3 form-group" style="float:left">
+	<div class="col-sm-3  field-form-group" style="float:left">
 		<button class="btn-primary" style="float:left; margin-top:23px" ng-click="getSeries()">SEARCH
 		</button>
 	</div>
 </div>
 
 <!-- CREATE NEW SERIES ///////////////////////////////////////////////-->
-<div create-series> </div>
+<div  create-series ng-if="createSeries" > </div>
 
 <!-- SEARCH RESULT  //////////////////////////////////////////////////////// -->
 <div  class="content-wrapper" ng-if="showGrid">

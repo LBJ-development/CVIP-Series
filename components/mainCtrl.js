@@ -21,7 +21,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		$scope.fieldsToDisplay = 	
 				[	{label : "Series Name",		model : "",	table : "series", column: "seriesname",		dataType : "string"},
 					{label : "Date Series Created", 	model : "",	table : "series", column: "dateseriescreated",	dataType : "date"},
-					{label : "Series Type", 		model : "", 	table : "series", column: "seriestype",		dataType : "string"},
+					{label : "Series Type", 		model : "", 	table : "series", column: "seriestype",		dataType : "dropdown"},
 					{label : "Previous Series Type",	model :"",	table : "series", column: "previousseriestype",	dataType : "string"},
 				];
 		
@@ -77,6 +77,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 			$scope.fieldData.disLabel = DataFtry.fakeColumn(selectedTable).data[index].disLabel;
 		 }
 	}
+
 
 	$scope.selectTable  = function(){
 

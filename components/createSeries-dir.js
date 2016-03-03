@@ -1,10 +1,10 @@
 'use strict';
 angular.module('CVIPSMApp.createsearch', [])
 
-.controller('createSeriesCtrl', function($scope){
+.controller('createSeriesCtrl', ["$scope",  "DataFtry" ,  function($scope, DataFtry){
 	
-	console.log("FROM CREATE SERIE CONTROLER")
-})
+
+}])
 
 
 .directive('createSeries', function(){
