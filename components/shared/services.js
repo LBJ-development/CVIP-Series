@@ -3,6 +3,15 @@
 //  SETTER AND GETTER FOR THE REQUESTOR ///////////////////////////////////////////////////////////
 angular.module('CVIPSMApp.services', [])
 
+// SERVICE DATA FOR TESTING PURPOSE -- RETURN AN INSTANCE OF THE FUNCTION
+.service("DataTesting" ,function(){
+	this.getData = function(num){
+		var data = generateSeriesSearchResult(num);
+		return data;	
+	}
+	return this;
+})
+
 //  DATA FACTORY ///////////////////////////////////////////////////////////
 .factory('DataFtry', [ '$http' , '$q' ,   function($http, $q) {
 

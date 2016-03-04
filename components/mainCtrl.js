@@ -1,5 +1,5 @@
 'use strict';
-app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "CVIPConfig", "DataFtry",  function($rootScope, $scope, $window, $state, $timeout, CVIPConfig, DataFtry){
+app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "CVIPConfig", "DataFtry", "DataTesting",  function($rootScope, $scope, $window, $state, $timeout, CVIPConfig, DataFtry, DataTesting){
 
 /*	var win = angular.element($window);
 	$scope.stateName;
@@ -14,6 +14,8 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 */
 	$scope.init = function (){
 		 initializeDisplayList();
+
+		 console.log(DataTesting.getData(100));
 	}
 
 	function initializeDisplayList(){
@@ -43,7 +45,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 	$scope.basicSearch 		= true;
 	$scope.advancedSearch 	= false;
 	$scope.createSeries		= false;
-	$scope.showGrid		= false;
+	$scope.showGrid			= true;
 	$scope.showColumn		= false;
 
 	$scope.fieldData = {disLabel: "", table: "", column:"", dataType:"" };
@@ -66,6 +68,7 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		dataTextField: "disLabel",
 		dataValueField: "dbLabel",
 		autoBind: false,
+		height: 500,
 		optionLabel: {
 			disLabel : "Select a Criteria",
 			dbLabel: ""
@@ -150,21 +153,21 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 	$scope.mainGridOptions =  {
 	
 		dataSource: {
-			//data: result,
+			data: DataTesting.getData(100),
 				schema: {
 					model: {
 						fields: {
-								name		: { type: "string" 	},
-								id		: { type: "string" 	},
-								date		: { type: "string" 	},
-								description	: { type: "string" 	}
+								seriesName		: { type: "string" 	},
+								dateSeriesCreated: { type: "date" 	},
+								seriesType		: { type: "string" 	},
+								previousType	: { type: "string" 	}
 								
 								},
 							}
 						},
 					},
 		//height		: 550,
-	 //   dataBound	: onDataBound,
+	 	//dataBound	: onDataBound,
 		//toolbar		: ["create"],
 		sortable	: true,
 		scrollable	: false,
@@ -185,22 +188,33 @@ app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$tim
 		// 					}
   //   				},
 		columns		: [{
-						field	: "name",
+						field	: "seriesName",
 						title	: "Series Name",
-						width	: "15%"
+						width	: "25%"
 						},{
-						field	: "id",
-						title	: "Series ID",
-						width	: "5%"
+						field	: "dateSeriesCreated",
+						title	: "Date Series Created",
+						format	:"{0:MM/dd/yyyy}" ,
+						width	: "25%"
 						},{
-						field	: "date",
-						title	: "Date",
-						width	: "10%"
+						field	: "seriesType",
+						title	: "Series Type",
+						width	: "25%"
 						},{
-						field	: "description",
-						title	: "Description",
-						width	: "70%"
+						field	: "previousType",
+						title	: "Previous Type",
+						width	: "25%"
+						},{
+						width	: "2%",
+						filterable: false,
+						sortable: false,
+						template: "<input type='checkbox' ng-model='dataItem.selected' ng-click='caseSelected($event)' />",
+						title: "<input type='checkbox' title='Select all' ng-click='toggleSelectAll($event)'/>",
+						attributes: {
+							style: "text-align: center"
+							}
 						}
+
 					]
 				}
 
