@@ -16,6 +16,10 @@ function generateSeriesSearchResult(rowscount, hasNullValues) {
         "Awaiting Case Info" , "Identified" , "NCMEC at Risk", "Unconfirmed", "Unfounded","Unidentified", "Null"
   ];
 
+  var description = [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae mi in mi venenatis convallis et ut tellus. Pellentesque ultrices nisl ut tortor iaculis vestibulum. Pellentesque a tortor vehicula, rhoncus magna commodo, semper ex. Cras pellentesque dignissim arcu, et finibus diam fringilla eu. Aliquam maximus pulvinar ligula vitae molestie. Pellentesque in nisl suscipit sapien rhoncus maximus id non risus. In ullamcorper, ligula a fringilla faucibus, orci libero malesuada metus, sed euismod elit mi at nisi. In metus augue, bibendum accumsan dapibus quis, elementum eu dolor." , "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet." , "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga." , " Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+    ]
+
 
     for (var i = 0; i < rowscount; i++) {
         var row = {};
@@ -26,7 +30,8 @@ function generateSeriesSearchResult(rowscount, hasNullValues) {
     
     row["seriesName"]     = seriesName[Math.floor(Math.random() * seriesName.length)];
     row["seriesType"]   = seriesType[Math.floor(Math.random() * seriesType.length)];
-    row["previousType"] = previousType[Math.floor(Math.random() * previousType.length)]
+    row["previousType"] = previousType[Math.floor(Math.random() * previousType.length)];
+    row["description"] = description[Math.floor(Math.random() * description.length)];;
 
         data[i] = row;
     }

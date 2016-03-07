@@ -10,8 +10,13 @@ var app = angular.module('CVIPSMApp', [
 	'CVIPSMApp.formatting',
 	'CVIPSMApp.config',
 	'CVIPSMApp.filters',
-	'CVIPSMApp.createsearch',
-	'kendo.directives' 
+	'kendo.directives',
+	'CVIPSMApp.createSeries',
+	'CVIPSMApp.createSearch',
+	'CVIPSMApp.seriesInfo',
+
+	// FOR TESTING ONLY///////////////
+	'CVIPSMApp.test'
 
 	])
 	.config(function ($stateProvider, $urlRouterProvider) {
@@ -21,12 +26,31 @@ var app = angular.module('CVIPSMApp', [
 		$stateProvider
 			.state('search', {
 				url: "/search",
-				templateUrl: 'components/search.html',
+				templateUrl: 'components/createSearch/createSearch.html',
 				data: {
 					//requireLogin: true
 					}
 				}
 			)
+
+			.state('seriesInfo', {
+				url: "/seriesInfo",
+				templateUrl: 'components/seriesInfo/seriesInfo.html',
+				data: {
+					//requireLogin: true
+					}
+				}
+			)
+
+			.state('test', {
+				url: "/test",
+				templateUrl: 'components/testPage.html',
+				data: {
+					//requireLogin: true
+					}
+				}
+			)
+
 		/*.state('mainSearch', {
 				url: '/mainSearch',
 				templateUrl: 'components/mainSearch.html',
