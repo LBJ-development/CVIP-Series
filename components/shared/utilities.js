@@ -2,6 +2,39 @@
 
 angular.module('CVIPSMApp.utilities', [])
 
+.controller('leftMenuCtrl', ["$scope",  "DataFtry" ,  function($scope, DataFtry){
+
+	
+}])
+
+.directive('leftMenu', function($state){
+	return{
+		restrict: "A",
+		controller: 'leftMenuCtrl',
+		templateUrl: 'components/seriesInfo/leftMenu-tmp.html',
+		link: function (scope, element, attrs){
+
+			console.log("FROM LEFT MENU DIRECTIVE")
+		// ADD/REMOVE ITEMS OBJECTS ///////////////////////////////////////////////
+		scope.addToList = function(list, name) {
+			list.push({
+			name : name,	 
+		});
+		console.log(list, name)
+	};
+
+
+	scope.removeFromList = function(list, index) {
+		list.splice(index, 1);
+	} ;
+
+		
+		}
+	}
+})
+
+
+
 .directive('textField', function($parse, $compile){
 
 	return{
@@ -109,6 +142,32 @@ angular.module('CVIPSMApp.utilities', [])
 		}
 	}
 })
+.directive('footer', function(){
+	return{
+		restrict: "A",
+		templateUrl: 'components/shared/footer-tmp.html',
+		link: function (scope, element, attrs){
+
+		}
+	}
+})
+
+.factory('WindowSizeFtry', [ '$rootScope' , '$window' ,function($rootScope, win) {
+
+	var wrapperWidth;
+
+	win.addEventListener('resize', function() {
+
+		wrapperWidth = $("#wrapper").width();
+
+		//BROADCAST THE WIDTH OF THE WRAPPER FOR THE WHOLE APPLICATION
+		$rootScope.$broadcast('wrapperWidthChanges', wrapperWidth);
+
+		}, false);
+	return { };
+}])
+
+
 
 
 /*

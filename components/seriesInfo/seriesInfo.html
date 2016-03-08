@@ -1,5 +1,24 @@
 <div ng-controller="seriesInfoCtrl" ng-init="init()">
-      <span class="tabPos-btn back-btn" style="display: inline-block; float:left; position:relative;top:-100px"><a href="" id="2"  ng-click="backToSearch()">Back to Search</a></span >
+	<span class="tabPos-btn back-btn" style="display: block; float:left; position:relative;top:10px; clear:right;"><a href="" id="2"  ng-click="backToSearch()">Back to Search</a></span >
 
+	<div class="row " style="margin-bottom:0px" >
+		<div class="title" style="float:left; margin:0 0px 0 20px,font-size:1.5em;clear:left;">
+			Series Information
+		</div>
+	</div>
+
+<!-- SEARCH RESULT  //////////////////////////////////////////////////////// -->
+	<div  class="content-wrapper clearfix" style="margin-top:0px">
+		<div role="leftMenu" class="leftMenuHolder">
+			<div left-menu></div>
+		</div> 
+
+		<div role="mainBody" id="mainBodyWrapper" class="mainBodyHolder">
+		Main Body
+		</div>
+	</div>
+
+<!-- FOOTER  //////////////////////////////////////////////////////// -->
+	<div footer></div>
 </div>
 

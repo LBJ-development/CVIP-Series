@@ -1,36 +1,45 @@
 <div ng-controller="createSearchCtrl" ng-init="init()">
 <!-- SEARCH SELECTOR ///////////////////////////////////////////////-->
     <div class="row " style="margin-bottom:0px" >
-        <div class="form-group sub-title" style="float:left;padding-right:0,font-size:1.5em">
+        <div class="title" style="float:left; margin:0 0px 0 20px,font-size:1.5em">
             Create/Search for Series
         </div>
-        <div  class="form-group" style="float:left;padding-top:0px">
+
+         <div style="display:inline-block;float:right;position:relative;top:40px"  ng-if="advancedSearch">
+              <span class="tabPos-btn save-btn" style="float:right; padding-right:50px"><a href="" ng-click=" " >Save Search</a></span >
+              
+              <span class="tabPos-btn uploade-btn" style="float:right; padding-right:20px"><a href=""  ng-click=" " >Upload a Search</a></span >
+            </div>
+    </div>
+    <div class="row">
+        <div  class="" style="float:left;padding:0 0 0 0px">
             <ul class="searchSelection">
                 <li class="tabPos-btn selectSearch-btn"><a href="" id="3"  ng-click="selectSearch($event)"> Create New Series</a></li >
                 <li class="tabPos-btn selectSearch-btn selectSearchActive"><a href=""  id="1"  ng-click="selectSearch($event)" > Basic Search</a></li >
                 <li class="tabPos-btn selectSearch-btn"><a href="" id="2"  ng-click="selectSearch($event)" > Advanced Search</a></li >
             </ul>
         </div>
-        <div class="col-sm-6 " ng-if="advancedSearch" style="margin-top:0px">
-            <div class="col-sm-4 form-group">
+        <div class="" ng-if="advancedSearch" style="margin-top:0px">
+            <div class="col-sm-2 form-group"  style="margin-top:0px">
                 
                 <select kendo-drop-down-list class="form-control" k-options="DDTableOptions" ng-model="fieldData.table"  id="DD-table"  k-on-change="selectTable()"></select>
                 
             </div> 
-            <div class="col-sm-4 form-group" ng-if="showColumn">
+            <div class="col-sm-2 form-group" style="margin-top:0px" ng-if="showColumn">
                 <select kendo-drop-down-list id="DD-column"  ng-show="fieldData.table != ''"  k-options="DDColumnOptions"  class="form-control show-hide" ng-model="fieldData.column"  ></select>
             </div> 
-            <div class="col-sm-2 form-group" ng-if="fieldData.column != ''">
+            <div class="col-sm-1 form-group"  style="margin-top:0px" ng-if="fieldData.column != ''">
                 <button class="btn-primary" style="float:left; margin-top:2px"   ng-click="addToList(fieldsToDisplay)">ADD
                 </button>
             </div>
+
         </div> 
     </div>  
 <!-- <div class="row " ng-if="basicSearch">
     <span class="captionText" style="display: inline-block; float:left; text-align:left">Search by Name can be wildcarded with '*'</span>
 </div> -->
 <!-- BASIC / ADVANCED SEARCH ///////////////////////////////////////////////-->
-    <div class="row show-hide" ng-if="basicSearch">
+    <div class="row show-hide" ng-if="basicSearch" style="margin-top:20px">
         <div class="col-sm-3  field-form-group"  ng-repeat="field in fieldsToDisplay track by $index">
             <div class="sharedCol4">
 
@@ -68,12 +77,8 @@
             </div> 
         </div>
     </div>
-    <div class="h-sep" style="margin:20px 0px 10px 0" ></div>
-    <div align="center" >
-        <div class="col-sm-12 form-group">  
-            <span style="font-size:0.9em; color:#65768a"> Footer</span>
-        </div>
-    </div>       
+<!-- FOOTER  //////////////////////////////////////////////////////// -->
+     <div footer></div>   
 </div>
 
 <script type="text/x-kendo-template" id="template">

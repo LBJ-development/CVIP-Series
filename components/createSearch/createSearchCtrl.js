@@ -163,6 +163,32 @@ angular.module('CVIPSMApp.createSearch', [])
 			//toolbar		: ["create"],
 		sortable	: true,
 		scrollable	: false,
+		filterable	: {
+					mode		: "menu",
+					extra		: false,
+					messages	: {
+					info		: "Filter by:",
+						selectValue	: "Select category",
+						isTrue		: "selected",
+						isFalse		: "not selected"
+							},
+					operators	: {
+							string	: {
+								eq			: "Equal to",
+								//neq		: "Not equal to",
+								contains	: "Contains",
+								startswith	: "Starts with",
+								endswith	: "Ends with"
+								},
+							number	: {
+								eq			: "Equal to",
+								},
+							date	: {
+								gt			: "After",
+								lt			: "Before"
+								}
+							}
+						},
 
 		pageable	: {
 							refresh: true,
@@ -187,6 +213,7 @@ angular.module('CVIPSMApp.createSearch', [])
 						field	: "seriesName",
 						title	: "Series Name",
 						width	: "12%",
+						filterable	: false,
 						template: "<a href='' ng-click='selectSeries($event)' class='baseLinkText' >#=seriesName#</a>"
 						},{
 						field	: "dateSeriesCreated",
@@ -196,21 +223,37 @@ angular.module('CVIPSMApp.createSearch', [])
 						},{
 						field	: "seriesType",
 						title	: "Series Type",
-						width	: "12%"
+						width	: "12%",
+						filterable: {
+							ui			: seriesType,
+							operators	: {
+								string	: {
+								eq		: "Equal to"
+									}
+								}
+							}
 						},{
 						field	: "previousType",
 						title	: "Previous Type",
+						filterable	: false,
 						width	: "12%"
 						}, {
 						field	: "description",
 						title	: "Description",
 						width	: "47%",
+						filterable: {
+							operators	: {
+								string	: {
+								contains	: "Contains",
+									}
+								}
+							}
 						},{
 						width	: "3%",
 						filterable: false,
 						sortable: false,
 						template: "<input type='checkbox' ng-model='dataItem.selected' ng-click='caseSelected($event)' />",
-						title: "<input type='checkbox' title='Select all' ng-click='toggleSelectAll($event)'/>",
+						title: "<input type='checkbox' title='Select all' ng-click='toggleSelectAll($event)' style='text-align:center'/>",
 						attributes: {
 							style: "text-align: center"
 							}
@@ -265,5 +308,15 @@ angular.module('CVIPSMApp.createSearch', [])
 		var detailRow = e.detailRow;
 			kendo.bind(detailRow, e.data);
 		}
+
+// DATAGRID FILTERS //////////////////////////////////////
+var seriesT	= ["Awaiting Case Info", "Identified", "NCMEC at Risk", "Unconfirmed", "Unfounded", "Unidentified", "Null"]
+
+	function seriesType(element) {
+		element.kendoDropDownList({
+			dataSource: seriesT,
+			optionLabel: "--Select Value--"
+		});
+	}
 
 }]);
