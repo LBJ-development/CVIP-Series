@@ -42,6 +42,41 @@ var app = angular.module('CVIPSMApp', [
 				}
 			)
 
+			.state('seriesInfo.general', {
+				url: "/general",
+				templateUrl: 'components/seriesInfo/general-tmp.html',
+				data: {
+					//requireLogin: true
+					}
+				}
+			)
+
+			.state('seriesInfo.suspect', {
+				url: "/suspect",
+				templateUrl: 'components/seriesInfo/suspect-tmp.html',
+				data: {
+					//requireLogin: true
+					}
+				}
+			)
+			.state('seriesInfo.summary', {
+				url: "/summary",
+				templateUrl: 'components/seriesInfo/summary-tmp.html',
+				data: {
+					//requireLogin: true
+					}
+				}
+			)
+
+			.state('seriesInfo.checklist', {
+				url: "/checklist",
+				templateUrl: 'components/seriesInfo/checklist-tmp.html',
+				data: {
+					//requireLogin: true
+					}
+				}
+			)
+
 			.state('test', {
 				url: "/test",
 				templateUrl: 'components/testPage.html',

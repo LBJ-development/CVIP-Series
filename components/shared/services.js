@@ -128,7 +128,6 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "null", disLabel: "Null" }
 				],
 			};
-
 		var analysts =  {
 				data : [
 					{dbLabel: "analystName1", disLabel: "Analyst Name 1" },
@@ -140,7 +139,6 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "analystName7", disLabel: "Analyst Name 7" }
 				],
 			};
-
 		var submissiontype =  {
 				data : [
 					{dbLabel: "federal", disLabel: "Federal" },
@@ -151,7 +149,6 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "state", disLabel: "State" }
 				],
 			};
-
 		var haircolor =  {
 				data : [
 					{dbLabel: "blonde", disLabel: "Blonde" },
@@ -161,6 +158,37 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "gray", disLabel: "gray" },
 					{dbLabel: "bald", disLabel: "bald" },
 					{dbLabel: "other", disLabel: "other" }
+				],
+			};
+		var agegroup =  {
+				data : [
+					{dbLabel: "adult", disLabel: "Adult" },
+					{dbLabel: "juvenile", disLabel: "Juvenile" },
+					{dbLabel: "unknown", disLabel: "Unknown" }
+				],
+			};
+		var gender =  {
+				data : [
+					{dbLabel: "male", disLabel: "Male" },
+					{dbLabel: "female", disLabel: "Female" },
+					{dbLabel: "unknown", disLabel: "Unknown" }
+				],
+			};
+		var eyecolor =  {
+				data : [
+					{dbLabel: "blue", disLabel: "Blue" },
+					{dbLabel: "brown", disLabel: "Brown" },
+					{dbLabel: "green", disLabel: "Green" },
+					{dbLabel: "hazel", disLabel: "Hazel" }
+				],
+			};
+		var ethnicity =  {
+				data : [
+					{dbLabel: "black", disLabel: "Black" },
+					{dbLabel: "white", disLabel: "White" },
+					{dbLabel: "hispanic", disLabel: "Hispanic" },
+					{dbLabel: "asian", disLabel: "Asian" },
+					{dbLabel: "other", disLabel: "Other" }
 				],
 			};
 
@@ -176,6 +204,18 @@ angular.module('CVIPSMApp.services', [])
 				break;
 			case "haircolor" :
 				data = haircolor
+				break;
+			case "agegroup" :
+				data = agegroup
+				break;
+			case "gender" :
+				data = gender
+				break;
+			case "eyecolor" :
+				data = eyecolor
+				break;
+			case "ethnicity" :
+				data = ethnicity
 				break;
 		}
 		return  data

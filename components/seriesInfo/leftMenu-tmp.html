@@ -2,14 +2,17 @@
 	<div class="tabHead">
 		<span class="tab-title">{{seriesName}}</span>
 	</div>
-	<div class="menuHolder">
+	<div class="backgroundColor">
 		<ul>
 			<li>
-				<span><a href="" ng-click="">Summary</a></span></li>
+				<span><a ui-sref=".general" ng-click="">General</a></span></li>
 			<li>
-				<span><a href="" ng-click="">Suspect ({{suspectList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addToList(suspectList , 'Suspect # ' + (suspectList.length + 1))"></a></span></span>
+			<li>
+				<span><a ui-sref=".summary" ng-click="">Summary</a></span></li>
+			<li>
+				<span><a href="" ng-click="addSuspect()">Suspect ({{suspectList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addSuspect()"></a></span></span>
 					<div class="subitems" ng-repeat="suspect in suspectList track by $index">
-						<span><a href="" ng-click="">{{suspect.name}}</a></span>
+						<span><a href="" ng-click="selectItem($index, 'seriesInfo.suspect')">{{suspect.name}}</a></span>
 					</div>
 			</li>
 			<li>
@@ -31,16 +34,16 @@
 					</div>
 			</li>
 			<li>
-				<span><a href="" ng-click="">Checklist</a></span>
+				<span><a ui-sref=".checklist" ng-click="">Checklist</a></span>
 			</li>
 			<li>
-				<span><a href="" ng-click="">Identifiers</a></span>
+				<span><a ui-sref=".identifier" ng-click="">Identifiers</a></span>
 			</li>
 			<li>
-				<span><a href="" ng-click="">Partial File Names</a></span>
+				<span><a ui-sref=".partialfilename" ng-click="">Partial File Names</a></span>
 			</li>
 			<li>
-				<span><a href="" ng-click="">BOLO</a></span>
+				<span><a ui-sref=".bolo" ng-click="">BOLO</a></span>
 			</li>
 			<li>
 				<span><a href="" ng-click="">LEA Pocs ({{leapocsList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addToList(leapocsList , 'LEA POC # ' + (leapocsList.length + 1))"></a></span></span>

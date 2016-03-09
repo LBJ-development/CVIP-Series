@@ -14,7 +14,6 @@ angular.module('CVIPSMApp.utilities', [])
 		templateUrl: 'components/seriesInfo/leftMenu-tmp.html',
 		link: function (scope, element, attrs){
 
-			console.log("FROM LEFT MENU DIRECTIVE")
 		// ADD/REMOVE ITEMS OBJECTS ///////////////////////////////////////////////
 		scope.addToList = function(list, name) {
 			list.push({
@@ -96,7 +95,7 @@ angular.module('CVIPSMApp.utilities', [])
 
 			var ddData = attrs.column;
 			var ddLabel = attrs.label;
-			console.log(ddData)
+			//console.log(ddData)
 
 			scope.DDOptions = {
 				dataTextField: "disLabel",
