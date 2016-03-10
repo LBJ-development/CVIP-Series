@@ -1,156 +1,234 @@
 
-<div class="tabHead">
-	<span class="tab-title">Suspect</span>
-	<ul>
-		<li class="tab-btn addPers-btn"><a href="" ng-click="addSuspect()" >Add a Suspect</a></li>
-		<li class="tab-sep"></li>
-	</ul>
-</div>
-<div class="backgroundColor">
-	<div class="row ">
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<label>Name: </label>
-				<input type="text" class="form-control" ng-model="suspectList[itemIndex].name" />
-			</div>
-		</div>
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<div drop-down label="Age Group" column="agegroup"  model="suspectList[itemIndex].ageGroup"></div>
-			</div>
-		</div>
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<label>Age: </label>
-				<input type="text" class="form-control" ng-model="suspectList[itemIndex].age" />
-			</div>
-		</div>
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<label>Upload New Photo: </label>
-				<button class="btn-primary" style="float:left; clear:left"  ng-click="uploadPhoto()">BROWSE
-				</button>
-			</div>
-		</div>
+<div ng-if="suspectList.length > 0">
+	<div class="tabHead">
+		<span class="tab-title">Suspect</span>
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">Summary</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="addSuspect()" >Save</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn addPers-btn" ng-if="editable"><a href="" ng-click="addSuspect()" >Add a Suspect</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="deleteItem()" >Delete</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			
+		</ul>
 	</div>
-	<div class="row ">
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<label>Birthdate: </label>
-				<input input kendo-date-picker  class="form-control" ng-model="suspectList[itemIndex].birthdate" />
+	<div class="backgroundColor">
+		<!-- SUSPECT EDITABLE ////////////////////////////////////////////////////////// -->
+		<div ng-if="editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Name: </label>
+						<input type="text" class="form-control" ng-model="suspectList[itemIndex].name" ng-blur="isEmpty($event)" required/>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Age Group" column="agegroup"  model="suspectList[itemIndex].agegroup"></div>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Age: </label>
+						<input type="text" class="form-control" ng-model="suspectList[itemIndex].age" />
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Upload New Photo: </label>
+						<button class="btn-primary" style="float:left; clear:left"  ng-click="uploadPhoto()">BROWSE
+						</button>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<div drop-down label="Hair Color" column="haircolor"  model="suspectList[itemIndex].hairColor"></div>
+			<div class="row ">
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Birthdate: </label>
+						<input input kendo-date-picker  class="form-control" ng-model="suspectList[itemIndex].birthdate" />
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Hair Color" column="haircolor"  model="suspectList[itemIndex].haircolor"></div>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Eye Color" column="eyecolor"  model="suspectList[itemIndex].eyecolor"></div>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Gender" column="gender"  model="suspectList[itemIndex].gender"></div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<div drop-down label="Eye Color" column="eyecolor"  model="suspectList[itemIndex].eyeColor"></div>
+			<div class="row ">
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Ethnicity" column="ethnicity"  model="suspectList[itemIndex].ethnicity"></div>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].isdeceased' > <span style='float:left;'>Deceased</span></label>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<div drop-down label="Gender" column="gender"  model="suspectList[itemIndex].gender"></div>
-			</div>
-		</div>
-	</div>
-	<div class="row ">
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<div drop-down label="Ethnicity" column="ethnicity"  model="suspectList[itemIndex].ethnicity"></div>
-			</div>
-		</div>
-		<div class="col-sm-3 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].isDeceased' > <span style='float:left;'>Deceased</span></label>
-			</div>
-		</div>
-	</div>
-	<div class="h-sep" style="margin:20px 0px 10px 0" ></div>
-	<div class="row ">
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.freckles' > <span style='float:left;'>Freckles</span></label>
-			</div>
+			<div class="h-sep" style="margin:20px 0px 10px 0" ></div>
+			<div class="row ">
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.freckles' > <span style='float:left;'>Freckles</span></label>
+					</div>
 
-		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.scars' > <span style='float:left;'>Scars</span></label>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.scars' > <span style='float:left;'>Scars</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.glasses' > <span style='float:left;'>Glasses</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.moles' > <span style='float:left;'>Mole(s)</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.braces' > <span style='float:left;'>Braces</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.makeup' > <span style='float:left;'>Make up</span></label>
+					</div>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.tatoos' > <span style='float:left;'>Tatoo(s)</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.acne' > <span style='float:left;'>Acne</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.watch' > <span style='float:left;'>Watch</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.jewelry' > <span style='float:left;'>Jewelry</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.nailPolish' > <span style='float:left;'>Nail Polish</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.piercing' > <span style='float:left;'>Piercings</span></label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group" >
+					<label>Description: </label>
+					     <textarea type="text" ng-model="suspectList[itemIndex].description" class="form-control" id="reqCom" ></textarea>
+				</div>									
 			</div>
 		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.glasses' > <span style='float:left;'>Glasses</span></label>
+		<!-- SUSPECT EDITABLE ////////////////////////////////////////////////////////// -->
+		<div ng-if="!editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group">
+					<label>Suspect Name: </label>
+					<span>{{suspectList[itemIndex].name}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].agegroup.length > 0'>
+					<label>Age Group: </label>
+					<span>{{suspectList[itemIndex].agegroup}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='suspectist[itemIndex].age.length > 0'>
+					<label>Age: </label>
+					<span>{{suspectList[itemIndex].age}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].birthdate.length > 0'>
+					<label>Birthdate: </label>
+					<span>{{suspectList[itemIndex].birthdate}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].haircolor.length > 0'>
+					<label>Hair Color: </label>
+					<span>{{suspectList[itemIndex].haircolor}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].eyecolor.length > 0'>
+					<label>Eye Color: </label>
+					<span>{{suspectList[itemIndex].eyecolor}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].gender.length > 0'>
+					<label>Gender: </label>
+					<span>{{suspectList[itemIndex].gender}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].ethnicity.length > 0'>
+					<label>Ethnicity: </label>
+					<span>{{suspectList[itemIndex].ethnicity}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].isdeceased == true'>
+					<label>Is Deceased: </label>
+					<span>{{suspectList[itemIndex].isdeceased}}</span>
+				</div>
+				<div class="col-sm-3 form-group">
+					<label>Physical Features: </label>
+					<div  ng-repeat="suspect in suspectList track by $index"   ng-show="($index == itemIndex)">
+						<span  ng-repeat="item in suspect.physicalfeatures  | keys track by $index" ng-init="value = suspect.physicalfeatures [item]" ng-show="value == true">				
+							{{physicalfeatures[$index]}}  -
+						</span>
+					</div> 
+				</div>
+				<div class="col-sm-12 form-group" ng-if='suspectList[itemIndex].description.length > 0'>
+					<label>Description: </label>
+					<span>{{suspectList[itemIndex].description}}</span>
+				<div>
+
+
+
+
+				<!-- <div  ng-repeat="suspect in suspectList track by $index"   ng-show="($index == itemIndex)">
+					<div  ng-repeat="item in suspect  | keys track by $index" ng-init="value = suspect[item]">
+						<div class="col-sm-3 form-group">
+							<label>{{supectLabels[$index]}}: </label>
+							<span> {{value}}</span>
+						</div>
+					</div>
+				</div> -->
 			</div>
 		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.moles' > <span style='float:left;'>Mole(s)</span></label>
-			</div>
-		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.braces' > <span style='float:left;'>Braces</span></label>
-			</div>
-		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.makeup' > <span style='float:left;'>Make up</span></label>
-			</div>
-		</div>
-	</div>
-	<div class="row ">
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.tatoos' > <span style='float:left;'>Tatoo(s)</span></label>
-			</div>
-		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.acne' > <span style='float:left;'>Acne</span></label>
-			</div>
-		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.watch' > <span style='float:left;'>Watch</span></label>
-			</div>
-		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.jewelry' > <span style='float:left;'>Jewelry</span></label>
-			</div>
-		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.nailPolish' > <span style='float:left;'>Nail Polish</span></label>
-			</div>
-		</div>
-		<div class="col-sm-2 form-group">
-			<div class="sharedCol4">
-				<label style='padding-top:25px'>
-				<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.piercing' > <span style='float:left;'>Piercings</span></label>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-12 form-group" >
-			<label>Description: </label>
-			     <textarea type="text" ng-model="suspectList[itemIndex].description" class="form-control" id="reqCom" ></textarea>
-		<div>									
 	</div>
 </div>

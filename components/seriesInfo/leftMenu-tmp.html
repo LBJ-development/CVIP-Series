@@ -12,7 +12,7 @@
 			<li>
 				<span><a href="" ng-click="addSuspect()">Suspect ({{suspectList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addSuspect()"></a></span></span>
 					<div class="subitems" ng-repeat="suspect in suspectList track by $index">
-						<span><a href="" ng-click="selectItem($index, 'seriesInfo.suspect')">{{suspect.name}}</a></span>
+						<span><a href="" ng-click="selectItem($index, 'suspect', 0)">{{suspect.name}}</a></span>
 					</div>
 			</li>
 			<li>

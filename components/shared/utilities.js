@@ -15,7 +15,7 @@ angular.module('CVIPSMApp.utilities', [])
 		link: function (scope, element, attrs){
 
 		// ADD/REMOVE ITEMS OBJECTS ///////////////////////////////////////////////
-		scope.addToList = function(list, name) {
+/*		scope.addToList = function(list, name) {
 			list.push({
 			name : name,	 
 		});
@@ -26,13 +26,11 @@ angular.module('CVIPSMApp.utilities', [])
 	scope.removeFromList = function(list, index) {
 		list.splice(index, 1);
 	} ;
-
+*/
 		
 		}
 	}
 })
-
-
 
 .directive('textField', function($parse, $compile){
 
