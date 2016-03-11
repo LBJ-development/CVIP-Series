@@ -10,25 +10,25 @@
 			<li>
 				<span><a ui-sref=".summary" ng-click="">Summary</a></span></li>
 			<li>
-				<span><a href="" ng-click="addSuspect()">Suspect ({{suspectList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addSuspect()"></a></span></span>
+				<span><a href="" ng-click="">Suspect ({{suspectList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addSuspect()"></a></span></span>
 					<div class="subitems" ng-repeat="suspect in suspectList track by $index">
 						<span><a href="" ng-click="selectItem($index, 'suspect', 0)">{{suspect.name}}</a></span>
 					</div>
 			</li>
 			<li>
-				<span><a href="" ng-click="">Children ({{childrenList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addToList(childrenList , 'Child # ' + (childrenList.length + 1))"></a></span></span>
+				<span><a href="" ng-click="">Children ({{childrenList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addToList(childrenList , 'Child # ' + (childrenList.length + 1))"></a></span></span>
 					<div class="subitems" ng-repeat="child in childrenList track by $index">
 						<span><a href="" ng-click="">{{child.name}}</a></span>
 					</div>
 			</li>
 			<li>
-				<span><a href="" ng-click="">EXIFs ({{exifsList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addToList(exifsList , 'EXIF # ' + (exifsList.length + 1))"></a></span></span>
+				<span><a href="" ng-click="">EXIFs ({{exifsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addToList(exifsList , 'EXIF # ' + (exifsList.length + 1))"></a></span></span>
 					<div class="subitems" ng-repeat="exif in exifsList track by $index">
 						<span><a href="" ng-click="">{{exif.name}}</a></span>
 					</div>
 			</li>
 			<li>
-				<span><a href="" ng-click="">Leads ({{leadsList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addToList(leadsList , 'Lead # ' + (leadsList.length + 1))"></a></span></span>
+				<span><a href="" ng-click="">Leads ({{leadsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addToList(leadsList , 'Lead # ' + (leadsList.length + 1))"></a></span></span>
 					<div class="subitems" ng-repeat="lead in leadsList track by $index">
 						<span><a href="" ng-click="">{{lead.name}}</a></span>
 					</div>
@@ -46,13 +46,13 @@
 				<span><a ui-sref=".bolo" ng-click="">BOLO</a></span>
 			</li>
 			<li>
-				<span><a href="" ng-click="">LEA Pocs ({{leapocsList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addToList(leapocsList , 'LEA POC # ' + (leapocsList.length + 1))"></a></span></span>
+				<span><a href="" ng-click="">LEA Pocs ({{leapocsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addToList(leapocsList , 'LEA POC # ' + (leapocsList.length + 1))"></a></span></span>
 					<div  class="subitems"ng-repeat="leapoc in leapocsList track by $index">
 						<span><a href="" ng-click="">{{leapoc.name}}</a></span>
 					</div>
 			</li>
 			<li>
-				<span><a href="" ng-click="">Contacts ({{contactsList.length}})</a><span class="addMenuItem-btn"><a href="" ng-click="addToList(contactsList , 'Contact # ' + (contactsList.length + 1))"></a></span></span>
+				<span><a href="" ng-click="">Contacts ({{contactsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addToList(contactsList , 'Contact # ' + (contactsList.length + 1))"></a></span></span>
 					<div class="subitems" ng-repeat="contact in contactsList track by $index">
 						<span><a href="" ng-click="">{{contact.name}}</a></span>
 					</div>

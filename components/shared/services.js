@@ -12,6 +12,20 @@ angular.module('CVIPSMApp.services', [])
 	return this;
 })
 
+// SAMPLE JSON FOR SERIES /////////////////////////////////////////
+/*
+data : {
+
+	general: {}
+
+http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
+
+}
+
+
+*/
+ 
+
 //  DATA FACTORY ///////////////////////////////////////////////////////////
 .factory('DataFtry', [ '$http' , '$q' ,   function($http, $q) {
 
@@ -59,7 +73,7 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "childname", disLabel: "Child Name" , dataType: "string"},
 					{dbLabel: "description", disLabel: "Description" , dataType: "string"},
 					{dbLabel: "gender", disLabel: "Gender" , dataType: "string"},
-					{dbLabel: "haircolor", disLabel: "Hair Color" , dataType: "dropdown"},
+					{dbLabel: "haircolors", disLabel: "Hair Color" , dataType: "dropdown"},
 					{dbLabel: "agecategory", disLabel: "Age Category" , dataType: "string"},
 					{dbLabel: "childageinseries", disLabel: "Child Age in Series", dataType: "string"},
 					{dbLabel: "ethnicity", disLabel: "Ethnicity" , dataType: "string"},
@@ -71,7 +85,7 @@ angular.module('CVIPSMApp.services', [])
 					{dbLabel: "offendername", disLabel: "Offender Name" , dataType: "string"},
 					{dbLabel: "description", disLabel: "Description" , dataType: "string"},
 					{dbLabel: "gender", disLabel: "Gender", dataType: "string"},
-					{dbLabel: "haircolor", disLabel: "Hair Color", dataType: "dropdown"},
+					{dbLabel: "haircolors", disLabel: "Hair Color", dataType: "dropdown"},
 					{dbLabel: "agecategory", disLabel: "Age Category" , dataType: "string"},
 					{dbLabel: "childageinseries", disLabel: "Child Age in Series" , dataType: "string"},
 					{dbLabel: "ethnicity", disLabel: "Ethnicity" , dataType: "string"},

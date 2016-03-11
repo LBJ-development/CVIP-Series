@@ -76,7 +76,7 @@ angular.module('CVIPSMApp.utilities', [])
 	}
 })
 
-.directive('dropDown', function(DataFtry){
+.directive('dropDown', function(DataFtry,  CVIPConfig){
 	return{
 		restrict: "A",
 		scope:{
@@ -91,9 +91,7 @@ angular.module('CVIPSMApp.utilities', [])
 		},
 		link: function (scope, element, attrs){
 
-			var ddData = attrs.column;
-			var ddLabel = attrs.label;
-			//console.log(ddData)
+			var url = CVIPConfig.contextPath + attrs.column;
 
 			scope.DDOptions = {
 				dataTextField: "disLabel",
@@ -101,8 +99,16 @@ angular.module('CVIPSMApp.utilities', [])
 				optionLabel: {
 					disLabel : "",
 					dbLabel: ""
-			},
-			dataSource: DataFtry.dropdownData(ddData).data
+				},
+				//dataSource: DataFtry.dropdownData(ddData).data
+				dataSource: {
+						transport: {
+							read: {
+								dataType: "json",
+								url: url,
+						}
+					}
+				}
 			}
 		}
 	}
@@ -123,19 +129,6 @@ angular.module('CVIPSMApp.utilities', [])
 		},
 		link: function (scope, element, attrs){
 
-			var ddData = attrs.column;
-			var ddLabel = attrs.label;
-			console.log(ddData)
-
-			scope.DDOptions = {
-				dataTextField: "disLabel",
-				dataValueField: "dbLabel",
-				optionLabel: {
-					disLabel : "",
-					dbLabel: ""
-			},
-			dataSource: DataFtry.dropdownData(ddData).data
-			}
 		}
 	}
 })
