@@ -10,3 +10,37 @@
 		<li class="tab-sep" ng-if="editable"></li>
 	</ul>
 </div>
+	<div class="backgroundColor">
+		<!-- SUSPECT EDITABLE ////////////////////////////////////////////////////////// 
+		<div ng-if="editable">-->
+		<div >
+			<div class="row ">
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Series Name: </label>
+						<input type="text" class="form-control" ng-model="generalInfo.seriesName" />
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Series Type: </label>
+						<input type="text" class="form-control" ng-model="generalInfo.seriesType" />
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Analyst: </label>
+						<input type="text" class="form-control" ng-model="generalInfo.analystName" />
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Related to CT/TA: </label>
+						<input type="text" class="form-control" ng-model="generalInfo.relatedToCTTA" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -26,7 +26,7 @@
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<div drop-down label="Age Group" column="agegroup"  model="suspectList[itemIndex].agegroup"></div>
+						<div drop-down label="Age Group" column="agegroups"  model="suspectList[itemIndex].agegroup"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
@@ -52,24 +52,24 @@
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<div drop-down label="Hair Color" column="haircolor"  model="suspectList[itemIndex].haircolor"></div>
+						<div drop-down label="Hair Color" column="haircolors"  model="suspectList[itemIndex].haircolor"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<div drop-down label="Eye Color" column="eyecolor"  model="suspectList[itemIndex].eyecolor"></div>
+						<div drop-down label="Eye Color" column="eyecolors"  model="suspectList[itemIndex].eyecolor"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<div drop-down label="Gender" column="gender"  model="suspectList[itemIndex].gender"></div>
+						<div drop-down label="Gender" column="genders"  model="suspectList[itemIndex].gender"></div>
 					</div>
 				</div>
 			</div>
 			<div class="row ">
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<div drop-down label="Ethnicity" column="ethnicity"  model="suspectList[itemIndex].ethnicity"></div>
+						<div drop-down label="Ethnicity" column="races"  model="suspectList[itemIndex].ethnicity"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
@@ -147,7 +147,7 @@
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.nailPolish' > <span style='float:left;'>Nail Polish</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.nailpolish' > <span style='float:left;'>Nail Polish</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
@@ -169,45 +169,47 @@
 			<div class="row ">
 				<div class="col-sm-3 form-group">
 					<label>Suspect Name: </label>
-					<span>{{suspectList[itemIndex].name}}</span>
+					<span> {{suspectList[itemIndex].name}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].agegroup.length > 0'>
 					<label>Age Group: </label>
-					<span>{{suspectList[itemIndex].agegroup}}</span>
+					<span> {{suspectList[itemIndex].agegroup}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='suspectist[itemIndex].age.length > 0'>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].age.length > 0'>
 					<label>Age: </label>
-					<span>{{suspectList[itemIndex].age}}</span>
+					<span> {{suspectList[itemIndex].age}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].birthdate.length > 0'>
 					<label>Birthdate: </label>
-					<span>{{suspectList[itemIndex].birthdate}}</span>
+					<span> {{suspectList[itemIndex].birthdate}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].haircolor.length > 0'>
 					<label>Hair Color: </label>
-					<span>{{suspectList[itemIndex].haircolor}}</span>
+					<span> {{suspectList[itemIndex].haircolor}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].eyecolor.length > 0'>
 					<label>Eye Color: </label>
-					<span>{{suspectList[itemIndex].eyecolor}}</span>
+					<span> {{suspectList[itemIndex].eyecolor}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].gender.length > 0'>
 					<label>Gender: </label>
-					<span>{{suspectList[itemIndex].gender}}</span>
+					<span> {{suspectList[itemIndex].gender}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].ethnicity.length > 0'>
 					<label>Ethnicity: </label>
-					<span>{{suspectList[itemIndex].ethnicity}}</span>
+					<span> {{suspectList[itemIndex].ethnicity}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].isdeceased == true'>
 					<label>Is Deceased: </label>
-					<span>{{suspectList[itemIndex].isdeceased}}</span>
+					<span> {{suspectList[itemIndex].isdeceased}}</span>
 				</div>
 				<div class="col-sm-3 form-group">
-					<label>Physical Features: </label>
-					<div  ng-repeat="suspect in suspectList track by $index"   ng-show="($index == itemIndex)">
+					<label ng-show="showSPF">Physical Features: </label>
+					
+					<div  ng-repeat="suspect in suspectList track by $index" ng-show="($index == itemIndex)">
+					
 						<span  ng-repeat="item in suspect.physicalfeatures  | keys track by $index" ng-init="value = suspect.physicalfeatures [item]" ng-show="value == true">				
-							{{physicalfeatures[$index]}}  -
+							{{physicalfeatures[$index]}}  <span ng-if="value" id="spf">-</span>
 						</span>
 					</div> 
 				</div>

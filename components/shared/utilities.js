@@ -93,9 +93,11 @@ angular.module('CVIPSMApp.utilities', [])
 
 			var url = CVIPConfig.contextPath + attrs.column;
 
+			var ddData = attrs.column;
 			scope.DDOptions = {
 				dataTextField: "disLabel",
-				dataValueField: "dbLabel",
+				//dataValueField: "dbLabel",
+				dataValueField: "disLabel",
 				optionLabel: {
 					disLabel : "",
 					dbLabel: ""

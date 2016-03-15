@@ -13,7 +13,7 @@ angular.module('CVIPSMApp.createSearch', [])
 		$scope.fieldsToDisplay = 	
 				[	{label : "Series Name",		model : "",	table : "series", column: "seriesname",		dataType : "string"},
 					{label : "Date Series Created", 	model : "",	table : "series", column: "dateseriescreated",	dataType : "date"},
-					{label : "Series Type", 		model : "", 	table : "series", column: "subjecttypes",		dataType : "dropdown"},
+					{label : "Series Type", 		model : "", 	table : "series", column: "subjecttype",		dataType : "dropdown"},
 					{label : "Previous Series Type",	model :"",	table : "series", column: "previousseriestype",	dataType : "string"},
 				];
 		

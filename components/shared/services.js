@@ -15,8 +15,47 @@ angular.module('CVIPSMApp.services', [])
 // SAMPLE JSON FOR SERIES /////////////////////////////////////////
 /*
 data : {
+	general: [{
+		general: {
+			seriesid: "",
+			seriesname: ""
+			etc...
+		},
+		transferttointerpol: {
+			icseseizurename: "",
+			matchinicse: false,
+			etc...
+		},
+	etc...		
+	}],
+	summary:{
+		associatedseries: "",
+		summary: ""
+	},
+	suspects: [{
+			name: defaultName,
+			agegroup: "",
+			age: "",
+			uploadedphotos: [{}],
+			birthdate: "",
+			haircolor: "",
+			eyecolor: "",
+			gender: "",
+			ethnicity: "",
+			isdeceased: false,
+			physicalfeatures: {freckles: false, scars: false, glasses: false, moles: false, braces: false, makeup: false, tatoos: false, acne: false, watch: false, jewelry: false, nailPolish: false, piercing: false },
+			description: ""
+		 }],
+	children: [{}],
+	checklist:{},
+	leads: [{}],
+	identifiers: [{}],
+	partialfilenames: [{}],
+	BOLO: {},
+	leapocs:[{}],
+	contacts: [{}]
+	}
 
-	general: {}
 
 http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 
@@ -127,7 +166,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 
 // RETURN DATA FOR THE DROPDOWN /////////////////////////
 
-	var dropdownData = function(dropdown){
+	/*var dropdownData = function(dropdown){
 
 		var data = {};
 
@@ -153,7 +192,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 					{dbLabel: "analystName7", disLabel: "Analyst Name 7" }
 				],
 			};
-		var submissiontype =  {
+		var submissiontypes =  {
 				data : [
 					{dbLabel: "federal", disLabel: "Federal" },
 					{dbLabel: "icac", disLabel: "ICAC" },
@@ -163,7 +202,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 					{dbLabel: "state", disLabel: "State" }
 				],
 			};
-		var haircolor =  {
+		var haircolors =  {
 				data : [
 					{dbLabel: "blonde", disLabel: "Blonde" },
 					{dbLabel: "brown", disLabel: "brown" },
@@ -174,21 +213,21 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 					{dbLabel: "other", disLabel: "other" }
 				],
 			};
-		var agegroup =  {
+		var agegroups =  {
 				data : [
 					{dbLabel: "adult", disLabel: "Adult" },
 					{dbLabel: "juvenile", disLabel: "Juvenile" },
 					{dbLabel: "unknown", disLabel: "Unknown" }
 				],
 			};
-		var gender =  {
+		var genders =  {
 				data : [
 					{dbLabel: "male", disLabel: "Male" },
 					{dbLabel: "female", disLabel: "Female" },
 					{dbLabel: "unknown", disLabel: "Unknown" }
 				],
 			};
-		var eyecolor =  {
+		var eyecolors =  {
 				data : [
 					{dbLabel: "blue", disLabel: "Blue" },
 					{dbLabel: "brown", disLabel: "Brown" },
@@ -196,7 +235,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 					{dbLabel: "hazel", disLabel: "Hazel" }
 				],
 			};
-		var ethnicity =  {
+		var races =  {
 				data : [
 					{dbLabel: "black", disLabel: "Black" },
 					{dbLabel: "white", disLabel: "White" },
@@ -213,27 +252,27 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 			case "analystsname" :
 				data = analysts
 				break;
-			case "submissiontype" :
-				data = submissiontype
+			case "submissiontypes" :
+				data = submissiontypes
 				break;
-			case "haircolor" :
-				data = haircolor
+			case "haircolors" :
+				data = haircolors
 				break;
-			case "agegroup" :
-				data = agegroup
+			case "agegroups" :
+				data = agegroups
 				break;
-			case "gender" :
-				data = gender
+			case "genders" :
+				data = genders
 				break;
-			case "eyecolor" :
-				data = eyecolor
+			case "eyecolors" :
+				data = eyecolors
 				break;
-			case "ethnicity" :
-				data = ethnicity
+			case "races" :
+				data = races
 				break;
 		}
 		return  data
-	}
+	}*/
 
 /*	var getData = function(url){
 		var $promise =  $http({
@@ -311,7 +350,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		sendData		: sendData,
 		fakeTable		: fakeTable,
 		fakeColumn	: fakeColumn,
-		dropdownData	: dropdownData
+		//dropdownData	: dropdownData
 	};
 }]);
 
