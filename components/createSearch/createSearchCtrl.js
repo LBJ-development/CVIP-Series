@@ -120,7 +120,7 @@ angular.module('CVIPSMApp.createSearch', [])
 		$scope.showResult	= true;
 		var dataParam  = $scope.fieldsToDisplay.slice();
 		var jsonString = JSON.stringify({params: dataParam});
-				console.log("JSON = " + jsonString);	
+				//console.log("JSON = " + jsonString);	
 	}
 
 // ADD/REMOVE PERSON OBJECTS ///////////////////////////////////////////////
@@ -214,7 +214,7 @@ angular.module('CVIPSMApp.createSearch', [])
 						title	: "Series Name",
 						width	: "12%",
 						filterable	: false,
-						template: "<a href='' ng-click='selectSeries($event)' class='baseLinkText' >#=seriesName#</a>"
+						template: "<a href='' ng-click='loadSeries($event)' class='baseLinkText' >#=seriesName#</a>"
 						},{
 						field	: "dateSeriesCreated",
 						title	: "Date Series Created",
@@ -297,10 +297,13 @@ angular.module('CVIPSMApp.createSearch', [])
 		ev.currentTarget.checked ? $scope.caseNum = items.length : $scope.caseNum = 0; 
     };
 
-	$scope.selectSeries = function(evt){
+	$scope.loadSeries = function(evt){
 
-		  $state.go('seriesInfo');
+		$state.go('seriesInfo');
 
+		$timeout(function() {
+				$rootScope.$broadcast("loadExistingSeries", {seriesId: "56"});
+    	}, 500);
 	}
 
 	function detailInit(e) {

@@ -19,9 +19,10 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		  $state.go('search');
 	}
 
+
 	$scope.itemIndex = 0;
-	$scope.editable = false;
-	$scope.generalInfo = {test: "test"};
+	$rootScope.editable = false;
+	$scope.generalInfo = { general: {}, dateRecordStarted: {}, activity: {}};
 	$scope.showSPF = false; // HACK TO DETERMINE IF THE PHYSICAL LABEL NEED TO SHOW IN THE VIEW MODE OF THE SUSPECT SECTION
 	$scope.suspectList = [];
 	$scope.childrenList = [];
@@ -34,13 +35,19 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	var currentSection = "";
 	var currentList = [];
 
-	// CREATE A NEW SERIES /////////////////////////
-	$rootScope.$on("createNewSeries", function(event, data){
-		$scope.generalInfo.seriesName 		= data.seriesName;
-		$scope.generalInfo.seriesType 		= data.seriesType;
-		$scope.generalInfo.analystName 		= data.analystName;
-		$scope.generalInfo.relatedToCTTA 	= data.relatedToCTTA;
-	});
+	// LOAD AN EXISTING SERIES //////////////////////////////
+	$rootScope.$on("loadExistingSeries", function(event, data){
+			
+        var url = CVIPConfig.contextPath + "/info/" + data.seriesId;
+        DataFtry.getData(url).then(function(result){
+
+        	$scope.generalInfo = result.data.general[0];
+
+				console.log($scope.generalInfo)
+        	})
+		});
+
+
 
 	// SELECT SUB ITEM IN LIST //////////////////////
 	$scope.selectItem = function(index, section, n){
@@ -70,7 +77,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 			physicalfeatures: {freckles: false, scars: false, glasses: false, moles: false, braces: false, makeup: false, tatoos: false, acne: false, watch: false, jewelry: false, nailpolish: false, piercing: false },
 			description: ""
 		 });
-		$scope.editable = true;
+		$rootScope.editable = true;
 		$scope.supectLabels = ["Suspect Name", "Age Group", "Age", "Uploaded Photos", "Birhdate", "Hair Color", "Eye Color", "Gender", "Ethnicity", "Is Deceased", "Physical Features", "Description"];
 		$scope.physicalfeatures = ["Freckles", "Scars", "Glasses", "Moles", "Braces", "Makeup", "Tatoos", "Acne", "Watch", "Jewelry", "Nail Polish","Piercing"];
 		
@@ -81,15 +88,14 @@ angular.module('CVIPSMApp.seriesInfo', [])
 
 	}
 
-
-
 	$scope.deleteItem = function(){
 		currentList.splice([$scope.itemIndex], 1);
 		$scope.itemIndex = $scope.suspectList.length -1;
 	}
 	$scope.editItem = function(){
-		console.log($scope.suspectList)
-		$scope.editable = !$scope.editable;
+		console.log($scope.generalInfo.activity)
+
+		$rootScope.editable = !$rootScope.editable;
 		// HACK TO DETERMINE IF THE PHYSICAL LABEL NEED TO SHOW IN THE VIEW MODE OF THE SUSPECT SECTION
 		$timeout(function() {
 			$scope.showSPF = $("#spf").text().length >0;

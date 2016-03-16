@@ -6,20 +6,12 @@ angular.module('CVIPSMApp.createSeries', [])
 	$scope.initialInfo = {};
 
 	$scope.createSeries = function(){
-			console.log("FROM INITIAL INFO SENDING END") 
 
-			$state.go('seriesInfo');
+		$state.go('seriesInfo');
 
-			$timeout(function() {
-					$rootScope.$broadcast("createNewSeries", $scope.initialInfo);
-    		}, 500);
-
-
-			
-
-			//$rootScope.$broadcast("createNewSeries", $scope.initialInfo);
-			
-				
+		$timeout(function() {
+				$rootScope.$broadcast("createNewSeries", $scope.initialInfo);
+    	}, 500);	
 	}
 }])
 
