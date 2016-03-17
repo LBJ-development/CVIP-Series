@@ -19,7 +19,6 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		  $state.go('search');
 	}
 
-
 	$scope.itemIndex = 0;
 	$rootScope.editable = false;
 	$scope.generalInfo = { general: {}, dateRecordStarted: {}, activity: {}};
@@ -30,34 +29,39 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	$scope.leadsList = [];
 	$scope.leapocsList = [];
 	$scope.contactsList = [];
-	var lists = [$scope.suspectList, $scope.childrenList, $scope.exifsList, $scope.leadsList, $scope.leapocsList, $scope.contactsList];
-	var sections = ["Suspect", "Child", "EXIFS", "Lead", "LEA POC", "Contact"];
+
+	var sections = ["Suspect", "Children", "EXIFS", "Lead", "LEA POC", "Contact"];
 	var currentSection = "";
 	var currentList = [];
 
 	// LOAD AN EXISTING SERIES //////////////////////////////
 	$rootScope.$on("loadExistingSeries", function(event, data){
 			
-        var url = CVIPConfig.contextPath + "/info/" + data.seriesId;
+        var url = CVIPConfig.contextPath + '/info/' + data.seriesId;
         DataFtry.getData(url).then(function(result){
 
         	$scope.generalInfo = result.data.general[0];
-
-				console.log($scope.generalInfo)
+        	$scope.suspectList = result.data.suspects;
+        	$scope.childrenList = result.data.children;
+        	//console.log($scope.suspectList);
         	})
 		});
 
-
-
 	// SELECT SUB ITEM IN LIST //////////////////////
-	$scope.selectItem = function(index, section, n){
-		currentList = lists[n];
+	$scope.selectItem = function(index, section, n, list){
+		currentList = list;
 		currentSection = sections[n]
 		$scope.itemIndex = index;
+
+		console.log(currentList)
+		//console.log($scope.childrenList)
 		$state.go("seriesInfo." + section);
+
+		//console.log("currentList: "  + currentList + " / "  + "currentSection: " + currentSection + " / "  + "itemIndex: " +  $scope.itemIndex)
+
 	}
 
-	// ADD A SUSPECT ////////////////
+// ADD A SUSPECT ////////////////
 	$scope.addSuspect = function(){
 		currentList = $scope.suspectList;
 		currentSection = "Suspect"
@@ -69,24 +73,53 @@ angular.module('CVIPSMApp.seriesInfo', [])
 			age: "",
 			uploadedphotos: [{}],
 			birthdate: "",
-			haircolor: "",
-			eyecolor: "",
+			hair_color: "",
+			eye_color: "",
 			gender: "",
-			ethnicity: "",
-			isdeceased: false,
-			physicalfeatures: {freckles: false, scars: false, glasses: false, moles: false, braces: false, makeup: false, tatoos: false, acne: false, watch: false, jewelry: false, nailpolish: false, piercing: false },
+			race: "",
+			deceased: false,
+			physicalFeatures: {freckles: false, scars: false, glasses: false, moles: false, braces: false, make_up: false, tattoos: false, acne: false, watch: false, jewelry: false, nailPolish: false, piercings: false },
 			description: ""
 		 });
-		$rootScope.editable = true;
-		$scope.supectLabels = ["Suspect Name", "Age Group", "Age", "Uploaded Photos", "Birhdate", "Hair Color", "Eye Color", "Gender", "Ethnicity", "Is Deceased", "Physical Features", "Description"];
-		$scope.physicalfeatures = ["Freckles", "Scars", "Glasses", "Moles", "Braces", "Makeup", "Tatoos", "Acne", "Watch", "Jewelry", "Nail Polish","Piercing"];
+		//$rootScope.editable = true;
+		//$scope.supectLabels = ["Suspect Name", "Age Group", "Age", "Uploaded Photos", "Birhdate", "Hair Color", "Eye Color", "Gender", "Ethnicity", "Is Deceased", "Physical Features", "Description"];
+		// $scope.physicalFeatures = ["Freckles", "Scars", "Glasses", "Moles", "Braces", "Makeup", "Tatoos", "Acne", "Watch", "Jewelry", "Nail Polish","Piercing"];
 		
 		// DISPLAY THE SUSPECT INFO
 		$state.go('seriesInfo.suspect');
 		// DISPLAY  AN EMPTY TEMPLATE
 		$scope.itemIndex = $scope.suspectList.length -1; 
-
 	}
+
+// ADD A CHILD ////////////////
+	$scope.addChild = function(){
+		currentList = $scope.childrenList;
+		currentSection = "Children"
+		var defaultName = "Child # " + ($scope.childrenList.length + 1);
+
+		$scope.childrenList.push({
+			name: defaultName,
+			age_category: "",
+			age: "",
+			child_age_in_series:"",
+			self_production: "",
+			suspect_relationship_to_child:"",
+			status:"",
+			uploadedphotos: [{}],
+			birthdate: "",
+			hair_color: "",
+			eye_color: "",
+			gender: "",
+			race: "",
+			deceased: false,
+			physicalFeatures: {freckles: false, scars: false, glasses: false, moles: false, braces: false, make_up: false, tattoos: false, acne: false, watch: false, jewelry: false, nailPolish: false, piercings: false },
+			description: ""
+		 });
+		$state.go('seriesInfo.children');
+		// DISPLAY  AN EMPTY TEMPLATE
+		$scope.itemIndex = $scope.childrenList.length -1; 
+	}
+
 
 	$scope.deleteItem = function(){
 		currentList.splice([$scope.itemIndex], 1);

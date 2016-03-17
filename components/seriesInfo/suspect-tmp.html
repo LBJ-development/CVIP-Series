@@ -52,12 +52,12 @@
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<div drop-down label="Hair Color" column="haircolors"  model="suspectList[itemIndex].haircolor"></div>
+						<div drop-down label="Hair Color" column="haircolors"  model="suspectList[itemIndex].hair_color"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<div drop-down label="Eye Color" column="eyecolors"  model="suspectList[itemIndex].eyecolor"></div>
+						<div drop-down label="Eye Color" column="eyecolors"  model="suspectList[itemIndex].eye_color"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
@@ -69,53 +69,56 @@
 			<div class="row ">
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<div drop-down label="Ethnicity" column="races"  model="suspectList[itemIndex].ethnicity"></div>
+						<div drop-down label="Ethnicity" column="races"  model="suspectList[itemIndex].race"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].isdeceased' > <span style='float:left;'>Deceased</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].deceased' > <span style='float:left;'>Deceased</span></label>
 					</div>
 				</div>
 			</div>
-			<div class="h-sep" style="margin:20px 0px 10px 0" ></div>
+			<div class="sub-title" style="margin-top:10px" >Physical Features:</div>
+			<div class="h-sep" style="margin:10px 0px 0px 0" ></div>
 			<div class="row ">
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.freckles' > <span style='float:left;'>Freckles</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.freckles' > <span style='float:left;'>Freckles</span></label>
 					</div>
+
+					
 
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.scars' > <span style='float:left;'>Scars</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.scars' > <span style='float:left;'>Scars</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.glasses' > <span style='float:left;'>Glasses</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.glasses' > <span style='float:left;'>Glasses</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.moles' > <span style='float:left;'>Mole(s)</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.moles' > <span style='float:left;'>Mole(s)</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.braces' > <span style='float:left;'>Braces</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.braces' > <span style='float:left;'>Braces</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.makeup' > <span style='float:left;'>Make up</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.make_up' > <span style='float:left;'>Make up</span></label>
 					</div>
 				</div>
 			</div>
@@ -123,37 +126,37 @@
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.tatoos' > <span style='float:left;'>Tatoo(s)</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.tattoos' > <span style='float:left;'>Tattoo(s)</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.acne' > <span style='float:left;'>Acne</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.acne' > <span style='float:left;'>Acne</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.watch' > <span style='float:left;'>Watch</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.watch' > <span style='float:left;'>Watch</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.jewelry' > <span style='float:left;'>Jewelry</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.jewelry' > <span style='float:left;'>Jewelry</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.nailpolish' > <span style='float:left;'>Nail Polish</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.nailpolish' > <span style='float:left;'>Nail Polish</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalfeatures.piercing' > <span style='float:left;'>Piercings</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='suspectList[itemIndex].physicalFeatures.piercings' > <span style='float:left;'>Piercings</span></label>
 					</div>
 				</div>
 			</div>
@@ -183,44 +186,94 @@
 					<label>Birthdate: </label>
 					<span> {{suspectList[itemIndex].birthdate}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].haircolor.length > 0'>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].hair_color.length > 0'>
 					<label>Hair Color: </label>
-					<span> {{suspectList[itemIndex].haircolor}}</span>
+					<span> {{suspectList[itemIndex].hair_color}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].eyecolor.length > 0'>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].eye_color.length > 0'>
 					<label>Eye Color: </label>
-					<span> {{suspectList[itemIndex].eyecolor}}</span>
+					<span> {{suspectList[itemIndex].eye_color}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].gender.length > 0'>
 					<label>Gender: </label>
 					<span> {{suspectList[itemIndex].gender}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].ethnicity.length > 0'>
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].race.length > 0'>
 					<label>Ethnicity: </label>
-					<span> {{suspectList[itemIndex].ethnicity}}</span>
+					<span> {{suspectList[itemIndex].race}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].isdeceased == true'>
+
+				<div class="col-sm-3 form-group" ng-if='suspectList[itemIndex].deceased'>
 					<label>Is Deceased: </label>
-					<span> {{suspectList[itemIndex].isdeceased}}</span>
+					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group">
+			</div>
+
+			<div class="sub-title" ng-if="!editable">Physical Features:</div>
+			<div class="h-sep" style="margin:5px 0px 10px 0"></div>
+			<div class="row ">
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.glasses">
+					<label>Glasses: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.jewelry">
+					<label>Jewelry: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.piercings">
+					<label>Piercings: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.scars">
+					<label>Scars: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.freckles">
+					<label>Freckles: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.acne">
+					<label>Acne: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.watch">
+					<label>Watch: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.tattoos">
+					<label>Tattoo(s): </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.moles">
+					<label>Moles: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.make_up">
+					<label>Make up: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.nailPolish">
+					<label>Nail Polish: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="suspectList[itemIndex].physicalFeatures.braces">
+					<label>Braces: </label>
+					<span> Yes</span>
+				</div>
+				<!-- <div class="col-sm-3 form-group">
 					<label ng-show="showSPF">Physical Features: </label>
 					
 					<div  ng-repeat="suspect in suspectList track by $index" ng-show="($index == itemIndex)">
 					
-						<span  ng-repeat="item in suspect.physicalfeatures  | keys track by $index" ng-init="value = suspect.physicalfeatures [item]" ng-show="value == true">				
-							{{physicalfeatures[$index]}}  <span ng-if="value" id="spf">-</span>
+						<span  ng-repeat="item in suspect.physicalFeatures  | keys track by $index" ng-init="value = suspect.physicalFeatures [item]" ng-show="value == true">				
+							{{physicalFeatures[$index]}}  <span ng-if="value" id="spf">-</span>
 						</span>
 					</div> 
 				</div>
 				<div class="col-sm-12 form-group" ng-if='suspectList[itemIndex].description.length > 0'>
 					<label>Description: </label>
 					<span>{{suspectList[itemIndex].description}}</span>
-				<div>
-
-
-
-
+				<div> -->
 				<!-- <div  ng-repeat="suspect in suspectList track by $index"   ng-show="($index == itemIndex)">
 					<div  ng-repeat="item in suspect  | keys track by $index" ng-init="value = suspect[item]">
 						<div class="col-sm-3 form-group">

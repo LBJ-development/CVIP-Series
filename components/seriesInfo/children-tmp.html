@@ -1,0 +1,270 @@
+
+<div ng-if="suspectList.length > 0">
+	<div class="tabHead">
+		<span class="tab-title">Children</span>
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="addChild()" >Save</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn addPers-btn" ng-if="editable"><a href="" ng-click="addChild()" >Add a Child</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="deleteItem()" >Delete</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+		</ul>
+	</div>
+	<div class="backgroundColor">
+		<!-- SUSPECT EDITABLE ////////////////////////////////////////////////////////// -->
+		<div ng-if="editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Name: </label>
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].name" ng-blur="isEmpty($event)" required/>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Child Age in Series: </label>
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].child_age_in_series" />
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Age Category: </label>
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].age_category" />
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Status: </label>
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].status" />
+					</div>
+				</div>
+				<div class="sharedCol4">
+					<div class="col-sm-3 form-group">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].self_production' > <span style='float:left;'>Self Production</span></label>
+					</div>
+				</div>
+
+				
+			</div>
+	
+			<div class="sub-title" style="margin-top:10px" >Physical Features:</div>
+			<div class="h-sep" style="margin:10px 0px 0px 0" ></div>
+			<div class="row ">
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.freckles' > <span style='float:left;'>Freckles</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.scars' > <span style='float:left;'>Scars</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.glasses' > <span style='float:left;'>Glasses</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.moles' > <span style='float:left;'>Mole(s)</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.braces' > <span style='float:left;'>Braces</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.make_up' > <span style='float:left;'>Make up</span></label>
+					</div>
+				</div>
+			</div>
+			<div class="row ">
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.tattoos' > <span style='float:left;'>Tattoo(s)</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.acne' > <span style='float:left;'>Acne</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.watch' > <span style='float:left;'>Watch</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.jewelry' > <span style='float:left;'>Jewelry</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.nailpolish' > <span style='float:left;'>Nail Polish</span></label>
+					</div>
+				</div>
+				<div class="col-sm-2 form-group">
+					<div class="sharedCol4">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.piercings' > <span style='float:left;'>Piercings</span></label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 form-group" >
+					<label>Description: </label>
+					     <textarea type="text" ng-model="childrenList[itemIndex].description" class="form-control" id="reqCom" ></textarea>
+				</div>									
+			</div>
+		</div>
+		<!-- SUSPECT EDITABLE ////////////////////////////////////////////////////////// -->
+		<div ng-if="!editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group">
+					<label>Child Name: </label>
+					<span> {{childrenList[itemIndex].name}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].age_category.length > 0'>
+					<label>Age Category: </label>
+					<span> {{childrenList[itemIndex].age_category}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].age.length > 0'>
+					<label>Age: </label>
+					<span> {{childrenList[itemIndex].age}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].birthdate.length > 0'>
+					<label>Birthdate: </label>
+					<span> {{childrenList[itemIndex].birthdate}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].hair_color.length > 0'>
+					<label>Hair Color: </label>
+					<span> {{childrenList[itemIndex].hair_color}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].eye_color.length > 0'>
+					<label>Eye Color: </label>
+					<span> {{childrenList[itemIndex].eye_color}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].gender.length > 0'>
+					<label>Gender: </label>
+					<span> {{childrenList[itemIndex].gender}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].race.length > 0'>
+					<label>Ethnicity: </label>
+					<span> {{childrenList[itemIndex].race}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].status.length > 0'>
+					<label>Status: </label>
+					<span> {{childrenList[itemIndex].status}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].child_age_in_series.length > 0'>
+					<label>Child Age in Series: </label>
+					<span> {{childrenList[itemIndex].child_age_in_series}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].self_production'>
+					<label>Self Production: </label>
+					<span> Yes</span>
+				</div>
+
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].deceased'>
+					<label>Is Deceased: </label>
+					<span> Yes</span>
+				</div>
+			</div>
+
+			<div class="sub-title" ng-if="!editable">Physical Features:</div>
+			<div class="h-sep" style="margin:5px 0px 10px 0"></div>
+			<div class="row ">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.glasses">
+					<label>Glasses: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.jewelry">
+					<label>Jewelry: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.piercings">
+					<label>Piercings: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.scars">
+					<label>Scars: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.freckles">
+					<label>Freckles: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.acne">
+					<label>Acne: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.watch">
+					<label>Watch: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.tattoos">
+					<label>Tattoo(s): </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.moles">
+					<label>Moles: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.make_up">
+					<label>Make up: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.nailPolish">
+					<label>Nail Polish: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.braces">
+					<label>Braces: </label>
+					<span> Yes</span>
+				</div>
+				<!-- <div class="col-sm-3 form-group">
+					<label ng-show="showSPF">Physical Features: </label>
+					
+					<div  ng-repeat="suspect in suspectList track by $index" ng-show="($index == itemIndex)">
+					
+						<span  ng-repeat="item in suspect.physicalFeatures  | keys track by $index" ng-init="value = suspect.physicalFeatures [item]" ng-show="value == true">				
+							{{physicalFeatures[$index]}}  <span ng-if="value" id="spf">-</span>
+						</span>
+					</div> 
+				</div>
+				<div class="col-sm-12 form-group" ng-if='suspectList[itemIndex].description.length > 0'>
+					<label>Description: </label>
+					<span>{{suspectList[itemIndex].description}}</span>
+				<div> -->
+				<!-- <div  ng-repeat="suspect in suspectList track by $index"   ng-show="($index == itemIndex)">
+					<div  ng-repeat="item in suspect  | keys track by $index" ng-init="value = suspect[item]">
+						<div class="col-sm-3 form-group">
+							<label>{{supectLabels[$index]}}: </label>
+							<span> {{value}}</span>
+						</div>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</div>

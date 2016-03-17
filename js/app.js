@@ -51,15 +51,6 @@ var app = angular.module('CVIPSMApp', [
 					}
 				}
 			)
-
-			.state('seriesInfo.suspect', {
-				url: "/suspect",
-				templateUrl: 'components/seriesInfo/suspect-tmp.html',
-				data: {
-					//requireLogin: true
-					}
-				}
-			)
 			.state('seriesInfo.summary', {
 				url: "/summary",
 				templateUrl: 'components/seriesInfo/summary-tmp.html',
@@ -68,7 +59,22 @@ var app = angular.module('CVIPSMApp', [
 					}
 				}
 			)
-
+			.state('seriesInfo.suspect', {
+				url: "/suspect",
+				templateUrl: 'components/seriesInfo/suspect-tmp.html',
+				data: {
+					//requireLogin: true
+					}
+				}
+			)
+			.state('seriesInfo.children', {
+				url: "/children",
+				templateUrl: 'components/seriesInfo/children-tmp.html',
+				data: {
+					//requireLogin: true
+					}
+				}
+			)
 			.state('seriesInfo.checklist', {
 				url: "/checklist",
 				templateUrl: 'components/seriesInfo/checklist-tmp.html',
@@ -77,7 +83,6 @@ var app = angular.module('CVIPSMApp', [
 					}
 				}
 			)
-
 			.state('test', {
 				url: "/test",
 				templateUrl: 'components/testPage.html',

@@ -11,246 +11,8 @@
 		</ul>
 	</div>
 
-	<div class="backgroundColor" >
-		<!-- GENERAL EDITABLE ////////////////////////////////////////////////////////// -->
-		<div ng-if="editable">
-			<div class="row ">
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<label>Series ID: </label>
-						<input type="text" class="form-control disabled-textinput" ng-model="generalInfo.general.seriesId" disabled="true" />
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<label>Series Name: </label>
-						<input type="text" class="form-control" ng-model="generalInfo.general.seriesName" />
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<div  drop-down label="Analyst Name" column="analysts"  model="generalInfo.general.analystName"></div>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<div  drop-down label="Series Type" column="subjecttype"  model="generalInfo.general.subjecttype"></div>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<label>Related to CT/TA: </label>
-						<input type="text" class="form-control" ng-model="generalInfo.general.relatedToCTTA" />
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<label>Previous Series Name: </label>
-						<input type="text" class="form-control" ng-model="generalInfo.general.previous_series" />
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<label>Alias: </label>
-						<input type="text" class="form-control" ng-model="generalInfo.general.alias" />
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<label>Associated Series: </label>
-						<input type="text" class="form-control" ng-model="generalInfo.general.associated_series" />
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<label>AKA: </label>
-						<input type="text" class="form-control" ng-model="generalInfo.general.AKA" />
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<div  drop-down label="Origin Country" column="origcountry"  model="generalInfo.general.origin_country"></div>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<div  drop-down label="Origin State" column="states"  model="generalInfo.general.origin_state"></div>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<div  drop-down label="Juridiction of Production of Files" column="states"  model="generalInfo.general.juProdFile"></div>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group">
-					<div class="sharedCol4">
-						<div  drop-down label="Submission Type" column="submissiontype"  model="generalInfo.general.submission_type"></div>
-					</div>
-				</div>
-			</div>
+	<div ng-include="'components/seriesInfo/panels/gen-general.html'"></div>
 
-			<div class="row ">
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.seriesname_not_childname' > <span style='float:left;'>Ser. Name is not Child's Name</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.inEviGui' > <span style='float:left;'>Include on Evidence Guide?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.available_in_cris' > <span style='float:left;'>Available in Cris drop-down?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.historical' > <span style='float:left;'>Historical?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.actively_tracking' > <span style='float:left;'>Actively Tracking?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.any_distribution' > <span style='float:left;'>Any Distribution?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.actively_traded' > <span style='float:left;'>Actively Traded?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.seto_actively_traded' > <span style='float:left;'>Seto Actively Traded?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.seto_longitudinal' > <span style='float:left;'>Seto Longitudinal?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.general.evidence_guide' > <span style='float:left;'>Evidence Guide?</span></label>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- GENERAL EDITABLE ////////////////////////////////////////////////////////// -->
-		<div ng-if="!editable">
-			<div class="row ">
-				<div class="col-sm-3 form-group">
-					<label>SeriesID: </label>
-					<span> {{generalInfo.general.seriesId}}</span>
-				</div>
-				<div class="col-sm-3 form-group">
-					<label>Series Name: </label>
-					<span> {{generalInfo.general.seriesName}}</span>
-				</div>
-				<div class="col-sm-3 form-group">
-					<label>Analyst Name: </label>
-					<span> {{generalInfo.general.analystName}}</span>
-				</div>
-				<div class="col-sm-3 form-group">
-					<label>Series Type: </label>
-					<span> {{generalInfo.general.subjecttype}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.relatedToCTTA.length > 0'>
-					<label>Related to CT/TA: </label>
-					<span> {{generalInfo.general.relatedToCTTA}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.previous_series.length > 0'>
-					<label>Previous Series Name: </label>
-					<span> {{generalInfo.general.revious_series}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.alias.length > 0'>
-					<label>Alias: </label>
-					<span> {{generalInfo.general.alias}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.associated_series.length > 0'>
-					<label>Associated Series: </label>
-					<span> {{generalInfo.general.associated_series}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.AKA.length > 0'>
-					<label>AKA: </label>
-					<span> {{generalInfo.general.AKA}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.origin_country.length > 0'>
-					<label>Origin Country: </label>
-					<span> {{generalInfo.general.origin_country}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.origin_state.length > 0'>
-					<label>Origin State: </label>
-					<span> {{generalInfo.general.origin_state}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.juProdFile.length > 0'>
-					<label>Juridiction of Production of Files: </label>
-					<span> {{generalInfo.general.juProdFile}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.submission_type.length > 0'>
-					<label>Submission Type: </label>
-					<span> {{generalInfo.general.submission_type}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.seriesname_not_childname'>
-					<label>Ser. Name is not Child's Name: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.inEviGui'>
-					<label>Include on Evidence Guide: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.available_in_cris'>
-					<label>Available in Cris drop-down: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.historical'>
-					<label>Historical: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.actively_tracking'>
-					<label>Actively Tracking: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.any_distribution'>
-					<label>Any Distribution: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.actively_traded'>
-					<label>Actively Traded: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.seto_actively_traded'>
-					<label>Seto Actively Traded: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.seto_longitudinal'>
-					<label>Seto Longitudinal: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.general.evidence_guide'>
-					<label>Evidence Guide: </label>
-					<span> Yes</span>
-				</div>
-			</div>
-		</div>
-	</div>
 <!-- ACTIVITIES ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
 		<span class="tab-title">Activities</span>
@@ -265,200 +27,9 @@
 			<li class="tab-sep" ng-if="editable" ng-show="dispActivity" ></li>
 		</ul>
 	</div>
-	<div class="backgroundColor" ng-show="dispActivity" >
-		<div class="sub-title" ng-if="!editable">Activities</div>
-		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
-			<!-- ACTIVITIES EDITABLE ////////////////////////////////////////////////////////// -->
-		<div ng-if="editable">
-			<div class="row ">
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.bondage' > <span style='float:left;'>Bondage?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.defecation' > <span style='float:left;'>Defecation?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.exposure_genitalia_anus' > <span style='float:left;'>Exposure of Genitals/Anus?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.erotica_fully_clothed' > <span style='float:left;'>Erotica Fully Clothed?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.erotica_present' > <span style='float:left;'>Erotica Present?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.exposure_breast_chest' > <span style='float:left;'>Exposure of Breast/Chest?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.urination' > <span style='float:left;'>Urination?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.licking' > <span style='float:left;'>Licking?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.oral_copulation' > <span style='float:left;'>Oral Copulation?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.ejaculation_seen' > <span style='float:left;'>Ejaculation Seen?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.manual_stimulation' > <span style='float:left;'>Manual Stimulation?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.full_nudity' > <span style='float:left;'>Full Nudity?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.bestiality' > <span style='float:left;'>Bestiality?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.kissing' > <span style='float:left;'>Kissing?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.vaginal_penetration' > <span style='float:left;'>Vaginal Penetration?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.drugged_sleeping' > <span style='float:left;'>Drugged Sleeping?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.anal_penetration' > <span style='float:left;'>Anal Penetration?</span></label>
-					</div>
-				</div>
-				<div class="col-sm-3 form-group-checkbox">
-					<div class="sharedCol4">
-						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='generalInfo.activity.other_sexual_content' > <span style='float:left;'>Other Sexual Content?</span></label>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- ACTIVITIES NON EDITABLE ////////////////////////////////////////////////////////// -->
-		<div ng-if="!editable">
-			<div class="row ">
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.bondage'>
-					<label>Bondage: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.defecation'>
-					<label>Defecation: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.exposure_genitalia_anus'>
-					<label>Exposure of Genitals/Anusl: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.erotica_fully_clothed'>
-					<label>Erotica Fully Clothed: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.erotica_present'>
-					<label>Erotica Present: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.exposure_breast_chest'>
-					<label>Exposure of Breast/Chest: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.urination'>
-					<label>Urination: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.licking'>
-					<label>Licking: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.oral_copulation'>
-					<label>Oral Copulation: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.ejaculation_seen'>
-					<label>Ejaculation Seen: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.manual_stimulation'>
-					<label>Manual Stimulation: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.full_nudity'>
-					<label>Full Nudity: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.bestiality'>
-					<label>Bestiality: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.kissing'>
-					<label>Kissing: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.vaginal_penetration'>
-					<label>Vaginal Penetration: </label>
-					<span> Yes</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.drugged_sleeping'>
-					<label>Drugged Sleeping: </label>
-					<span> Yes</span>
-				</div> 
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.anal_penetration'>
-					<label>Anal Penetration: </label>
-					<span> Yes</span>
-				</div> 
-				<div class="col-sm-3 form-group" ng-if='generalInfo.activity.other_sexual_content'>
-					<label>Other Sexual Content: </label>
-					<span> Yes</span>
-				</div>
-			</div>
-		</div>
-	</div>
+
+	<div ng-include="'components/seriesInfo/panels/gen-activity.html'"></div>
+	
 <!-- IDENTIFICATION TIMELINE ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
 		<span class="tab-title">Identification Timeline</span>
@@ -477,6 +48,7 @@
 		<div class="sub-title" ng-if="!editable">Identification Timeline</div>
 		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
 	</div>
+
 <!-- DATE RECORDS STARTED ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
 		<span class="tab-title">Date Record Started</span>
@@ -533,6 +105,7 @@
 		<div class="sub-title" ng-if="!editable">Description</div>
 		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
 	</div>
+
 <!-- CHILD IDENTIFICATION NOTE ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
 		<span class="tab-title">Child Identification Note</span>
@@ -551,6 +124,7 @@
 		<div class="sub-title" ng-if="!editable">Child Identification Note</div>
 		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
 	</div>
+
 <!-- MEDIA ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
 		<span class="tab-title">Media</span>
@@ -569,6 +143,7 @@
 		<div class="sub-title" ng-if="!editable">Media</div>
 		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
 	</div>
+	
 <!-- IMAGE TYPE ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
 		<span class="tab-title">Image Type</span>
