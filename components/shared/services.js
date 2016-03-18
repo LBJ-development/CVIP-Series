@@ -68,6 +68,21 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 //  DATA FACTORY ///////////////////////////////////////////////////////////
 .factory('DataFtry', [ '$http' , '$q' ,   function($http, $q) {
 
+	// SAMPLE JSON FOR DYNAMIC GENERAL SECTION //////////////////////////////
+	var generalData = function(){
+		return {
+			data : [	
+				{label : "Series ID:",		model : "seriesId",		DDdata: "",				dataType : "string",	required : false,	disabled : false,	multiple : false, 	deletable : false,	},
+				{label : "Series Name:", 	model : "seriesName",	DDdata: "",				dataType : "string",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Analyt Name:", 	model : "analystName",	DDdata: "analysts",		dataType : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Date Created:", 	model : "dateCreated",	DDdata: "",				dataType : "date",		required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Series Type",		model : "subjecttype",	DDdata: "subjecttype",	dataType : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Is Deceased",		model : "isDeceased",	DDdata: "",				dataType : "checkbox",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+			
+			]
+		}
+	}
+
 	// RETURN FAKE SECTIONS FOR ADVANDED SEARCH /////////////////////////////////////
 	var fakeTable = function(){
 		return {
@@ -350,6 +365,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		sendData		: sendData,
 		fakeTable		: fakeTable,
 		fakeColumn	: fakeColumn,
+		generalData : generalData
 		//dropdownData	: dropdownData
 	};
 }]);

@@ -37,28 +37,35 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	// LOAD AN EXISTING SERIES //////////////////////////////
 	$rootScope.$on("loadExistingSeries", function(event, data){
 			
-        var url = CVIPConfig.contextPath + '/info/' + data.seriesId;
-        DataFtry.getData(url).then(function(result){
+		var url = CVIPConfig.contextPath + '/info/' + data.seriesId;
+		DataFtry.getData(url).then(function(result){
 
-        	$scope.generalInfo = result.data.general[0];
-        	$scope.suspectList = result.data.suspects;
-        	$scope.childrenList = result.data.children;
-        	//console.log($scope.suspectList);
-        	})
+			$scope.generalInfo = result.data.general[0];
+			$scope.suspectList = result.data.suspects;
+			$scope.childrenList = result.data.children;
+			//console.log($scope.suspectList);
+			})
 		});
+	// SELECT SECTION //////////////////////
+	$scope.selectSection = function(evt){
+	// HIGHLIGHT SELECTED ITEM  //////////////////////
+		$("#leftMenu").find(".selected").removeClass("selected");
+		$(evt.currentTarget).parent().parent().addClass("selected");
+	}
 
 	// SELECT SUB ITEM IN LIST //////////////////////
-	$scope.selectItem = function(index, section, n, list){
+	$scope.selectItem = function(index, section, n, list, evt){
 		currentList = list;
 		currentSection = sections[n]
 		$scope.itemIndex = index;
 
-		console.log(currentList)
+		//console.log(currentList)
 		//console.log($scope.childrenList)
 		$state.go("seriesInfo." + section);
-
+		// HIGHLIGHT SELECTED ITEM  //////////////////////
+		$("#leftMenu").find(".selected").removeClass("selected");
+		$(evt.currentTarget).parent().parent().addClass("selected");
 		//console.log("currentList: "  + currentList + " / "  + "currentSection: " + currentSection + " / "  + "itemIndex: " +  $scope.itemIndex)
-
 	}
 
 // ADD A SUSPECT ////////////////
@@ -132,7 +139,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		// HACK TO DETERMINE IF THE PHYSICAL LABEL NEED TO SHOW IN THE VIEW MODE OF THE SUSPECT SECTION
 		$timeout(function() {
 			$scope.showSPF = $("#spf").text().length >0;
-    	}, 500);
+		}, 500);
 
 		
 
