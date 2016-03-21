@@ -32,6 +32,65 @@ angular.module('CVIPSMApp.utilities', [])
 	}
 })
 
+.directive('fieldItem', function($parse, $compile, CVIPConfig){
+
+	return{
+		restrict: "A",
+		scope:{
+			label: '@',
+			dddata: '@',
+			datatype: '@',
+			//display: '=',
+			model:'@'
+		},
+		template: function(elements, attrs){
+			return "<label> {{label}}: </label>"
+			//return "<label>{{label}}: </label><input type='text' class='form-control' ng-model='root.' + 'model' />"
+			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
+		},
+		link: function (scope, element, attrs){
+			//console.log(attrs.model)
+			var newElement;
+			switch(attrs.datatype){
+				case "string" :
+					newElement = $compile("<input type='text' class='form-control' ng-model='attrs.model' />")(scope);
+					element.append(newElement);  
+					break;
+				case "date" :
+					newElement = $compile("<input kendo-date-picker ng-model='attrs.model' />")(scope);
+					element.append(newElement);  
+					break;
+				case "dropdown" :
+					newElement = $compile("<select kendo-drop-down-list k-options='DDOptions'class='form-control field-k-dropDown' ng-model='attrs.model'  ></select>")(scope);
+					element.append(newElement);  
+					break;
+				case "checkbox" :
+					newElement = $compile("<label style='padding:25px 0px 0 0'><input type='checkbox'style='float:left; clear:left; margin:5px 10px 0 0' ng-model='attrs.model'><span style='float:left;'>{{label}}</span></label>")(scope);
+					element.replaceWith(newElement);  
+					break;
+			}
+			var url = CVIPConfig.contextPath + attrs.dddata;
+			scope.DDOptions = {
+				dataTextField: "disLabel",
+				//dataValueField: "dbLabel",
+				dataValueField: "disLabel",
+				optionLabel: {
+					disLabel : "",
+					dbLabel: ""
+				},
+				dataSource: {
+						transport: {
+							read: {
+								dataType: "json",
+								url: url,
+						}
+					}
+				}
+			}
+		}
+	}
+})
+
 .directive('textField', function($parse, $compile){
 
 	return{
@@ -43,10 +102,15 @@ angular.module('CVIPSMApp.utilities', [])
 			model:'=model'
 		},
 		template: function(elements, attrs){
+
+
 			return "<label><span ng-show='display'>{{table}}</span><span ng-show='display'>: </span> {{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 		},
 		link: function (scope, element, attrs){
+			console.log("FROM DIRECTIVE")
+			console.log(attrs.label)
+
 			/*
 			var newElement;
 			var label = attrs.label;
@@ -134,6 +198,9 @@ angular.module('CVIPSMApp.utilities', [])
 		}
 	}
 })
+
+
+
 .directive('footer', function(){
 	return{
 		restrict: "A",

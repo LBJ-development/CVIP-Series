@@ -133,7 +133,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		$scope.itemIndex = $scope.suspectList.length -1;
 	}
 	$scope.editItem = function(){
-		console.log($scope.generalInfo.activity)
+		//console.log($scope.generalInfo.activity)
 
 		$rootScope.editable = !$rootScope.editable;
 		// HACK TO DETERMINE IF THE PHYSICAL LABEL NEED TO SHOW IN THE VIEW MODE OF THE SUSPECT SECTION

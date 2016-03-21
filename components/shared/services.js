@@ -69,15 +69,15 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 .factory('DataFtry', [ '$http' , '$q' ,   function($http, $q) {
 
 	// SAMPLE JSON FOR DYNAMIC GENERAL SECTION //////////////////////////////
-	var generalData = function(){
+	var testData = function(){
 		return {
 			data : [	
-				{label : "Series ID:",		model : "seriesId",		DDdata: "",				dataType : "string",	required : false,	disabled : false,	multiple : false, 	deletable : false,	},
-				{label : "Series Name:", 	model : "seriesName",	DDdata: "",				dataType : "string",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
-				{label : "Analyt Name:", 	model : "analystName",	DDdata: "analysts",		dataType : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
-				{label : "Date Created:", 	model : "dateCreated",	DDdata: "",				dataType : "date",		required : false,	disabled : false,	multiple : false,	deletable : false,	},
-				{label : "Series Type",		model : "subjecttype",	DDdata: "subjecttype",	dataType : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
-				{label : "Is Deceased",		model : "isDeceased",	DDdata: "",				dataType : "checkbox",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Series ID",		model : "seriesid",		dddata: "",				datatype : "string",	required : false,	disabled : false,	multiple : false, 	deletable : false,	},
+				{label : "Series Name", 	model : "seriesname",	dddata: "",				datatype : "string",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Analyt Name", 	model : "analystname",	dddata: "analysts",		datatype : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Date Created", 	model : "datecreated",	dddata: "",				datatype : "date",		required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Series Type",		model : "subjecttype",	dddata: "subjecttype",	datatype : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Is Deceased",		model : "isdeceased",	dddata: "",				datatype : "checkbox",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
 			
 			]
 		}
@@ -365,7 +365,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		sendData		: sendData,
 		fakeTable		: fakeTable,
 		fakeColumn	: fakeColumn,
-		generalData : generalData
+		testData : testData
 		//dropdownData	: dropdownData
 	};
 }]);
