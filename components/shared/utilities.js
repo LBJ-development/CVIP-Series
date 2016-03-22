@@ -32,28 +32,39 @@ angular.module('CVIPSMApp.utilities', [])
 	}
 })
 
-.directive('fieldItem', function($parse, $compile, CVIPConfig){
+
+
+// TESTING DYNAMIC FORM CREATION //////////////////////////////////////////////////////////////////
+.directive('fieldItem', function($parse, $compile, $timeout, CVIPConfig){
 
 	return{
 		restrict: "A",
+		controller: "SummaryCtrl",
+		controllerAs: "ctrl",
+		bindToController: true,
 		scope:{
 			label: '@',
 			dddata: '@',
 			datatype: '@',
 			//display: '=',
-			model:'@'
+			//thisMod:  '=fieldMod'
+			
+			
 		},
 		template: function(elements, attrs){
 			return "<label> {{label}}: </label>"
-			//return "<label>{{label}}: </label><input type='text' class='form-control' ng-model='root.' + 'model' />"
+			//return "<label>{{label}}: </label><input type='text' class='form-control' ng-model='thisMod' />"
 			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 		},
+
 		link: function (scope, element, attrs){
-			//console.log(attrs.model)
-			var newElement;
+			
+				console.log(attrs.fieldMod)
+				var newElement;
+    	
 			switch(attrs.datatype){
 				case "string" :
-					newElement = $compile("<input type='text' class='form-control' ng-model='attrs.model' />")(scope);
+					newElement = $compile("<input type='text' class='form-control' ng-model='" + attrs.fieldMod + "' />")(scope);
 					element.append(newElement);  
 					break;
 				case "date" :
@@ -69,6 +80,9 @@ angular.module('CVIPSMApp.utilities', [])
 					element.replaceWith(newElement);  
 					break;
 			}
+
+
+
 			var url = CVIPConfig.contextPath + attrs.dddata;
 			scope.DDOptions = {
 				dataTextField: "disLabel",

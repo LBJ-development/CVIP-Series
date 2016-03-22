@@ -6,15 +6,24 @@ angular.module('CVIPSMApp.summaryInfo', [])
 	//console.log("FROM SUMMARY CONTROLLER");
 
 	$scope.summaryData = {
-		seriesid: "gdgdf",
-		seriesname: "rter",
-		analystname:"1111",
-		datecreated: "2222",
-		subjecttype: "sdf",
-		isdeceased: "fsfsdfsd"
+		seriesid: "",
+		seriesname: "",
+		analystname:"",
+		datecreated: "",
+		subjecttype: "",
+		isdeceased: ""
 	};
 
+	$scope.seriesid = ""
+
+
 	$scope.fieldsData = DataFtry.testData().data;
+
+	$scope.testFunction = function(){
+
+		console.log("FROM SUMMARYCTRL!");
+		console.log($scope.summaryData);
+	}
 
 	//console.log($scope.testData)
 	/*$scope.dispActivity = true;
