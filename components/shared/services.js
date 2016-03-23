@@ -72,12 +72,12 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 	var testData = function(){
 		return {
 			data : [	
-				{label : "Series ID",		model : "summaryData.seriesid",		dddata: "",				datatype : "string",	required : false,	disabled : false,	multiple : false, 	deletable : false,	},
-				{label : "Series Name", 	model : "summaryData.seriesname",	dddata: "",				datatype : "string",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
-				{label : "Analyt Name", 	model : "summaryData.analystname",	dddata: "analysts",		datatype : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
-				{label : "Date Created", 	model : "summaryData.datecreated",	dddata: "",				datatype : "date",		required : false,	disabled : false,	multiple : false,	deletable : false,	},
-				{label : "Series Type",		model : "summaryData.subjecttype",	dddata: "subjecttype",	datatype : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
-				{label : "Is Deceased",		model : "summaryData.isdeceased",	dddata: "",				datatype : "checkbox",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Series ID",		section: "summaryData",	model : "seriesid",		dddata: "",				datatype : "string",	required : false,	disabled : false,	multiple : false, 	deletable : false,	},
+				{label : "Series Name", 	section: "summaryData",	model : "seriesname",	dddata: "",				datatype : "string",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Analyt Name", 	section: "summaryData",	model : "analystname",	dddata: "analysts",		datatype : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Date Created", 	section: "summaryData",	model : "datecreated",	dddata: "",				datatype : "date",		required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Series Type",		section: "summaryData",	model : "subjecttype",	dddata: "subjecttype",	datatype : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Is Deceased",		section: "summaryData",	model : "isdeceased",	dddata: "",				datatype : "checkbox",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
 			]
 		}
 	}

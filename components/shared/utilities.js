@@ -27,66 +27,58 @@ angular.module('CVIPSMApp.utilities', [])
 		list.splice(index, 1);
 	} ;
 */
-		
 		}
 	}
 })
 
-
-
 // TESTING DYNAMIC FORM CREATION //////////////////////////////////////////////////////////////////
-.directive('fieldItem', function($parse, $compile, $timeout, CVIPConfig){
-
+.directive('editableItem', function($parse, $compile, CVIPConfig){
 	return{
 		restrict: "A",
-		controller: "SummaryCtrl",
-		controllerAs: "ctrl",
-		bindToController: true,
 		scope:{
 			label: '@',
-			dddata: '@',
-			datatype: '@',
-			//display: '=',
-			//thisMod:  '=fieldMod'
-			
-			
 		},
 		template: function(elements, attrs){
 			return "<label> {{label}}: </label>"
-			//return "<label>{{label}}: </label><input type='text' class='form-control' ng-model='thisMod' />"
-			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 		},
-
 		link: function (scope, element, attrs){
 			
-				console.log(attrs.fieldMod)
 				var newElement;
-    	
+				//var model = attrs.fieldSect + "[0]." + attrs.fieldMod;
+				var model = attrs.fieldSect + "." + attrs.fieldMod;
+
+				var getEntityProp = $parse(model);
+				var setEntityProp = getEntityProp.assign;
+
+				scope.$watch(
+					function watchEntityProp() {return getEntityProp(scope.$parent);},
+					function updateFieldValue(value) {scope.model=value;}
+					);
+
+				scope.$watch('model', function(value) {setEntityProp(scope.$parent, value);});
+
 			switch(attrs.datatype){
 				case "string" :
-					newElement = $compile("<input type='text' class='form-control' ng-model='" + attrs.fieldMod + "' />")(scope);
+					newElement = $compile("<input type='text' class='form-control' ng-model='model' />")(scope);
 					element.append(newElement);  
 					break;
 				case "date" :
-					newElement = $compile("<input kendo-date-picker ng-model='attrs.model' />")(scope);
+					newElement = $compile("<input kendo-date-picker ng-model='model' />")(scope);
 					element.append(newElement);  
 					break;
 				case "dropdown" :
-					newElement = $compile("<select kendo-drop-down-list k-options='DDOptions'class='form-control field-k-dropDown' ng-model='attrs.model'  ></select>")(scope);
+					newElement = $compile("<select kendo-drop-down-list k-options='DDOptions'class='form-control field-k-dropDown' ng-model='model'  ></select>")(scope);
 					element.append(newElement);  
 					break;
 				case "checkbox" :
-					newElement = $compile("<label style='padding:25px 0px 0 0'><input type='checkbox'style='float:left; clear:left; margin:5px 10px 0 0' ng-model='attrs.model'><span style='float:left;'>{{label}}</span></label>")(scope);
+					newElement = $compile("<label style='padding:25px 0px 0 0'><input type='checkbox'style='float:left; clear:left; margin:5px 10px 0 0' ng-model='model'><span style='float:left;'>{{label}}</span></label>")(scope);
 					element.replaceWith(newElement);  
 					break;
-			}
-
-
+				}
 
 			var url = CVIPConfig.contextPath + attrs.dddata;
 			scope.DDOptions = {
 				dataTextField: "disLabel",
-				//dataValueField: "dbLabel",
 				dataValueField: "disLabel",
 				optionLabel: {
 					disLabel : "",
@@ -122,9 +114,6 @@ angular.module('CVIPSMApp.utilities', [])
 			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 		},
 		link: function (scope, element, attrs){
-			console.log("FROM DIRECTIVE")
-			console.log(attrs.label)
-
 			/*
 			var newElement;
 			var label = attrs.label;

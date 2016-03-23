@@ -10,33 +10,24 @@
 		</ul>
 	</div>
 	<div class="backgroundColor" >
-		<!-- GENERAL EDITABLE ////////////////////////////////////////////////////////// -->
+		<!-- EDITABLE ////////////////////////////////////////////////////////// -->
 		<div ng-if="editable">
 			<div class="row ">
-	        	<div class="col-sm-3  field-form-group" ng-repeat="item in fieldsData track by $index">
+	        	<div class="col-sm-3  field-form-group" ng-repeat="item in summaryDB track by $index">
 	            	<div class="sharedCol4">
-	                	<div field-item label={{item.label}} dddata={{item.dddata}} field-mod={{item.model}} datatype={{item.datatype}} ></div>
+	                	<div editable-item label={{item.label}} dddata={{item.dddata}} field-sect={{item.section}} field-mod={{item.model}} datatype={{item.datatype}} ></div>
 	            	</div>
 	        	</div>
 			</div>
 		</div>
+		<!-- NON EDITABLE ////////////////////////////////////////////////////////// -->
 		<div ng-if="!editable">
 			<div class="row ">
-	        	<div class="col-sm-3  field-form-group" ng-repeat="item in summaryData track by $index">
-	            	<div class="sharedCol4">
-	            		{{item}}
-	                	<!-- <div field-item label={{item.label}} dddata={{item.dddata}} model='summaryData.{{item.model}}' datatype={{item.datatype}} ></div> -->
-	            	</div>
+	        	<div class="col-sm-3 form-group" ng-repeat="item in summaryData | keys track by $index" ng-init="value = summaryData[item]" ng-show="value.length >0 || value == true">
+	        		<label>{{summaryLabels[$index]}}: </label>
+					<span>{{value}}</span>
 	        	</div>
 			</div>
 		</div>
-
-		<div class="col-sm-3  field-form-group" style="float:left">
-			<input type='text' class='form-control' ng-model='summaryData.seriesid' />
-            <button class="btn-primary" style="float:left; margin-top:23px" ng-click="testFunction()">TEST
-            </button>
-        </div>
-
-
 	</div>
 </div>

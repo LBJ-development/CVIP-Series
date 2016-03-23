@@ -45,5 +45,4 @@ angular.module('CVIPSMApp.generalInfo', [])
 	$scope.dispMedias 			= function(){ $scope.dispMedia 			= !$scope.dispMedia; };
 	$scope.dispImTypes			= function(){ $scope.dispImType			= !$scope.dispImType; };
 
-
 }]);

@@ -15,7 +15,7 @@ var app = angular.module('CVIPSMApp', [
 	'CVIPSMApp.createSearch',
 	'CVIPSMApp.seriesInfo',
 	'CVIPSMApp.generalInfo',
-	'CVIPSMApp.summaryInfo',
+	'CVIPSMApp.sectionsInfo',
 
 	// FOR TESTING ONLY///////////////
 	'CVIPSMApp.test'
