@@ -15,7 +15,7 @@
 
 <!-- ACTIVITIES ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
-		<span class="tab-title">Activities</span>
+		<span class="tab-title">Sexual Activity</span>
 		<ul>
 			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!dispActivity" ><a href=""  ng-click="displayActivity()">Open</a></li>
 			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispActivity" ><a href=""  ng-click="displayActivity()">Close</a></li>
@@ -44,10 +44,8 @@
 			<li class="tab-sep" ng-if="editable" ng-show="dispIdentTime" ></li>
 		</ul>
 	</div>
-	<div class="backgroundColor" ng-show="dispIdentTime" >
-		<div class="sub-title" ng-if="!editable">Identification Timeline</div>
-		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
-	</div>
+
+	<div ng-include="'components/seriesInfo/panels/gen-idenTimeline.html'"></div>
 
 <!-- DATE RECORDS STARTED ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
@@ -63,10 +61,8 @@
 			<li class="tab-sep" ng-if="editable" ng-show="dispDateRecor" ></li>
 		</ul>
 	</div>
-	<div class="backgroundColor" ng-show="dispDateRecor" >
-		<div class="sub-title" ng-if="!editable">Date Record Started</div>
-		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
-	</div>
+	
+	<div ng-include="'components/seriesInfo/panels/gen-dateRecordStarted.html'"></div>
 
 <!-- SUMMARY STASTISTICS ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
@@ -139,10 +135,7 @@
 			<li class="tab-sep" ng-if="editable" ng-show="dispMedia" ></li>
 		</ul>
 	</div>
-	<div class="backgroundColor" ng-show="dispMedia" >
-		<div class="sub-title" ng-if="!editable">Media</div>
-		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
-	</div>
+	<div ng-include="'components/seriesInfo/panels/gen-media.html'"></div>
 	
 <!-- IMAGE TYPE ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">

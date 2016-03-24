@@ -3,6 +3,10 @@ angular.module('CVIPSMApp.seriesInfo', [])
 
 .controller('SeriesInfoCtrl',["$rootScope",  "$scope", "$window", "$state" , "$timeout", "CVIPConfig", "DataFtry", "WindowSizeFtry" , "DataTesting",  function($rootScope, $scope, $window, $state, $timeout, CVIPConfig, DataFtry, WindowSizeFtry, DataTesting){
 
+	$scope.testFunc = function(){
+		console.log($scope.generalInfo)
+	}
+
 	// RESIZE THE INFO HOLDER WHEN ONE RESIZE WINDOW
 	var offset = 255;
 	var infoWidth = $("#wrapper").width() - offset;
@@ -10,18 +14,15 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		$("#mainBodyWrapper").css('width', data - offset);
 	});
 
-	$scope.init = function (){
-		$("#mainBodyWrapper").css('width', infoWidth);
-		$state.go('seriesInfo.general');
-	}
-
 	$scope.backToSearch = function(){
 		  $state.go('search');
 	}
 
 	$scope.itemIndex = 0;
 	$rootScope.editable = false;
-	$scope.generalInfo = { general: {}, dateRecordStarted: {}, activity: {}};
+	$scope.generalInfo = { general: {}, idenTimeline: {},  activity:{}, dateRecordStarted: {}, media: {}};
+	$scope.summaryLabels = [];
+	$scope.summaryData = {};
 	$scope.showSPF = false; // HACK TO DETERMINE IF THE PHYSICAL LABEL NEED TO SHOW IN THE VIEW MODE OF THE SUSPECT SECTION
 	$scope.suspectList = [];
 	$scope.childrenList = [];
@@ -34,17 +35,18 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	var currentSection = "";
 	var currentList = [];
 
-	// SUMMARY DATA //////////////////////////////
-	$scope.summaryLabels = [];
-	$scope.summaryData = {};
-	$scope.summaryDB = DataFtry.testData().data;
-	var summaryModel = function(){
-		for(var i=0; i< $scope.summaryDB.length; i++){
-			$scope.summaryLabels.push($scope.summaryDB[i].label);
-			$scope.summaryData[[$scope.summaryDB[i].model]] = "" ;
-		}
-	}();
-	//////////////////////////////////////////////////////////
+	$scope.init = function (){
+		$("#mainBodyWrapper").css('width', infoWidth);
+
+		// LOAD THE ADDITIONAL DATA FOR THE DYNAMIC FIELDS////////////////
+		$scope.mediaInfo = DataFtry.generalMedia().data;
+		$scope.idenTimelineInfo = DataFtry.generalIdenTimeline().data;
+		$scope.dateRecordStartedInfo = DataFtry.generalDateRecordStarted().data;
+
+		console.log($scope.dateRecordStarteddInfo);
+
+		$state.go('seriesInfo.general');
+	}
 
 	// LOAD AN EXISTING SERIES //////////////////////////////
 	$rootScope.$on("loadExistingSeries", function(event, data){
@@ -52,12 +54,28 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		var url = CVIPConfig.contextPath + '/info/' + data.seriesId;
 		DataFtry.getData(url).then(function(result){
 
-			$scope.generalInfo = result.data.general[0];
-			$scope.suspectList = result.data.suspects;
-			$scope.childrenList = result.data.children;
-			//console.log($scope.suspectList);
+			$scope.generalInfo 						= result.data.general[0];
+			$scope.generalInfo.media 				= result.data.general[0].media;
+			$scope.generalInfo.idenTimeline 		= result.data.general[0].IdentificationTimeline;
+			$scope.generalInfo.dateRecordStarted 	= result.data.general[0].dateRecordStarted;
+			$scope.suspectList 						= result.data.suspects;
+			$scope.suspectList 						= result.data.suspects;
+			$scope.childrenList 					= result.data.children;
+
+			console.log($scope.checklistDB);
 			})
 		});
+
+	// SUMMARY DATA //////////////////////////////
+
+	$scope.summaryDB = DataFtry.testData().data;
+	var summaryModel = function(){
+		for(var i=0; i< $scope.summaryDB.length; i++){
+			$scope.summaryLabels.push($scope.summaryDB[i].label);
+			$scope.summaryData[[$scope.summaryDB[i].model]] = "" ;
+		}
+	}();
+
 	// SELECT SECTION //////////////////////
 	$scope.selectSection = function(evt){
 	// HIGHLIGHT SELECTED ITEM  //////////////////////
@@ -117,7 +135,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		var defaultName = "Child # " + ($scope.childrenList.length + 1);
 
 		$scope.childrenList.push({
-			name: defaultName,
+			child: defaultName,
 			age_category: "",
 			age: "",
 			child_age_in_series:"",
@@ -157,6 +175,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	$scope.isEmpty = function(evt){
 		// WHEN THE CONTENT OF THE FIRST FIELD IS DELETED => PUT A PLACE HOLDER
 		if(currentList[$scope.itemIndex].name == undefined) currentList[$scope.itemIndex].name = currentSection + ' # ' + ($scope.itemIndex + 1);
+		if(currentList[$scope.itemIndex].child == undefined) currentList[$scope.itemIndex].child = currentSection + ' # ' + ($scope.itemIndex + 1);
 	}
 
 }]);

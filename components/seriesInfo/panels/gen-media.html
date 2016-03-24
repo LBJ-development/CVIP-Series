@@ -1,0 +1,31 @@
+<div class="backgroundColor" ng-show="dispMedia" >
+	<div class="sub-title" ng-if="!editable">Media</div>
+	<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
+	<!-- EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="editable">
+		<div class="row ">
+			<div class="col-sm-3 form-group-checkbox" ng-repeat="item in mediaInfo track by $index">
+				<div class="sharedCol4">
+					<div editable-item label={{item.label}} dddata={{item.dddata}} field-sect={{item.section}} field-mod={{item.model}} datatype={{item.datatype}} ></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- NON EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="!editable">
+		<div class="row ">
+			<div class="col-sm-3 form-group" ng-repeat="item in generalInfo.media | keys track by $index" ng-init="value = generalInfo.media[item]" ng-show="value.length >0 || value == true">
+				<label>{{mediaInfo[$index].label}}: </label>
+				<!-- <span>{{value}}</span> -->
+				<span>Yes</span>
+			</div>
+		</div>
+	</div>
+
+<!-- 	<div class="col-sm-2  field-form-group">
+		<button class="btn-primary" style="float:left; margin-top:23px"  ng-click="testFunc()">TEST
+		</button>
+	</div>
+ -->
+
+</div>

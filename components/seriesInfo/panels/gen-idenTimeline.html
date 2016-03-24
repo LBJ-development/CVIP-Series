@@ -1,0 +1,25 @@
+<div class="backgroundColor" ng-show="dispIdentTime" >
+	<div class="sub-title" ng-if="!editable">Identification Timeline</div>
+	<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
+	<!-- EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="editable">
+		<div class="row ">
+			<div class="col-sm-3 form-group" ng-repeat="item in idenTimelineInfo track by $index">
+				<div class="sharedCol4">
+					<div editable-item label={{item.label}} dddata={{item.dddata}} field-sect={{item.section}} field-mod={{item.model}} datatype={{item.datatype}} ></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- NON EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="!editable">
+		<div class="row ">
+			<div class="col-sm-3 form-group" ng-repeat="item in generalInfo.idenTimeline | keys track by $index" ng-init="value = generalInfo.idenTimeline[item]" ng-show="value.length >0 || value == true">
+			<!-- <div class="col-sm-3 form-group" ng-repeat="item in generalInfo.idenTimeline  track by $index"> -->
+				<label>{{idenTimelineInfo[$index].label}}: </label>
+				<span>{{value}}</span>
+				
+			</div>
+		</div>
+	</div>
+</div>

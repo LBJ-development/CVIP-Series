@@ -82,6 +82,48 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		}
 	}
 
+	// DATA FOR MEDIA //////////////////////////////
+	var generalMedia = function(){
+		return {
+			data : [	
+				{label : "Videotape",		section: "generalInfo.media",	model : "media_videotape",		datatype : "checkbox"},
+				{label : "Digital Photos",	section: "generalInfo.media",	model : "media_digital_photos",	datatype : "checkbox"},
+				{label : "Camera Phone",	section: "generalInfo.media",	model : "media_camera_phone",	datatype : "checkbox"},
+				{label : "Digital Video", 	section: "generalInfo.media",	model : "media_digital_video",	datatype : "checkbox"},
+				{label : "Magazine",		section: "generalInfo.media",	model : "media_magazine",		datatype : "checkbox"},
+				{label : "Web Cam",			section: "generalInfo.media",	model : "web_cam",				datatype : "checkbox"},
+				{label : "Photographs",		section: "generalInfo.media",	model : "media_photographs",	datatype : "checkbox"},
+				]
+		}
+	}
+	
+
+	// DATA FOR IDENTIFICATION TIMELINE //////////////////////////////
+	var generalIdenTimeline = function(){
+		return {
+			data : [	
+				{label : "Date of Files Creation",	section: "generalInfo.idenTimeline",	model : "date_entered_identified",		datatype : "date"},
+				{label : "Date Identified by LE",	section: "generalInfo.idenTimeline",	model : "creation_date",				datatype : "date"},
+				{label : "Date Indentified",		section: "generalInfo.idenTimeline",	model : "first_report_dtm",				datatype : "date"},
+				]
+		}
+	}
+
+	// DATA FOR DATE RECORD STARTED //////////////////////////////
+	var generalDateRecordStarted = function(){
+		return {
+			data : [	
+				{label : "Date Series Record Started",	section: "generalInfo.dateRecordStarted",	model : "create_dtm",			datatype : "date"},
+				{label : "Analyst",						section: "generalInfo.dateRecordStarted",	model : "analyst",				datatype : "dropdown", dddata: "analysts",	},
+				{label : "First Recorded by NCMEC",		section: "generalInfo.dateRecordStarted",	model : "first_recorded_ncmec",	datatype : "date"},
+				{label : "Related to CT/TA",			section: "generalInfo.dateRecordStarted",	model : "related_to_ctta",		datatype : "string"},
+				{label : "Where",						section: "generalInfo.dateRecordStarted",	model : "first_report_where",	datatype : "dropdown", dddata: ""},
+				{label : "Detail",						section: "generalInfo.dateRecordStarted",	model : "first_report_details",	datatype : "string"},
+				
+				]
+		}
+	}
+
 	// RETURN FAKE SECTIONS FOR ADVANDED SEARCH /////////////////////////////////////
 	var fakeTable = function(){
 		return {
@@ -364,7 +406,10 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		sendData		: sendData,
 		fakeTable		: fakeTable,
 		fakeColumn	: fakeColumn,
-		testData : testData
+		testData : testData,
+		generalMedia: generalMedia,
+		generalIdenTimeline : generalIdenTimeline,
+		generalDateRecordStarted : generalDateRecordStarted
 		//dropdownData	: dropdownData
 	};
 }]);

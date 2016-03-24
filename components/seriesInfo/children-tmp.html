@@ -21,7 +21,7 @@
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
 						<label>Name: </label>
-						<input type="text" class="form-control" ng-model="childrenList[itemIndex].name" ng-blur="isEmpty($event)" required/>
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].child" ng-blur="isEmpty($event)" required/>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
@@ -142,7 +142,7 @@
 			<div class="row ">
 				<div class="col-sm-3 form-group">
 					<label>Child Name: </label>
-					<span> {{childrenList[itemIndex].name}}</span>
+					<span> {{childrenList[itemIndex].child}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].age_category.length > 0'>
 					<label>Age Category: </label>

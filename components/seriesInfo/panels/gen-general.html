@@ -143,19 +143,19 @@
 		<!-- GENERAL NON EDITABLE ////////////////////////////////////////////////////////// -->
 		<div ng-if="!editable">
 			<div class="row ">
-				<div class="col-sm-3 form-group">
-					<label>SeriesID: </label>
+				<div class="col-sm-3 form-group" ng-if='generalInfo.general.seriesId.length > 0'>
+					<label>Series ID: </label>
 					<span> {{generalInfo.general.seriesId}}</span>
 				</div>
-				<div class="col-sm-3 form-group">
+				<div class="col-sm-3 form-group" ng-if='generalInfo.general.seriesName.length > 0'>
 					<label>Series Name: </label>
 					<span> {{generalInfo.general.seriesName}}</span>
 				</div>
-				<div class="col-sm-3 form-group">
+				<div class="col-sm-3 form-group" ng-if='generalInfo.general.analystName.length > 0'>
 					<label>Analyst Name: </label>
 					<span> {{generalInfo.general.analystName}}</span>
 				</div>
-				<div class="col-sm-3 form-group">
+				<div class="col-sm-3 form-group" ng-if='generalInfo.general.subjecttype.length > 0'>
 					<label>Series Type: </label>
 					<span> {{generalInfo.general.subjecttype}}</span>
 				</div>

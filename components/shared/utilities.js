@@ -43,19 +43,19 @@ angular.module('CVIPSMApp.utilities', [])
 		},
 		link: function (scope, element, attrs){
 			
-				var newElement;
-				//var model = attrs.fieldSect + "[0]." + attrs.fieldMod;
-				var model = attrs.fieldSect + "." + attrs.fieldMod;
+			var newElement;
+			//var model = attrs.fieldSect + "[0]." + attrs.fieldMod;
+			var model = attrs.fieldSect + "." + attrs.fieldMod;
 
-				var getEntityProp = $parse(model);
-				var setEntityProp = getEntityProp.assign;
+			var getEntityProp = $parse(model);
+			var setEntityProp = getEntityProp.assign;
 
-				scope.$watch(
-					function watchEntityProp() {return getEntityProp(scope.$parent);},
-					function updateFieldValue(value) {scope.model=value;}
-					);
+			scope.$watch(
+				function watchEntityProp() { return getEntityProp(scope.$parent);},
+				function updateFieldValue(value) {console.log(scope.model); scope.model=value;}
+				);
 
-				scope.$watch('model', function(value) {setEntityProp(scope.$parent, value);});
+			scope.$watch('model', function(value) {setEntityProp(scope.$parent, value); });
 
 			switch(attrs.datatype){
 				case "string" :
