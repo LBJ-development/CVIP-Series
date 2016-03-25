@@ -105,6 +105,8 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 				{label : "Date of Files Creation",	section: "generalInfo.idenTimeline",	model : "date_entered_identified",		datatype : "date"},
 				{label : "Date Identified by LE",	section: "generalInfo.idenTimeline",	model : "creation_date",				datatype : "date"},
 				{label : "Date Indentified",		section: "generalInfo.idenTimeline",	model : "first_report_dtm",				datatype : "date"},
+				{label : "Detail",						section: "generalInfo.dateRecordStarted",	model : "first_report_details",	datatype : "string"},
+				{label : "Detail",						section: "generalInfo.dateRecordStarted",	model : "first_report_details",	datatype : "string"},
 				]
 		}
 	}
