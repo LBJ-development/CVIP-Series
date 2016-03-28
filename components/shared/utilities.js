@@ -76,19 +76,21 @@ angular.module('CVIPSMApp.utilities', [])
 					break;
 				}
 
-			var url = CVIPConfig.contextPath + attrs.dddata;
-			scope.DDOptions = {
-				dataTextField: "disLabel",
-				dataValueField: "disLabel",
-				optionLabel: {
-					disLabel : "",
-					dbLabel: ""
-				},
-				dataSource: {
-						transport: {
-							read: {
-								dataType: "json",
-								url: url,
+			if(attrs.dddata.length > 0)	{
+				var url = CVIPConfig.contextPath + attrs.dddata;
+				scope.DDOptions = {
+					dataTextField: "disLabel",
+					dataValueField: "disLabel",
+					optionLabel: {
+						disLabel : "",
+						dbLabel: ""
+					},
+					dataSource: {
+							transport: {
+								read: {
+									dataType: "json",
+									url: url,
+							}
 						}
 					}
 				}

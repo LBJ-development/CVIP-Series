@@ -31,7 +31,6 @@ angular.module('CVIPSMApp.createSearch', [])
 		$scope.seriesName  =  result ;
 	});
 
-
 	$scope.basicSearch 		= true;
 	$scope.advancedSearch 	= false;
 	$scope.createSeries		= false;
@@ -49,7 +48,15 @@ angular.module('CVIPSMApp.createSearch', [])
 			disLabel : "Select a Section",
 			dbLabel: ""
 		},
-		dataSource: DataFtry.fakeTable().data
+		//dataSource: DataFtry.fakeTable().data,
+		dataSource: {
+			transport: {
+					read: {
+						dataType: "json",
+						url: CVIPConfig.contextPath + "tables",
+				}
+			}
+		}
 	}
 
 	var selectedTable, selectedColumn;
@@ -66,11 +73,11 @@ angular.module('CVIPSMApp.createSearch', [])
 		 select: function(e) {
 
 			var index = e.item.index() -1;
-			$scope.fieldData.dataType = DataFtry.fakeColumn(selectedTable).data[index].dataType;
-			$scope.fieldData.disLabel = DataFtry.fakeColumn(selectedTable).data[index].disLabel;
+			console.log(e.item.index())
+			//$scope.fieldData.dataType = DataFtry.fakeColumn(selectedTable).data[index].dataType;
+			//$scope.fieldData.disLabel = DataFtry.fakeColumn(selectedTable).data[index].disLabel;
 		 }
 	}
-
 
 	$scope.selectTable  = function(){
 
@@ -84,7 +91,16 @@ angular.module('CVIPSMApp.createSearch', [])
 		// ONLY TO REFRESH THE DATASOURCE!
 		$timeout(function(){
 			$scope.showColumn = true;
-			$scope.DDColumnOptions.dataSource  = DataFtry.fakeColumn(selectedTable).data;
+
+			//$scope.DDColumnOptions.dataSource  = DataFtry.fakeColumn(selectedTable).data;
+			$scope.DDColumnOptions.dataSource = {
+				transport: {
+					read: {
+						dataType: "json",
+						url: CVIPConfig.contextPath + "columns/" + selectedTable,
+					}
+				}
+			}
 		}, 200);
 	} 
 

@@ -127,7 +127,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 	}
 
 	// RETURN FAKE SECTIONS FOR ADVANDED SEARCH /////////////////////////////////////
-	var fakeTable = function(){
+/*	var fakeTable = function(){
 		return {
 				data : [
 					{dbLabel: "series", disLabel: "Series" },
@@ -145,9 +145,9 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 					{dbLabel: "survey", disLabel: "Survey" }
 				],
 			};
-		};
+		};*/
 	// RETURN FAKE CRITERIAS FOR ADVANDED SEARCH /////////////////////////////////////
-	var fakeColumn = function(table){
+	/*var fakeColumn = function(table){
 
 		var column = {};
 
@@ -220,7 +220,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 				column = series
 		}
 		return  column
-	}
+	}*/
 
 // RETURN DATA FOR THE DROPDOWN /////////////////////////
 
@@ -406,8 +406,8 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		// TESTING END ////////////////
 		getData		: getData,
 		sendData		: sendData,
-		fakeTable		: fakeTable,
-		fakeColumn	: fakeColumn,
+		//fakeTable		: fakeTable,
+		//fakeColumn	: fakeColumn,
 		testData : testData,
 		generalMedia: generalMedia,
 		generalIdenTimeline : generalIdenTimeline,
