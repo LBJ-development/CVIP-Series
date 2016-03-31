@@ -44,13 +44,13 @@
         <div class="col-sm-3  field-form-group"  ng-repeat="field in fieldsToDisplay track by $index">
             <div class="sharedCol4">
 
-                <div ng-if="field.dataType === 'string'" text-field label={{field.label}} table={{field.table}} display='advancedSearch' model='field.model'></div>
+                <div ng-if="field.dataType == 'varchar'" text-field label={{field.label}} table={{field.tableLabel}} display='advancedSearch' model='field.model'></div>
 
-                <div ng-if="field.dataType === 'date'" date-field label={{field.label}} table={{field.table}}  display='advancedSearch'  model='field.model'></div>
+                <div ng-if="field.dataType == 'datetime'" date-field label={{field.label}} table={{field.tableLabel}}  display='advancedSearch'  model='field.model'></div>
 
-                <div ng-if="field.dataType === 'dropdown'" drop-down label={{field.label}} table={{field.table}}  column={{field.column}}  display='advancedSearch'  model='field.model'></div>
+                <div ng-if="field.dataType == 'dropdown'" drop-down label={{field.label}} table={{field.tableLabel}}  column={{field.column}}  display='advancedSearch'  model='field.model'></div>
 
-                <div ng-if="field.dataType === 'checkbox'" check-box label={{field.label}} table={{field.table}}  column={{field.column}}  display='advancedSearch'  model='field.model'></div>
+                <div ng-if="field.dataType == 'int' || field.dataType === 'tinyint'" check-box label={{field.label}} table={{field.tableLabel}}  column={{field.column}}  display='advancedSearch'  model='field.model'></div>
 
             </div>
             <div >

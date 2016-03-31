@@ -11,13 +11,13 @@ angular.module('CVIPSMApp.createSearch', [])
 	function initializeDisplayList(){
 		$scope.fieldsToDisplay = [];
 		$scope.fieldsToDisplay = 	
-				[	{label : "Series Name",		model : "",	table : "series", column: "seriesname",		dataType : "string"},
-					{label : "Date Series Created", 	model : "",	table : "series", column: "dateseriescreated",	dataType : "date"},
-					{label : "Series Type", 		model : "", 	table : "series", column: "subjecttype",		dataType : "dropdown"},
-					{label : "Previous Series Type",	model :"",	table : "series", column: "previousseriestype",	dataType : "string"},
+				[	{label : "Series Name",				model : "",		table : "series", tableLabel: "Series",		column: "seriesname",			dataType : "varchar"},
+					{label : "Date Series Created", 	model : "",		table : "series", tableLabel: "Series",		column: "dateseriescreated",	dataType : "datetime"},
+					{label : "Series Type", 			model : "", 	table : "series", tableLabel: "Series",		column: "subjecttype",		dataType : "dropdown"},
+					{label : "Previous Series Type",	model :"",		table : "series", tableLabel: "Series",		column: "previousseriestype",	dataType : "varchar"},
 				];
 		
-		$scope.fieldData = {disLabel: "", table: "", column:"", dataType:"" };
+		$scope.fieldData = {disLabel: "", table: "", tableLabel: "", column:"", dataType:"" };
 		// IF THE DROPDOWN DATA IS EXISTING => RESET
 		if($("#DD-table").data("kendoDropDownList") !== undefined) $("#DD-table").data("kendoDropDownList").value(-1);
 		if($("#DD-column").data("kendoDropDownList") !== undefined) $("#DD-column").data("kendoDropDownList").value(-1);
@@ -30,16 +30,15 @@ angular.module('CVIPSMApp.createSearch', [])
 	DataFtry.getData(url).then(function(result){ 
 		$scope.seriesName  =  result ;
 	});
-
+	// VARIABLES //////////////////////////////////////////
 	$scope.basicSearch 		= true;
 	$scope.advancedSearch 	= false;
 	$scope.createSeries		= false;
 	$scope.showResult		= false;
 	$scope.showColumn		= false;
-
-	$scope.fieldData = {disLabel: "", table: "", column:"", dataType:"" };
-
+	$scope.fieldData = {disLabel: "", table: "", tableLabel: "", column:"", dataType:"" };
 	$scope.series = [];
+	var currentColumn = {};
 
 	$scope.DDTableOptions = {
 		dataTextField: "disLabel",
@@ -56,10 +55,18 @@ angular.module('CVIPSMApp.createSearch', [])
 						url: CVIPConfig.contextPath + "tables",
 				}
 			}
+		},
+		select: function(e){
+
+			$scope.fieldData.tableLabel = e.item.text();
+			//console.log($scope.fieldData.tableLable)
+
+
+
 		}
 	}
 
-	var selectedTable, selectedColumn;
+	var selectedTable, selectedColumn, index;
 
 	$scope.DDColumnOptions = {
 		dataTextField: "disLabel",
@@ -72,8 +79,13 @@ angular.module('CVIPSMApp.createSearch', [])
 		},
 		 select: function(e) {
 
-			var index = e.item.index() -1;
-			console.log(e.item.index())
+			index = e.item.index() -1;
+			//;
+
+			$scope.fieldData.disLabel = e.item.text();
+			$scope.fieldData.dataType = currentColumn[index].type;
+			//console.log($scope.fieldData.dataType);
+
 			//$scope.fieldData.dataType = DataFtry.fakeColumn(selectedTable).data[index].dataType;
 			//$scope.fieldData.disLabel = DataFtry.fakeColumn(selectedTable).data[index].disLabel;
 		 }
@@ -85,23 +97,33 @@ angular.module('CVIPSMApp.createSearch', [])
 		$scope.fieldData.disLabel = "";
 		$scope.fieldData.column = "";
 
-		selectedTable = $scope.fieldData.table;
-
 		$scope.showColumn = false;
-		// ONLY TO REFRESH THE DATASOURCE!
-		$timeout(function(){
+
+		var url = CVIPConfig.contextPath + "columns/" +  $scope.fieldData.table;
+
+		DataFtry.getData(url).then(function(result){ 
+			currentColumn =  result;
+			$scope.DDColumnOptions.dataSource = currentColumn;
 			$scope.showColumn = true;
+		
+			//console.log(result)
+		});
+		
+		// ONLY TO REFRESH THE DATASOURCE!
+		//$timeout(function(){
+			//$scope.showColumn = true;
 
 			//$scope.DDColumnOptions.dataSource  = DataFtry.fakeColumn(selectedTable).data;
-			$scope.DDColumnOptions.dataSource = {
+			//$scope.DDColumnOptions.dataSource = currentColumn;
+			/*$scope.DDColumnOptions.dataSource = {
 				transport: {
 					read: {
 						dataType: "json",
 						url: CVIPConfig.contextPath + "columns/" + selectedTable,
 					}
 				}
-			}
-		}, 200);
+			}*/
+		//}, 200);
 	} 
 
 	$scope.selectSearch = function(evt){
@@ -139,24 +161,29 @@ angular.module('CVIPSMApp.createSearch', [])
 				//console.log("JSON = " + jsonString);	
 	}
 
-// ADD/REMOVE PERSON OBJECTS ///////////////////////////////////////////////
-
+// ADD/REMOVE FIELD OBJECTS ///////////////////////////////////////////////
 	$scope.addToList = function(list) {
 		list.push({
-			label : $scope.fieldData.disLabel,	 
-			model :"",	
-			table : $scope.fieldData.table, 
-			column: $scope.fieldData.column,	
-			dataType : $scope.fieldData.dataType
+			label : 		$scope.fieldData.disLabel,	 
+			model : 		"",	
+			table : 		$scope.fieldData.table, 
+			tableLabel : 	$scope.fieldData.tableLabel, 
+			column: 		$scope.fieldData.column,	
+			dataType : 		$scope.fieldData.dataType
 		});
+		// RESET THE DROPDOWN LIST /////////////////////
 		$("#DD-column").data("kendoDropDownList").value(-1);
+		// REMOVE THE SELECTED ITEM FROM THE DROPDOWN LIST /////////////////////
+		var ddl =  $("#DD-column").data("kendoDropDownList");
+		var oldData = ddl.dataSource.data();
+		ddl.dataSource.remove(oldData[index]);
+		// TO REMOVE THE ADD BTN /////////////////////
+		$scope.fieldData.column = "";
 	};
 
 	$scope.removeFromList = function(list, index) {
 		list.splice(index, 1);
-	} ;
-
-
+	};
 
 	$scope.mainGridOptions = {
 			  
@@ -300,18 +327,18 @@ angular.module('CVIPSMApp.createSearch', [])
 	$scope.toggleSelectAll = function(ev) {
 
 		var dataSource = $(ev.target).closest("[kendo-grid]").data("kendoGrid").dataSource;
-        var filters = dataSource.filter();
-        var allData = dataSource.data();
-        var query = new kendo.data.Query(allData);
-        var items = query.filter(filters).data;
+		var filters = dataSource.filter();
+		var allData = dataSource.data();
+		var query = new kendo.data.Query(allData);
+		var items = query.filter(filters).data;
 		console.log(items);
 		
-        items.forEach(function(item){
+		items.forEach(function(item){
 			item.selected = ev.target.checked;
 			$scope.selectItem(item);
-        });
+		});
 		ev.currentTarget.checked ? $scope.caseNum = items.length : $scope.caseNum = 0; 
-    };
+	};
 
 	$scope.loadSeries = function(evt){
 
@@ -319,7 +346,7 @@ angular.module('CVIPSMApp.createSearch', [])
 
 		$timeout(function() {
 				$rootScope.$broadcast("loadExistingSeries", {seriesId: "56"});
-    	}, 500);
+		}, 500);
 	}
 
 	function detailInit(e) {
