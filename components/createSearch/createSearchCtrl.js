@@ -11,10 +11,10 @@ angular.module('CVIPSMApp.createSearch', [])
 	function initializeDisplayList(){
 		$scope.fieldsToDisplay = [];
 		$scope.fieldsToDisplay = 	
-				[	{label : "Series Name",				model : "",		table : "series", tableLabel: "Series",		column: "seriesname",			dataType : "varchar"},
-					{label : "Date Series Created", 	model : "",		table : "series", tableLabel: "Series",		column: "dateseriescreated",	dataType : "datetime"},
+				[	{label : "Series Name",				model : "",		table : "series", tableLabel: "Series",		column: "series",			dataType : "varchar"},
+					{label : "Date Series Created", 	model : "",		table : "series", tableLabel: "Series",		column: "create_dtm",	dataType : "datetime"},
 					{label : "Series Type", 			model : "", 	table : "series", tableLabel: "Series",		column: "subjecttype",		dataType : "dropdown"},
-					{label : "Previous Series Type",	model :"",		table : "series", tableLabel: "Series",		column: "previousseriestype",	dataType : "varchar"},
+					{label : "Previous Series Name",	model :"",		table : "series", tableLabel: "Series",		column: "previous_series",	dataType : "varchar"},
 				];
 		
 		$scope.fieldData = {disLabel: "", table: "", tableLabel: "", column:"", dataType:"" };
@@ -60,9 +60,6 @@ angular.module('CVIPSMApp.createSearch', [])
 
 			$scope.fieldData.tableLabel = e.item.text();
 			//console.log($scope.fieldData.tableLable)
-
-
-
 		}
 	}
 
@@ -158,7 +155,11 @@ angular.module('CVIPSMApp.createSearch', [])
 		$scope.showResult	= true;
 		var dataParam  = $scope.fieldsToDisplay.slice();
 		var jsonString = JSON.stringify({params: dataParam});
-				//console.log("JSON = " + jsonString);	
+		var url = CVIPConfig.contextPath + "execute";
+
+		DataFtry.sendData(url, jsonString).then(function(result){ 
+			$scope.mainGridOptions.dataSource.data = result.data;
+		});	
 	}
 
 // ADD/REMOVE FIELD OBJECTS ///////////////////////////////////////////////
@@ -174,9 +175,9 @@ angular.module('CVIPSMApp.createSearch', [])
 		// RESET THE DROPDOWN LIST /////////////////////
 		$("#DD-column").data("kendoDropDownList").value(-1);
 		// REMOVE THE SELECTED ITEM FROM THE DROPDOWN LIST /////////////////////
-		var ddl =  $("#DD-column").data("kendoDropDownList");
-		var oldData = ddl.dataSource.data();
-		ddl.dataSource.remove(oldData[index]);
+		//var ddl =  $("#DD-column").data("kendoDropDownList");
+		//var oldData = ddl.dataSource.data();
+		//ddl.dataSource.remove(oldData[index]);
 		// TO REMOVE THE ADD BTN /////////////////////
 		$scope.fieldData.column = "";
 	};
@@ -188,15 +189,14 @@ angular.module('CVIPSMApp.createSearch', [])
 	$scope.mainGridOptions = {
 			  
 		dataSource: {
-			data: DataTesting.getData(100),
+			//data: DataTesting.getData(100),
 			schema: {
 				model: {
 					fields: {
-						seriesName		: { type: "string" 	},
-						dateSeriesCreated: { type: "date" 	},
-						seriesType		: { type: "string" 	},
-						previousType	: { type: "string" 	},
-						description	: { type: "string" 	}		
+						series			: { type: "string" 	},
+						create_dtm		: { type: "date" 	},
+						subjecttype		: { type: "string" 	},
+						previous_series	: { type: "string" 	}
 						},
 					}
 				},
@@ -250,23 +250,23 @@ angular.module('CVIPSMApp.createSearch', [])
   //   				},
 		//detailTemplate: kendo.template($("#detail-template-Description").html()),
 		//detailTemplate: "<div>Test</div>",
-		 detailTemplate: kendo.template($("#template").html()), 
-		detailInit: detailInit,
+		//detailTemplate: kendo.template($("#template").html()), 
+		//detailInit: detailInit,
 		columns		: [{
-						field	: "seriesName",
+						field	: "series",
 						title	: "Series Name",
-						width	: "12%",
+						width	: "24%",
 						filterable	: false,
-						template: "<a href='' ng-click='loadSeries($event)' class='baseLinkText' >#=seriesName#</a>"
+						template: "<a href='' ng-click='loadSeries($event)' class='baseLinkText' >#=series#</a>"
 						},{
-						field	: "dateSeriesCreated",
+						field	: "create_dtm",
 						title	: "Date Series Created",
 						format	:"{0:MM/dd/yyyy}" ,
-						width	: "12%"
+						width	: "25%"
 						},{
-						field	: "seriesType",
+						field	: "subjecttype",
 						title	: "Series Type",
-						width	: "12%",
+						width	: "25%",
 						filterable: {
 							ui			: seriesType,
 							operators	: {
@@ -276,11 +276,17 @@ angular.module('CVIPSMApp.createSearch', [])
 								}
 							}
 						},{
-						field	: "previousType",
-						title	: "Previous Type",
-						filterable	: false,
-						width	: "12%"
-						}, {
+						field	: "previous_series",
+						title	: "Previous Name",
+						width	: "24%",
+						filterable: {
+							operators	: {
+								string	: {
+								contains	: "Contains",
+									}
+								}
+							}
+						},/* {
 						field	: "description",
 						title	: "Description",
 						width	: "47%",
@@ -291,7 +297,7 @@ angular.module('CVIPSMApp.createSearch', [])
 									}
 								}
 							}
-						},{
+						},*/{
 						width	: "3%",
 						filterable: false,
 						sortable: false,
@@ -341,19 +347,22 @@ angular.module('CVIPSMApp.createSearch', [])
 	};
 
 	$scope.loadSeries = function(evt){
-
 		$state.go('seriesInfo');
+		//console.log("FROM LOAD SERIES")
+		//console.log(evt.currentTarget.text)
 
+		//var series = evt.currentTarget.text;
 		$timeout(function() {
-				$rootScope.$broadcast("loadExistingSeries", {seriesId: "56"});
+			$rootScope.$broadcast("loadExistingSeries", {seriesId: "56"});
+			//$rootScope.$broadcast("loadExistingSeries", {series: series});
 		}, 500);
 	}
 
-	function detailInit(e) {
+	/*function detailInit(e) {
 
 		var detailRow = e.detailRow;
 			kendo.bind(detailRow, e.data);
-		}
+		}*/
 
 // DATAGRID FILTERS //////////////////////////////////////
 var seriesT	= ["Awaiting Case Info", "Identified", "NCMEC at Risk", "Unconfirmed", "Unfounded", "Unidentified", "Null"]

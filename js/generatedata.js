@@ -4,15 +4,15 @@ function generateSeriesSearchResult(rowscount, hasNullValues) {
     var data = new Array();
     if (rowscount == undefined) rowscount = 100;
 
-    var seriesName = [
+    var series = [
         "name" , "10Tennis" , "10Miltowel" , "A&L" , "Acatlan" , "ActiveBoy" , "Adam" , "Adrian" , "AdultFace" , "Aero" , "Ajax" , "Ami" , "AnimalDenim" , "Arsenal" , "Bany" , "Baseball" , "Bears" , "Beto" , "Blue" , "Boyred" , "Cookies" , "Conveniende Store" , "Cool dady" , "Dalmation" , "Dirt Nails" , "Eg" , "Franzu" , "Futball" ,"Garjey" ,"Escort" ,"Hotel" ,"HIV" ,"KifBook" ,"Kris" ,"Mat" ,"Mirrick" ,"Naruto" ,"Panties" ,"Reis" , "Ringmaster" ,"RJ" ,"Robots" ,"Shines" ,"Simba" ,"Thing" ,"Toys" , "Travis" ,"Trevor" ,"Teddy" ,"Towels" 
     ];
   
-   var seriesType = [
+   var subjecttype = [
         "Awaiting Case Info" , "Identified" , "NCMEC at Risk", "Unconfirmed", "Unfounded","Unidentified", "Null"
   ];
 
-    var previousType = [
+    var previous_series = [
         "Awaiting Case Info" , "Identified" , "NCMEC at Risk", "Unconfirmed", "Unfounded","Unidentified", "Null"
   ];
 
@@ -24,13 +24,13 @@ function generateSeriesSearchResult(rowscount, hasNullValues) {
     for (var i = 0; i < rowscount; i++) {
         var row = {};
     
-    var dateSeriesCreated = new Date();
-        dateSeriesCreated.setFullYear( 2005 + Math.round(Math.random() * 5) , Math.floor(Math.random() * 11), Math.floor(Math.random() * 27));
-        row["dateSeriesCreated"] = dateSeriesCreated;
+    var create_dtm = new Date();
+        create_dtm.setFullYear( 2005 + Math.round(Math.random() * 5) , Math.floor(Math.random() * 11), Math.floor(Math.random() * 27));
+        row["create_dtm"] = create_dtm;
     
-    row["seriesName"]     = seriesName[Math.floor(Math.random() * seriesName.length)];
-    row["seriesType"]   = seriesType[Math.floor(Math.random() * seriesType.length)];
-    row["previousType"] = previousType[Math.floor(Math.random() * previousType.length)];
+    row["series"]     = series[Math.floor(Math.random() * series.length)];
+    row["subjecttype"]   = subjecttype[Math.floor(Math.random() * subjecttype.length)];
+    row["previous_series"] = previous_series[Math.floor(Math.random() * previous_series.length)];
     row["description"] = description[Math.floor(Math.random() * description.length)];;
 
         data[i] = row;

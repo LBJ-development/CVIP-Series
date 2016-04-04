@@ -43,7 +43,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		$scope.idenTimelineInfo = DataFtry.generalIdenTimeline().data;
 		$scope.dateRecordStartedInfo = DataFtry.generalDateRecordStarted().data;
 
-		console.log($scope.dateRecordStarteddInfo);
+		//console.log($scope.dateRecordStarteddInfo);
 
 		$state.go('seriesInfo.general');
 	}
@@ -51,7 +51,8 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	// LOAD AN EXISTING SERIES //////////////////////////////
 	$rootScope.$on("loadExistingSeries", function(event, data){
 			
-		var url = CVIPConfig.contextPath + '/info/' + data.seriesId;
+		var url = CVIPConfig.contextPath + 'info/' + data.seriesId;
+		//var url = CVIPConfig.contextPath + 'names/' + data.series;
 		DataFtry.getData(url).then(function(result){
 
 			$scope.generalInfo 						= result.data.general[0];
@@ -62,7 +63,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 			$scope.suspectList 						= result.data.suspects;
 			$scope.childrenList 					= result.data.children;
 
-			console.log($scope.checklistDB);
+			//console.log($scope.checklistDB);
 			})
 		});
 

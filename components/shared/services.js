@@ -106,7 +106,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 				{label : "Date Identified by LE",	section: "generalInfo.idenTimeline",	model : "creation_date",				datatype : "date"},
 				{label : "Date Indentified",		section: "generalInfo.idenTimeline",	model : "first_report_dtm",				datatype : "date"},
 				{label : "Detail",						section: "generalInfo.dateRecordStarted",	model : "first_report_details",	datatype : "string"},
-				{label : "Detail",						section: "generalInfo.dateRecordStarted",	model : "first_report_details",	datatype : "string"},
+				
 				]
 		}
 	}
@@ -364,6 +364,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 
 		console.log("FROM DATA SEND");
 		console.log(url);
+		console.log(data);
 
 		var $promise =  $http({
 			method: 'POST',
@@ -374,8 +375,8 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		var deferred = $q.defer();
 		$promise.then(function(result){
 
-			if(result.data.status == 'SUCCESS'){
-				deferred.resolve(result.data.message);
+			if(result.statusText == 'OK'){
+				deferred.resolve(result);
 				} else {
 					alert('Woops something wen wrong with the AJAX call');
 				}

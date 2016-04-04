@@ -260,6 +260,10 @@
 					<label>Braces: </label>
 					<span> Yes</span>
 				</div>
+				<div class="col-sm-12 form-group" ng-if='suspectList[itemIndex].description.length > 0'>
+					<label>Description: </label>
+					<span>{{suspectList[itemIndex].description}}</span>
+				<div>
 				<!-- <div class="col-sm-3 form-group">
 					<label ng-show="showSPF">Physical Features: </label>
 					
@@ -270,10 +274,7 @@
 						</span>
 					</div> 
 				</div>
-				<div class="col-sm-12 form-group" ng-if='suspectList[itemIndex].description.length > 0'>
-					<label>Description: </label>
-					<span>{{suspectList[itemIndex].description}}</span>
-				<div> -->
+				 -->
 				<!-- <div  ng-repeat="suspect in suspectList track by $index"   ng-show="($index == itemIndex)">
 					<div  ng-repeat="item in suspect  | keys track by $index" ng-init="value = suspect[item]">
 						<div class="col-sm-3 form-group">
