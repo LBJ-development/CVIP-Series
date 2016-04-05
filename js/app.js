@@ -114,16 +114,11 @@ var app = angular.module('CVIPSMApp', [
 	/*.run(function ($rootScope, $state) {
 		
 		// MAY NEED LATER WHEN WE'LL CHECK FOR LOGIN CREDENTIAL BEFORE CHAGING STATE
-
 		$rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
 			var requireLogin = toState.data.requireLogin;
-
 			if(requireLogin && typeof sessionStorage.userName === 'undefined') {
-
 				event.preventDefault();
 				$state.go('login');
 		}
 	});
 });*/
-
- 

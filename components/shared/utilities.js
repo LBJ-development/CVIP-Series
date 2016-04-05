@@ -21,8 +21,6 @@ angular.module('CVIPSMApp.utilities', [])
 		});
 		console.log(list, name)
 	};
-
-
 	scope.removeFromList = function(list, index) {
 		list.splice(index, 1);
 	} ;
@@ -31,7 +29,7 @@ angular.module('CVIPSMApp.utilities', [])
 	}
 })
 
-// TESTING DYNAMIC FORM CREATION //////////////////////////////////////////////////////////////////
+// TESTING DYNAMIC FORM CREATION WITH EDITABLE ITEM //////////////////////////////////////////////////////////////////
 .directive('editableItem', function($parse, $compile, CVIPConfig){
 	return{
 		restrict: "A",
@@ -52,7 +50,7 @@ angular.module('CVIPSMApp.utilities', [])
 
 			scope.$watch(
 				function watchEntityProp() { return getEntityProp(scope.$parent);},
-				function updateFieldValue(value) {console.log(scope.model); scope.model=value;}
+				function updateFieldValue(value) { scope.model=value;}
 				);
 
 			scope.$watch('model', function(value) {setEntityProp(scope.$parent, value); });
@@ -98,6 +96,57 @@ angular.module('CVIPSMApp.utilities', [])
 		}
 	}
 })
+
+// TESTING DYNAMIC FORM CREATION WITH NON EDITABLE ITEM FOR VIEW //////////////////////////////////////////////////////////////////
+.directive('nonEditableItem', function($parse, $compile, CVIPConfig){
+	return{
+		restrict: "A",
+		scope:{
+			label: '@'
+		},
+		template: function(elements, attrs){
+			return "<label> {{label}}: </label>"
+		},
+		link: function (scope, element, attrs){
+
+			var newElement;
+			//var model = attrs.fieldSect + "[0]." + attrs.fieldMod;
+			var model = attrs.fieldSect + "." + attrs.fieldMod;
+
+			var getEntityProp = $parse(model);
+			var setEntityProp = getEntityProp.assign;
+
+			scope.$watch(
+				function watchEntityProp() { return getEntityProp(scope.$parent);},
+				function updateFieldValue(value) { scope.model=value;}
+				);
+
+			scope.$watch('model', function(value) {
+
+				if(value == undefined || value.length <1) $(element).parent().parent().css("display", "none");
+
+				console.log(value)
+				setEntityProp(scope.$parent, value); 
+			});
+
+			newElement = $compile("<input type='text' class='form-control' ng-model='model' />")(scope);
+			//newElement = $compile("<input type='text' class='form-control' ng-model='model' />")(scope);
+					element.append(newElement);  
+
+
+			
+		/*	var newElement;
+			//var model = attrs.fieldSect + "[0]." + attrs.fieldMod;
+			var model = attrs.fieldSect + "." + attrs.fieldMod;
+
+			newElement = $compile("<span class='form-control' ng-model='model'></span>")(scope);
+			//newElement = $compile("<p>{{model}}</p>")(scope);
+				element.append(newElement);  */
+
+		}
+	}
+})
+
 
 .directive('textField', function($parse, $compile){
 
@@ -252,24 +301,17 @@ angular.module('CVIPSMApp.utilities', [])
 	$scope.$on('RESET-PAGINATION', function(event) {
 		$scope.currentPage = 1;
 	});
-
 	$scope.pageChanged = function() {
 		$log.log('Page changed to: ' + $scope.currentPage);
 		$rootScope.$broadcast('PAGE-CHANGED', $scope.currentPage);
 	};
 });
-
-
-
 // SUMMARY CONTROLLER /////////////////////////////////////////////////////////
 .controller('SummaryCtrl', function($scope){
 	
 	$scope.isSearchable = false;
 	$scope.buttonClass = "btn-disabled";
 })
-
-
-
 // SELECT A STATE DIRECTIVE /////////////////////////////////////////////////////////
 .directive ('selectState',function ( $rootScope) {
 	return {
@@ -281,11 +323,9 @@ angular.module('CVIPSMApp.utilities', [])
 		 },
 	templateUrl: 'components/states.html',
 	link: function (scope, element, attrs){
-
 		}
 	};
 })
-
 // SELECT A GENDER /////////////////////////////////////////////////////////
 .directive ('selectGender',function ( $rootScope) {
 	return {
@@ -297,11 +337,9 @@ angular.module('CVIPSMApp.utilities', [])
 		 },
 	template: '<select class={{classdir}} ng-model="mod"> <option value=""></option><option value="Male">Male</option> <option value="Female">Female</option> <option value="T">Transgender</option></select>',
 	link: function (scope, element, attrs){
-
 		}
 	};
 })
-
 // SUMMARY DIRECTIVE /////////////////////////////////////////////////////////
 .directive ('summaryDir',function ( $rootScope) {
 	return {
@@ -356,7 +394,6 @@ angular.module('CVIPSMApp.utilities', [])
 		}
 	};
 })
-
 // EXT REQUESTOR  DIRECTIVE /////////////////////////////////////////////////////////
 .directive ('extRequestorDir',function () {
 	return {
@@ -365,11 +402,9 @@ angular.module('CVIPSMApp.utilities', [])
    // controller: 'SummaryCtrl',
 	templateUrl: 'components/extRequestor.html',
 	link: function (scope, element, attrs){
-
 		scope.isNCMECCcase = function(evt) {
 			
 			scope.cleanCase();
-
 			 if($(NCMECcase).is(":checked")) {
 				scope.addExtRequestor();
 				} else {
@@ -390,7 +425,6 @@ angular.module('CVIPSMApp.utilities', [])
 			}
 	   };
 })
-
 // CALENDAR DIRECTIVE ////////////////////////////////////////////////////////
 .directive("datepicker", function() {
 	return {
@@ -414,25 +448,19 @@ angular.module('CVIPSMApp.utilities', [])
 		}
 	}
 })
-
 // WATCH THE VIEWPORT SIZE //////////////////////////////////////////////
 .factory('WindowSizeFtry', [ '$rootScope' , '$window' , "$interval", function($rootScope, win, $interval) {
-
 	var wrapperWidth;
-
 	var delay = $interval(function() {
 		wrapperWidth = $("#wrapper").width();
 		$rootScope.$broadcast('wrapperWidthChanges', wrapperWidth);
 		   $interval.cancel(delay);
 	}, 500);
-
 	win.addEventListener('resize', function() {
 		wrapperWidth = $("#wrapper").width();
 		//BROADCAST THE WIDTH OF THE WRAPPER FOR THE WHOLE APPLICATION
 		$rootScope.$broadcast('wrapperWidthChanges', wrapperWidth);
-
 		}, false);
 	return { };
 }])
-
 */

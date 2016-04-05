@@ -102,10 +102,9 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 	var generalIdenTimeline = function(){
 		return {
 			data : [	
-				{label : "Date of Files Creation",	section: "generalInfo.idenTimeline",	model : "date_entered_identified",		datatype : "date"},
-				{label : "Date Identified by LE",	section: "generalInfo.idenTimeline",	model : "creation_date",				datatype : "date"},
-				{label : "Date Indentified",		section: "generalInfo.idenTimeline",	model : "first_report_dtm",				datatype : "date"},
-				{label : "Detail",						section: "generalInfo.dateRecordStarted",	model : "first_report_details",	datatype : "string"},
+				
+				{label : "Creation Date",	section: "generalInfo.idenTimeline",	model : "creation_date",				datatype : "date"},
+				{label : "First Report Date",		section: "generalInfo.idenTimeline",	model : "first_report_dtm",				datatype : "date"},
 				
 				]
 		}
@@ -119,7 +118,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 				{label : "Analyst",						section: "generalInfo.dateRecordStarted",	model : "analyst",				datatype : "dropdown", dddata: "analysts",	},
 				{label : "First Recorded by NCMEC",		section: "generalInfo.dateRecordStarted",	model : "first_recorded_ncmec",	datatype : "date"},
 				{label : "Related to CT/TA",			section: "generalInfo.dateRecordStarted",	model : "related_to_ctta",		datatype : "string"},
-				{label : "Where",						section: "generalInfo.dateRecordStarted",	model : "first_report_where",	datatype : "dropdown", dddata: ""},
+				{label : "Where",						section: "generalInfo.dateRecordStarted",	model : "first_report_where",	datatype : "string"},
 				{label : "Detail",						section: "generalInfo.dateRecordStarted",	model : "first_report_details",	datatype : "string"},
 				
 				]

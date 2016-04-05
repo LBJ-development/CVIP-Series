@@ -257,6 +257,7 @@ angular.module('CVIPSMApp.createSearch', [])
 						title	: "Series Name",
 						width	: "24%",
 						filterable	: false,
+
 						template: "<a href='' ng-click='loadSeries($event)' class='baseLinkText' >#=series#</a>"
 						},{
 						field	: "create_dtm",
@@ -348,12 +349,16 @@ angular.module('CVIPSMApp.createSearch', [])
 
 	$scope.loadSeries = function(evt){
 		$state.go('seriesInfo');
-		//console.log("FROM LOAD SERIES")
+
+		var grid = $("#grid").data("kendoGrid");
+		var dataItem = grid.dataItem($(evt.currentTarget).closest("tr"));
+		var ID = dataItem.series_id;
+
+		//console.log(seriesID);
 		//console.log(evt.currentTarget.text)
 
-		//var series = evt.currentTarget.text;
 		$timeout(function() {
-			$rootScope.$broadcast("loadExistingSeries", {seriesId: "56"});
+			$rootScope.$broadcast("loadExistingSeries", {seriesId: ID});
 			//$rootScope.$broadcast("loadExistingSeries", {series: series});
 		}, 500);
 	}

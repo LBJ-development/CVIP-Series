@@ -14,12 +14,23 @@
 	<!-- NON EDITABLE ////////////////////////////////////////////////////////// -->
 	<div ng-if="!editable">
 		<div class="row ">
-			<div class="col-sm-3 form-group" ng-repeat="item in generalInfo.idenTimeline | keys track by $index" ng-init="value = generalInfo.idenTimeline[item]" ng-show="value.length >0 || value == true">
+			<div class="col-sm-3 form-group" ng-repeat="item in generalInfo.idenTimeline track by $index"  ng-show="item.length >0 || item == true">
 			<!-- <div class="col-sm-3 form-group" ng-repeat="item in generalInfo.idenTimeline  track by $index"> -->
+				<label>{{idenTimelineInfo[$index].label}}: </label>
+				<span>{{item}}</span>
+				
+			</div>
+		</div>
+
+		<!-- <div class="row ">
+			<div class="col-sm-3 form-group" ng-repeat="item in generalInfo.idenTimeline | keys track by $index" ng-init="value = generalInfo.idenTimeline[item]" ng-show="value.length >0 || value == true">
+			<div class="col-sm-3 form-group" ng-repeat="item in generalInfo.idenTimeline  track by $index"> 
 				<label>{{idenTimelineInfo[$index].label}}: </label>
 				<span>{{value}}</span>
 				
 			</div>
-		</div>
+		</div> -->
+
+
 	</div>
 </div>

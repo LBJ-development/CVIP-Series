@@ -15,11 +15,11 @@ angular.module('CVIPSMApp.generalInfo', [])
  	// CREATE A NEW SERIES /////////////////////////
 	$rootScope.$on("createNewSeries", function(event, data){
 
-		$scope.generalInfo.general.seriesId = "123456789";
-		$scope.generalInfo.general.seriesName 		= data.seriesName;
-		$scope.generalInfo.general.subjecttype 		= data.seriesType;
-		$scope.generalInfo.general.analystName 		= data.analystName;
-		$scope.generalInfo.general.relatedToCTTA 	= data.relatedToCTTA;
+		$scope.generalInfo.general.seriesId = data.seriesId;
+		$scope.generalInfo.general.seriesName 		= data.series;
+		$scope.generalInfo.general.subjecttype 		= data.subjecttype;
+		$scope.generalInfo.general.analystName 		= data.analyst;
+		$scope.generalInfo.general.relatedToCTTA 	= data.relatedToCtta;
 		$rootScope.editable = true;
 	});
 
