@@ -38,12 +38,10 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	$scope.init = function (){
 		$("#mainBodyWrapper").css('width', infoWidth);
 
-		// LOAD THE ADDITIONAL DATA FOR THE DYNAMIC FIELDS////////////////
+		// LOAD THE INFO TO BUILD THE HTML ////////////////
 		$scope.mediaInfo = DataFtry.generalMedia().data;
 		$scope.idenTimelineInfo = DataFtry.generalIdenTimeline().data;
 		$scope.dateRecordStartedInfo = DataFtry.generalDateRecordStarted().data;
-
-		//console.log($scope.dateRecordStarteddInfo);
 
 		$state.go('seriesInfo.general');
 	}
@@ -55,14 +53,11 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		//var url = CVIPConfig.contextPath + 'names/' + data.series;
 		DataFtry.getData(url).then(function(result){
 
-			$scope.generalInfo 						= result.data.general[0];
-			$scope.generalInfo.media 				= result.data.general[0].media;
-			$scope.generalInfo.idenTimeline 		= result.data.general[0].IdentificationTimeline;
-			$scope.generalInfo.dateRecordStarted 	= result.data.general[0].dateRecordStarted;
-			$scope.suspectList 						= result.data.suspects;
-			$scope.childrenList 					= result.data.children;
+			$scope.generalInfo 		= result.data.general[0];
+			$scope.suspectList 		= result.data.suspects;
+			$scope.childrenList 	= result.data.children;
 
-			console.log($scope.generalInfo.dateRecordStarted);
+			//console.log($scope.generalInfo.dateRecordStarted);
 			})
 		});
 

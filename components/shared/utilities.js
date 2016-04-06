@@ -98,7 +98,7 @@ angular.module('CVIPSMApp.utilities', [])
 })
 
 // TESTING DYNAMIC FORM CREATION WITH NON EDITABLE ITEM FOR VIEW //////////////////////////////////////////////////////////////////
-.directive('nonEditableItem', function($parse, $compile, CVIPConfig){
+.directive('nonEditableItem', function($parse, $compile, CVIPConfig, $timeout){
 	return{
 		restrict: "A",
 		scope:{
@@ -109,44 +109,30 @@ angular.module('CVIPSMApp.utilities', [])
 		},
 		link: function (scope, element, attrs){
 
-			var newElement;
-			//var model = attrs.fieldSect + "[0]." + attrs.fieldMod;
-			var model = attrs.fieldSect + "." + attrs.fieldMod;
+			$timeout(function() {
 
-			var getEntityProp = $parse(model);
-			var setEntityProp = getEntityProp.assign;
+				var newElement;
+				var model = attrs.fieldSect + "." + attrs.fieldMod;
+				var getEntityProp = $parse(model);
+				var setEntityProp = getEntityProp.assign;
 
-			scope.$watch(
-				function watchEntityProp() { return getEntityProp(scope.$parent);},
-				function updateFieldValue(value) { scope.model=value;}
-				);
+				scope.$watch(
+					function watchEntityProp() { return getEntityProp(scope.$parent);},
+					function updateFieldValue(value) { scope.model=value;}
+					);
 
-			scope.$watch('model', function(value) {
+				scope.$watch('model', function(value) {
+					setEntityProp(scope.$parent, value); 
+					if(value !== undefined && value.length >0) $(element).parent().css("display", "inline-block");
+				});
 
-				if(value == undefined || value.length <1) $(element).parent().parent().css("display", "none");
+				newElement = $compile("<span>{{model}}</span>")(scope);
+				element.append(newElement);  
 
-				console.log(value)
-				setEntityProp(scope.$parent, value); 
-			});
-
-			newElement = $compile("<input type='text' class='form-control' ng-model='model' />")(scope);
-			//newElement = $compile("<input type='text' class='form-control' ng-model='model' />")(scope);
-					element.append(newElement);  
-
-
-			
-		/*	var newElement;
-			//var model = attrs.fieldSect + "[0]." + attrs.fieldMod;
-			var model = attrs.fieldSect + "." + attrs.fieldMod;
-
-			newElement = $compile("<span class='form-control' ng-model='model'></span>")(scope);
-			//newElement = $compile("<p>{{model}}</p>")(scope);
-				element.append(newElement);  */
-
+			}, 500);
 		}
 	}
 })
-
 
 .directive('textField', function($parse, $compile){
 
@@ -159,7 +145,6 @@ angular.module('CVIPSMApp.utilities', [])
 			model:'=model'
 		},
 		template: function(elements, attrs){
-
 
 			return "<label><span ng-show='display'>{{table}}</span><span ng-show='display'>: </span> {{label}}: </label><input type='text' class='form-control' ng-model='model' />"
 			//return "<label><span >{{table}}</span>" + "<span >: </span>" + "{{label}}: </label><input type='text' class='form-control' ng-model='model' />"
