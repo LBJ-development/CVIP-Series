@@ -20,7 +20,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 
 	$scope.itemIndex = 0;
 	$rootScope.editable = false;
-	$scope.generalInfo = { general: {}, idenTimeline: {},  activity:{}, dateRecordStarted: {}, media: {}};
+	$scope.generalInfo = { general: {}, idenTimeline: {},  activity:{}, dateRecordStarted: {}, media: {}, summaryStatistics: {}};
 	$scope.summaryLabels = [];
 	$scope.summaryData = {};
 	$scope.showSPF = false; // HACK TO DETERMINE IF THE PHYSICAL LABEL NEED TO SHOW IN THE VIEW MODE OF THE SUSPECT SECTION
@@ -42,6 +42,8 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		$scope.mediaInfo = DataFtry.generalMedia().data;
 		$scope.idenTimelineInfo = DataFtry.generalIdenTimeline().data;
 		$scope.dateRecordStartedInfo = DataFtry.generalDateRecordStarted().data;
+		$scope.activityInfo = DataFtry.generalActivity().data;
+		$scope.summaryStats = DataFtry.generalSummaryStats().data;
 
 		$state.go('seriesInfo.general');
 	}
@@ -57,7 +59,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 			$scope.suspectList 		= result.data.suspects;
 			$scope.childrenList 	= result.data.children;
 
-			//console.log($scope.generalInfo.dateRecordStarted);
+			console.log($scope.generalInfo);
 			})
 		});
 

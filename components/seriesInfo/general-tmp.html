@@ -18,13 +18,13 @@
 		<span class="tab-title">Sexual Activity</span>
 		<ul>
 			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!dispActivity" ><a href=""  ng-click="displayActivity()">Open</a></li>
-			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispActivity" ><a href=""  ng-click="displayActivity()">Close</a></li>
-			<li class="tab-sep"></li>
+			 <li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispActivity" ><a href=""  ng-click="displayActivity()">Close</a></li>
+			<!--<li class="tab-sep"></li>
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show="dispActivity" >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="dispActivity" >View</a></li>
 			<li class="tab-sep" ng-show="dispActivity" ></li>
 			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="addSuspect()"ng-show="dispActivity"  >Save</a></li>
-			<li class="tab-sep" ng-if="editable" ng-show="dispActivity" ></li>
+			<li class="tab-sep" ng-if="editable" ng-show="dispActivity" ></li> -->
 		</ul>
 	</div>
 
@@ -36,12 +36,12 @@
 		<ul>
 			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!dispIdentTime" ><a href=""  ng-click="dispIdentTimeline()">Open</a></li>
 			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispIdentTime" ><a href=""  ng-click="dispIdentTimeline()">Close</a></li>
-			<li class="tab-sep"></li>
+			<!-- <li class="tab-sep"></li>
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show="dispIdentTime"  >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="dispIdentTime" >View</a></li>
 			<li class="tab-sep" ng-show="dispIdentTime" ></li>
 			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="" ng-show="dispIdentTime"  >Save</a></li>
-			<li class="tab-sep" ng-if="editable" ng-show="dispIdentTime" ></li>
+			<li class="tab-sep" ng-if="editable" ng-show="dispIdentTime" ></li> -->
 		</ul>
 	</div>
 
@@ -53,12 +53,12 @@
 		<ul>
 			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!dispDateRecor" ><a href=""  ng-click="dispDateRecord()">Open</a></li>
 			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispDateRecor" ><a href=""  ng-click="dispDateRecord()">Close</a></li>
-			<li class="tab-sep"></li>
+			<!-- <li class="tab-sep"></li>
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show="dispDateRecor"  >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="dispDateRecor" >View</a></li>
 			<li class="tab-sep" ng-show="dispDateRecor" ></li>
 			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="" ng-show="dispDateRecor"  >Save</a></li>
-			<li class="tab-sep" ng-if="editable" ng-show="dispDateRecor" ></li>
+			<li class="tab-sep" ng-if="editable" ng-show="dispDateRecor" ></li> -->
 		</ul>
 	</div>
 	
@@ -70,18 +70,15 @@
 		<ul>
 			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!dispSumStat" ><a href=""  ng-click="dispSumStati()">Open</a></li>
 			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispSumStat" ><a href=""  ng-click="dispSumStati()">Close</a></li>
-			<li class="tab-sep"></li>
+			<!-- <li class="tab-sep"></li>
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show="dispSumStat"  >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="dispSumStat" >View</a></li>
 			<li class="tab-sep" ng-show="dispSumStat" ></li>
 			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="" ng-show="dispSumStat"  >Save</a></li>
-			<li class="tab-sep" ng-if="editable" ng-show="dispSumStat" ></li>
+			<li class="tab-sep" ng-if="editable" ng-show="dispSumStat" ></li> -->
 		</ul>
 	</div>
-	<div class="sectionHolder" ng-show="dispSumStat" >
-		<div class="sub-title" ng-if="!editable">Summary Statistics</div>
-		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
-	</div>
+	<div ng-include="'components/seriesInfo/panels/gen-summaryStats.html'"></div>
 
 <!--DESCRIPTION ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
@@ -89,12 +86,12 @@
 		<ul>
 			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!dispDescription" ><a href=""  ng-click="dispDescriptions()">Open</a></li>
 			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispDescription" ><a href=""  ng-click="dispDescriptions()">Close</a></li>
-			<li class="tab-sep"></li>
+			<!-- <li class="tab-sep"></li>
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show="dispDescription"  >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="dispDescription" >View</a></li>
 			<li class="tab-sep" ng-show="dispDescription" ></li>
 			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="" ng-show="dispDescription"  >Save</a></li>
-			<li class="tab-sep" ng-if="editable" ng-show="dispDescription" ></li>
+			<li class="tab-sep" ng-if="editable" ng-show="dispDescription" ></li> -->
 		</ul>
 	</div>
 	<div class="sectionHolder" ng-show="dispDescription" >
@@ -108,12 +105,12 @@
 		<ul>
 			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!dispChiIdent" ><a href=""  ng-click="dispChiIdenti()">Open</a></li>
 			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispChiIdent" ><a href=""  ng-click="dispChiIdenti()">Close</a></li>
-			<li class="tab-sep"></li>
+			<!-- <li class="tab-sep"></li>
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show="dispChiIdent"  >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="dispChiIdent" >View</a></li>
 			<li class="tab-sep" ng-show="dispChiIdent" ></li>
 			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="" ng-show="dispChiIdent"  >Save</a></li>
-			<li class="tab-sep" ng-if="editable" ng-show="dispChiIdent" ></li>
+			<li class="tab-sep" ng-if="editable" ng-show="dispChiIdent" ></li> -->
 		</ul>
 	</div>
 	<div class="sectionHolder" ng-show="dispChiIdent" >
@@ -127,12 +124,12 @@
 		<ul>
 			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!dispMedia" ><a href=""  ng-click="dispMedias()">Open</a></li>
 			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispMedia" ><a href=""  ng-click="dispMedias()">Close</a></li>
-			<li class="tab-sep"></li>
+			<!-- <li class="tab-sep"></li>
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show="dispMedia"  >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="dispMedia" >View</a></li>
 			<li class="tab-sep" ng-show="dispMedia" ></li>
 			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="" ng-show="dispMedia"  >Save</a></li>
-			<li class="tab-sep" ng-if="editable" ng-show="dispMedia" ></li>
+			<li class="tab-sep" ng-if="editable" ng-show="dispMedia" ></li> -->
 		</ul>
 	</div>
 	<div ng-include="'components/seriesInfo/panels/gen-media.html'"></div>
@@ -143,12 +140,12 @@
 		<ul>
 			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!dispImType" ><a href=""  ng-click="dispImTypes()">Open</a></li>
 			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="dispImType" ><a href=""  ng-click="dispImTypes()">Close</a></li>
-			<li class="tab-sep"></li>
+			<!-- <li class="tab-sep"></li>
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show="dispImType"  >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="dispImType" >View</a></li>
 			<li class="tab-sep" ng-show="dispImType" ></li>
 			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="" ng-show="dispImType"  >Save</a></li>
-			<li class="tab-sep" ng-if="editable" ng-show="dispImType" ></li>
+			<li class="tab-sep" ng-if="editable" ng-show="dispImType" ></li> -->
 		</ul>
 	</div>
 	<div class="sectionHolder" ng-show="dispImType" >

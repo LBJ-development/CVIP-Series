@@ -15,7 +15,7 @@
 	<div ng-if="!editable">
 		<div class="row ">
 			<div class="col-sm-3 view-form-group" ng-repeat="item in idenTimelineInfo track by $index">
-				<div non-editable-item label={{item.label}} field-sect={{item.section}} field-mod={{item.model}} ></div>
+				<div non-editable-item label={{item.label}} field-sect={{item.section}} field-mod={{item.model}} datatype={{item.datatype}}></div>
 			</div>
 		</div>
 	</div>

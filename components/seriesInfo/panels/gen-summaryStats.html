@@ -1,10 +1,10 @@
-<div class="sectionHolder" ng-show="dispIdentTime" >
-	<div class="sub-title" ng-if="!editable">Sexual Activity</div>
+<div class="sectionHolder" ng-show="dispSumStat" >
+	<div class="sub-title" ng-if="!editable">Summary Statistics</div>
 	<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
 	<!-- EDITABLE ////////////////////////////////////////////////////////// -->
 	<div ng-if="editable">
 		<div class="row " style="padding-bottom:30px">
-			<div class="col-sm-3 field-form-group" style="padding-top:0; height:30px" ng-repeat="item in activityInfo track by $index">
+			<div class="col-sm-3 field-form-group" style="padding-top:0; height:30px" ng-repeat="item in summaryStats track by $index">
 				<div class="sharedCol4">
 					<div editable-item label={{item.label}} dddata={{item.dddata}} field-sect={{item.section}} field-mod={{item.model}} datatype={{item.datatype}} ></div>
 				</div>
@@ -14,7 +14,7 @@
 	<!-- NON EDITABLE ////////////////////////////////////////////////////////// -->
 	<div ng-if="!editable">
 		<div class="row">
-			<div class="col-sm-3 view-form-group" style="padding-top:0; height:30px" ng-repeat="item in activityInfo track by $index">
+			<div class="col-sm-3 view-form-group" style="padding-top:0; height:30px" ng-repeat="item in summaryStats track by $index">
 				<div non-editable-item label={{item.label}} field-sect={{item.section}} field-mod={{item.model}} datatype={{item.datatype}}  ></div>
 			</div>
 		</div>

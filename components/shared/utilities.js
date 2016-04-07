@@ -122,13 +122,32 @@ angular.module('CVIPSMApp.utilities', [])
 					);
 
 				scope.$watch('model', function(value) {
+
 					setEntityProp(scope.$parent, value); 
-					if(value !== undefined && value.length >0) $(element).parent().css("display", "inline-block");
+
+					var stringValue = value.toString();
+
+					if(value == true  || (value !== undefined && stringValue.length >0)) $(element).parent().css("display", "inline-block");
 				});
 
-				newElement = $compile("<span>{{model}}</span>")(scope);
-				element.append(newElement);  
-
+				switch(attrs.datatype){
+					case "string" :
+						newElement = $compile("<span>{{model}}</span>")(scope);
+						element.append(newElement);  
+						break;
+					case "date" :
+						newElement = $compile("<span>{{model}}</span>")(scope);
+						element.append(newElement);  
+						break;
+					case "dropdown" :
+						newElement = $compile("<span>{{model}}</span>")(scope);
+						element.append(newElement);  
+						break;
+					case "checkbox" :
+						newElement = $compile("<span>Yes</span>")(scope);
+						element.append(newElement);  
+						break;
+				}
 			}, 500);
 		}
 	}

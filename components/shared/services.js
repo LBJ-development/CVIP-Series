@@ -82,22 +82,6 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		}
 	}
 
-	// DATA FOR MEDIA //////////////////////////////
-	var generalMedia = function(){
-		return {
-			data : [	
-				{label : "Videotape",		section: "generalInfo.media",	model : "media_videotape",		datatype : "checkbox"},
-				{label : "Digital Photos",	section: "generalInfo.media",	model : "media_digital_photos",	datatype : "checkbox"},
-				{label : "Camera Phone",	section: "generalInfo.media",	model : "media_camera_phone",	datatype : "checkbox"},
-				{label : "Digital Video", 	section: "generalInfo.media",	model : "media_digital_video",	datatype : "checkbox"},
-				{label : "Magazine",		section: "generalInfo.media",	model : "media_magazine",		datatype : "checkbox"},
-				{label : "Web Cam",			section: "generalInfo.media",	model : "web_cam",				datatype : "checkbox"},
-				{label : "Photographs",		section: "generalInfo.media",	model : "media_photographs",	datatype : "checkbox"},
-				]
-		}
-	}
-	
-
 	// DATA FOR IDENTIFICATION TIMELINE //////////////////////////////
 	var generalIdenTimeline = function(){
 		return {
@@ -105,11 +89,11 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 				
 				{label : "Creation Date",	section: "generalInfo.idenTimeline",	model : "creation_date",				datatype : "date"},
 				{label : "First Report Date",		section: "generalInfo.idenTimeline",	model : "first_report_dtm",				datatype : "date"},
+				{label : "Date Identified",		section: "generalInfo.idenTimeline",	model : "date_entered_identified",				datatype : "date"},
 				
 				]
 		}
 	}
-
 	// DATA FOR DATE RECORD STARTED //////////////////////////////
 	var generalDateRecordStarted = function(){
 		return {
@@ -121,6 +105,58 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 				{label : "Where",						section: "generalInfo.dateRecordStarted",	model : "first_report_where",	datatype : "string"},
 				{label : "Detail",						section: "generalInfo.dateRecordStarted",	model : "first_report_details",	datatype : "string"},
 				
+				]
+		}
+	}
+	// DATA FOR DATE RECORD STARTED //////////////////////////////
+	var generalActivity = function(){
+		return {
+			data : [	
+				{label : "Bondage",					section: "generalInfo.activity",	model : "bondage_sm",				datatype : "checkbox"},
+				{label : "Defecation",				section: "generalInfo.activity",	model : "defecation",				datatype : "checkbox"},
+				{label : "Exposure of Genitals/Anus",section: "generalInfo.activity",	model : "exposure_genitalia_anus",	datatype : "checkbox"},
+				{label : "Erotica Fully Clothed",	section: "generalInfo.activity",	model : "erotica_fully_clothed",	datatype : "checkbox"},
+				{label : "Erotica Present",			section: "generalInfo.activity",	model : "erotica_present",			datatype : "checkbox"},
+				{label : "Exposure of Breast",		section: "generalInfo.activity",	model : "exposure_breast_chest",	datatype : "checkbox"},
+				{label : "Urination",				section: "generalInfo.activity",	model : "urination",				datatype : "checkbox"},
+				{label : "Licking",					section: "generalInfo.activity",	model : "licking",					datatype : "checkbox"},
+				{label : "Oral Copulation",			section: "generalInfo.activity",	model : "oral_copulation",			datatype : "checkbox"},
+				{label : "Ejaculation",				section: "generalInfo.activity",	model : "ejaculation_seen",			datatype : "checkbox"},
+				{label : "Manual Stimulation",		section: "generalInfo.activity",	model : "manual_stimulation",		datatype : "checkbox"},
+				{label : "Full Nudity",				section: "generalInfo.activity",	model : "full_nudity",				datatype : "checkbox"},
+				{label : "Bestiality",				section: "generalInfo.activity",	model : "bestiality",				datatype : "checkbox"},
+				{label : "Kissing",					section: "generalInfo.activity",	model : "kissing",					datatype : "checkbox"},
+				{label : "Vaginal Penetration",		section: "generalInfo.activity",	model : "vaginal_penetration",		datatype : "checkbox"},
+				{label : "Drugged Sleeping",		section: "generalInfo.activity",	model : "drugged_sleeping",			datatype : "checkbox"},
+				{label : "Anal Penetration",		section: "generalInfo.activity",	model : "anal_penetration",			datatype : "checkbox"},
+				{label : "Other Sexual Content",	section: "generalInfo.activity",	model : "other_sexual_content",		datatype : "checkbox"},
+				]
+		}
+	}
+
+	// DATA FOR IDENTIFICATION TIMELINE //////////////////////////////
+	var generalSummaryStats = function(){
+		return {
+			data : [	
+				
+				{label : "Number of Offenders",	section: "generalInfo.summaryStatistics",	model : "number_offenders",				datatype : "string"},
+				{label : "Number of Images",		section: "generalInfo.summaryStatistics",	model : "number_images",				datatype : "string"},
+				{label : "Number of Victims",		section: "generalInfo.summaryStatistics",	model : "number_child_victims",				datatype : "string"},
+				
+				]
+		}
+	}
+	// DATA FOR MEDIA //////////////////////////////
+	var generalMedia = function(){
+		return {
+			data : [	
+				{label : "Videotape",		section: "generalInfo.media",	model : "media_videotape",		datatype : "checkbox"},
+				{label : "Digital Photos",	section: "generalInfo.media",	model : "media_digital_photos",	datatype : "checkbox"},
+				{label : "Camera Phone",	section: "generalInfo.media",	model : "media_camera_phone",	datatype : "checkbox"},
+				{label : "Digital Video", 	section: "generalInfo.media",	model : "media_digital_video",	datatype : "checkbox"},
+				{label : "Magazine",		section: "generalInfo.media",	model : "media_magazine",		datatype : "checkbox"},
+				{label : "Web Cam",			section: "generalInfo.media",	model : "web_cam",				datatype : "checkbox"},
+				{label : "Photographs",		section: "generalInfo.media",	model : "media_photographs",	datatype : "checkbox"},
 				]
 		}
 	}
@@ -411,7 +447,9 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		testData : testData,
 		generalMedia: generalMedia,
 		generalIdenTimeline : generalIdenTimeline,
-		generalDateRecordStarted : generalDateRecordStarted
+		generalDateRecordStarted : generalDateRecordStarted,
+		generalActivity : generalActivity,
+		generalSummaryStats : generalSummaryStats
 		//dropdownData	: dropdownData
 	};
 }]);
