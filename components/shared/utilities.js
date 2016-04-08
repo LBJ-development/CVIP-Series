@@ -125,7 +125,7 @@ angular.module('CVIPSMApp.utilities', [])
 
 					setEntityProp(scope.$parent, value); 
 
-					var stringValue = value.toString();
+					if(value !== undefined ) var stringValue = value.toString();
 
 					if(value == true  || (value !== undefined && stringValue.length >0)) $(element).parent().css("display", "inline-block");
 				});

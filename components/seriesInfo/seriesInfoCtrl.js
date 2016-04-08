@@ -154,6 +154,21 @@ angular.module('CVIPSMApp.seriesInfo', [])
 		$scope.itemIndex = $scope.childrenList.length -1; 
 	}
 
+	$scope.saveSeries = function(){
+
+		//var dataParam  = $scope.generalInfo.slice(); FOR ARRAYS
+		var dataParam  = $scope.generalInfo;
+		var jsonString = JSON.stringify({params: dataParam});
+
+		console.log("FROM SAVE SERIES");
+		console.log(jsonString)
+		/*var url = CVIPConfig.contextPath + "execute";
+
+		DataFtry.sendData(url, jsonString).then(function(result){ 
+			
+		});	*/
+	}
+
 	$scope.deleteItem = function(){
 		currentList.splice([$scope.itemIndex], 1);
 		$scope.itemIndex = $scope.suspectList.length -1;

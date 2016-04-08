@@ -397,9 +397,9 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 	// TESTING END ////////////////
 */	var sendData = function(url, data){
 
-		console.log("FROM DATA SEND");
-		console.log(url);
-		console.log(data);
+		// console.log("FROM DATA SEND");
+		// console.log(url);
+		// console.log(data);
 
 		var $promise =  $http({
 			method: 'POST',
