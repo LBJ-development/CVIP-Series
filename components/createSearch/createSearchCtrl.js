@@ -10,14 +10,20 @@ angular.module('CVIPSMApp.createSearch', [])
 
 	function initializeDisplayList(){
 		$scope.fieldsToDisplay = [];
-		$scope.fieldsToDisplay = 	
+		/*$scope.fieldsToDisplay = 	
 				[	{label : "Series Name",				model : "",		table : "series", tableLabel: "Series",		column: "series",			dataType : "varchar"},
 					{label : "Date Series Created", 	model : "",		table : "series", tableLabel: "Series",		column: "create_dtm",	dataType : "datetime"},
 					{label : "Series Type", 			model : "", 	table : "series", tableLabel: "Series",		column: "subjecttype",		dataType : "dropdown"},
-					{label : "Previous Series Name",	model :"",		table : "series", tableLabel: "Series",		column: "previous_series",	dataType : "varchar"},
-				];
-		
-		$scope.fieldData = {disLabel: "", table: "", tableLabel: "", column:"", dataType:"" };
+					{label : "Previous Series Name",	model :"",		table : "series_history", tableLabel: "Series",		column: "previous_series",	dataType : "varchar"},
+				];*/
+
+		$scope.fieldsToDisplay =      
+			[	{label : "Series Name",				model : "",       table : "series_new",		tableLabel: "Series",		column: "series",             dataType : "varchar"},
+				{label : "Date Series Created",		model : "",       table : "series_new",		tableLabel: "Series",		column: "create_dtm",      	dataType : "datetime"},
+				{label : "Series Type",				model : "",       table : "series_new",		tableLabel: "Series",		column: "subjecttype",        dataType : "dropdown"},
+				{label : "Previous Series Name",	model : "",       table : "series_history",	tableLabel: "Series",		column: "previous_series",      dataType : "varchar"},
+			];
+
 		// IF THE DROPDOWN DATA IS EXISTING => RESET
 		if($("#DD-table").data("kendoDropDownList") !== undefined) $("#DD-table").data("kendoDropDownList").value(-1);
 		if($("#DD-column").data("kendoDropDownList") !== undefined) $("#DD-column").data("kendoDropDownList").value(-1);
@@ -36,7 +42,9 @@ angular.module('CVIPSMApp.createSearch', [])
 	$scope.createSeries		= false;
 	$scope.showResult		= false;
 	$scope.showColumn		= false;
-	$scope.fieldData = {disLabel: "", table: "", tableLabel: "", column:"", dataType:"" };
+	$scope.basicGrid 		= true;
+	$scope.advancedGrid 	= false;
+	$scope.fieldData =	{label : "",model : "", table : "", tableLabel: "", column: "", dataType : ""},
 	$scope.series = [];
 	var currentColumn = {};
 
@@ -67,7 +75,7 @@ angular.module('CVIPSMApp.createSearch', [])
 
 	$scope.DDColumnOptions = {
 		dataTextField: "disLabel",
-		dataValueField: "dbLabel",
+		dataValueField: "column",
 		autoBind: false,
 		height: 500,
 		optionLabel: {
@@ -81,6 +89,7 @@ angular.module('CVIPSMApp.createSearch', [])
 
 			$scope.fieldData.disLabel = e.item.text();
 			$scope.fieldData.dataType = currentColumn[index].type;
+
 			//console.log($scope.fieldData.dataType);
 
 			//$scope.fieldData.dataType = DataFtry.fakeColumn(selectedTable).data[index].dataType;
@@ -102,6 +111,9 @@ angular.module('CVIPSMApp.createSearch', [])
 			currentColumn =  result;
 			$scope.DDColumnOptions.dataSource = currentColumn;
 			$scope.showColumn = true;
+
+			console.log("SELECT A TABLE")
+			console.log($scope.DDColumnOptions.dataSource)
 		
 			//console.log(result)
 		});
@@ -132,6 +144,8 @@ angular.module('CVIPSMApp.createSearch', [])
 		switch($(evt.currentTarget).attr('id') ){
 			case "1":
 				$scope.basicSearch = true;
+				$scope.basicGrid = true;
+				$scope.advancedGrid = false;
 				$scope.advancedSearch = false;
 				$scope.showColumn = false;
 				initializeDisplayList();
@@ -139,6 +153,8 @@ angular.module('CVIPSMApp.createSearch', [])
 			case "2":
 				$scope.basicSearch = true;
 				$scope.advancedSearch = true;
+				$scope.basicGrid = false;
+				$scope.advancedGrid = true;
 				break;
 			case "3":
 				$scope.createSeries = true;
@@ -157,8 +173,11 @@ angular.module('CVIPSMApp.createSearch', [])
 		var jsonString = JSON.stringify({params: dataParam});
 		var url = CVIPConfig.contextPath + "execute";
 
+		console.log(jsonString)
+
 		DataFtry.sendData(url, jsonString).then(function(result){ 
 			$scope.mainGridOptions.dataSource.data = result.data;
+			//console.log(result.data)
 		});	
 	}
 
@@ -378,5 +397,137 @@ var seriesT	= ["Awaiting Case Info", "Identified", "NCMEC at Risk", "Unconfirmed
 			optionLabel: "--Select Value--"
 		});
 	}
+
+	//example data received from remote source via jQuery ajax merthod
+var data = [{
+  "Name": "daya",
+  "Role": "Developer",
+  "Dept": "Dev",
+  "Date": "\/Date(836438400000)\/",
+  "Balance": 23
+}, {
+  "Name": "siva",
+  "Role": "Developer",
+  "Dept": "Dev",
+  "Date": "\/Date(836438400000)\/",
+  "Balance": 23
+}, {
+  "Name": "sivadaya",
+  "Role": "Developer",
+  "Dept": "Dev",
+  "Date": "\/Date(836438400000)\/",
+  "Balance": 23
+}, {
+  "Name": "dayasiva",
+  "Role": "Developer",
+  "Dept": "Dev",
+  "Date": "\/Date(836438400000)\/",
+  "Balance": 23
+}];
+
+//in the success handler of the ajax method call the function below with the received data:
+var dateFields = [];
+generateGrid(data)
+
+$scope.testFunction = function(evt){
+
+	$scope.showResult = true;
+
+	}
+
+
+
+function generateGrid(gridData) {
+
+	console.log("FROM GENERATE GRID")
+
+
+  var model = generateModel(gridData[0]);
+
+  var parseFunction;
+  if (dateFields.length > 0) {
+	parseFunction = function (response) {
+	  for (var i = 0; i < response.length; i++) {
+		for (var fieldIndex = 0; fieldIndex < dateFields.length; fieldIndex++) {
+		  var record = response[i];
+		  record[dateFields[fieldIndex]] = kendo.parseDate(record[dateFields[fieldIndex]]);
+		}
+	  }
+	  return response;
+	};
+  }
+
+  var grid = $("#gridAdvanced").kendoGrid({
+	dataSource: {
+	  data: gridData,
+	  schema: {
+		model: model,
+		parse: parseFunction
+	  }
+	},
+	editable: true,
+	sortable: true
+  });
+}
+
+function generateModel(gridData) {
+	console.log("FROM GENERATE MODEL")
+  var model = {};
+  model.id = "ID";
+  var fields = {};
+  for (var property in gridData) {
+	var propType = typeof gridData[property];
+
+	if (propType == "number") {
+	  fields[property] = {
+		type: "number",
+		validation: {
+		  required: true
+		}
+	  };
+	} else if (propType == "boolean") {
+	  fields[property] = {
+		type: "boolean",
+		validation: {
+		  required: true
+		}
+	  };
+	} else if (propType == "string") {
+	  var parsedDate = kendo.parseDate(gridData[property]);
+	  if (parsedDate) {
+		fields[property] = {
+		  type: "date",
+		  validation: {
+			required: true
+		  }
+		};
+		dateFields.push(property);
+	  } else {
+		fields[property] = {
+		  validation: {
+			required: true
+		  }
+		};
+	  }
+	} else {
+	  fields[property] = {
+		validation: {
+		  required: true
+		}
+	  };
+	}
+
+  }
+  model.fields = fields;
+
+  return model;
+}
+
+
+
+
+
+
+
 
 }]);

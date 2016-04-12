@@ -60,6 +60,8 @@
         <div class="col-sm-3  field-form-group" style="float:left">
             <button class="btn-primary" style="float:left; margin-top:23px" ng-click="getSeries()">SEARCH
             </button>
+            <button class="btn-primary" style="float:left; margin-top:23px" ng-click="testFunction()">TEST
+            </button>
         </div>
     </div>
 
@@ -74,10 +76,20 @@
         </div>
         <div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
             <div role="datagrid" class="grid-holder" >
-                <div kendo-grid="mainGrid" id="grid" k-options="mainGridOptions" k-rebind="mainGridOptions"  k-ng-delay="mainGridOptions"></div> 
+                <div kendo-grid="mainGrid" id="grid" k-options="mainGridOptions" k-rebind="mainGridOptions"  k-ng-delay="mainGridOptions" ng-if="basicGrid"></div> 
+               
             </div> 
         </div>
+
+        <!--  <div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
+            <div role="datagrid" class="grid-holder" >
+               <div id="gridAdvanced"></div>
+            </div> 
+        </div>
+ -->
+
     </div>
+ 
 <!-- FOOTER  //////////////////////////////////////////////////////// -->
      <div footer></div>   
 </div>
