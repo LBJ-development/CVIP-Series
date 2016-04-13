@@ -74,21 +74,21 @@
             <span class="sub-title" style="display: inline-block; float:left">Search Result</span>
              <span class="tabPos-btn exportToXL-btn" style="display: inline-block; float:right; position:relative;top:20px"><a href="" id="2"  ng-click="selectSearch($event)" >Export to Excel</a></span >
         </div>
-        <div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
+    <!--     <div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
             <div role="datagrid" class="grid-holder" >
                 <div kendo-grid="mainGrid" id="grid" k-options="mainGridOptions" k-rebind="mainGridOptions"  k-ng-delay="mainGridOptions" ng-if="basicGrid"></div> 
                
             </div> 
         </div>
-
-        <!--  <div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
+ -->
+         <div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
             <div role="datagrid" class="grid-holder" >
-               <div id="gridAdvanced"></div>
+               <div kendo-grid="advancedGrid"  k-options="advancedGridOptions" k-rebind="advancedGridOptions"  k-ng-delay="advancedGridOptions"  id="gridAdvanced" ></div>
             </div> 
         </div>
- -->
-
     </div>
+
+
  
 <!-- FOOTER  //////////////////////////////////////////////////////// -->
      <div footer></div>   

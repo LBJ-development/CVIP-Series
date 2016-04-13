@@ -112,8 +112,8 @@ angular.module('CVIPSMApp.createSearch', [])
 			$scope.DDColumnOptions.dataSource = currentColumn;
 			$scope.showColumn = true;
 
-			console.log("SELECT A TABLE")
-			console.log($scope.DDColumnOptions.dataSource)
+			// console.log("SELECT A TABLE")
+			// console.log($scope.DDColumnOptions.dataSource)
 		
 			//console.log(result)
 		});
@@ -173,7 +173,7 @@ angular.module('CVIPSMApp.createSearch', [])
 		var jsonString = JSON.stringify({params: dataParam});
 		var url = CVIPConfig.contextPath + "execute";
 
-		console.log(jsonString)
+		//console.log(jsonString)
 
 		DataFtry.sendData(url, jsonString).then(function(result){ 
 			$scope.mainGridOptions.dataSource.data = result.data;
@@ -399,7 +399,8 @@ var seriesT	= ["Awaiting Case Info", "Identified", "NCMEC at Risk", "Unconfirmed
 	}
 
 	//example data received from remote source via jQuery ajax merthod
-var data = [{
+
+/*var data = [{
   "Name": "daya",
   "Role": "Developer",
   "Dept": "Dev",
@@ -423,111 +424,149 @@ var data = [{
   "Dept": "Dev",
   "Date": "\/Date(836438400000)\/",
   "Balance": 23
-}];
+}];*/
 
-//in the success handler of the ajax method call the function below with the received data:
+var model;
+var data = [];
 var dateFields = [];
-generateGrid(data)
 
 $scope.testFunction = function(evt){
 
-	$scope.showResult = true;
-
-	}
-
-
+	$scope.showResult	= true;
+	var dataParam  = $scope.fieldsToDisplay.slice();
+	var jsonString = JSON.stringify({params: dataParam});
+	var url = CVIPConfig.contextPath + "execute";
+	
+	DataFtry.sendData(url, jsonString).then(function(result){ 
+		data = result.data;
+		generateGrid(data)
+	});	
+}
 
 function generateGrid(gridData) {
 
 	console.log("FROM GENERATE GRID")
 
+	model = generateModel(gridData[0]);
 
-  var model = generateModel(gridData[0]);
+	var parseFunction;
+	if (dateFields.length > 0) {
+		parseFunction = function (response) {
+			for (var i = 0; i < response.length; i++) {
+				for (var fieldIndex = 0; fieldIndex < dateFields.length; fieldIndex++) {
+					var record = response[i];
+					record[dateFields[fieldIndex]] = kendo.parseDate(record[dateFields[fieldIndex]]);
+				}
+			}
+			return response;
+		};
+	}
+	$scope.advancedGridOptions = {
+		dataSource : {
+			data : gridData,
+			schema: {
+				model: model
+			}
+		},
+		editable: false,
+		sortable	: true,
+		scrollable	: false,
+		filterable	: {
+			mode		: "menu",
+			extra		: false,
+			messages	: {
+				info		: "Filter by:",
+				selectValue	: "Select category",
+				isTrue		: "selected",
+				isFalse		: "not selected"
+					},
+			operators	: {
+				string	: {
+						eq			: "Equal to",
+						contains	: "Contains",
+						startswith	: "Starts with",
+						endswith	: "Ends with"
+							},
+				number	: {
+						eq			: "Equal to",
+							},
+				date	: {
+						gt			: "After",
+						lt			: "Before"
+					}
+				}
+			},
+		pageable	: {
+			refresh: true,
+			pageSizes: true,
+			buttonCount: 5,
+			pageSize: 15
+		},
+	}
 
-  var parseFunction;
-  if (dateFields.length > 0) {
-	parseFunction = function (response) {
-	  for (var i = 0; i < response.length; i++) {
-		for (var fieldIndex = 0; fieldIndex < dateFields.length; fieldIndex++) {
-		  var record = response[i];
-		  record[dateFields[fieldIndex]] = kendo.parseDate(record[dateFields[fieldIndex]]);
-		}
-	  }
-	  return response;
-	};
-  }
-
-  var grid = $("#gridAdvanced").kendoGrid({
+  /*var grid = $("#gridAdvanced").kendoGrid({
 	dataSource: {
 	  data: gridData,
 	  schema: {
 		model: model,
-		parse: parseFunction
+		//parse: parseFunction
 	  }
 	},
 	editable: true,
 	sortable: true
-  });
+  });*/
 }
 
 function generateModel(gridData) {
-	console.log("FROM GENERATE MODEL")
-  var model = {};
-  model.id = "ID";
-  var fields = {};
-  for (var property in gridData) {
-	var propType = typeof gridData[property];
+	
+	var model = {};
+	model.id = "ID";
+	var fields = {};
+	for (var property in gridData) {
+		var propType = typeof gridData[property];
 
-	if (propType == "number") {
-	  fields[property] = {
-		type: "number",
-		validation: {
-		  required: true
+		if (propType == "number") {
+			console.log("NUMBER")
+	  		fields[property] = {
+				type: "number",
+				validation: {
+		  			required: true
+					}
+				};
+			} else if (propType == "boolean") {
+				fields[property] = {
+					type: "boolean",
+					validation: {
+						required: true
+					}
+				};
+			} else if (propType == "string") {
+				var parsedDate = kendo.parseDate(gridData[property]);
+				if (parsedDate) {
+					console.log("DATE")
+					fields[property] = {
+						type: "date",
+						validation: {
+							required: true
+						}
+					};
+					dateFields.push(property);
+				} else {
+					fields[property] = {
+						validation: {
+							required: true
+						}
+					};
+				}
+			} else {
+				fields[property] = {
+					validation: {
+						required: true
+					}
+				};
+			}
 		}
-	  };
-	} else if (propType == "boolean") {
-	  fields[property] = {
-		type: "boolean",
-		validation: {
-		  required: true
-		}
-	  };
-	} else if (propType == "string") {
-	  var parsedDate = kendo.parseDate(gridData[property]);
-	  if (parsedDate) {
-		fields[property] = {
-		  type: "date",
-		  validation: {
-			required: true
-		  }
-		};
-		dateFields.push(property);
-	  } else {
-		fields[property] = {
-		  validation: {
-			required: true
-		  }
-		};
-	  }
-	} else {
-	  fields[property] = {
-		validation: {
-		  required: true
-		}
-	  };
+		model.fields = fields;
+		return model;
 	}
-
-  }
-  model.fields = fields;
-
-  return model;
-}
-
-
-
-
-
-
-
-
 }]);
