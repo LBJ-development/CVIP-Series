@@ -71,14 +71,13 @@ angular.module('CVIPSMApp.createSearch', [])
 		}
 	}
 
-	var selectedTable, selectedColumn, index, selectedCriteria;
+	var selectedTable, selectedColumn, index;
 
 	$scope.DDColumnOptions = {
 		dataTextField: "disLabel",
 		dataValueField: "column",
 		autoBind: false,
 		height: 500,
-		
 		optionLabel: {
 			disLabel : "Select a Criteria",
 			dbLabel: ""
@@ -86,9 +85,15 @@ angular.module('CVIPSMApp.createSearch', [])
 		 select: function(e) {
 
 			index = e.item.index() -1;
-			selectedCriteria = this.dataSource.at(index);
-			//console.log(this.dataItem());
-			//console.log(this.dataSource.at(index));
+			//;
+
+			$scope.fieldData.disLabel = e.item.text();
+			$scope.fieldData.dataType = currentColumn[index].type;
+
+			//console.log($scope.fieldData.dataType);
+
+			//$scope.fieldData.dataType = DataFtry.fakeColumn(selectedTable).data[index].dataType;
+			//$scope.fieldData.disLabel = DataFtry.fakeColumn(selectedTable).data[index].disLabel;
 		 }
 	}
 
@@ -106,6 +111,11 @@ angular.module('CVIPSMApp.createSearch', [])
 			currentColumn =  result;
 			$scope.DDColumnOptions.dataSource = currentColumn;
 			$scope.showColumn = true;
+
+			// console.log("SELECT A TABLE")
+			// console.log($scope.DDColumnOptions.dataSource)
+		
+			//console.log(result)
 		});
 		
 		// ONLY TO REFRESH THE DATASOURCE!
@@ -157,22 +167,36 @@ angular.module('CVIPSMApp.createSearch', [])
 		}
 	} 
 
+	$scope.getSeries = function(){
+		$scope.showResult	= true;
+		var dataParam  = $scope.fieldsToDisplay.slice();
+		var jsonString = JSON.stringify({params: dataParam});
+		var url = CVIPConfig.contextPath + "execute";
+
+		//console.log(jsonString)
+
+		DataFtry.sendData(url, jsonString).then(function(result){ 
+			$scope.mainGridOptions.dataSource.data = result.data;
+			//console.log(result.data)
+		});	
+	}
+
 // ADD/REMOVE FIELD OBJECTS ///////////////////////////////////////////////
 	$scope.addToList = function(list) {
 		list.push({
-			label : 		selectedCriteria.label,	 
-			table : 		selectedCriteria.table, 
-			column: 		selectedCriteria.column,	
-			dataType : 		selectedCriteria.type,
+			label : 		$scope.fieldData.disLabel,	 
+			model : 		"",	
+			table : 		$scope.fieldData.table, 
 			tableLabel : 	$scope.fieldData.tableLabel, 
-			model : 		""
+			column: 		$scope.fieldData.column,	
+			dataType : 		$scope.fieldData.dataType
 		});
 		// RESET THE DROPDOWN LIST /////////////////////
 		$("#DD-column").data("kendoDropDownList").value(-1);
 		// REMOVE THE SELECTED ITEM FROM THE DROPDOWN LIST /////////////////////
-		var ddl =  $("#DD-column").data("kendoDropDownList");
-		var oldData = ddl.dataSource.data();
-		ddl.dataSource.remove(oldData[index]);
+		//var ddl =  $("#DD-column").data("kendoDropDownList");
+		//var oldData = ddl.dataSource.data();
+		//ddl.dataSource.remove(oldData[index]);
 		// TO REMOVE THE ADD BTN /////////////////////
 		$scope.fieldData.column = "";
 	};
@@ -180,6 +204,132 @@ angular.module('CVIPSMApp.createSearch', [])
 	$scope.removeFromList = function(list, index) {
 		list.splice(index, 1);
 	};
+
+	$scope.mainGridOptions = {
+			  
+		dataSource: {
+			//data: DataTesting.getData(100),
+			schema: {
+				model: {
+					fields: {
+						series			: { type: "string" 	},
+						create_dtm		: { type: "date" 	},
+						subjecttype		: { type: "string" 	},
+						previous_series	: { type: "string" 	}
+						},
+					}
+				},
+			},
+			//height		: 550,
+			//dataBound	: onDataBound,
+			//toolbar		: ["create"],
+		sortable	: true,
+		scrollable	: false,
+		filterable	: {
+					mode		: "menu",
+					extra		: false,
+					messages	: {
+					info		: "Filter by:",
+						selectValue	: "Select category",
+						isTrue		: "selected",
+						isFalse		: "not selected"
+							},
+					operators	: {
+							string	: {
+								eq			: "Equal to",
+								//neq		: "Not equal to",
+								contains	: "Contains",
+								startswith	: "Starts with",
+								endswith	: "Ends with"
+								},
+							number	: {
+								eq			: "Equal to",
+								},
+							date	: {
+								gt			: "After",
+								lt			: "Before"
+								}
+							}
+						},
+
+		pageable	: {
+							refresh: true,
+							pageSizes: true,
+							buttonCount: 5,
+		pageSize: 15
+			},
+							
+		// columnMenu: {
+  //  			messages	: {
+  //     			columns			: "Choose columns",
+  //     			filter			: "Apply filter",
+  //     			sortAscending	: "Sort (asc)",
+  //     			sortDescending	: "Sort (desc)"
+		// 					}
+  //   				},
+		//detailTemplate: kendo.template($("#detail-template-Description").html()),
+		//detailTemplate: "<div>Test</div>",
+		//detailTemplate: kendo.template($("#template").html()), 
+		//detailInit: detailInit,
+		columns		: [{
+						field	: "series",
+						title	: "Series Name",
+						width	: "24%",
+						filterable	: false,
+
+						template: "<a href='' ng-click='loadSeries($event)' class='baseLinkText' >#=series#</a>"
+						},{
+						field	: "create_dtm",
+						title	: "Date Series Created",
+						format	:"{0:MM/dd/yyyy}" ,
+						width	: "25%"
+						},{
+						field	: "subjecttype",
+						title	: "Series Type",
+						width	: "25%",
+						filterable: {
+							ui			: seriesType,
+							operators	: {
+								string	: {
+								eq		: "Equal to"
+									}
+								}
+							}
+						},{
+						field	: "previous_series",
+						title	: "Previous Name",
+						width	: "24%",
+						filterable: {
+							operators	: {
+								string	: {
+								contains	: "Contains",
+									}
+								}
+							}
+						},/* {
+						field	: "description",
+						title	: "Description",
+						width	: "47%",
+						filterable: {
+							operators	: {
+								string	: {
+								contains	: "Contains",
+									}
+								}
+							}
+						},*/{
+						width	: "3%",
+						filterable: false,
+						sortable: false,
+						template: "<input type='checkbox' ng-model='dataItem.selected' ng-click='caseSelected($event)' />",
+						title: "<input type='checkbox' title='Select all' ng-click='toggleSelectAll($event)' style='text-align:center'/>",
+						attributes: {
+							style: "text-align: center"
+							}
+						}
+
+					]
+			};
 
 	// MAKE THE CHECK BOX PERSISTING
 	$scope.checkedIds =[];
@@ -249,12 +399,40 @@ var seriesT	= ["Awaiting Case Info", "Identified", "NCMEC at Risk", "Unconfirmed
 		});
 	}
 
+	//example data received from remote source via jQuery ajax merthod
+
+/*var data = [{
+  "Name": "daya",
+  "Role": "Developer",
+  "Dept": "Dev",
+  "Date": "\/Date(836438400000)\/",
+  "Balance": 23
+}, {
+  "Name": "siva",
+  "Role": "Developer",
+  "Dept": "Dev",
+  "Date": "\/Date(836438400000)\/",
+  "Balance": 23
+}, {
+  "Name": "sivadaya",
+  "Role": "Developer",
+  "Dept": "Dev",
+  "Date": "\/Date(836438400000)\/",
+  "Balance": 23
+}, {
+  "Name": "dayasiva",
+  "Role": "Developer",
+  "Dept": "Dev",
+  "Date": "\/Date(836438400000)\/",
+  "Balance": 23
+}];*/
+
 var model;
 var columns = [];
 var data = [];
 var dateFields = [];
 
-$scope.getSeries = function(evt){
+$scope.testFunction = function(evt){
 
 	$scope.showResult	= true;
 	var dataParam  = $scope.fieldsToDisplay.slice();
@@ -269,10 +447,13 @@ $scope.getSeries = function(evt){
 
 function generateGrid(gridData) {
 
+	//console.log("FROM GENERATE GRID")
+
 	model 	= generateModel(gridData[0]);
 	columns = generateColumns(gridData[0]);
-	//console.log(columns)
-/*	var parseFunction;
+	console.log(columns)
+
+	var parseFunction;
 	if (dateFields.length > 0) {
 		parseFunction = function (response) {
 			for (var i = 0; i < response.length; i++) {
@@ -283,12 +464,13 @@ function generateGrid(gridData) {
 			}
 			return response;
 		};
-	}*/
+	}
 	$scope.advancedGridOptions = {
 		dataSource : {
 			data : gridData,
 			schema: {
 				model: model,
+				//parse: parseFunction
 			}
 		},
 		editable: false,
@@ -327,6 +509,18 @@ function generateGrid(gridData) {
 		},
 		columns: columns,
 	}
+
+  /*var grid = $("#gridAdvanced").kendoGrid({
+	dataSource: {
+	  data: gridData,
+	  schema: {
+		model: model,
+		//parse: parseFunction
+	  }
+	},
+	editable: true,
+	sortable: true
+  });*/
 }
 
 function generateColumns(gridData){
@@ -347,7 +541,7 @@ function generateColumns(gridData){
 
 			var parsedDate = kendo.parseDate(gridData[property]);
 			if (parsedDate) {
-				//console.log("DATE")
+				console.log("DATE")
 				columns.push({
 					field	: property,
 					title	: property,
@@ -360,11 +554,8 @@ function generateColumns(gridData){
 				});
 			}
 			//console.log(property + " / " + propType  + " / " + parsedDate);
-		} else if (propType == "number" && property != "series_id"){
-			columns.push({
-				field	: property,
-				title	: property,
-			});
+		} else if (propType == "number"){
+
 		}
 	}
 	columns.push({
@@ -375,12 +566,13 @@ function generateColumns(gridData){
 		title: "<input type='checkbox' title='Select all' ng-click='toggleSelectAll($event)' style='text-align:center'/>",
 		attributes: {
 			style: "text-align: center"
-		}
-	});
+			}
+		});
 	return columns;
 }
 
 function generateModel(gridData) {
+	
 	var model = {};
 	model.id = "ID";
 	var fields = {};
