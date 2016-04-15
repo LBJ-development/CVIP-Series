@@ -50,6 +50,8 @@
 
                 <div ng-if="field.dataType === 'dropdown'" drop-down label={{field.label}} table={{field.tableLabel}}  column={{field.column}}  display='advancedSearch'  model='field.model'></div>
 
+                 <div ng-if="field.dataType === 'multiselect'" multi-select label={{field.label}} table={{field.tableLabel}}  column={{field.column}}  display='advancedSearch'  model='field.model'></div>
+
                 <div ng-if="field.dataType === 'int' || field.dataType === 'tinyint'" check-box label={{field.label}} table={{field.tableLabel}}  column={{field.column}}  display='advancedSearch'  model='field.model'></div>
 
             </div>

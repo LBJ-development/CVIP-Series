@@ -220,6 +220,48 @@ angular.module('CVIPSMApp.utilities', [])
 				dataTextField: "disLabel",
 				//dataValueField: "dbLabel",
 				dataValueField: "disLabel",
+
+				optionLabel: {
+					disLabel : "",
+					dbLabel: ""
+				},
+				//dataSource: DataFtry.dropdownData(ddData).data
+				dataSource: {
+						transport: {
+							read: {
+								dataType: "json",
+								url: url,
+						}
+					}
+				}
+			}
+		}
+	}
+})
+
+.directive('multiSelect', function(DataFtry,  CVIPConfig){
+	return{
+		restrict: "A",
+		scope:{
+			label: '@',
+			table: '@',
+			column: '@',
+			display: '=',
+			model:'=model'
+		},
+		template: function(elements, attrs){
+			return "<label><span ng-show='display'>{{table}}</span><span ng-show='display'>: </span> {{label}}: </label><select kendo-multi-select k-options='DDOptions'  class='form-control field-k-dropDown' ng-model='model'  ></select>"
+		},
+		link: function (scope, element, attrs){
+
+			var url = CVIPConfig.contextPath + attrs.column;
+
+			var ddData = attrs.column;
+			scope.DDOptions = {
+				dataTextField: "disLabel",
+				//dataValueField: "dbLabel",
+				placeholder: "Select a ...",
+				dataValueField: "disLabel",
 				optionLabel: {
 					disLabel : "",
 					dbLabel: ""
