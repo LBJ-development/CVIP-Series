@@ -1,12 +1,37 @@
 'use strict';
 angular.module('CVIPSMApp.createSearch', [])
 
-.controller('createSearchCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "CVIPConfig", "DataFtry", "DataTesting",  function($rootScope, $scope, $window, $state, $timeout, CVIPConfig, DataFtry, DataTesting){
+.controller('createSearchCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "$location", "CVIPConfig", "DataFtry", "DataTesting",  function($rootScope, $scope, $window, $state, $timeout, $location, CVIPConfig, DataFtry, DataTesting){
 
 	$scope.init = function (){
-		 initializeDisplayList();
-		 //console.log(DataTesting.getData(100));
+		initializeDisplayList();
+//console.log(CVIPConfig.displaySearchResult);
+
+		if(CVIPConfig.displaySearchResult){
+
+		 	$scope.showResult = true;
+
+		 	generateGrid(CVIPConfig.gridData);
+
+		 	if(sessionStorage.SEARCHPARAMS){
+
+				var savedSearch = JSON.parse(sessionStorage.getItem('SEARCHPARAMS'));
+				//var grid = $("#advancedGrid").data("kendoGrid");
+
+				//grid.setOptions(JSON.parse(savedSearch.gridOptions));
+				/*	$scope.startingDate = new Date(savedOptions.startingDate);
+				$scope.endingDate = new Date(savedOptions.endingDate);
+				$("#radioBtn-RDR").prop("checked", savedOptions.radioBtnRDR);
+				$("#radioBtn-UAC").prop("checked", savedOptions.radioBtnUAC);
+				$scope.submitDisabled = savedOptions.submitDisabled;
+				$scope.datePickerDisabled = savedOptions.datePickerDisabled;
+				$scope.warning = savedOptions.warningMessage;
+				$scope.warningClass = savedOptions.warningClass;*/
+				//$scope.$digest();
+			}
+		}
 	}
+
 
 	function initializeDisplayList(){
 		$scope.fieldsToDisplay = [];
@@ -224,6 +249,21 @@ angular.module('CVIPSMApp.createSearch', [])
 		var dataItem = grid.dataItem($(evt.currentTarget).closest("tr"));
 		var ID = dataItem.series_id;
 
+		// SAVE PARAM BEFORE LEAVING THE PAGE
+		var SEARCHPARAMS = {
+			"gridOptions"		: kendo.stringify(grid.getOptions()),
+			"advancedSearch"	: $scope.advancedSearch,
+			"fieldsToDisplay"	: $scope.fieldsToDisplay
+			// "radioBtnRDR"	: $("#radioBtn-RDR").is(":checked"),
+			// "radioBtnUAC"	: $("#radioBtn-UAC").is(":checked"),
+			// "submitDisabled"	: $scope.submitDisabled,
+			// "datePickerDisabled"	: $scope.datePickerDisabled,
+			// "warningMessage"	: $scope.warning,
+			// "warningClass"	: $scope.warningClass,
+			// "searchResult"	: $scope.searchResult
+		};
+		sessionStorage.setItem('SEARCHPARAMS', JSON.stringify(SEARCHPARAMS));
+
 		//console.log(seriesID);
 		//console.log(evt.currentTarget.text)
 
@@ -263,9 +303,14 @@ $scope.getSeries = function(evt){
 	
 	DataFtry.sendData(url, jsonString).then(function(result){ 
 		data = result.data;
-		generateGrid(data)
+		generateGrid(data);
+		// KEEP A COPY OF THE DATA TO PERSIST THE DATAGRID WHEN BROWSING BACK TO SEARCH
+		CVIPConfig.gridData = data;
 	});	
 }
+
+
+	
 
 function generateGrid(gridData) {
 

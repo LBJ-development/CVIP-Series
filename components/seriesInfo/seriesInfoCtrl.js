@@ -15,7 +15,9 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	});
 
 	$scope.backToSearch = function(){
-		  $state.go('search');
+		// WHEN BACK TO SEARCH IS TRIGGERED THE DATAGRID SHOULD SHOW THE SEARCH RESULTS
+		CVIPConfig.displaySearchResult = true;
+		$state.go('search');
 	}
 
 	$scope.itemIndex = 0;
@@ -36,6 +38,8 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	var currentList = [];
 
 	$scope.init = function (){
+		
+
 		$("#mainBodyWrapper").css('width', infoWidth);
 
 		// LOAD THE INFO TO BUILD THE HTML ////////////////
@@ -59,7 +63,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 			$scope.suspectList 		= result.data.suspects;
 			$scope.childrenList 	= result.data.children;
 
-			console.log($scope.generalInfo);
+			//console.log($scope.generalInfo);
 			})
 		});
 
