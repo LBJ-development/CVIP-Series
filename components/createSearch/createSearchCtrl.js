@@ -16,17 +16,30 @@ angular.module('CVIPSMApp.createSearch', [])
 		 	if(sessionStorage.SEARCHPARAMS){
 
 				var savedSearch = JSON.parse(sessionStorage.getItem('SEARCHPARAMS'));
+
+				$scope.fieldsToDisplay =  savedSearch.fieldsToDisplay;
+
+				if(savedSearch.advancedSearch){
+					$scope.basicSearch = true;
+					$scope.advancedSearch = true;
+					$scope.basicGrid = false;
+					$scope.advancedGrid = true;
+					$('.selectSearch-btn').removeClass('selectSearchActive');
+					$('#selectAdvancedsearch-btn').addClass('selectSearchActive');
+				}
+
+				console.log(savedSearch)
 				//var grid = $("#advancedGrid").data("kendoGrid");
 
 				//grid.setOptions(JSON.parse(savedSearch.gridOptions));
-				/*	$scope.startingDate = new Date(savedOptions.startingDate);
-				$scope.endingDate = new Date(savedOptions.endingDate);
-				$("#radioBtn-RDR").prop("checked", savedOptions.radioBtnRDR);
-				$("#radioBtn-UAC").prop("checked", savedOptions.radioBtnUAC);
-				$scope.submitDisabled = savedOptions.submitDisabled;
-				$scope.datePickerDisabled = savedOptions.datePickerDisabled;
-				$scope.warning = savedOptions.warningMessage;
-				$scope.warningClass = savedOptions.warningClass;*/
+				// 	$scope.startingDate = new Date(savedOptions.startingDate);
+				// $scope.endingDate = new Date(savedOptions.endingDate);
+				// $("#radioBtn-RDR").prop("checked", savedOptions.radioBtnRDR);
+				// $("#radioBtn-UAC").prop("checked", savedOptions.radioBtnUAC);
+				// $scope.submitDisabled = savedOptions.submitDisabled;
+				// $scope.datePickerDisabled = savedOptions.datePickerDisabled;
+				// $scope.warning = savedOptions.warningMessage;
+				// $scope.warningClass = savedOptions.warningClass;
 				//$scope.$digest();
 			}
 		}
@@ -35,13 +48,6 @@ angular.module('CVIPSMApp.createSearch', [])
 
 	function initializeDisplayList(){
 		$scope.fieldsToDisplay = [];
-		/*$scope.fieldsToDisplay = 	
-				[	{label : "Series Name",				model : "",		table : "series", tableLabel: "Series",		column: "series",			dataType : "varchar"},
-					{label : "Date Series Created", 	model : "",		table : "series", tableLabel: "Series",		column: "create_dtm",	dataType : "datetime"},
-					{label : "Series Type", 			model : "", 	table : "series", tableLabel: "Series",		column: "subjecttype",		dataType : "dropdown"},
-					{label : "Previous Series Name",	model :"",		table : "series_history", tableLabel: "Series",		column: "previous_series",	dataType : "varchar"},
-				];*/
-
 		$scope.fieldsToDisplay =      
 			[	{label : "Series Name",				model : "",       table : "series_new",		tableLabel: "Series",		column: "series",             dataType : "varchar"},
 				{label : "Date Series Created",		model : "",       table : "series_new",		tableLabel: "Series",		column: "create_dtm",      	dataType : "datetime"},
@@ -251,7 +257,7 @@ angular.module('CVIPSMApp.createSearch', [])
 
 		// SAVE PARAM BEFORE LEAVING THE PAGE
 		var SEARCHPARAMS = {
-			"gridOptions"		: kendo.stringify(grid.getOptions()),
+			//"gridOptions"		: kendo.stringify(grid.getOptions()),
 			"advancedSearch"	: $scope.advancedSearch,
 			"fieldsToDisplay"	: $scope.fieldsToDisplay
 			// "radioBtnRDR"	: $("#radioBtn-RDR").is(":checked"),
@@ -389,7 +395,6 @@ function generateColumns(gridData){
 		var propType = typeof gridData[property];
 
 		if (propType == "string") {
-
 			var parsedDate = kendo.parseDate(gridData[property]);
 			if (parsedDate) {
 				//console.log("DATE")
@@ -438,33 +443,26 @@ function generateModel(gridData) {
 				type: "number",
 				validation: {
 		  			required: true
-					}
-				};
-			} else if (propType == "boolean") {
+				}
+			};
+		} else if (propType == "boolean") {
+			fields[property] = {
+				type: "boolean",
+				validation: {
+					required: true
+				}
+			};
+		} else if (propType == "string") {
+			var parsedDate = kendo.parseDate(gridData[property]);
+			if (parsedDate) {
+				//console.log("DATE")
 				fields[property] = {
-					type: "boolean",
+					type: "date",
 					validation: {
 						required: true
 					}
 				};
-			} else if (propType == "string") {
-				var parsedDate = kendo.parseDate(gridData[property]);
-				if (parsedDate) {
-					//console.log("DATE")
-					fields[property] = {
-						type: "date",
-						validation: {
-							required: true
-						}
-					};
-					dateFields.push(property);
-				} else {
-					fields[property] = {
-						validation: {
-							required: true
-						}
-					};
-				}
+				dateFields.push(property);
 			} else {
 				fields[property] = {
 					validation: {
@@ -472,8 +470,15 @@ function generateModel(gridData) {
 					}
 				};
 			}
+		} else {
+			fields[property] = {
+				validation: {
+					required: true
+				}
+			};
 		}
-		model.fields = fields;
-		return model;
+	}
+	model.fields = fields;
+	return model;
 	}
 }]);
