@@ -32,6 +32,7 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	$scope.leadsList = [];
 	$scope.leapocsList = [];
 	$scope.contactsList = [];
+	$scope.bolo =[];
 
 	var sections = ["Suspect", "Children", "EXIFS", "Lead", "LEA POC", "Contact"];
 	var currentSection = "";
@@ -56,14 +57,22 @@ angular.module('CVIPSMApp.seriesInfo', [])
 	$rootScope.$on("loadExistingSeries", function(event, data){
 			
 		var url = CVIPConfig.contextPath + 'info/' + data.seriesId;
-		//var url = CVIPConfig.contextPath + 'names/' + data.series;
+		//var url = CVIPConfig.contextPath +Â 'names/'Â + data.series;
 		DataFtry.getData(url).then(function(result){
 
 			$scope.generalInfo 		= result.data.general[0];
 			$scope.suspectList 		= result.data.suspects;
 			$scope.childrenList 	= result.data.children;
 
-			//console.log($scope.generalInfo);
+			$scope.bolo 							= result.data.bolo[0];
+			$scope.contactsList 					= result.data.contacts;
+
+
+			//console.log($scope.checklistDB);
+
+
+			console.log($scope.generalInfo);
+
 			})
 		});
 

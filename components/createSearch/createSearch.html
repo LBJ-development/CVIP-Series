@@ -1,16 +1,58 @@
 <div ng-controller="createSearchCtrl" ng-init="init()">
-<!-- SEARCH SELECTOR ///////////////////////////////////////////////-->
+
+ <!-- SEARCH SELECTOR ///////////////////////////////////////////////-->
     <div class="row " style="margin-bottom:0px" >
-        <div class="title" style="float:left; margin:0 0px 0 20px,font-size:1.5em">
-            Create/Search for Series
+         <div class="title" style="float:left; margin:0 0px 0 20px,font-size:1.5em">
+            Create or Search for Series  / <a ui-sref="ias">IA Referrals</a>
         </div>
 
          <div style="display:inline-block;float:right;position:relative;top:40px"  ng-if="advancedSearch">
-              <span class="tabPos-btn save-btn" style="float:right; padding-right:50px"><a href="" ng-click=" " >Save Search</a></span >
-              
-              <span class="tabPos-btn uploade-btn" style="float:right; padding-right:20px"><a href=""  ng-click=" " >Load a Search</a></span >
+              <span class="tabPos-btn save-btn" style="float:right; padding-right:50px"><a href=""  data-toggle="modal" data-target="#myModal">Save Search</a></span >
+              <span class="tabPos-btn uploade-btn" style="float:right; padding-right:20px"><a href="" data-toggle="modal" data-target="#loadModal" ng-click="loadSearch()">Load a Search</a></span >
+
             </div>
     </div>
+    
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Search Details</h4>
+        </div>
+        <div class="modal-body">
+           
+                <label>Name: </label> <input type="text" class="form-control ng-pristine ng-valid" ng-model="searchName"/>
+
+                <label>Description: </label> <input type="text" class="form-control ng-pristine ng-valid" ng-model="searchDescription"/>
+              
+           <button class="btn-primary"  ng-click="saveSearch()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- Modal -->
+  <div class="modal fade" id="loadModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Saved Searches</h4>
+        </div>
+        <div class="modal-body">
+            <li ng-repeat="s in searches">
+              
+                 <a href="">{{s.name}} </a>  - {{s.description}} 
+              
+            </li>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="row">
         <div  class="" style="float:left;padding:0 0 0 0px">
             <ul class="searchSelection">
@@ -41,9 +83,12 @@
 </div> -->
 <!-- BASIC / ADVANCED SEARCH ///////////////////////////////////////////////-->
     <div class="row show-hide" ng-if="basicSearch" style="margin-top:20px">
+     <div class="row ">
+        <span style="font-weight: bold; color:red; display: inline-block; float:left; padding: 30px 0 0 20px; text-align:left">{{errorMsg}}</span>
+      </div>
         <div class="col-sm-3  field-form-group"  ng-repeat="field in fieldsToDisplay track by $index">
             <div class="sharedCol4">
-
+	
                 <div ng-if="field.dataType === 'varchar'" text-field label={{field.label}} table={{field.tableLabel}} display='advancedSearch' model='field.model'></div>
 
                 <div ng-if="field.dataType === 'datetime'" date-field label={{field.label}} table={{field.tableLabel}}  display='advancedSearch'  model='field.model'></div>
@@ -81,8 +126,20 @@
         </div>
     </div>
 
+    
+     <!-- IA REFERRALS  ////////////////////////////////////////////////////////-->
+    <div  class="content-wrapper" ng-show="isShowReferrals">
+        <div style="display: inline-block; float:left; width: 100%" >
+            <span class="sub-title" style="display: inline-block; float:left">IA Referrals</span>
+        </div>
+        <div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
+            <div role="datagrid" class="grid-holder" >
+                <div kendo-grid="iaGrid" id="iagrid" k-options="iaGridOptions" k-rebind="iaGridOptions"  k-ng-delay="iaGridOptions"></div> 
+            </div> 
+        </div>
+    </div>
+    
 
- 
 <!-- FOOTER  //////////////////////////////////////////////////////// -->
      <div footer></div>   
 </div>
