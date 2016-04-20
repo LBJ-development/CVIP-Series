@@ -368,11 +368,11 @@ angular.module('CVIPSMApp.createSearch', [])
 
 */
 
-	$rootScope.$on("seriesDeleted", function(event){
+/*	$rootScope.$on("seriesDeleted", function(event){
 			$scope.errorMsg="The series was successfully deleted."
 	});
 
-
+*/
 
 var model;
 var columns = [];
