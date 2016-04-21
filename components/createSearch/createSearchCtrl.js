@@ -9,11 +9,11 @@ angular.module('CVIPSMApp.createSearch', [])
 
 		if(CVIPConfig.displaySearchResult){
 
-		 	$scope.showResult = true;
+			$scope.showResult = true;
 
-		 	generateGrid(JSON.parse(CVIPConfig.gridData));
+			generateGrid(JSON.parse(CVIPConfig.gridData));
 
-		 	if(sessionStorage.SEARCHPARAMS){
+			if(sessionStorage.SEARCHPARAMS){
 
 				var savedSearch = JSON.parse(sessionStorage.getItem('SEARCHPARAMS'));
 
@@ -27,7 +27,6 @@ angular.module('CVIPSMApp.createSearch', [])
 					$('.selectSearch-btn').removeClass('selectSearchActive');
 					$('#selectAdvancedsearch-btn').addClass('selectSearchActive');
 				}
-
 
 				// 	$scope.startingDate = new Date(savedOptions.startingDate);
 				// $scope.endingDate = new Date(savedOptions.endingDate);
@@ -187,36 +186,6 @@ angular.module('CVIPSMApp.createSearch', [])
 		}
 	} 
 
-
-	$scope.getSeries = function(){
-		$scope.showResult	= true;
-		var dataParam  = $scope.fieldsToDisplay.slice();
-		var jsonString = JSON.stringify({params: dataParam});
-		var url = CVIPConfig.contextPath + "execute";
-		console.log(jsonString);
-
-		$timeout(function() {
-			
-			DataFtry.sendData(url, jsonString).then(function(result){ 
-				$scope.mainGridOptions.dataSource.data = result.data;
-			});	
-		
-		}, 2000);
-	}
-	
-	$scope.saveSearch = function(){
-		$scope.showResult	= true;
-		var dataParam  = $scope.fieldsToDisplay.slice();
-		var allParams	 = {name:$scope.searchName, description:$scope.searchDescription, params: dataParam};
-		console.log("FULL JSON = " + JSON.stringify(allParams));	
-		var url = CVIPConfig.contextPath + "savesearch";
-//		DataFtry.sendData(url,JSON.stringify(allParams)).then(function(result){
-//
-//		}); 
-		
-		$scope.showResult=false;
-   }
-	
 	$scope.getSeries = function(){
 		$scope.showResult	= true;
 		var dataParam  = $scope.fieldsToDisplay.slice();
@@ -228,30 +197,56 @@ angular.module('CVIPSMApp.createSearch', [])
 		});	
 	}
 
-	$scope.loadSearch = function(){
-	   	console.log("Loading search");
-	   	var url = CVIPConfig.contextPath + "loadsearch";
-        DataFtry.getData(url).then(function(response){ 
-           $scope.searches = response;
-        });
+// SAVE & LOAD SEARCHES //////////////////////////////////////////////
+	$scope.saveSearch = function(){
+		$scope.showResult	= true;
+
+		var dataParam  = $scope.fieldsToDisplay.slice();
+		var allParams	 = {name:$scope.searchName, description:$scope.searchDescription, params: dataParam};
+		console.log("FULL JSON = " + JSON.stringify(allParams));	
+		var url = CVIPConfig.contextPath + "savesearch";
+		DataFtry.sendData(url,JSON.stringify(allParams)).then(function(result){
+			//console.log(result)
+			$scope.searchName = "";
+			$scope.searchDescription = "";
+		}); 
+		
+		$scope.showResult=false;
+   }
+
+	$scope.loadSearchList = function(){
+		//console.log("Loading search list");
+		var url = CVIPConfig.contextPath + "loadsearch";
+		DataFtry.getData(url).then(function(response){ 
+		   $scope.searches = response;
+		   console.log(response);
+		});
+	 }
+
+	 $scope.loadSavedSearch = function(evt){
+		var index = $(evt.currentTarget).parent().index();
+		$scope.fieldsToDisplay = [];
+		$scope.fieldsToDisplay = JSON.parse($scope.searches[index].querystring);
+		$(".btn-closeModal").click();
+		//console.log($scope.fieldsToDisplay);
 	 }
 	
 	var ias = new Array();
 	$scope.showReferrals = function(){
-        $scope.isShowReferrals = true;
+		$scope.isShowReferrals = true;
 		var url = CVIPConfig.contextPath + "ia";
 		DataFtry.getData(url).then(function(result){ 
 			 for (var i = 0; i < result.length; i++) {
-        		var row = {};
-        		 row["seriesId"]     = result[i][0];
-        		 row["analyst"]     = result[i][1];
-        		 row["series"]     = result[i][2];
-        		 row["ia_report_sent_date"]     = new Date(result[i][3]);
-        		 row["leaname"]     = result[i][4];
-        		 row["leaagency"]     = result[i][5];
-        		 row["status"]     = result[i][6];
-       		     ias[i] = row;
-        	}	
+				var row = {};
+				 row["seriesId"]     = result[i][0];
+				 row["analyst"]     = result[i][1];
+				 row["series"]     = result[i][2];
+				 row["ia_report_sent_date"]     = new Date(result[i][3]);
+				 row["leaname"]     = result[i][4];
+				 row["leaagency"]     = result[i][5];
+				 row["status"]     = result[i][6];
+				 ias[i] = row;
+			}	
 		});
 	}
 
@@ -279,8 +274,6 @@ angular.module('CVIPSMApp.createSearch', [])
 		list.splice(index, 1);
 	};
 	
-
-
 	// MAKE THE CHECK BOX PERSISTING
 	$scope.checkedIds =[];
 	$scope.selectItem = function(item){
@@ -307,7 +300,7 @@ angular.module('CVIPSMApp.createSearch', [])
 		var allData = dataSource.data();
 		var query = new kendo.data.Query(allData);
 		var items = query.filter(filters).data;
-		console.log(items);
+		//console.log(items);
 		
 		items.forEach(function(item){
 			item.selected = ev.target.checked;
@@ -412,6 +405,12 @@ function generateGrid(gridData) {
 		};
 	}*/
 	$scope.advancedGridOptions = {
+
+		excel: {
+			allPages: true,
+			fileName: "NCMEC-Series.xlsx"
+		},
+
 		dataSource : {
 			data : gridData,
 			schema: {
@@ -515,10 +514,10 @@ function generateModel(gridData) {
 
 		if (propType == "number") {
 			//console.log("NUMBER")
-	  		fields[property] = {
+			fields[property] = {
 				type: "number",
 				validation: {
-		  			required: true
+					required: true
 				}
 			};
 		} else if (propType == "boolean") {
@@ -557,4 +556,18 @@ function generateModel(gridData) {
 	model.fields = fields;
 	return model;
 	}
+// EXPORT AS EXCEL //////////////////////////////////////////////
+$scope.removeSelectedRow = function(evt){
+
+	var grid = $("#gridAdvanced").data("kendoGrid");
+	grid.tbody.find("input:checked").closest("tr").each(function(index){
+		grid.removeRow($(this))
+		});
+	}
+
+$scope.exportAsExcel = function(evt){
+	var grid = $("#gridAdvanced").data("kendoGrid");
+	grid.saveAsExcel();
+	}
+	
 }]);

@@ -8,15 +8,15 @@
 		<!-- bower:css -->
 		<!-- endbower -->
 
-		<!-- <script src="http://localhost:35729/livereload.js"></script> -->
+		<script src="http://localhost:35729/livereload.js"></script>
 
 		<!-- bower:js -->
 		<script src="bower_components/jquery/jquery.js"></script>
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/angular-animate/angular-animate.js"></script>
 		<script src="bower_components/angular-route/angular-route.js"></script>
-		<!--<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>-->
-		<script src="bower_components/bootstrap-css/js/bootstrap.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<!-- 	<script src="bower_components/bootstrap-css/js/bootstrap.min.js"></script> -->
 		<script src="bower_components/kendo-ui/js/kendo.ui.core.min.js"></script>
 		<script src="bower_components/angular-kendo/build/angular-kendo.min.js"></script>
 		<script src="bower_components/jquery-ui/jquery-ui.js"></script>
@@ -24,11 +24,13 @@
 		<!-- endbower -->
 
 		<!-- BOOTSTRAP  //////////////////////////////////////////////////////// -->
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.2/ui-bootstrap.min.js"></script>
 
 		<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 
 	<!-- KENDOUI///////////////////////////////////////////////////////////////////////////////////-->
+		
+		 <script src="lib/kendoui/js/jszip.min.js"></script>
 		<link href="lib/kendoui/examples/content/shared/styles/examples-offline.css" rel="stylesheet">
 		<link href="lib/kendoui/styles/kendo.common.min.css" rel="stylesheet">
 		<link href="lib/kendoui/styles/kendo.silver.min.css" rel="stylesheet">
@@ -55,7 +57,12 @@
 
 		<!-- HTML  ////////////////////////////////////////////////////////  -->
 		<div id="wrapper" class="clearfix" ng-controller="MainCtrl" >
-			<div ui-view="" class="fader-animation" style="margin-top:20px"></div>
+			<div id="masthead" class="clearfix">
+				<div id="MK-logo" ></div>
+				<div class="title" style="display:inline-block; position: relative;top:40px">Search for Series</div>
+				<div id="logout-btn" ng-show="loggedIn"><a href="" class="logout" ng-click="logout()" >Logout</a></div>
+			</div>
+			<div ui-view="" class="fader-animation"></div>
 		</div>
 
 	<!-- CONTROLER  //////////////////////////////////////////////////////// --> 

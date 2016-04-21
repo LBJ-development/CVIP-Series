@@ -2,18 +2,18 @@
 
  <!-- SEARCH SELECTOR ///////////////////////////////////////////////-->
 		<div class="row " style="margin-bottom:0px" >
-				 <div class="title" style="float:left; margin:0 0px 0 20px,font-size:1.5em">
-						Create or Search for Series <!--  / <a ui-sref="ias">IA Referrals</a> -->
-				</div>
+				<!--  <div class="title" style="float:left; margin:0 0px 0 20px,font-size:1.5em">
+						Create or Search for Series   / <a ui-sref="ias">IA Referrals</a> 
+				</div> -->
 
 				 <div style="display:inline-block;float:right;position:relative;top:40px"  ng-if="advancedSearch">
 							<span class="tabPos-btn save-btn" style="float:right; padding-right:50px"><a href=""  data-toggle="modal" data-target="#myModal">Save Search</a></span >
-							<span class="tabPos-btn uploade-btn" style="float:right; padding-right:20px"><a href="" data-toggle="modal" data-target="#loadModal" ng-click="loadSearch()">Load a Search</a></span >
+							<span class="tabPos-btn uploade-btn" style="float:right; padding-right:20px"><a href="" data-toggle="modal" data-target="#loadModal" ng-click="loadSearchList()">Load a Search</a></span >
 
 						</div>
 		</div>
 		
-	<!-- Modal -->
+	<!-- MODALS //////////////////////////////////////////////////////////////// -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -21,9 +21,12 @@
 				<span class="panel-header"><span class="white-title">Search Detail</span></span>
 				<div class="modal-body">
 					 
-								<label>Name: </label> <input type="text" class="form-control ng-pristine ng-valid" ng-model="searchName"/>
-
-								<label>Description: </label> <input type="text" class="form-control ng-pristine ng-valid" ng-model="searchDescription"/>
+								<div style="padding-bottom:20px">
+                                    <label>Name: </label> <input type="text" class="form-control ng-pristine ng-valid" ng-model="searchName" />
+                                </div>
+                                <div style="padding-bottom:10px">
+								    <label>Description: </label> <input type="text" class="form-control ng-pristine ng-valid" ng-model="searchDescription"/>
+                                </div>
 							
 	
 				</div>
@@ -43,12 +46,12 @@
 				<div class="modal-body" style="display:inline-block">
 						<li ng-repeat="s in searches track by $index" style="text-align:left; float:left; list-style-type:none; width:100%; padding-bottom:10px">
 							
-							<a href="" style="font-weight: bold">{{$index + 1}}.  {{s.name}} </a>  - {{s.description}} 
+							<a href="" ng-click="loadSavedSearch($event)" style="font-weight: bold">{{$index + 1}}.  {{s.name}} </a>  - {{s.description}} 
 							
 						</li>
 				</div>
 				<div class="modal-footer">
-					<button type="button" style="margin-right:20px" class="btn-primary" data-dismiss="modal"> CANCEL </button>
+					<button type="button" style="margin-right:20px" class="btn-primary btn-closeModal" data-dismiss="modal"> CANCEL </button>
 
 				</div>
 			</div>
@@ -70,9 +73,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 		<div class="row">
 				<div  class="" style="float:left;padding:0 0 0 0px">
@@ -103,7 +103,7 @@
 		<span class="captionText" style="display: inline-block; float:left; text-align:left">Search by Name can be wildcarded with '*'</span>
 </div> -->
 <!-- BASIC / ADVANCED SEARCH ///////////////////////////////////////////////-->
-		<div class="row show-hide" ng-if="basicSearch" style="margin-top:20px">
+		<div class="row show-hide" ng-if="basicSearch">
 				<div class="col-sm-3  field-form-group"  ng-repeat="field in fieldsToDisplay track by $index">
 						<div class="sharedCol4">
 	
@@ -135,7 +135,8 @@
 		<div  class="content-wrapper" ng-if="showResult">
 				<div style="display: inline-block; float:left; width: 100%" >
 						<span class="sub-title" style="display: inline-block; float:left">Search Result</span>
-						 <span class="tabPos-btn exportToXL-btn" style="display: inline-block; float:right; position:relative;top:20px"><a href="" id="2"  ng-click="selectSearch($event)" >Export to Excel</a></span >
+						 <span class="tabPos-btn exportToXL-btn" style="display: inline-block; float:right; position:relative;top:20px"><a href="" id="2"  ng-click="exportAsExcel($event)" >Export to Excel</a></span >
+                          <span class="tabPos-btn removeSmall-btn" style="display: inline-block; float:right; position:relative;top:20px; padding-right:20px"><a href="" id="2"  ng-click="removeSelectedRow($event)">Remove Selected</a></span >
 				</div>
 				 <div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
 						<div role="datagrid" class="grid-holder" >

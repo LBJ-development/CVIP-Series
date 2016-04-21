@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 		express: {
 			all: {
 				options: {
-					bases: ['D:\\workingProgress-D\\CVIP\\CVIP-Series'],
+					bases: ['C:\\Users\\ljablonski\\Documents\\workingProgress\\CVIP\\CVIP-Series'],
 					port: 8080,
 					hostname: "0.0.0.0",
 					livereload: true
