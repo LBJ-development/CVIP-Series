@@ -1,6 +1,7 @@
 'use strict';
 app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "CVIPConfig", "DataFtry", "DataTesting",  function($rootScope, $scope, $window, $state, $timeout, CVIPConfig, DataFtry, DataTesting){
 
+	$scope.userName = "Ludwig";
 /*	var win = angular.element($window);
 	$scope.stateName;
 

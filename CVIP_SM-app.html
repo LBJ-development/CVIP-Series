@@ -59,9 +59,35 @@
 		<div id="wrapper" class="clearfix" ng-controller="MainCtrl" >
 			<div id="masthead" class="clearfix">
 				<div id="MK-logo" ></div>
-				<div class="title" style="display:inline-block; position: relative;top:40px">Search for Series</div>
-				<div id="logout-btn" ng-show="loggedIn"><a href="" class="logout" ng-click="logout()" >Logout</a></div>
+				<div style=" display:inline-block; position: relative;top:10px; left: 0px">
+					<div>
+						<span class="title-bold">C.R.I.S.</span>
+						<span class="title"> -- Series Management</span>
+					</div>
+					<div style="font-family:arial; color: red;text-align:center; position:relative; top:-12px ">
+						<i>Child Recognition & Identification System</i>
+					</div>
+				</div>
+				<div style="display:inline-block; float:right;position: relative">
+					
+					<div class="tabPos-btn logout-btn" style="float:right; position: relative; top:15px"><a href="" ng-click="logout()" >Logout</a></div>
+					<div class="baseText" style="float:right;position: relative; top:-5px; padding-right:20px ">Welcome: {{userName}}</div>
+				</div>
+
+				<div class="caseMenu clearfix" style="padding:0px 20px 0px 0px; float: left; width:100%">
+					<ul> 
+						
+							<li><a href="" ng-click="selectSection($event)" class="caseMenuItem">MY CASES</a></li>
+							<li><a href="" ng-click="selectSection($event)" class="caseMenuItem">CREATE SERIES</a></li>
+							<li><a href="" ng-click="selectSection($event)" class="caseMenuItem">SEARCH SERIES</a></li>
+							<li><a href="" ng-click="selectSection($event)" class="caseMenuItem">REPORTS</a></li>
+						
+						
+					</ul>
+				</div>
+			
 			</div>
+			<div class="h-sep" style="margin:0px 0px 10px 0; position:relative; top:-10px" ></div>
 			<div ui-view="" class="fader-animation"></div>
 		</div>
 

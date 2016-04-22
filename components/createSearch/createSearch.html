@@ -1,17 +1,19 @@
 <div ng-controller="createSearchCtrl" ng-init="init()">
 
+	<span class="tabPos-btn selectSearch-btn" id="selectAdvancedsearch-btn" style="display:inline-block; float:right;position: relative; top:-30px"><a href="" id="2"  ng-click="selectSearch($event)" > Advanced Search</a></span>
+
  <!-- SEARCH SELECTOR ///////////////////////////////////////////////-->
-		<div class="row " style="margin-bottom:0px" >
+	<div class="row " style="margin-bottom:0px" >
 				<!--  <div class="title" style="float:left; margin:0 0px 0 20px,font-size:1.5em">
 						Create or Search for Series   / <a ui-sref="ias">IA Referrals</a> 
 				</div> -->
 
-				 <div style="display:inline-block;float:right;position:relative;top:40px"  ng-if="advancedSearch">
-							<span class="tabPos-btn save-btn" style="float:right; padding-right:50px"><a href=""  data-toggle="modal" data-target="#myModal">Save Search</a></span >
-							<span class="tabPos-btn uploade-btn" style="float:right; padding-right:20px"><a href="" data-toggle="modal" data-target="#loadModal" ng-click="loadSearchList()">Load a Search</a></span >
+		<div style="display:inline-block;float:right;position:relative;top:40px"  ng-if="advancedSearch">
+			<span class="tabPos-btn save-btn" style="float:right; padding-right:50px"><a href=""  data-toggle="modal" data-target="#myModal">Save Search</a></span >
+			<span class="tabPos-btn uploade-btn" style="float:right; padding-right:20px"><a href="" data-toggle="modal" data-target="#loadModal" ng-click="loadSearchList()">Load a Search</a></span >
 
-						</div>
 		</div>
+	</div>
 		
 	<!-- MODALS //////////////////////////////////////////////////////////////// -->
 	<div class="modal fade" id="myModal" role="dialog">
