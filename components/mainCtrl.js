@@ -2,6 +2,14 @@
 app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "CVIPConfig", "DataFtry", "DataTesting",  function($rootScope, $scope, $window, $state, $timeout, CVIPConfig, DataFtry, DataTesting){
 
 	$scope.userName = "Ludwig";
+
+	$scope.selectSection = function(evt){
+
+		$(".seriesMenuItem").removeClass("caseMenu-sel");
+		$(evt.currentTarget).addClass('caseMenu-sel');
+
+
+	}
 /*	var win = angular.element($window);
 	$scope.stateName;
 

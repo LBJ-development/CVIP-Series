@@ -5,7 +5,6 @@ angular.module('CVIPSMApp.createSearch', [])
 
 	$scope.init = function (){
 		initializeDisplayList();
-//console.log(CVIPConfig.displaySearchResult);
 
 		if(CVIPConfig.displaySearchResult){
 
@@ -27,20 +26,9 @@ angular.module('CVIPSMApp.createSearch', [])
 					$('.selectSearch-btn').removeClass('selectSearchActive');
 					$('#selectAdvancedsearch-btn').addClass('selectSearchActive');
 				}
-
-				// 	$scope.startingDate = new Date(savedOptions.startingDate);
-				// $scope.endingDate = new Date(savedOptions.endingDate);
-				// $("#radioBtn-RDR").prop("checked", savedOptions.radioBtnRDR);
-				// $("#radioBtn-UAC").prop("checked", savedOptions.radioBtnUAC);
-				// $scope.submitDisabled = savedOptions.submitDisabled;
-				// $scope.datePickerDisabled = savedOptions.datePickerDisabled;
-				// $scope.warning = savedOptions.warningMessage;
-				// $scope.warningClass = savedOptions.warningClass;
-				//$scope.$digest();
 			}
 		}
 	}
-
 
 	function initializeDisplayList(){
 		$scope.fieldsToDisplay = [];
@@ -50,7 +38,6 @@ angular.module('CVIPSMApp.createSearch', [])
 				{label : "Series Type",				model : "",       table : "series_new",		tableLabel: "Series",		column: "subjecttype",        dataType : "multiselect"},
 				{label : "Previous Series Name",	model : "",       table : "series_history",	tableLabel: "Series",		column: "previous_series",      dataType : "varchar"},
 			];
-
 
 		// IF THE DROPDOWN DATA IS EXISTING => RESET
 		if($("#DD-table").data("kendoDropDownList") !== undefined) $("#DD-table").data("kendoDropDownList").value(-1);
@@ -93,9 +80,7 @@ angular.module('CVIPSMApp.createSearch', [])
 			}
 		},
 		select: function(e){
-
 			$scope.fieldData.tableLabel = e.item.text();
-			//console.log($scope.fieldData.tableLable)
 		}
 	}
 
@@ -135,25 +120,29 @@ angular.module('CVIPSMApp.createSearch', [])
 			$scope.DDColumnOptions.dataSource = currentColumn;
 			$scope.showColumn = true;
 		});
-		
-		// ONLY TO REFRESH THE DATASOURCE!
-		//$timeout(function(){
-			//$scope.showColumn = true;
-
-			//$scope.DDColumnOptions.dataSource  = DataFtry.fakeColumn(selectedTable).data;
-			//$scope.DDColumnOptions.dataSource = currentColumn;
-			/*$scope.DDColumnOptions.dataSource = {
-				transport: {
-					read: {
-						dataType: "json",
-						url: CVIPConfig.contextPath + "columns/" + selectedTable,
-					}
-				}
-			}*/
-		//}, 200);
 	} 
 
-	$scope.selectSearch = function(evt){
+	$scope.selDeselAdvanced = function(evt){
+
+		$scope.advancedSearch 	=! $scope.advancedSearch;
+		// ADVANCED SEARCH /////////////////////
+		if($scope.advancedSearch){
+			$('#selectAdvancedsearch-btn').addClass('selectSearchActive');
+			$scope.basicSearch = true;
+			$scope.basicGrid = false;
+			$scope.advancedGrid = true;
+		// BASIC SEARCH /////////////////////
+		} else {
+			$('#selectAdvancedsearch-btn').removeClass('selectSearchActive');
+			$scope.basicSearch = true;
+			$scope.basicGrid = true;
+			$scope.advancedGrid = false;
+			$scope.showColumn = false;
+			initializeDisplayList();
+		}
+	}
+
+/*	$scope.selectSearch = function(evt){
 		$scope.errorMsg ="";
 		$scope.showResult	= false;
 		$('.selectSearch-btn').removeClass('selectSearchActive');
@@ -184,7 +173,7 @@ angular.module('CVIPSMApp.createSearch', [])
 			default:
 				$scope.basicSearch = true
 		}
-	} 
+	}*/ 
 
 	$scope.getSeries = function(){
 		$scope.showResult	= true;
@@ -274,12 +263,11 @@ angular.module('CVIPSMApp.createSearch', [])
 		list.splice(index, 1);
 	};
 	
-	// MAKE THE CHECK BOX PERSISTING
+	// MAKE THE CHECK BOX PERSISTING ///////////////////////////////////////
 	$scope.checkedIds =[];
 	$scope.selectItem = function(item){
 		//remove from selection list if unchecked
 		if (!item.selected) {
-			
 			while ($.inArray(item.caseNumber, $scope.checkedIds) >=0) {
 				console.log(item.caseNumber + "=" + $.inArray(item.caseNumber, $scope.checkedIds));
 				$scope.checkedIds.splice($.inArray(item.caseNumber, $scope.checkedIds),1);
@@ -309,6 +297,7 @@ angular.module('CVIPSMApp.createSearch', [])
 		ev.currentTarget.checked ? $scope.caseNum = items.length : $scope.caseNum = 0; 
 	};
 
+	// LOAD THE SELECTED SERIES  //////////////////////////////////////////////////////
 	$scope.loadSeries = function(evt){
 		$state.go('seriesInfo');
 
@@ -317,29 +306,19 @@ angular.module('CVIPSMApp.createSearch', [])
 		var dataItem = grid.dataItem($(evt.currentTarget).closest("tr"));
 		var ID = dataItem.series_id;
 
-		// SAVE PARAM BEFORE LEAVING THE PAGE
+		// SAVE PARAM BEFORE LEAVING THE PAGE //////////////////////////////
 		var SEARCHPARAMS = {
 			//"gridOptions"		: kendo.stringify(grid.getOptions()),
 			"advancedSearch"	: $scope.advancedSearch,
 			"fieldsToDisplay"	: $scope.fieldsToDisplay
-			// "radioBtnRDR"	: $("#radioBtn-RDR").is(":checked"),
-			// "radioBtnUAC"	: $("#radioBtn-UAC").is(":checked"),
-			// "submitDisabled"	: $scope.submitDisabled,
-			// "datePickerDisabled"	: $scope.datePickerDisabled,
-			// "warningMessage"	: $scope.warning,
-			// "warningClass"	: $scope.warningClass,
-			// "searchResult"	: $scope.searchResult
 		};
 		sessionStorage.setItem('SEARCHPARAMS', JSON.stringify(SEARCHPARAMS));
-
-		//console.log(seriesID);
-		//console.log(evt.currentTarget.text)
 
 		$timeout(function() {
 			$rootScope.$broadcast("loadExistingSeries", {seriesId: ID});
 			//$rootScope.$broadcast("loadExistingSeries", {series: series});
 		}, 500);
-}
+	}
 
 
 
@@ -367,6 +346,7 @@ angular.module('CVIPSMApp.createSearch', [])
 
 */
 
+// SEARCH RESULTS  //////////////////////////////////////////////////////
 var model;
 var columns = [];
 var data = [];
@@ -386,7 +366,7 @@ $scope.getSeries = function(evt){
 		CVIPConfig.gridData =  JSON.stringify(data);
 	});	
 }
-
+// GENERATE DYNAMIC DATA GRID //////////////////////////////////////////////////////
 function generateGrid(gridData) {
 
 	model 	= generateModel(gridData[0]);
@@ -556,6 +536,7 @@ function generateModel(gridData) {
 	model.fields = fields;
 	return model;
 	}
+
 // EXPORT AS EXCEL //////////////////////////////////////////////
 $scope.removeSelectedRow = function(evt){
 

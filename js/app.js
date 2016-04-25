@@ -93,15 +93,15 @@ var app = angular.module('CVIPSMApp', [
 				}
 			)
 
-		/*.state('mainSearch', {
-				url: '/mainSearch',
+			.state('createSeries', {
+				url: '/createSeries',
 				templateUrl: 'components/mainSearch.html',
 				data: {
 					requireLogin: true
 					}
 				}
 			)
-			.state('searchResult', {
+			/*.state('searchResult', {
 				url: '/searchResult',
 				templateUrl: 'components/searchResult.html',
 				data: {

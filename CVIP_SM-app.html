@@ -74,20 +74,16 @@
 					<div class="baseText" style="float:right;position: relative; top:-5px; padding-right:20px ">Welcome: {{userName}}</div>
 				</div>
 
-				<div class="caseMenu clearfix" style="padding:0px 20px 0px 0px; float: left; width:100%">
-					<ul> 
-						
-							<li><a href="" ng-click="selectSection($event)" class="caseMenuItem">MY CASES</a></li>
-							<li><a href="" ng-click="selectSection($event)" class="caseMenuItem">CREATE SERIES</a></li>
-							<li><a href="" ng-click="selectSection($event)" class="caseMenuItem">SEARCH SERIES</a></li>
-							<li><a href="" ng-click="selectSection($event)" class="caseMenuItem">REPORTS</a></li>
-						
-						
+				<div class="caseMenu clearfix" style=" float: left; width:100%">
+					<ul>
+						<li><a href="" ng-click="selectSection($event)" class="seriesMenuItem">MY CASES</a></li>
+						<li><a href="" ng-click="selectSection($event)" class="seriesMenuItem">CREATE SERIES</a></li>
+						<li><a href="" ng-click="selectSection($event)" class="seriesMenuItem caseMenu-sel">SEARCH SERIES</a></li>
+						<li><a href="" ng-click="selectSection($event)" class="seriesMenuItem" >REPORTS</a></li>
 					</ul>
 				</div>
-			
 			</div>
-			<div class="h-sep" style="margin:0px 0px 10px 0; position:relative; top:-10px" ></div>
+			<div class="h-sep" style="position:relative; top:-10px" ></div>
 			<div ui-view="" class="fader-animation"></div>
 		</div>
 
