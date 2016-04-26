@@ -2,11 +2,12 @@
 app.controller('MainCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "CVIPConfig", "DataFtry", "DataTesting",  function($rootScope, $scope, $window, $state, $timeout, CVIPConfig, DataFtry, DataTesting){
 
 	$scope.userName = "Ludwig";
+	$state.go('myCases');
 
 	$scope.selectSection = function(evt){
 
-		$(".seriesMenuItem").removeClass("caseMenu-sel");
-		$(evt.currentTarget).addClass('caseMenu-sel');
+		/*$(".seriesMenuItem").removeClass("caseMenu-sel");
+		$(evt.currentTarget).addClass('caseMenu-sel');*/
 
 
 	}

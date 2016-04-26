@@ -12,10 +12,12 @@ var app = angular.module('CVIPSMApp', [
 	'CVIPSMApp.filters',
 	'kendo.directives',
 	'CVIPSMApp.createSeries',
-	'CVIPSMApp.createSearch',
+	'CVIPSMApp.searchSeries',
 	'CVIPSMApp.seriesInfo',
 	'CVIPSMApp.generalInfo',
 	'CVIPSMApp.sectionsInfo',
+	'CVIPSMApp.myCases',
+	'CVIPSMApp.reports',
 
 	// FOR TESTING ONLY///////////////
 	'CVIPSMApp.test'
@@ -23,12 +25,12 @@ var app = angular.module('CVIPSMApp', [
 	])
 	.config(function ($stateProvider, $urlRouterProvider) {
 
-		$urlRouterProvider.otherwise('/search');
+		$urlRouterProvider.otherwise('/myCases');
 		// Now set up the states
 		$stateProvider
 			.state('search', {
 				url: "/search",
-				templateUrl: 'components/createSearch/createSearch.html',
+				templateUrl: 'components/searchSeries/searchSeries.html',
 				data: {
 					//requireLogin: true
 					}
@@ -95,7 +97,25 @@ var app = angular.module('CVIPSMApp', [
 
 			.state('createSeries', {
 				url: '/createSeries',
-				templateUrl: 'components/mainSearch.html',
+				templateUrl: 'components/createSeries/createSeries-tmp.html',
+				data: {
+					requireLogin: true
+					}
+				}
+			)
+
+			.state('myCases', {
+				url: '/myCases',
+				templateUrl: 'components/mycases/myCases-tmp.html',
+				data: {
+					requireLogin: true
+					}
+				}
+			)
+
+			.state('reports', {
+				url: '/reports',
+				templateUrl: 'components/reports/reports-tmp.html',
 				data: {
 					requireLogin: true
 					}

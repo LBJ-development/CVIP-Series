@@ -11,7 +11,7 @@ angular.module('CVIPSMApp.utilities', [])
 	return{
 		restrict: "A",
 		controller: 'leftMenuCtrl',
-		templateUrl: 'components/seriesInfo/leftMenu-tmp.html',
+		templateUrl: '/series/components/seriesInfo/leftMenu-tmp.html',
 		link: function (scope, element, attrs){
 
 		// ADD/REMOVE ITEMS OBJECTS ///////////////////////////////////////////////
@@ -260,7 +260,7 @@ angular.module('CVIPSMApp.utilities', [])
 			scope.DDOptions = {
 				dataTextField: "disLabel",
 				//dataValueField: "dbLabel",
-				placeholder: "Select a ...",
+				placeholder: "Select values...",
 				dataValueField: "disLabel",
 				optionLabel: {
 					disLabel : "",
@@ -304,7 +304,7 @@ angular.module('CVIPSMApp.utilities', [])
 .directive('footer', function(){
 	return{
 		restrict: "A",
-		templateUrl: 'components/shared/footer-tmp.html',
+		templateUrl: '/series/components/shared/footer-tmp.html',
 		link: function (scope, element, attrs){
 
 		}

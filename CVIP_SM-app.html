@@ -76,10 +76,10 @@
 
 				<div class="caseMenu clearfix" style=" float: left; width:100%">
 					<ul>
-						<li><a href="" ng-click="selectSection($event)" class="seriesMenuItem">MY CASES</a></li>
-						<li><a href="" ng-click="selectSection($event)" class="seriesMenuItem">CREATE SERIES</a></li>
-						<li><a href="" ng-click="selectSection($event)" class="seriesMenuItem caseMenu-sel">SEARCH SERIES</a></li>
-						<li><a href="" ng-click="selectSection($event)" class="seriesMenuItem" >REPORTS</a></li>
+						<li><a ui-sref=".myCases" id="myCases-men" ng-click="selectSection($event)" class="seriesMenuItem caseMenu-sel">MY CASES</a></li>
+						<li><a ui-sref=".createSeries" id="createSeries-men" ng-click="selectSection($event)" class="seriesMenuItem">CREATE SERIES</a></li>
+						<li><a ui-sref=".search"  id="searchSeries-men" ng-click="selectSection($event)" class="seriesMenuItem">SEARCH SERIES</a></li>
+						<li><a ui-sref=".reports"  id="reports-men" ng-click="selectSection($event)" class="seriesMenuItem" >REPORTS</a></li>
 					</ul>
 				</div>
 			</div>
@@ -95,11 +95,14 @@
 		<script type="text/javascript" src="components/shared/formatting.js"></script>
 		<script type="text/javascript" src="components/shared/config.js"></script>
 		<script type="text/javascript" src="components/shared/filters.js"></script>
-		<script type="text/javascript" src="components/createSearch/createSeries-dir.js"></script>
-		<script type="text/javascript" src="components/createSearch/createSearchCtrl.js"></script> 
+
+		<script type="text/javascript" src="components/createSeries/createSeriesCtrl.js"></script>
+		<script type="text/javascript" src="components/searchSeries/searchSeriesCtrl.js"></script> 
 		<script type="text/javascript" src="components/seriesInfo/seriesInfoCtrl.js"></script>
 		<script type="text/javascript" src="components/seriesInfo/generalCtrl.js"></script>
 		<script type="text/javascript" src="components/seriesInfo/sectionsCtrl.js"></script>
+		<script type="text/javascript" src="components/myCases/myCasesCtrl.js"></script>
+		<script type="text/javascript" src="components/reports/reportsCtrl.js"></script>
 	<!-- END CONTROLER -->
 
 	<!-- ONLY FOR TESTING /////////////////////////////////////////////// -->

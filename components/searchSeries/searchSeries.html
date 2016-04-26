@@ -1,4 +1,4 @@
-<div ng-controller="createSearchCtrl" ng-init="init()" >
+<div ng-controller="searchSeriesCtrl" ng-init="init()" >
 
 	<span class="tabPos-btn selectSearch-btn" id="selectAdvancedsearch-btn" style="display:inline; float:right; position: relative; top:-20px"><a href="" ng-click="selDeselAdvanced($event)" > Advanced Search</a></span>
 
@@ -99,7 +99,7 @@
 	</div>
 
 <!-- CREATE NEW SERIES ///////////////////////////////////////////////-->
-	<div create-series ng-if="createSeries"></div>
+	<!-- <div create-series ng-if="createSeries"></div> -->
 
 <!-- SEARCH RESULT  //////////////////////////////////////////////////////// -->
 	<div  class="content-wrapper" ng-if="showResult">
@@ -116,22 +116,8 @@
 		</div>
 	</div>
 
-	<!-- IA REFERRALS  ////////////////////////////////////////////////////////-->
-	<div  class="content-wrapper" ng-show="isShowReferrals">
-		<div style="display: inline-block; float:left; width: 100%" >
-			<span class="sub-title" style="display: inline-block; float:left">IA Referrals</span>
-		</div>
-		<div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
-			<div role="datagrid" class="grid-holder" >
-				<div kendo-grid="iaGrid" id="iagrid" k-options="iaGridOptions" k-rebind="iaGridOptions"  k-ng-delay="iaGridOptions">
-				</div> 
-			</div> 
-		</div>
-	</div>
-		
-
 <!-- FOOTER  //////////////////////////////////////////////////////// -->
-	<div footer></div>   
+<!-- 	<div footer></div>    -->
 </div>
 <!--
 <script type="text/x-kendo-template" id="template">

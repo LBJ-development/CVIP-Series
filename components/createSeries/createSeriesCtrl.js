@@ -3,6 +3,10 @@ angular.module('CVIPSMApp.createSeries', [])
 
 .controller('CreateSeriesCtrl', ["$rootScope", "$scope",  "$state" , "$timeout",  function($rootScope, $scope, $state, $timeout){
 
+	
+	$(".seriesMenuItem").removeClass("caseMenu-sel");
+	$("#createSeries-men").addClass('caseMenu-sel');
+	
 	$scope.initialInfo = {};
 
 	$scope.createSeries = function(){
@@ -14,17 +18,4 @@ angular.module('CVIPSMApp.createSeries', [])
     	}, 500);	
 	}
 }])
-
-
-.directive('createSeries', function($rootScope, $state){
-	return{
-		restrict: "A",
-		controller: 'CreateSeriesCtrl',
-		templateUrl: 'components/createSearch/createSeries-tmp.html',
-		link: function (scope, element, attrs){
-
-			
-		}
-	}
-})
 

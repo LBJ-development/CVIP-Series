@@ -1,9 +1,14 @@
 'use strict';
-angular.module('CVIPSMApp.createSearch', [])
+angular.module('CVIPSMApp.searchSeries', [])
 
-.controller('createSearchCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "$location", "CVIPConfig", "DataFtry", "DataTesting",  function($rootScope, $scope, $window, $state, $timeout, $location, CVIPConfig, DataFtry, DataTesting){
+.controller('searchSeriesCtrl',[ "$rootScope",  "$scope", "$window", "$state" , "$timeout", "$location", "CVIPConfig", "DataFtry", "DataTesting",  function($rootScope, $scope, $window, $state, $timeout, $location, CVIPConfig, DataFtry, DataTesting){
 
 	$scope.init = function (){
+
+		$(".seriesMenuItem").removeClass("caseMenu-sel");
+		$("#searchSeries-men").addClass('caseMenu-sel');
+
+
 		initializeDisplayList();
 
 		if(CVIPConfig.displaySearchResult){
@@ -19,9 +24,9 @@ angular.module('CVIPSMApp.createSearch', [])
 				$scope.fieldsToDisplay =  savedSearch.fieldsToDisplay;
 
 				if(savedSearch.advancedSearch){
-					$scope.basicSearch = true;
+					//$scope.basicSearch = true;
 					$scope.advancedSearch = true;
-					$scope.basicGrid = false;
+					//$scope.basicGrid = false;
 					$scope.advancedGrid = true;
 					$('.selectSearch-btn').removeClass('selectSearchActive');
 					$('#selectAdvancedsearch-btn').addClass('selectSearchActive');
@@ -52,9 +57,9 @@ angular.module('CVIPSMApp.createSearch', [])
 		$scope.seriesName  =  result ;
 	});
 	// VARIABLES //////////////////////////////////////////
-	$scope.basicSearch 		= true;
+	//$scope.basicSearch 		= true;
 	$scope.advancedSearch 	= false;
-	$scope.createSeries		= false;
+	//$scope.createSeries		= false;
 	$scope.showResult		= false;
 	$scope.showColumn		= false;
 	$scope.basicGrid 		= true;
@@ -100,8 +105,7 @@ angular.module('CVIPSMApp.createSearch', [])
 
 			index = e.item.index() -1;
 			selectedCriteria = this.dataSource.at(index);
-			//console.log(this.dataItem());
-			//console.log(this.dataSource.at(index));
+
 		 }
 	}
 
@@ -141,39 +145,6 @@ angular.module('CVIPSMApp.createSearch', [])
 			initializeDisplayList();
 		}
 	}
-
-/*	$scope.selectSearch = function(evt){
-		$scope.errorMsg ="";
-		$scope.showResult	= false;
-		$('.selectSearch-btn').removeClass('selectSearchActive');
-		$(evt.currentTarget).parent().addClass('selectSearchActive');
-
-		$scope.basicSearch = $scope.advancedSearch = $scope.createSeries =  false;
-		switch($(evt.currentTarget).attr('id') ){
-			case "1":
-				$scope.basicSearch = true;
-				$scope.basicGrid = true;
-				$scope.advancedGrid = false;
-				$scope.advancedSearch = false;
-				$scope.showColumn = false;
-				initializeDisplayList();
-				break;
-			case "2":
-				$scope.basicSearch = true;
-				$scope.advancedSearch = true;
-				$scope.basicGrid = false;
-				$scope.advancedGrid = true;
-				break;
-			case "3":
-				$scope.createSeries = true;
-				$scope.advancedSearch = false;
-				$scope.showColumn = false;
-				 initializeDisplayList();
-				break;
-			default:
-				$scope.basicSearch = true
-		}
-	}*/ 
 
 	$scope.getSeries = function(){
 		$scope.showResult	= true;
@@ -219,25 +190,6 @@ angular.module('CVIPSMApp.createSearch', [])
 		$(".btn-closeModal").click();
 		//console.log($scope.fieldsToDisplay);
 	 }
-	
-	var ias = new Array();
-	$scope.showReferrals = function(){
-		$scope.isShowReferrals = true;
-		var url = CVIPConfig.contextPath + "ia";
-		DataFtry.getData(url).then(function(result){ 
-			 for (var i = 0; i < result.length; i++) {
-				var row = {};
-				 row["seriesId"]     = result[i][0];
-				 row["analyst"]     = result[i][1];
-				 row["series"]     = result[i][2];
-				 row["ia_report_sent_date"]     = new Date(result[i][3]);
-				 row["leaname"]     = result[i][4];
-				 row["leaagency"]     = result[i][5];
-				 row["status"]     = result[i][6];
-				 ias[i] = row;
-			}	
-		});
-	}
 
 // ADD/REMOVE FIELD OBJECTS ///////////////////////////////////////////////
 	$scope.addToList = function(list) {
@@ -321,31 +273,6 @@ angular.module('CVIPSMApp.createSearch', [])
 	}
 
 
-
-	/*function detailInit(e) {
-
-		var detailRow = e.detailRow;
-			kendo.bind(detailRow, e.data);
-		}*/
-
-// DATAGRID FILTERS //////////////////////////////////////
-/*var seriesT	= ["Awaiting Case Info", "Identified", "NCMEC at Risk", "Unconfirmed", "Unfounded", "Unidentified", "Null"]
-
-	function seriesType(element) {
-		element.kendoDropDownList({
-			dataSource: seriesT,
-			optionLabel: "--Select Value--"
-		});
-	}
-
-*/
-
-/*	$rootScope.$on("seriesDeleted", function(event){
-			$scope.errorMsg="The series was successfully deleted."
-	});
-
-*/
-
 // SEARCH RESULTS  //////////////////////////////////////////////////////
 var model;
 var columns = [];
@@ -371,19 +298,7 @@ function generateGrid(gridData) {
 
 	model 	= generateModel(gridData[0]);
 	columns = generateColumns(gridData[0]);
-	//console.log(columns)
-/*	var parseFunction;
-	if (dateFields.length > 0) {
-		parseFunction = function (response) {
-			for (var i = 0; i < response.length; i++) {
-				for (var fieldIndex = 0; fieldIndex < dateFields.length; fieldIndex++) {
-					var record = response[i];
-					record[dateFields[fieldIndex]] = kendo.parseDate(record[dateFields[fieldIndex]]);
-				}
-			}
-			return response;
-		};
-	}*/
+
 	$scope.advancedGridOptions = {
 
 		excel: {

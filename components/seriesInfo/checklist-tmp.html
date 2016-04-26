@@ -1,6 +1,6 @@
 <div ng-controller="ChecklistCtrl">
 	<div class="tabHead">
-		<span class="tab-title">Checklist</span>
+		<span class="tab-title"> Series {{generalInfo.general.seriesName}} - Checklist</span>
 		<ul>
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
@@ -10,6 +10,266 @@
 		</ul>
 	</div>
 	<div class="backgroundColor" >
+
+			<div ng-if="editable">
+				<div class="row ">
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<span> <strong>Child in question is </strong></span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<label >Younger than 18 years of age? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Engaged in activity that is legally defined as child pornography? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter"  style='padding-top:10px'>
+						<label>Engaging in conduct that would impair or debauch the morals of that child? </label>
+						<input type='checkbox'   ng-model='bolo.bolo' >
+					</div>
+
+                     
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:25px'>
+						<span> <strong>Child in question is "at-risk" due to </strong></span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Age of the child ? </label>
+						<input type='checkbox'   ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Evidential indicators that would provide a time factor of when the image was produced? </label>
+						<input type='checkbox' ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>The abuse depicted appears to be in the victim's home, or appears to be a familiar setting such as within the child's zone of safety? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Any indicators that the child appears to be in imminent danger? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Egregiousness of the activity depicted in the image? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+					
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<span> 	The following agencies have been contacted in an effort to determine if the child has been previously identified in any other images by law enforcement. NCMEC has received information that agency has no knowledge of the child's identification.
+						</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Egregiousness of the activity depicted in the image? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>ICE NCVIP? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+				
+				     <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Internet Crimes Against Children Regional Task Forces, and their local resources? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>INTERPOL? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>NCS (England)? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Toronto Police Service? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Any other law enforcement agency assigned to child protection: Please specify:  </label>
+						<input type="text" class="form-control" ng-model="{{checklist.contacted_others_values}}" />
+						
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Is there evidence that the image was produced within the borders of the United States? </label>
+						
+					</div>
+						<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Is there evidence that would suggest a particular State or region where the image was produced? </label>
+						
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Staff members should make efforts to locate, analyze, and scrutinize any identifiable or unique features within the image and use that information to further identify the venue of the abuse. This step is critical to narrowing down a region or area when attempting to identify the child? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label> If age appropriate, efforts have been made to contact all known School Resource Offices within the targeted area where the image is believed to have been taken? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>If age appropriate, efforts have been made to contact all known Juvenile Officers within the targeted area where the image is believed to have been taken? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label> Efforts have been made to contact all County D.A./Prosecutor's Office Sex Crimes/Child Abuse Units within the targeted area where the image is believed to have been taken? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Efforts can be made to contact school counselors, principals, gym teachers, etc. within the targeted area where the image is believed to be taken? </label>
+						<input type='checkbox'  ng-model='bolo.bolo' >
+					</div>
+
+				</div>
+			</div>
+
+
+			<div ng-if="!editable">
+				<div class="row ">
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<span> <strong>Child in question is </strong></span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<label >Younger than 18 years of age? </label>
+						<span > Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Engaged in activity that is legally defined as child pornography? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter"  style='padding-top:10px'>
+						<label>Engaging in conduct that would impair or debauch the morals of that child? </label>
+						<span> Yes</span>
+					</div>
+
+                     
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:25px'>
+						<span> <strong>Child in question is "at-risk" due to </strong></span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Age of the child ? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Evidential indicators that would provide a time factor of when the image was produced? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>The abuse depicted appears to be in the victim's home, or appears to be a familiar setting such as within the child's zone of safety? </label>
+						<span> Yes</span>
+					</div>
+
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Any indicators that the child appears to be in imminent danger? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Egregiousness of the activity depicted in the image? </label>
+						<span> Yes</span>
+					</div>
+					
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<span> 	The following agencies have been contacted in an effort to determine if the child has been previously identified in any other images by law enforcement. NCMEC has received information that agency has no knowledge of the child's identification.
+						</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Egregiousness of the activity depicted in the image? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>ICE NCVIP? </label>
+						<span> Yes</span>
+					</div>
+				
+				     <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Internet Crimes Against Children Regional Task Forces, and their local resources? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>INTERPOL? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>NCS (England)? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Toronto Police Service? </label>
+						<span> Yes</span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Any other law enforcement agency assigned to child protection: Please specify:  </label>
+						<input type="text" class="form-control" ng-model="{{checklist.contacted_others_values}}" />
+						
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Is there evidence that the image was produced within the borders of the United States? </label>
+						
+					</div>
+						<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Is there evidence that would suggest a particular State or region where the image was produced? </label>
+						
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Staff members should make efforts to locate, analyze, and scrutinize any identifiable or unique features within the image and use that information to further identify the venue of the abuse. This step is critical to narrowing down a region or area when attempting to identify the child? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label> If age appropriate, efforts have been made to contact all known School Resource Offices within the targeted area where the image is believed to have been taken? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>If age appropriate, efforts have been made to contact all known Juvenile Officers within the targeted area where the image is believed to have been taken? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label> Efforts have been made to contact all County D.A./Prosecutor's Office Sex Crimes/Child Abuse Units within the targeted area where the image is believed to have been taken? </label>
+						<span> Yes</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Efforts can be made to contact school counselors, principals, gym teachers, etc. within the targeted area where the image is believed to be taken? </label>
+						<span> Yes</span>
+					</div>
+
+				</div>
+			</div>
+
 		
 	</div>
 </div>

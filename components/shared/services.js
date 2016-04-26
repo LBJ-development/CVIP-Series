@@ -397,9 +397,19 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 	// TESTING END ////////////////
 */	var sendData = function(url, data){
 
+
+//		console.log("FROM DATA SEND");
+//		console.log(url);
+//		console.log(data);
+
+		console.log("FROM DATA SEND");
+		console.log(url);
+		console.log(data);
+
 		// console.log("FROM DATA SEND");
 		// console.log(url);
 		// console.log(data);
+
 
 		var $promise =  $http({
 			method: 'POST',
@@ -412,9 +422,10 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 
 			if(result.statusText == 'OK'){
 				deferred.resolve(result);
-				} else {
-					alert('Woops something wen wrong with the AJAX call');
-				}
+				} 
+//			else {
+//					alert('Woops something wen wrong with the AJAX call');
+//				}
 			});
 			return deferred.promise;
 		};
@@ -434,6 +445,41 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 			});
 			return deferred.promise;
 		};
+	var deleteDat = function(url){
+
+		var $promise =  $http({
+			method: 'DELETE',
+			url:  url
+		});
+
+		var deferred = $q.defer();
+
+		$promise.then(function(result){
+			deferred.resolve(result.data);
+			});
+			return deferred.promise;
+		};
+
+ var updateData = function(url, data){
+
+		console.log("updating called inside factory");
+
+		var $promise =  $http({
+			method: 'PUT',
+			url:  url,
+			headers: {'Content-Type': 'application/json'},
+			data: data
+		});
+		var deferred = $q.defer();
+		$promise.then(function(result){
+
+			if(result.statusText == 'OK'){
+				deferred.resolve(result);
+				} 
+			});
+			return deferred.promise;
+		}
+
 
 	return {
 		// TESTING START ////////////////
@@ -442,6 +488,8 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		// TESTING END ////////////////
 		getData		: getData,
 		sendData		: sendData,
+		deleteDat: deleteDat,
+		updateData: updateData,
 		//fakeTable		: fakeTable,
 		//fakeColumn	: fakeColumn,
 		testData : testData,

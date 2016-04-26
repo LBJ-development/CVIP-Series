@@ -1,0 +1,55 @@
+<div ng-controller="ExternalCtrl">
+
+	
+	<div class="tabHead">
+		<span class="tab-title">External Agencies  </span>
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit Series</a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveSeries()" >Save</a></li>
+			<li class="tab-btn deleteNeg-btn" ng-if="!editable"><a href="" ng-click="deleteSeries()" >Delete Series</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+		</ul>
+	</div>
+	<div ng-include="'/series/components/seriesInfo/panels/ext-icse.html'"></div>
+
+
+<!-- ACTIVITIES ////////////////////////////////////////////////////////// -->	
+	<!--<div class="tabHead"  style="margin-top:10px" ng-if="editable">
+		<span class="tab-title">Sexual Activity</span>
+		<ul>
+			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="!" ><a href=""  ng-click="displayActivity()">Open</a></li>
+			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="" ><a href=""  ng-click="displayActivity()">Close</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show="" >Edit</a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="" >View</a></li>
+			<li class="tab-sep" ng-show="dispActivity" ></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="()"ng-show="dispActivity"  >Save</a></li>
+			<li class="tab-sep" ng-if="editable" ng-show="dispActivity" ></li>
+		</ul>
+	</div>-->
+	<div ng-include="'/series/components/seriesInfo/panels/ext-justiceall.html'"></div>
+
+
+    <!--<div class="tabHead"  style="margin-top:10px" ng-if="editable">
+		<span class="tab-title">Identification Timeline</span>
+		<ul>
+			<li id="closeGeneral-btn" class="tab-btn openPanel-btn" ng-show="" ><a href=""  ng-click="()">Open</a></li>
+			<li id="closeGeneral-btn" class="tab-btn closePanel-btn" ng-show="" ><a href=""  ng-click="()">Close</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" ng-show=""  >Edit</a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()" ng-show="" >View</a></li>
+			<li class="tab-sep" ng-show="" ></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="" ng-show=""  >Save</a></li>
+			<li class="tab-sep" ng-if="editable" ng-show="" ></li>
+		</ul>
+	</div>-->
+	<div ng-include="'/series/components/seriesInfo/panels/ext-eousa.html'"></div>
+
+	<div ng-include="'/series/components/seriesInfo/panels/ext-newsoutreach.html'"></div>
+
+
+
+	
+</div>
