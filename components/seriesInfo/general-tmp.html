@@ -1,27 +1,17 @@
 <div ng-controller="GeneralCtrl"> 
 <!-- GENERAL INFO ////////////////////////////////////////////////////////// -->
-<!--<div class="row ">
-<span style="font-weight: bold; color:blue; display: inline-block; float:left; padding: 30px 0 0 20px; text-align:left">{{msg}}</span>
-</div>-->
 	<div class="tabHead">
 		<span class="tab-title">General</span>
 		<ul>
-			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit Series</a></li>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
 			<li class="tab-sep"></li>
-
 			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveSeries()" >Save</a></li>
-			<li class="tab-btn deleteNeg-btn" ng-if="!editable"><a href="" ng-click="deleteSeries()" >Delete Series</a></li>
-
-			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="addSuspect()" >Save</a></li>
-
-			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveSeries()" >Save</a></li>
-
 			<li class="tab-sep" ng-if="editable"></li>
 		</ul>
 	</div>
 
-	<div ng-include="'/series/components/seriesInfo/panels/gen-general.html'"></div>
+	<div ng-include="'components/seriesInfo/panels/gen-general.html'"></div>
 
 <!-- ACTIVITIES ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
@@ -38,7 +28,7 @@
 		</ul>
 	</div>
 
-	<div ng-include="'/series/components/seriesInfo/panels/gen-activity.html'"></div>
+	<div ng-include="'components/seriesInfo/panels/gen-activity.html'"></div>
 	
 <!-- IDENTIFICATION TIMELINE ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
@@ -55,7 +45,7 @@
 		</ul>
 	</div>
 
-	<div ng-include="'/series/components/seriesInfo/panels/gen-idenTimeline.html'"></div>
+	<div ng-include="'components/seriesInfo/panels/gen-idenTimeline.html'"></div>
 
 <!-- DATE RECORDS STARTED ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
@@ -72,7 +62,7 @@
 		</ul>
 	</div>
 	
-	<div ng-include="'/series/components/seriesInfo/panels/gen-dateRecordStarted.html'"></div>
+	<div ng-include="'components/seriesInfo/panels/gen-dateRecordStarted.html'"></div>
 
 <!-- SUMMARY STASTISTICS ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
@@ -88,7 +78,7 @@
 			<li class="tab-sep" ng-if="editable" ng-show="dispSumStat" ></li> -->
 		</ul>
 	</div>
-	<div ng-include="'/series/components/seriesInfo/panels/gen-summaryStats.html'"></div>
+	<div ng-include="'components/seriesInfo/panels/gen-summaryStats.html'"></div>
 
 <!--DESCRIPTION ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
@@ -127,8 +117,6 @@
 		<div class="sub-title" ng-if="!editable">Child Identification Note</div>
 		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
 	</div>
-	<div ng-include="'/series/components/seriesInfo/panels/gen-childIdNote.html'"></div>
-	
 
 <!-- MEDIA ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">
@@ -144,7 +132,7 @@
 			<li class="tab-sep" ng-if="editable" ng-show="dispMedia" ></li> -->
 		</ul>
 	</div>
-	<div ng-include="'/series/components/seriesInfo/panels/gen-media.html'"></div>
+	<div ng-include="'components/seriesInfo/panels/gen-media.html'"></div>
 	
 <!-- IMAGE TYPE ////////////////////////////////////////////////////////// -->	
 	<div class="tabHead"  style="margin-top:10px" ng-if="editable">

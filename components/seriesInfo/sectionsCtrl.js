@@ -1,7 +1,7 @@
 'use strict';
 angular.module('CVIPSMApp.sectionsInfo', [])
 
-.controller('ExternalCtrl',["$rootScope", "$scope", "CVIPConfig", "DataFtry",  function($rootScope, $scope, CVIPConfig, DataFtry){
+.controller('SummaryCtrl',["$rootScope", "$scope", "CVIPConfig", "DataFtry",  function($rootScope, $scope, CVIPConfig, DataFtry){
 
 
 }])
