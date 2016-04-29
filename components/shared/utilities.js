@@ -250,6 +250,7 @@ angular.module('CVIPSMApp.utilities', [])
 			model:'=model'
 		},
 		template: function(elements, attrs){
+	
 			return "<label><span ng-show='display'>{{table}}</span><span ng-show='display'>: </span> {{label}}: </label><select kendo-multi-select k-options='DDOptions'  class='form-control field-k-dropDown' ng-model='model'  ></select>"
 		},
 		link: function (scope, element, attrs){
