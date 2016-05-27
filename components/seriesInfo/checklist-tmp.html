@@ -1,15 +1,396 @@
 <div ng-controller="ChecklistCtrl">
 	<div class="tabHead">
-		<span class="tab-title">Checklist</span>
+		<span class="tab-title"> Series {{generalInfo.series.series}} - Checklist</span>
 		<ul>
-			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
-			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit Checklist</a></li>
+			<!--<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>-->
 			<li class="tab-sep"></li>
-			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="addSuspect()" >Save</a></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveChecklist()" >Save Checklist</a></li>
 			<li class="tab-sep" ng-if="editable"></li>
 		</ul>
 	</div>
 	<div class="backgroundColor" >
+
+			<div ng-if="editable">
+				<div class="row ">
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding-top:10px" >
+						<span> <strong>Child in question is </strong></span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding-left:30px" >
+						<input type="checkbox" ng-checked="checklist.underEighteen" ng-model="checklist.underEighteen">
+						<span>Younger than 18 years of age? </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px' >
+						<input type="checkbox" ng-checked="checklist.pornographic" ng-model="checklist.pornographic">
+						<span >Engaged in activity that is legally defined as child pornography? </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter"  style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.harmfulConduct" ng-model="checklist.harmfulConduct">
+						<span >Engaging in conduct that would impair or debauch the morals of that child? </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:25px' >
+						<span> <strong>Child in question is "at-risk" due to </strong></span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px' >
+						<input type="checkbox" ng-checked="checklist.atRiskFromAge"  ng-model="checklist.atRiskFromAge">
+						<span>Age of the child ? </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px' >
+						<input type="checkbox" ng-checked="checklist.atRiskFromTime" ng-model="checklist.atRiskFromTime">
+						<span>Evidential indicators that would provide a time factor of when the image was produced? </span>
+					
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px' >
+						<input type="checkbox" ng-checked="checklist.atRiskFromHome" ng-model="checklist.atRiskFromHome">
+						<span>The abuse depicted appears to be in the victim's home, or appears to be a familiar setting such as within the child's zone of safety? </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.atRiskImminentDanger" 
+						ng-model="checklist.atRiskImminentDanger">
+						<span>Any indicators that the child appears to be in imminent danger? </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.atRiskEgregiousActivity" ng-model="checklist.atRiskEgregiousActivity">
+						<span>Egregiousness of the activity depicted in the image? </span>
+					</div>
+					
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:30px'>
+						<span> <strong> 	The following agencies have been contacted in an effort to determine if the child has been previously identified in any other images by law enforcement. NCMEC has received information that agency has no knowledge of the child's identification. </strong>
+						</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedIceNcvip" ng-model="checklist.contactedIceNcvip">
+						<span>ICE NCVIP? </span>
+						<!-- <span> Yes</span> -->
+					</div>
+				
+				   <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedIcacrtf" ng-model="checklist.contactedIcacrtf">
+						<span>Internet Crimes Against Children Regional Task Forces, and their local resources. </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedInterpol"  ng-model="checklist.contactedInterpol">
+						<span>INTERPOL </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedNcs" ng-model="checklist.contactedNcs">
+						<span>NCS (England) </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedTps" ng-model="checklist.contactedTps">
+						<span >Toronto Police Service? </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+				    <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'> 
+					  	<input type="checkbox" ng-checked="checklist.contactedOthers" ng-model="checklist.contactedOthers">
+						<span>Any other law enforcement agency assigned to child protection: Please specify:  </span>
+						   						
+					</div>
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+                        <textarea  maxlength="1" rows="1" columns="100"  class="form-control" ng-model="checklist.contactedOthersValues"> {{checklist.contactedOthersValues}} </textarea>
+					 </div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:10px 0px 0px 30px'>
+						<span>Is there evidence that the image was produced within the borders of the United States? </span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:0px 0px 0px 30px'>
+						<textarea rows="4"  columns="100" class="form-control" ng-model="checklist.evidenceForUsaProduction">{{checklist.evidenceForUsaProduction}} </textarea>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:10px 0px 0px 30px'
+						>
+						<span>Is there evidence that would suggest a particular State or region where the image was produced? 	
+						</span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter"style='padding:0px 0px 0px 30px'>
+						<textarea rows="4" ng-model="checklist.evidenceForStateOrRegion" columns="100"  class="form-control">{{checklist.evidenceForStateOrRegion}} 
+						</textarea>
+					</div>
+
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:10px 0px 00px 30px'>
+					     <input type="checkbox" ng-checked="checklist.examineUniqueImageFeatures" ng-model="checklist.examineUniqueImageFeatures">
+					
+						<span>Staff members should make efforts to locate, analyze, and scrutinize any identifiable or unique features within the image and use that information to further identify the venue of the abuse. This step is critical to narrowing down a region or area when attempting to identify the child. </span>
+						<!-- <span > Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 0px 30px'> 
+					    <input type="checkbox" ng-checked="checklist.sroContactAttempt" ng-model="checklist.sroContactAttempt">
+						<span> If age appropriate, efforts have been made to contact all known School Resource Offices within the targeted area where the image is believed to have been taken. </span>
+						<!-- <span> Yes</span> -->
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100" class="form-control" ng-model="checklist.sroContactDetails">
+							{{checklist.sroContactDetails}}
+						</textarea>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 0px 30px'> 
+						<input type="checkbox" ng-checked="checklist.joContactAttempt"  ng-model="checklist.joContactAttempt">
+						<span>If age appropriate, efforts have been made to contact all known Juvenile Officers within the targeted area where the image is believed to have been taken. </span>
+						<!-- <span> Yes</span> -->
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100" class="form-control" ng-model="checklist.joContactDetails">
+							{{checklist.joContactDetails}}
+						</textarea>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 00px 30px'> 
+					    <input type="checkbox" ng-checked="checklist.countyContactAttempt"  ng-model="checklist.countyContactAttempt">
+						<span>Efforts have been made to contact all County D.A./Prosecutor's Office Sex Crimes/Child Abuse Units within the targeted area where the image is believed to have been taken. </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100"  class="form-control" ng-model="checklist.countyContactDetails">
+							{{checklist.countyContactDetails}}
+						</textarea>
+					</div>
+
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 00px 30px'> 
+					    <input type="checkbox" ng-checked="checklist.cpsContactAttempt" ng-model="checklist.cpsContactAttempt">
+						<span> Efforts have been made to contact all Child Protective Services within the targeted area where the image is believed to have been taken. </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100" class="form-control" ng-model="checklist.cpsContactDetails" >
+							{{checklist.cpsContactDetails}}
+						</textarea>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 0px 30px' 
+					        >
+					    <input type="checkbox" ng-checked="checklist.medicalContactAttempt" ng-model="checklist.medicalContactAttempt">
+						<span>Efforts have been made to contact area Pediatricians, other similar medical personnel and Child Protective Service workers whose duties involve treatment of children. </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100" ng-model="checklist.medicalContactDetails" class="form-control">
+							{{checklist.medicalContactDetails}}
+						</textarea>
+					</div>
+
+				    <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 0px 30px'> 
+					    <input type="checkbox" ng-checked="checklist.teacherContactAttempt" ng-model="checklist.teacherContactAttempt">
+						<span>
+							Efforts can be made to contact school counselors, principals, gym teachers, etc. within the targeted area where the image is believed to be taken.
+						 </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 30px 30px">
+						<textarea rows=1 columns="100" ng-model="checklist.teacherContactDetails" class="form-control">
+							{{checklist.teacherContactDetails}}
+						</textarea>
+					</div>
+				</div>
+			</div>
+
+
+			<div ng-if="!editable">
+				<div class="row ">
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<span> <strong>Child in question is </strong></span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding-left:30px" >
+						<input type="checkbox" ng-checked="checklist.underEighteen" disabled="true">
+						<span>Younger than 18 years of age? </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px' >
+						<input type="checkbox" ng-checked="checklist.pornographic" disabled="true">
+						<span >Engaged in activity that is legally defined as child pornography? </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter"  style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.harmfulConduct" disabled="true">
+						<span >Engaging in conduct that would impair or debauch the morals of that child? </span>
+					</div>
+
+                     
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:25px' >
+						<span> <strong>Child in question is "at-risk" due to </strong></span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px' >
+						<input type="checkbox" ng-checked="checklist.atRiskFromAge" disabled="true">
+						<span>Age of the child ? </span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px' >
+						<input type="checkbox" ng-checked="checklist.atRiskFromTime" disabled="true">
+						<span>Evidential indicators that would provide a time factor of when the image was produced? </span>
+					
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px' >
+						<input type="checkbox" ng-checked="checklist.atRiskFromHome" disabled="true">
+						<span>The abuse depicted appears to be in the victim's home, or appears to be a familiar setting such as within the child's zone of safety? </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px' >
+						<input type="checkbox" ng-checked="checklist.atRiskImminentDanger" disabled="true">
+						<span>Any indicators that the child appears to be in imminent danger? </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.atRiskEgregiousActivity" disabled="true">
+						<span>Egregiousness of the activity depicted in the image? </span>
+						<!-- <span> Yes</span> -->
+					</div>
+					
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:30px'>
+						<span> <strong> 	The following agencies have been contacted in an effort to determine if the child has been previously identified in any other images by law enforcement. NCMEC has received information that agency has no knowledge of the child's identification. </strong>
+						</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedIceNcvip" disabled="true">
+						<span>ICE NCVIP? </span>
+						<!-- <span> Yes</span> -->
+					</div>
+				
+				   <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedIcacrtf" disabled="true">
+						<span>Internet Crimes Against Children Regional Task Forces, and their local resources. </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedInterpol" disabled="true">
+						<span>INTERPOL </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedNcs" disabled="true">
+						<span>NCS (England) </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+						<input type="checkbox" ng-checked="checklist.contactedTps" disabled="true">
+						<span >Toronto Police Service? </span>
+						<!-- <span> Yes</span> -->
+					</div>
+
+				    <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'> 
+					  	<input type="checkbox" ng-checked="checklist.contactedOthers" disabled="true">
+						<span>Any other law enforcement agency assigned to child protection: Please specify:  </span>
+						   						
+					</div>
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-left:30px'>
+                        <textarea rows="1" columns="100" disabled="true" class="form-control"> {{checklist.contactedOthersValues}} </textarea>
+					 </div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:10px 0px 0px 30px'>
+						<span>Is there evidence that the image was produced within the borders of the United States? </span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:0px 0px 0px 30px'>
+						<textarea rows="3"  columns="100" disabled="true" class="form-control">{{checklist.evidenceForUsaProduction}} </textarea>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:10px 0px 0px 30px'
+						>
+						<span>Is there evidence that would suggest a particular State or region where the image was produced? 	
+						</span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter"style='padding:0px 0px 0px 30px'>
+						<textarea rows="3" disabled="true"columns="100"  class="form-control">{{checklist.evidenceForStateOrRegion}} 
+						</textarea>
+					</div>
+
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:10px 0px 00px 30px'>
+					     <input type="checkbox" ng-checked="checklist.examineUniqueImageFeatures" disabled="true">
+					
+						<span>Staff members should make efforts to locate, analyze, and scrutinize any identifiable or unique features within the image and use that information to further identify the venue of the abuse. This step is critical to narrowing down a region or area when attempting to identify the child. </span>
+						<!-- <span > Yes</span> -->
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 0px 30px'> 
+					    <input type="checkbox" ng-checked="checklist.sroContactAttempt" disabled="true">
+						<span> If age appropriate, efforts have been made to contact all known School Resource Offices within the targeted area where the image is believed to have been taken. </span>
+						<!-- <span> Yes</span> -->
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100" disabled="true" class="form-control">
+							{{checklist.sroContactDetails}}
+						</textarea>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 0px 30px'> 
+						<input type="checkbox" ng-checked="checklist.joContactAttempt" disabled="true">
+						<span>If age appropriate, efforts have been made to contact all known Juvenile Officers within the targeted area where the image is believed to have been taken. </span>
+						<!-- <span> Yes</span> -->
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100" disabled="true" class="form-control">
+							{{checklist.joContactDetails}}
+						</textarea>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 00px 30px'> 
+					    <input type="checkbox" ng-checked="checklist.countyContactAttempt" disabled="true">
+						<span>Efforts have been made to contact all County D.A./Prosecutor's Office Sex Crimes/Child Abuse Units within the targeted area where the image is believed to have been taken. </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100" disabled="true" class="form-control">
+							{{checklist.countyContactDetails}}
+						</textarea>
+					</div>
+
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 00px 30px'> 
+					    <input type="checkbox" ng-checked="checklist.cpsContactAttempt" disabled="true">
+						<span> Efforts have been made to contact all Child Protective Services within the targeted area where the image is believed to have been taken. </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100" disabled="true" class="form-control">
+							{{checklist.cpsContactDetails}}
+						</textarea>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 0px 30px' 
+					        >
+					    <input type="checkbox" ng-checked="checklist.medicalContactAttempt" disabled="true">
+						<span>Efforts have been made to contact area Pediatricians, other similar medical personnel and Child Protective Service workers whose duties involve treatment of children. </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 0px 30px">
+						<textarea rows=1 columns="100" disabled="true" class="form-control">
+							{{checklist.medicalContactDetails}}
+						</textarea>
+					</div>
+
+				    <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding:20px 0px 0px 30px'> 
+					    <input type="checkbox" ng-checked="checklist.teacherContactAttempt" disabled="true">
+						<span>
+							Efforts can be made to contact school counselors, principals, gym teachers, etc. within the targeted area where the image is believed to be taken.
+						 </span>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding:0px 0px 30px 30px">
+						<textarea rows=1 columns="100" disabled="true" class="form-control">
+							{{checklist.teacherContactDetails}}
+						</textarea>
+					</div>
+
+
+				</div>
+			</div>
+
 		
 	</div>
 </div>

@@ -6,16 +6,33 @@
 		<ul>
 			<li class="left-navigation selected">
 				<span ><a ui-sref=".general" ng-click="selectSection($event)">General</a></span>
+
+				<!-- <span  style="display: inline-block; float:right">test</a></span> -->
+				<a href="/series/downloadPDF">
+					<img src="/series/assets/images/pdf_icon.gif" alt="Download PDF" style="width:35px;height:17px; display: inline-block; float:right"/>
+			    </a>
 			</li>
 			
 			<li class="left-navigation">
-				<span><a ui-sref=".summary" ng-click="selectSection($event)">Summary</a></span></li>
+				<span><a ui-sref=".external" ng-click="selectSection($event)">External Agencies</a></span>
+			</li>
+
 			<li class="left-navigation">
-				<span><a href="" ng-click="">Suspect ({{suspectList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addSuspect()"></a></span></span>
+				   <span>
+					   	<a href="" ng-click="">Suspect ({{suspectList.length}})</a>
+					   	<span class="addMenuItem-btn" ng-show="editable">
+					   		<a href="" ng-click="addSuspect()"></a>
+					   </span>
+				   </span>
+					
 					<div class="subitems" ng-repeat="suspect in suspectList track by $index">
-						<span><a href="" ng-click="selectItem( $index, 'suspect', 0, suspectList, $event)">{{suspect.name}}</a></span>
+						<span>
+							<a href="" ng-click="selectItem( $index, 'suspect', 0, suspectList, $event)">{{suspect.name}}
+							</a>
+						</span>
 					</div>
 			</li>
+
 			<li class="left-navigation">
 				<span><a href="" ng-click="">Children ({{childrenList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addChild()"></a></span></span>
 					<div class="subitems" ng-repeat="child in childrenList track by $index">
@@ -23,39 +40,64 @@
 					</div>
 			</li>
 			<li class="left-navigation">
-				<span><a href="" ng-click="">EXIFs ({{exifsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addToList(exifsList , 'EXIF # ' + (exifsList.length + 1))"></a></span></span>
+				<span><a href="" ng-click="">EXIFs ({{exifsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" 
+					ng-click="addExif()"></a></span></span>
 					<div class="subitems" ng-repeat="exif in exifsList track by $index">
-						<span><a href="" ng-click="">{{exif.name}}</a></span>
+
+						<span><a href="" ng-click="selectItem( $index, 'exif', 0, exifsList, $event)">{{exif.filename}}</a></span>
+
 					</div>
 			</li>
+
+			
 			<li class="left-navigation">
-				<span><a href="" ng-click="">Leads ({{leadsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addToList(leadsList , 'Lead # ' + (leadsList.length + 1))"></a></span></span>
+				<span><a href="" ng-click="">Leads ({{leadsList.length}})</a><span class="addMenuItem-btn" ng-show="editable">
+					<a href="" ng-click="addLead()"></a></span></span>
 					<div class="subitems" ng-repeat="lead in leadsList track by $index">
-						<span><a href="" ng-click="">{{lead.name}}</a></span>
+						<span><a href="" ng-click="selectItem( $index, 'lead', 0, leadsList, $event)">{{lead.name}}</a></span>
 					</div>
 			</li>
 			<li class="left-navigation">
 				<span><a ui-sref=".checklist" ng-click="selectSection($event)">Checklist</a></span>
 			</li>
-			<li class="left-navigation">
+			<!--<li class="left-navigation">
 				<span><a ui-sref=".identifier" ng-click="selectSection($event)">Identifiers</a></span>
 			</li>
 			<li class="left-navigation">
-				<span><a ui-sref=".partialfilename" ng-click="selectSection($event)">Partial File Names</a></span>
-			</li>
+				<span><a ui-sref=".partialfilename" ng-click="selectSection($event)">Images</a></span>
+			</li>-->
 			<li class="left-navigation">
 				<span><a ui-sref=".bolo" ng-click="selectSection($event)">BOLO</a></span>
 			</li>
 			<li class="left-navigation">
-				<span><a href="" ng-click="selectSection($event)">LEA Pocs ({{leapocsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addToList(leapocsList , 'LEA POC # ' + (leapocsList.length + 1))"></a></span></span>
-					<div  class="subitems"ng-repeat="leapoc in leapocsList track by $index">
-						<span><a href="" ng-click="selectSection($event)">{{leapoc.name}}</a></span>
+				<span><a href="" ng-click="selectSection($event)">LEA Pocs ({{leapocsList.length}})</a><span class="addMenuItem-btn" ng-show="editable">
+					<a href="" ng-click="addleaPoc()"></a></span></span>
+					<div  class="subitems" ng-repeat="leapoc in leapocsList track by $index">
+						<span><a href="" ng-click="selectItem( $index, 'leapoc', 0, leapocsList, $event)">{{leapoc.name}}</a></span>
 					</div>
 			</li>
+
 			<li class="left-navigation">
-				<span><a href="" ng-click="selectSection($event)">Contacts ({{contactsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addToList(contactsList , 'Contact # ' + (contactsList.length + 1))"></a></span></span>
+				<span>
+				<a ui-sref=".images" ng-click="selectSection($event)">Images</a>
+			    </span>
+					<!-- <div class="subitems">
+
+					</div> -->
+			</li>
+			<li class="left-navigation">
+				<span>
+				<a ui-sref=".docu" ng-click="selectSection($event)">Documentation</a>
+			    </span>
+					<!-- <div class="subitems">
+
+					</div> -->
+			</li>
+
+			<li class="left-navigation">
+				<span><a href="" ng-click="selectSection($event)">Contacts ({{contactsList.length}})</a><span class="addMenuItem-btn" ng-show="editable"><a href="" ng-click="addContact()"></a></span></span>
 					<div class="subitems" ng-repeat="contact in contactsList track by $index">
-						<span><a href="" ng-click="">{{contact.name}}</a></span>
+							<span><a href="" ng-click="selectItem( $index, 'contact', 0, contactsList, $event)">{{contact.name}}</a></span>
 					</div>
 			</li>
 		</ul>

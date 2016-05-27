@@ -1,0 +1,22 @@
+<div class="sectionHolder" ng-show="dispImType" >
+	<div class="sub-title" ng-if="!editable">Image Type</div>
+	<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
+	<!-- EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="editable">
+		<div class="row ">
+			<div class="col-sm-3 field-form-group" ng-repeat="item in imageType track by $index">
+				<div class="sharedCol4">
+					<div editable-item label={{item.label}} dddata={{item.dddata}} field-sect={{item.section}} field-mod={{item.model}} datatype={{item.datatype}} ></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- NON EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="!editable">
+		<div class="row ">
+			<div class="col-sm-3 view-form-group" ng-repeat="item in imageType track by $index">
+				<div non-editable-item label={{item.label}} field-sect={{item.section}} field-mod={{item.model}} datatype={{item.datatype}}></div>
+			</div>
+		</div>
+	</div>
+</div>

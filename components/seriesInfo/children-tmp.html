@@ -6,11 +6,11 @@
 			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
 			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
 			<li class="tab-sep"></li>
-			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="addChild()" >Save</a></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveChild()" >Save</a></li>
 			<li class="tab-sep" ng-if="editable"></li>
 			<li class="tab-btn addPers-btn" ng-if="editable"><a href="" ng-click="addChild()" >Add a Child</a></li>
 			<li class="tab-sep" ng-if="editable"></li>
-			<li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="deleteItem()" >Delete</a></li>
+			<li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="deleteChild()" >Delete</a></li>
 			<li class="tab-sep" ng-if="editable"></li>
 		</ul>
 	</div>
@@ -21,33 +21,76 @@
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
 						<label>Name: </label>
-						<input type="text" class="form-control" ng-model="childrenList[itemIndex].child" ng-blur="isEmpty($event)" required/>
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].child" ng-blur="isEmpty($event)" required
+						disabled="true"/>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
 						<label>Child Age in Series: </label>
-						<input type="text" class="form-control" ng-model="childrenList[itemIndex].child_age_in_series" />
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].childAgeInSeries" />
+					</div>
+				</div>
+
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+					<!-- 	<label>Age Category: </label>
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].ageCategory" /> -->
+						<div drop-down label="Age Category" column="agecat"  model="childrenList[itemIndex].ageCategory"></div>
+					</div>
+				</div>
+
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Gender" column="genders"  model="childrenList[itemIndex].gender"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<label>Age Category: </label>
-						<input type="text" class="form-control" ng-model="childrenList[itemIndex].age_category" />
+						<div drop-down label="Ethnicity" column="races"  model="childrenList[itemIndex].ethnicity"></div>
+					</div>
+				</div>
+
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Hair Color" column="haircolors"  model="childrenList[itemIndex].hairColor"></div>
 					</div>
 				</div>
 				<div class="col-sm-3 form-group">
 					<div class="sharedCol4">
-						<label>Status: </label>
-						<input type="text" class="form-control" ng-model="childrenList[itemIndex].status" />
+						<div drop-down label="Eye Color" column="eyecolors"  model="childrenList[itemIndex].eyeColor"></div>
+					</div>
+				</div>
+
+
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<!-- <label>Status: </label>
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].status" /> -->
+						<div drop-down label="Status" column="childstatus"  model="childrenList[itemIndex].status"></div>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Relation to child: </label>
+						<input type="text" class="form-control" ng-model="childrenList[itemIndex].suspectRelationshipToChild" />
 					</div>
 				</div>
 				<div class="sharedCol4">
 					<div class="col-sm-3 form-group">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].self_production' > <span style='float:left;'>Self Production</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].selfProduction' ng-checked='childrenList[itemIndex].selfProduction'  > <span style='float:left;'>Self Production</span></label>
+					</div>
+					<div class="col-sm-3 form-group">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].childIdentified' ng-checked='childrenList[itemIndex].childIdentified'> <span style='float:left;'>Child Identified</span></label>
+					</div>
+					<div class="col-sm-3 form-group">
+						<label style='padding-top:25px'>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].deceased' ng-checked='childrenList[itemIndex].deceased'> <span style='float:left;'>Deceased</span></label>
 					</div>
 				</div>
+			
 
 				
 			</div>
@@ -58,37 +101,37 @@
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.freckles' > <span style='float:left;'>Freckles</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].freckles' ng-checked='childrenList[itemIndex].freckles'> <span style='float:left;'>Freckles</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.scars' > <span style='float:left;'>Scars</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].scars' ng-checked='childrenList[itemIndex].scars'> <span style='float:left;'>Scars</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.glasses' > <span style='float:left;'>Glasses</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].glasses' ng-checked='childrenList[itemIndex].glasses' > <span style='float:left;'>Glasses</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.moles' > <span style='float:left;'>Mole(s)</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].moles' ng-checked='childrenList[itemIndex].moles'  > <span style='float:left;'>Mole(s)</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.braces' > <span style='float:left;'>Braces</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].braces' ng-checked='childrenList[itemIndex].braces' > <span style='float:left;'>Braces</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.make_up' > <span style='float:left;'>Make up</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].makeUp' ng-checked='childrenList[itemIndex].makeUp'> <span style='float:left;'>Make up</span></label>
 					</div>
 				</div>
 			</div>
@@ -96,37 +139,37 @@
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.tattoos' > <span style='float:left;'>Tattoo(s)</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].tattoos' ng-checked='childrenList[itemIndex].tattoos' > <span style='float:left;'>Tattoo(s)</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.acne' > <span style='float:left;'>Acne</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].acne' ng-checked='childrenList[itemIndex].acne'> <span style='float:left;'>Acne</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.watch' > <span style='float:left;'>Watch</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].watch' ng-checked='childrenList[itemIndex].watch' > <span style='float:left;'>Watch</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.jewelry' > <span style='float:left;'>Jewelry</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].jewelry' ng-checked='childrenList[itemIndex].jewelry' > <span style='float:left;'>Jewelry</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.nailpolish' > <span style='float:left;'>Nail Polish</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].nailPolish' ng-checked='childrenList[itemIndex].nailPolish' > <span style='float:left;'>Nail Polish</span></label>
 					</div>
 				</div>
 				<div class="col-sm-2 form-group">
 					<div class="sharedCol4">
 						<label style='padding-top:25px'>
-						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].physicalFeatures.piercings' > <span style='float:left;'>Piercings</span></label>
+						<input type='checkbox'  style='float:left; clear:left; margin:5px 10px 0 0; ' ng-model='childrenList[itemIndex].piercings' ng-checked='childrenList[itemIndex].piercings'> <span style='float:left;'>Piercings</span></label>
 					</div>
 				</div>
 			</div>
@@ -144,44 +187,53 @@
 					<label>Child Name: </label>
 					<span> {{childrenList[itemIndex].child}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].age_category.length > 0'>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].ageCategory.length > 0'>
 					<label>Age Category: </label>
-					<span> {{childrenList[itemIndex].age_category}}</span>
+					<span> {{childrenList[itemIndex].ageCategory}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].age.length > 0'>
-					<label>Age: </label>
-					<span> {{childrenList[itemIndex].age}}</span>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].childAgeInSeries.length > 0'>
+					<label>Age in Series: </label>
+					<span> {{childrenList[itemIndex].childAgeInSeries}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].birthdate.length > 0'>
+				<!-- <div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].birthdate.length > 0'>
 					<label>Birthdate: </label>
 					<span> {{childrenList[itemIndex].birthdate}}</span>
-				</div>
-				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].hair_color.length > 0'>
+				</div> -->
+				
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].hairColor.length > 0'>
 					<label>Hair Color: </label>
-					<span> {{childrenList[itemIndex].hair_color}}</span>
+					<span> {{childrenList[itemIndex].hairColor}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].eye_color.length > 0'>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].eyeColor.length > 0'>
 					<label>Eye Color: </label>
-					<span> {{childrenList[itemIndex].eye_color}}</span>
+					<span> {{childrenList[itemIndex].eyeColor}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].gender.length > 0'>
 					<label>Gender: </label>
 					<span> {{childrenList[itemIndex].gender}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].race.length > 0'>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].ethnicity.length > 0'>
 					<label>Ethnicity: </label>
-					<span> {{childrenList[itemIndex].race}}</span>
+					<span> {{childrenList[itemIndex].ethnicity}}</span>
 				</div>
 				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].status.length > 0'>
 					<label>Status: </label>
 					<span> {{childrenList[itemIndex].status}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].child_age_in_series.length > 0'>
-					<label>Child Age in Series: </label>
-					<span> {{childrenList[itemIndex].child_age_in_series}}</span>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].suspectRelationshipToChild.length > 0'>
+					<label>Suspect Relation to child: </label>
+					<span> {{childrenList[itemIndex].suspectRelationshipToChild}}</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].self_production'>
+				<!-- <div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].childAgeInSeries.length > 0'>
+					<label>Child Age in Series: </label>
+					<span> {{childrenList[itemIndex].childAgeInSeries}}</span>
+				</div> -->
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].selfProduction'>
 					<label>Self Production: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='childrenList[itemIndex].childIdentified'>
+					<label>Child Identified: </label>
 					<span> Yes</span>
 				</div>
 
@@ -194,51 +246,51 @@
 			<div class="sub-title" ng-if="!editable">Physical Features:</div>
 			<div class="h-sep" style="margin:5px 0px 10px 0"></div>
 			<div class="row ">
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.glasses">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].glasses">
 					<label>Glasses: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.jewelry">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].jewelry">
 					<label>Jewelry: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.piercings">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].piercings">
 					<label>Piercings: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.scars">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].scars">
 					<label>Scars: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.freckles">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].freckles">
 					<label>Freckles: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.acne">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].acne">
 					<label>Acne: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.watch">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].watch">
 					<label>Watch: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.tattoos">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].tattoos">
 					<label>Tattoo(s): </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.moles">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].moles">
 					<label>Moles: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.make_up">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].makeUp">
 					<label>Make up: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.nailPolish">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].nailPolish">
 					<label>Nail Polish: </label>
 					<span> Yes</span>
 				</div>
-				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].physicalFeatures.braces">
+				<div class="col-sm-3 form-group" ng-if="childrenList[itemIndex].braces">
 					<label>Braces: </label>
 					<span> Yes</span>
 				</div>

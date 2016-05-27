@@ -1,0 +1,39 @@
+<div class="sectionHolder" ng-show="dispChiIdent">
+
+
+	<div class="sub-title" ng-if="!editable">Child ID Note</div>
+	<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
+	<!-- EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="editable">
+		<div class="row " style="padding-bottom:20px">
+				<!--<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='generalInfo.other.cirNote.length>0'>
+						<label>(Appears on CIR; populated only at the request of LE POC) </label>
+						
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<textarea columns="150" rows="4"  ng-model='generalInfo.other.cirNote' ></textarea>
+						
+				</div>-->
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter"  >
+					<div class="sharedCol4">
+						<label>(Appears on CIR; populated only at the request of LE POC) </label>
+						<textarea rows="5"  ng-model="generalInfo.other.cirNote" style="height: 100px; width: 100%" >
+						</textarea>
+				   </div>
+		       </div>
+		</div>
+	</div>
+	<!-- NON EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="!editable">
+			<div class="row">
+				
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='generalInfo.other.cirNote.length > 0'>
+							<label>(Appears on CIR; populated only at the request of LE POC) </label>
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+							<span> {{generalInfo.other.cirNote}}</span>
+					</div>
+				
+		    </div>
+	</div>
+</div>

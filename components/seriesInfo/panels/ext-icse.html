@@ -1,0 +1,185 @@
+<div class="sectionHolder" >
+		<div class="sub-title" ng-if="!editable">Transfer to Interpol</div>
+		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
+		
+	  	<div ng-if="editable">
+			<div class="row ">
+				<strong> UNIDENTIFIED SERIES ICSE ENTRY</strong>
+			</div>	
+			<div class="row">
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>ICSE Seizure Name: </label>
+						<input type="text" class="form-control" ng-model='generalInfo.icse.icseSeizureName'>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group" style="padding-top:10px">
+					<div class="sharedCol4">
+						<label>Match in ICSE? </label>
+						<input type='checkbox'  ng-model='generalInfo.icse.matchInIcse'  ng-checked='generalInfo.icse.matchInIcse' >
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>ICSE Series Name:</label>
+						<input type="text" class="form-control" ng-model='generalInfo.icse.icseSeriesName' >
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Analyst Name" column="analysts"  model='generalInfo.icse.icseAnalystName'></div>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Date Loaded to ICSE:</label>
+						<input input kendo-date-picker  class="form-control" ng-model='generalInfo.icse.dateLoadedToIcse' />
+					</div>
+				</div>
+			</div>
+		
+	         <div class="row ">
+					<strong>IDENTIFIED SERIES ICSE ENTRY</strong>
+			</div>
+			<div class="row">	
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>ICSE Investigation Name: </label>
+						<input type="text" class="form-control" ng-model='generalInfo.icse.icseInvestigationName' />
+					</div>
+				</div>
+				 <div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Actively Traded Start Date: </label>
+						<input input kendo-date-picker  class="form-control" ng-model='generalInfo.other.activelyTradedDtm' />
+					</div>
+				</div>
+				
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Analyst Handling" column="analysts"  model="generalInfo.series.analystHandling">
+						</div>
+					</div>
+				</div> 
+				
+			     <div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div  drop-down label="Interpol Transfer Status" column="interpolstatus"  model="generalInfo.status.interpolTransferStatus"></div>
+					</div>
+				</div>
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<div drop-down label="Data Permitted to Transfer" column="datapermitted"  model="generalInfo.history.dataPermittedTransfer"></div>
+					</div>
+				</div>
+
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Date Confirmation Received: </label>
+						<input input kendo-date-picker  class="form-control" ng-model="generalInfo.history.dateConfirmationReceived" />
+					</div>
+				</div>
+				
+				<div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>LE Granting Permission: </label>
+						<input type="text" class="form-control" ng-model='generalInfo.other.lePermissionName' />
+					</div>
+				</div>
+				
+				 <div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						 <label>Date Transferred: </label>
+					     <input input kendo-date-picker  class="form-control" ng-model="generalInfo.history.dateFederalTransferred"/> 
+					</div>
+				</div>
+
+				 <div class="col-sm-3 form-group">
+					<div class="sharedCol4">
+						<label>Confirmation Filed: </label>
+						<input type="checkbox"  ng-model='generalInfo.other.confirmationField' ng-checked="generalInfo.other.confirmationField" />
+					</div>
+				</div> 
+			</div> 
+		</div>   
+			
+		<div ng-if="!editable">
+			 <div class="row">
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter">
+					<strong> UNIDENTIFIED SERIES ICSE ENTRY</strong>
+				</div>
+			</div>	
+
+			 <div class="row">
+				<div class="col-sm-3 form-group" ng-if='generalInfo.icse.icseSeizureName.length > 0'>
+						<label>ICSE Seizure Name: </label>
+						<span> {{generalInfo.icse.icseSeizureName}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='generalInfo.icse.matchInIcse'>
+						<label>Match in ICSE? </label>
+						<span> Yes</span>
+				</div>
+    			<div class="col-sm-3 form-group" ng-if='generalInfo.icse.icseSeriesName.length > 0'>
+						<label>ICSE Series Name:</label>
+						<span> {{generalInfo.icse.icseSeriesName}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='generalInfo.icse.icseAnalystName.length > 0'>
+						<label>Analyst Name:</label>
+						<span> {{generalInfo.icse.icseAnalystName}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='generalInfo.icse.dateLoadedToIcse.length > 0'>
+						<label>Date Loaded to ICSE:</label>
+						<span> {{generalInfo.icse.dateLoadedToIcse | date:"yyyy-MM-dd" }}</span>
+				</div>
+			</div>  
+
+
+		   <div class="row ">
+				<div class="col-sm-3 form-group">
+					<strong> IDENTIFIED SERIES ICSE ENTRY</strong>
+				</div>
+			</div>	
+			<div class="row ">
+				<div class="col-sm-3 form-group" ng-if='generalInfo.icse.icseInvestigationName.length>0'>
+						<label>ICSE Investigation Name: </label>
+						<span> {{generalInfo.icse.icseInvestigationName}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='generalInfo.other.activelyTradedDtm.length>0'>
+						<label>Actively Traded Start Date: </label>
+						 <span> {{generalInfo.other.activelyTradedDtm | jsDate | date:"yyyy-MM-dd"}}</span> 
+				</div>
+				<div class="col-sm-3 form-group" ng-if='generalInfo.status.interpolTransferStatus.length>0'>
+						<label>Interpol Transfer Status:</label>
+						<span> {{generalInfo.status.interpolTransferStatus}}</span>
+				</div>
+			 	<div class="col-sm-3 form-group" ng-if='generalInfo.series.analystHandling.length>0'>
+						<label>Analyst Handling:</label>
+						<span> {{generalInfo.series.analystHandling}}</span>
+				</div>
+			     <div class="col-sm-3 form-group" ng-if='generalInfo.history.dataPermittedTransfer.length>0'>
+					<label>Data Permitted to Transfer:</label>
+					 <span> {{generalInfo.history.dataPermittedTransfer}}</span> 
+				</div> 
+				<div class="col-sm-3 form-group" ng-if='generalInfo.history.dateConfirmationReceived.length>0'>
+					<label>Confirmation Received:</label>
+					 <span> {{generalInfo.history.dateConfirmationReceived |  date:"yyyy-MM-dd"}}</span> 
+				</div>
+				
+				<div class="col-sm-3 form-group" ng-if='generalInfo.other.confirmationField'>
+					<label>Confirmation Filed:</label>
+					<span> Yes</span>
+				</div>
+				
+				<div class="col-sm-3 form-group" ng-if='generalInfo.other.lePermissionName.length>0'>
+					<label>Name of LE Granting Permission:</label>
+					<span> {{ generalInfo.other.lePermissionName}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='generalInfo.history.dateFederalTransferred.length > 0'>
+					<label>Date Transferred:</label>
+					<span> {{ generalInfo.history.dateFederalTransferred | date:"yyyy-MM-dd"}}</span> 
+				</div>  
+			</div> 
+
+
+		</div>
+</div>

@@ -1,14 +1,28 @@
-<div ng-controller="MyCasesCtrl">
-	My cases
-	<div  class="content-wrapper" ng-show="isShowReferrals">
+<div ng-controller="MyCasesCtrl" ng-init="init()">
+	<div  class="content-wrapper">
+		<div style="display: inline-block; width: 100%" >
+			
+			
+			
+			<div  style=" float:left"><span class='box' style='background-color:green'></span>3 months old.</div>
+		<div style=" float:left"> <span class='box' style='background-color:yellow'></span>4-12 months old.</div>
+<div style=" float:left"><span class='box' style='background-color:red'></span>12 months old or more.</div>
+<div style=" float:left"><span class='box' style='background-color:blue'></span>4 years olds or more.</div>
+		</div>
+
 		<div style="display: inline-block; float:left; width: 100%" >
 			<span class="sub-title" style="display: inline-block; float:left">IA Referrals</span>
+				<span class="tabPos-btn exportToXL-btn" style="display: inline-block; float:right; position:relative;top:20px"><a href="" id="2"  ng-click="exportAsExcel($event)" >Export to Excel</a></span >
+			<span class="tabPos-btn removeSmall-btn" style="display: inline-block; float:right; position:relative;top:20px; padding-right:20px"><a href="" id="2"  ng-click="removeSelectedRow($event)">Remove Selected</a></span >
+
 		</div>
 		<div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
 			<div role="datagrid" class="grid-holder" >
-				<div kendo-grid="iaGrid" id="iagrid" k-options="iaGridOptions" k-rebind="iaGridOptions"  k-ng-delay="iaGridOptions">
+				<div kendo-grid="iaGrid" id="iagrid" k-options="iaGridOptions" k-rebind="iaGridOptions"  k-ng-delay="iaGridOptions" >
 				</div> 
 			</div> 
 		</div>
 	</div>
+
+
 </div>

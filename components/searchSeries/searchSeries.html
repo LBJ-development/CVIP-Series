@@ -70,11 +70,15 @@
 			</button>
 		</div>
 	</div>  
-<!-- <div class="row " ng-if="basicSearch">
+ <!-- <div class="row ">
 		<span class="captionText" style="display: inline-block; float:left; text-align:left">Search by Name can be wildcarded with '*'</span>
-</div> -->
+</div>  -->
+<div class="row ">
+	<span style="font-weight: bold; color:red; display: inline-block; float:left; padding: 30px 0 0 20px; text-align:left">{{errorMsg}}</span>
+  </div>
 <!-- BASIC  ///////////////////////////////////////////////-->
 	<div class="row show-hide">
+       
 		<div class="col-sm-3  field-form-group"  ng-repeat="field in fieldsToDisplay track by $index">
 			<div class="sharedCol4">
 	
@@ -116,7 +120,7 @@
 		</div>
 	</div>
 
-<!-- FOOTER  //////////////////////////////////////////////////////// -->
+<!-- FOOTER  //////////////////////////////////////////////////////// 
 <!-- 	<div footer></div>    -->
 </div>
 <!--

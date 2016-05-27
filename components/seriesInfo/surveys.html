@@ -1,0 +1,204 @@
+<div>
+	<div class="tabHead">
+		<span class="tab-title">Survey</span>
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit </a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveBolo()" >Save Survey</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+		</ul>
+	</div>
+
+	<div class="backgroundColor">
+		<!-- ////////////////////////////////////////////////////////// -->
+		<div ng-if="editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group" >
+						<label>How many phone calls received:</label>
+						<input type='text' class="form-control" disabled>
+				</div>
+				<div class="col-sm-3 form-group"> 
+						<label>How many emails received: </label>
+						<input type='text' class="form-control" disabled>
+				</div>
+				<div class="col-sm-3 form-group">
+						<label>How many subpoenas received: </label>
+						<input type="text" class="form-control" disabled  />
+				</div>
+	        </div>
+	        <div class="row " style='padding-left:15px'>
+	        	<label> <strong>Number of subpoenas received </strong> </label>
+	        </div>
+	         <div class="row ">
+	        	<div class="col-sm-3 form-group">
+						<label>Local </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> County </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> State </label>
+						<input type="text" class="form-control"  disabled/>
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> Federal </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> Military </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+	        </div>
+	         <div class="row ">
+	        	<div class="col-sm-3 form-group">
+						<label> Number of trials attended </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> Number of trials appeared in </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+	        </div>
+	         <div class="row " style='padding-left:15px'>
+	         		<label> <strong>Number Jurisdictions appeared in </strong> </label>
+	         </div>	
+	          <div class="row ">
+	         		<div class="col-sm-3 form-group">
+						<label>Local </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				    <div class="col-sm-3 form-group">
+						<label>County </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				     <div class="col-sm-3 form-group">
+						<label> 	State </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				     <div class="col-sm-3 form-group">
+						<label> 	Federal </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				    <div class="col-sm-3 form-group">
+						<label> 	Military </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				    <div class="col-sm-3 form-group">
+						<label> Reason for not appearing </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				    <div class="col-sm-3 form-group">
+						<label> Time spent as Series POC (hours): </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				     <div class="col-sm-3 form-group">
+						<label> How did LEA learn about NCMEC: </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				     <div class="col-sm-3 form-group">
+						<label> Addtional Comments </label>
+						<input type="text" class="form-control" disabled  />
+				    </div>
+	           </div>	
+				
+   		</div>
+   		<div ng-if="!editable">
+   				<div class="row ">
+				<div class="col-sm-3 form-group" >
+						<label>How many phone calls received:</label>
+						<input type='text' class="form-control" disabled>
+				</div>
+				<div class="col-sm-3 form-group"> 
+						<label>How many emails received: </label>
+						<input type='text' class="form-control" disabled>
+				</div>
+				<div class="col-sm-3 form-group">
+						<label>How many subpoenas received: </label>
+						<input type="text" class="form-control" disabled  />
+				</div>
+	        </div>
+	        <div class="row " style='padding-left:15px'>
+	        	<label> <strong>Number of subpoenas received </strong> </label>
+	        </div>
+	         <div class="row ">
+	        	<div class="col-sm-3 form-group">
+						<label>Local </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> County </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> State </label>
+						<input type="text" class="form-control"  disabled/>
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> Federal </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> Military </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+	        </div>
+	         <div class="row ">
+	        	<div class="col-sm-3 form-group">
+						<label> Number of trials attended </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+				<div class="col-sm-3 form-group">
+						<label> Number of trials appeared in </label>
+						<input type="text" class="form-control" disabled />
+				</div>
+	        </div>
+	         <div class="row " style='padding-left:15px'>
+	         		<label> <strong>Number Jurisdictions appeared in </strong> </label>
+	         </div>	
+	          <div class="row ">
+	         		<div class="col-sm-3 form-group">
+						<label>Local </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				    <div class="col-sm-3 form-group">
+						<label>County </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				     <div class="col-sm-3 form-group">
+						<label> 	State </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				     <div class="col-sm-3 form-group">
+						<label> 	Federal </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				    <div class="col-sm-3 form-group">
+						<label> 	Military </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				    <div class="col-sm-3 form-group">
+						<label> Reason for not appearing </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				    <div class="col-sm-3 form-group">
+						<label> Time spent as Series POC (hours): </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				     <div class="col-sm-3 form-group">
+						<label> How did LEA learn about NCMEC: </label>
+						<input type="text" class="form-control" disabled />
+				    </div>
+				     <div class="col-sm-3 form-group">
+						<label> Addtional Comments </label>
+						<input type="text" class="form-control" disabled  />
+				    </div>
+	           </div>	
+				
+		</div>
+    </div>
+
+	
+</div>

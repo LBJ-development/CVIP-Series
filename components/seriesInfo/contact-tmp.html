@@ -1,0 +1,153 @@
+
+<div ng-if="contactsList.length > 0">
+	<div class="tabHead">
+		<span class="tab-title">{{contactsList[itemIndex].agency}} </span>
+		<span class="tab-title" ng-if='contactsList[itemIndex].name.length>0'>-</span>
+		 <span class="tab-title"> {{contactsList[itemIndex].name}}</span>
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveContact()" >Save</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn addPers-btn" ng-if="editable"><a href="" ng-click="addContact()" >Add a Contact</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="deleteContact()" >Delete</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+		</ul>
+	</div>
+	<div class="sectionHolder">
+		<!-- CONTACT EDITABLE ////////////////////////////////////////////////////////// -->
+		<div ng-if="editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group" >
+					<div class="sharedCol4">
+						<label>Agency: </label>
+						<input type="text" class="form-control" ng-model="contactsList[itemIndex].agency" />
+					</div>
+				</div>
+
+				<div class="col-sm-3 form-group" >
+					<div class="sharedCol4">
+					<label>Date: </label>
+					<input input kendo-date-picker class="form-control" ng-model="contactsList[itemIndex].contactDate" />
+				   </div>
+				</div>
+				<div class="col-sm-3 form-group"  >
+					<div class="sharedCol4">
+						<div drop-down label="Associate With" column="leadsnames/56" model="contactsList[itemIndex].associateWith" />
+				    </div>
+				</div>
+				<div class="col-sm-3 form-group"  >
+					<div class="sharedCol4">
+						<div drop-down label="Reason" column="reasonsContact" model="contactsList[itemIndex].reason" />
+				    </div>
+				</div>
+				<div class="col-sm-3 form-group"  >
+					<label>Include in Image Analysis Report: </label>
+					<div class="sharedCol4">
+					   <input type="checkbox" ng-model="contactsList[itemIndex].includeInIar" ng-checked="contactsList[itemIndex].includeInIar" />
+ 					</div>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter"  >
+					<div class="sharedCol4">
+						<label>Notes: </label>
+						<textarea rows="4" cols="150" ng-model="contactsList[itemIndex].notes"  class="form-control ng-pristine ng-valid">
+						</textarea>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter"  >
+					<div class="sharedCol4">
+						<label>Feedback: </label>
+						<textarea rows="4" cols="150" ng-model="contactsList[itemIndex].feedback"  class="form-control ng-pristine ng-valid">
+						</textarea>
+				   </div>
+				</div>
+				<div class="col-sm-3 form-group" style='padding-top:10px' >
+					<div class="sharedCol4">
+						<label>Name: </label>
+						<input type="text" class="form-control" ng-model="contactsList[itemIndex].name" />
+					</div>
+				</div>
+				<div class="col-sm-3 form-group" style='padding-top:10px' >
+					<div class="sharedCol4">
+						<label>Phone #: </label>
+						<input type="text" class="form-control" ng-model="contactsList[itemIndex].phone" />
+					 </div>
+				</div>
+				<div class="col-sm-3 form-group" style='padding-top:10px' >
+					<div class="sharedCol4">
+						<label>Email: </label>
+						<input type="text" class="form-control" ng-model="contactsList[itemIndex].email" />
+					 </div>
+				</div>
+				<div class="col-sm-3 form-group" style='padding-top:10px' >
+					<div class="sharedCol4">
+					<div drop-down label="State" column="states" model="contactsList[itemIndex].state" />	
+				  </div>
+				</div>
+				<div class="col-sm-3 form-group" style='padding-top:10px' >
+					<div class="sharedCol4">
+					<div drop-down label="Country" column="countries" model="contactsList[itemIndex].country" />
+				   </div>
+				</div>
+
+			</div>	
+		</div>
+		<!-- SUSPECT EDITABLE ////////////////////////////////////////////////////////// -->
+		<div ng-if="!editable">
+			<div class="row ">
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter">
+					<label>Agency: </label>
+					<span> {{contactsList[itemIndex].agency}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].contactDate.length > 0'>
+					<label>Date: </label>
+					<span> {{contactsList[itemIndex].contactDate |  date:"yyyy-MM-dd"}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].associateWith.length > 0'>
+					<label>Associate With: </label>
+					<span> {{contactsList[itemIndex].associateWith}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].reason.length > 0'>
+					<label>Reason: </label>
+					<span> {{contactsList[itemIndex].reason}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].includeInIar'>
+					<label>Include in Image Analysis Report: </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].notes.length > 0'>
+					<label>Notes: </label>
+					<span> {{contactsList[itemIndex].notes}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].feedback.length > 0'>
+					<label>Feedback: </label>
+					<span> {{contactsList[itemIndex].feedback}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].name.length > 0'>
+					<label>Name: </label>
+					<span> {{contactsList[itemIndex].name}}</span>
+				</div>
+
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].phone.length > 0'>
+					<label>Phone #: </label>
+					<span> {{contactsList[itemIndex].phone}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].email.length > 0'>
+					<label>Email: </label>
+					<span> {{contactsList[itemIndex].email}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].state.length > 0'>
+					<label>State: </label>
+					<span> {{contactsList[itemIndex].state}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='contactsList[itemIndex].country.length > 0'>
+					<label>Country: </label>
+					<span> {{contactsList[itemIndex].country}}</span>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

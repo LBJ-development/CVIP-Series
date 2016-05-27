@@ -16,3 +16,9 @@ angular.module('CVIPSMApp.filters', [])
       return Object.keys(input);
     };
 })
+
+.filter("jsDate", function () {
+    return function (x) {
+        return new Date(x);
+    };
+});

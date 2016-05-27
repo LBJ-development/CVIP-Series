@@ -1,0 +1,50 @@
+<div>
+	<div class="tabHead">
+		<span class="tab-title">Documentation</span>
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit </a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveInfo()" >Save Documentation</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<!--li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="" >Delete</a></li>
+			<li class="tab-sep" ng-if="editable"></li>-->
+		</ul>
+	</div>
+
+	<div class="backgroundColor">
+		<!-- ////////////////////////////////////////////////////////// -->
+		 <div ng-if="editable">
+			<div class="row ">
+				    <div class="col-sm-3 form-group" style="padding-left:15px; padding-top:15px">
+						<!-- <label>Associated Series: </label> -->
+						<!-- <span> {{generalInfo.history.associatedSeries}}</span> -->
+						<div drop-down label="Associated Series" column="namesjson"  model="generalInfo.history.associatedSeries"></div>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding-left:15px; padding-top:15px">
+						<label>Summary </label>
+						<!-- <span> {{generalInfo.status.caseSummary}}</span> -->
+						<textarea rows="15"  columns="100" class="form-control" ng-model="generalInfo.status.caseSummary">{{checklist.evidenceForUsaProduction}} 
+						</textarea>	
+					</div>
+	        </div>
+   		</div>
+   		<div ng-if="!editable">
+				<div class="row ">
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='generalInfo.history.associatedSeries.length>0' style="padding-left:15px; padding-top:15px">
+						<label>Associated Series: </label>
+						<span> {{generalInfo.history.associatedSeries}}</span>
+					</div>
+
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='generalInfo.status.caseSummary.length>0' style="padding-left:15px; padding-top:15px">
+						<label>Summary </label>
+						<span> {{generalInfo.status.caseSummary}}</span>
+
+					</div>
+				</div>
+			</div>
+    </div>
+
+	
+</div>

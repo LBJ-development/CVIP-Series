@@ -38,9 +38,10 @@ angular.module('CVIPSMApp.searchSeries', [])
 	function initializeDisplayList(){
 		$scope.fieldsToDisplay = [];
 		$scope.fieldsToDisplay =      
-			[	{label : "Series Name",				model : "",       table : "series_new",		tableLabel: "Series",		column: "series",             dataType : "varchar"},
+			[	
+			    {label : "Series Name(use * for wildcard)",				model : "",       table : "series_new",		tableLabel: "Series",		column: "series",             dataType : "varchar"},
 				{label : "Date Series Created",		model : "",       table : "series_new",		tableLabel: "Series",		column: "create_dtm",      	dataType : "datetime"},
-				{label : "Series Type",				model : "",       table : "series_new",		tableLabel: "Series",		column: "subjecttype",        dataType : "multiselect"},
+				{label : "Subject Type",				model : "",       table : "series_new",		tableLabel: "Series",		column: "subjecttype",        dataType : "multiselect"},
 				{label : "Previous Series Name",	model : "",       table : "series_history",	tableLabel: "Series",		column: "previous_series",      dataType : "varchar"},
 			];
 
@@ -146,16 +147,18 @@ angular.module('CVIPSMApp.searchSeries', [])
 		}
 	}
 
-	$scope.getSeries = function(){
-		$scope.showResult	= true;
-		var dataParam  = $scope.fieldsToDisplay.slice();
-		var jsonString = JSON.stringify({params: dataParam});
-		var url = CVIPConfig.contextPath + "execute";
+	// $scope.getSeries = function(){
 
-		DataFtry.sendData(url, jsonString).then(function(result){ 
-			$scope.mainGridOptions.dataSource.data = result.data;
-		});	
-	}
+ //    	$scope.showResult	= true;
+	// 	var dataParam  = $scope.fieldsToDisplay.slice();
+	// 	var jsonString = JSON.stringify({params: dataParam});
+	// 	var url = CVIPConfig.contextPath + "execute";
+	// 	console.log(jsonString);
+
+	// 	DataFtry.sendData(url, jsonString).then(function(result){ 
+	// 		$scope.mainGridOptions.dataSource.data = result.data;
+	// 	});	
+	// }
 
 // SAVE & LOAD SEARCHES //////////////////////////////////////////////
 	$scope.saveSearch = function(){
@@ -281,14 +284,23 @@ var dateFields = [];
 
 $scope.getSeries = function(evt){
 
+
+
+
 	$scope.showResult	= true;
 	var dataParam  = $scope.fieldsToDisplay.slice();
 	var jsonString = JSON.stringify({params: dataParam});
 	var url = CVIPConfig.contextPath + "execute";
-	
+	//console.log(jsonString);
 	DataFtry.sendData(url, jsonString).then(function(result){ 
 		data = result.data;
+
+		
 		generateGrid(data);
+
+
+		//console.log(data);
+		
 		// KEEP A COPY OF THE DATA TO PERSIST THE DATAGRID WHEN BROWSING BACK TO SEARCH
 		CVIPConfig.gridData =  JSON.stringify(data);
 	});	
@@ -296,8 +308,8 @@ $scope.getSeries = function(evt){
 // GENERATE DYNAMIC DATA GRID //////////////////////////////////////////////////////
 function generateGrid(gridData) {
 
-	model 	= generateModel(gridData[0]);
-	columns = generateColumns(gridData[0]);
+	model 	= generateModel(gridData[1]);
+	columns = generateColumns(gridData[1]);
 
 	$scope.advancedGridOptions = {
 
@@ -350,6 +362,22 @@ function generateGrid(gridData) {
 	}
 }
 
+function toTitleCase(str)
+{
+    var s= str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    s= s.replace("Dtm", "Date");
+    s= s.replace("Subjecttype", "Subject Type");
+    //console.log(s);
+    return s;
+}
+
+function replaceColumns(column){
+   var c = column;
+   c= c.replace(/_/g, " ");
+   c=toTitleCase(c);
+   return c;
+}
+
 function generateColumns(gridData){
 
 	var columns = [];
@@ -362,6 +390,8 @@ function generateColumns(gridData){
 
 	for (var property in gridData) {
 
+		
+
 		var propType = typeof gridData[property];
 
 		if (propType == "string") {
@@ -370,20 +400,20 @@ function generateColumns(gridData){
 				//console.log("DATE")
 				columns.push({
 					field	: property,
-					title	: property,
+					title	: replaceColumns(property),
 					format	:"{0:MM/dd/yyyy}"
 				});
 			} else if (property != "series") {
 				columns.push({
 					field	: property,
-					title	: property,
+					title	: replaceColumns(property),
 				});
 			}
 			//console.log(property + " / " + propType  + " / " + parsedDate);
 		} else if (propType == "number" && property != "series_id"){
 			columns.push({
 				field	: property,
-				title	: property,
+				title	: replaceColumns(property),
 			});
 		}
 	}
@@ -399,6 +429,9 @@ function generateColumns(gridData){
 	});
 	return columns;
 }
+
+
+
 
 function generateModel(gridData) {
 	var model = {};
@@ -465,5 +498,10 @@ $scope.exportAsExcel = function(evt){
 	var grid = $("#gridAdvanced").data("kendoGrid");
 	grid.saveAsExcel();
 	}
+
+	$rootScope.$on("seriesDeleted", function(event){
+			$scope.errorMsg="The series was successfully deleted."
+	});
+
 	
 }]);

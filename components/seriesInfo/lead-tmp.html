@@ -1,0 +1,123 @@
+
+<div ng-if="leadsList.length > 0">
+	<div class="tabHead">
+		<span class="tab-title">Lead</span>
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveLead()" >Save</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn addPers-btn" ng-if="editable"><a href="" ng-click="addLead()" >Add a Lead</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn addPers-btn" ng-if="editable"><a href="" ng-click="addNote()" >Add a Note</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="deleteLead()" >Delete</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+		</ul>
+	</div>
+	<div class="sectionHolder">
+	
+		<div ng-if="editable">
+			<div class="row ">
+				
+
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:20px'>
+					<label>Lead: </label>
+					<input type="text" class="form-control" ng-model="leadsList[itemIndex].name" />
+				</div>
+
+				<div  ng-repeat="note in leadsList[itemIndex].notes">
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:10px; padding-left:40px'>
+						  <label>Include in IA Report: </label>
+						  <input type='checkbox'  ng-model='note.includeInIar' ng-checked='note.includeInIar' >
+					 </div>
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:10px; padding-left:40px'>
+					 	  <label>Note Date: </label> {{note.createUsr}} {{note.createdAt | date:'medium'}} 
+					 	  <span class="deleteNeg-btn"><a href="" ng-click="deleteNote(note)" > <strong>Delete Note </strong></a></span>
+					 	  <!-- <span class="deleteNeg-btn"><a href="" ng-click="deleteItem()" >Add Note</a></span> -->
+					 </div>
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:10px; padding-left:40px'>
+					 	  <textarea rows="4" cols="150" ng-model="note.description" />
+					 </div>
+					<hr class="col-xs-6 col-md-8 col-lg-9 vcenter" style="border-top: 1px solid;padding-left:40px">
+				</div>
+                   
+                <!-- <div>  
+					  <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:10px; padding-left:40px'>
+					 	  <label>Note Date: </label> {{note.createUsr}} {{note.createdAt}} 
+					 	  <span class="deleteNeg-btn"><a href="" ng-click="deleteNote(note)" > <strong>Delete Note </strong></a></span>
+					 	  <!-- <span class="deleteNeg-btn"><a href="" ng-click="deleteItem()" >Add Note</a></span> 
+					 </div>
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:10px; padding-left:40px'>
+					 	  <textarea rows="4" cols="150" ng-model="note.description" />
+					 </div>
+				</div>	  -->
+
+
+
+
+			<div class="col-xs-6 col-md-8 col-lg-10 vcenter">
+			  <strong>Current Conlusion </strong>
+			 </div>	
+
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' >
+					<label>Include in IA Report: </label>
+					<input type="checkbox" ng-model="leadsList[itemIndex].includeInIar" ng-checked="leadsList[itemIndex].includeInIar"/>	
+				</div>
+
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' >
+					<label>	Conclusion Date:  </label>{{leadsList[itemIndex].createdAt | date:'medium'}} <br><br>
+					<textarea type="text" rows=6  ng-model="leadsList[itemIndex].conclusion" class="form-control"  ></textarea>
+				</div>
+
+			</div>	
+		</div>
+		
+		<div ng-if="!editable">
+			<div class="row ">
+				
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:20px'>
+					<label>Lead: </label>
+					<span> <strong>{{leadsList[itemIndex].name}}</strong></span>
+				</div>
+
+				<div  ng-repeat="note in leadsList[itemIndex].notes">
+					  <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:10px; padding-left:40px'>
+						  <label>Include in IA Report? </label>
+						  <span > {{note.includeInIar=="1"?'Yes':'No'}}</span>
+					  </div>
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:10px; padding-left:40px'>
+					 	  <label>Note Date: </label> {{note.createUsr}} {{note.createdAt | date:'medium'}} 
+					 </div>
+					 <div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-bottom:10px; padding-left:40px'>
+					 	  {{note.description}}
+					 </div>
+					<hr class="col-xs-6 col-md-8 col-lg-9 vcenter" style="border-top: 1px solid;padding-left:40px">
+				</div>
+				
+				<!--<div class="row ">
+				<hr class="col-xs-6 col-md-8 col-lg-9 vcenter" style="border-top: 1px solid;padding-left:40px">
+		   	    </div>-->
+
+              <div class="col-xs-6 col-md-8 col-lg-10 vcenter">
+			  <strong>Current Conlusion </strong>
+			 </div>
+
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='leadsList[itemIndex].includeInIar'>
+					<label>Include in IA Report? </label>
+					<span> Yes</span>
+				</div>
+				
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px' ng-if='leadsList[itemIndex].conclusion.length > 0'>
+					<label>Conclusion Date: </label>
+					<span> {{leadsList[itemIndex].createdAt | date:'medium'}}</span>  <br><br>
+					<div>{{leadsList[itemIndex].conclusion}}</div>
+				</div>
+				
+				
+			</div>
+
+		</div>
+	</div>
+</div>

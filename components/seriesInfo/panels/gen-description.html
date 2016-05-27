@@ -1,0 +1,25 @@
+<div class="sectionHolder" ng-show="dispDescription" >
+	<div class="sub-title" ng-if="!editable">Description</div>
+	<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
+	<!-- EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="editable">
+		<div class="row " style="padding-bottom:30px">
+			<div class="col-xs-6 col-md-8 col-lg-10 vcenter"  >
+					<div class="sharedCol4">
+						<label>Full Description: </label>
+						<textarea rows="5" cols="150" ng-model="generalInfo.series.seriesDescription" style="height: 100px; width: 100%" >
+						</textarea>
+				   </div>
+		   </div>
+        </div>
+     </div>
+	<!-- NON EDITABLE ////////////////////////////////////////////////////////// -->
+	<div ng-if="!editable">
+		<div class="row">
+			<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='generalInfo.series.seriesDescription.length >0'>
+			   <label><strong>Full Description: </strong> </label>
+               <span> {{generalInfo.series.seriesDescription }} </span>
+			</div>	
+		</div>
+	</div>
+</div>

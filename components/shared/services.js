@@ -76,7 +76,7 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 				{label : "Series Name", 	section: "summaryData",	model : "seriesname",	dddata: "",				datatype : "string",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
 				{label : "Analyt Name", 	section: "summaryData",	model : "analystname",	dddata: "analysts",		datatype : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
 				{label : "Date Created", 	section: "summaryData",	model : "datecreated",	dddata: "",				datatype : "date",		required : false,	disabled : false,	multiple : false,	deletable : false,	},
-				{label : "Series Type",		section: "summaryData",	model : "subjecttype",	dddata: "subjecttype",	datatype : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
+				{label : "Subject Type",		section: "summaryData",	model : "subjecttype",	dddata: "subjecttype",	datatype : "dropdown",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
 				{label : "Is Deceased",		section: "summaryData",	model : "isdeceased",	dddata: "",				datatype : "checkbox",	required : false,	disabled : false,	multiple : false,	deletable : false,	},
 			]
 		}
@@ -87,9 +87,9 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		return {
 			data : [	
 				
-				{label : "Creation Date",	section: "generalInfo.idenTimeline",	model : "creation_date",				datatype : "date"},
-				{label : "First Report Date",		section: "generalInfo.idenTimeline",	model : "first_report_dtm",				datatype : "date"},
-				{label : "Date Identified",		section: "generalInfo.idenTimeline",	model : "date_entered_identified",				datatype : "date"},
+				{label : "Creation Date",	section: "generalInfo.history",	model : "creationDate",				datatype : "date"},
+				{label : "First Report Date",		section: "generalInfo.history",	model : "firstReportDtm",				datatype : "date"},
+				{label : "Date Identified",		section: "generalInfo.history",	model : "dateEnteredIdentified",				datatype : "date"},
 				
 				]
 		}
@@ -98,12 +98,12 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 	var generalDateRecordStarted = function(){
 		return {
 			data : [	
-				{label : "Date Series Record Started",	section: "generalInfo.dateRecordStarted",	model : "create_dtm",			datatype : "date"},
-				{label : "Analyst",						section: "generalInfo.dateRecordStarted",	model : "analyst",				datatype : "dropdown", dddata: "analysts",	},
-				{label : "First Recorded by NCMEC",		section: "generalInfo.dateRecordStarted",	model : "first_recorded_ncmec",	datatype : "date"},
-				{label : "Related to CT/TA",			section: "generalInfo.dateRecordStarted",	model : "related_to_ctta",		datatype : "string"},
-				{label : "Where",						section: "generalInfo.dateRecordStarted",	model : "first_report_where",	datatype : "string"},
-				{label : "Detail",						section: "generalInfo.dateRecordStarted",	model : "first_report_details",	datatype : "string"},
+				{label : "Date Series Record Started",	section: "generalInfo.series",	model : "createDtm",			datatype : "date"},
+				{label : "Analyst",						section: "generalInfo.series",	model : "analyst",				datatype : "dropdown", dddata: "analysts",	},
+				{label : "First Recorded by NCMEC",		section: "generalInfo.history",	model : "firstRecordedNcmec",	datatype : "date"},
+				{label : "Related to CT/TA",			section: "generalInfo.series",	model : "relatedToCtta",		datatype : "string"},
+				{label : "Where",						section: "generalInfo.history",	model : "firstReportWhere",	datatype : "string"},
+				{label : "Detail",						section: "generalInfo.history",	model : "firstReportDetails",	datatype : "string"},
 				
 				]
 		}
@@ -112,24 +112,24 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 	var generalActivity = function(){
 		return {
 			data : [	
-				{label : "Bondage",					section: "generalInfo.activity",	model : "bondage_sm",				datatype : "checkbox"},
-				{label : "Defecation",				section: "generalInfo.activity",	model : "defecation",				datatype : "checkbox"},
-				{label : "Exposure of Genitals/Anus",section: "generalInfo.activity",	model : "exposure_genitalia_anus",	datatype : "checkbox"},
-				{label : "Erotica Fully Clothed",	section: "generalInfo.activity",	model : "erotica_fully_clothed",	datatype : "checkbox"},
-				{label : "Erotica Present",			section: "generalInfo.activity",	model : "erotica_present",			datatype : "checkbox"},
-				{label : "Exposure of Breast",		section: "generalInfo.activity",	model : "exposure_breast_chest",	datatype : "checkbox"},
-				{label : "Urination",				section: "generalInfo.activity",	model : "urination",				datatype : "checkbox"},
-				{label : "Licking",					section: "generalInfo.activity",	model : "licking",					datatype : "checkbox"},
-				{label : "Oral Copulation",			section: "generalInfo.activity",	model : "oral_copulation",			datatype : "checkbox"},
-				{label : "Ejaculation",				section: "generalInfo.activity",	model : "ejaculation_seen",			datatype : "checkbox"},
-				{label : "Manual Stimulation",		section: "generalInfo.activity",	model : "manual_stimulation",		datatype : "checkbox"},
-				{label : "Full Nudity",				section: "generalInfo.activity",	model : "full_nudity",				datatype : "checkbox"},
-				{label : "Bestiality",				section: "generalInfo.activity",	model : "bestiality",				datatype : "checkbox"},
-				{label : "Kissing",					section: "generalInfo.activity",	model : "kissing",					datatype : "checkbox"},
-				{label : "Vaginal Penetration",		section: "generalInfo.activity",	model : "vaginal_penetration",		datatype : "checkbox"},
-				{label : "Drugged Sleeping",		section: "generalInfo.activity",	model : "drugged_sleeping",			datatype : "checkbox"},
-				{label : "Anal Penetration",		section: "generalInfo.activity",	model : "anal_penetration",			datatype : "checkbox"},
-				{label : "Other Sexual Content",	section: "generalInfo.activity",	model : "other_sexual_content",		datatype : "checkbox"},
+				{label : "Bondage",					section: "generalInfo.content",	model : "bondageSm",				datatype : "checkbox"},
+				{label : "Defecation",				section: "generalInfo.content",	model : "defecation",				datatype : "checkbox"},
+				{label : "Exposure of Genitals/Anus",section: "generalInfo.content",	model : "exposureGenitaliaAnus",	datatype : "checkbox"},
+				{label : "Erotica Fully Clothed",	section: "generalInfo.content",	model : "eroticaFullyClothed",	datatype : "checkbox"},
+				{label : "Erotica Present",			section: "generalInfo.content",	model : "eroticaPresent",			datatype : "checkbox"},
+				{label : "Exposure of Breast",		section: "generalInfo.content",	model : "exposureBreastChest",	datatype : "checkbox"},
+				{label : "Urination",				section: "generalInfo.content",	model : "urination",				datatype : "checkbox"},
+				{label : "Licking",					section: "generalInfo.content",	model : "licking",					datatype : "checkbox"},
+				{label : "Oral Copulation",			section: "generalInfo.content",	model : "oralCopulation",			datatype : "checkbox"},
+				{label : "Ejaculation",				section: "generalInfo.content",	model : "ejaculationSeen",			datatype : "checkbox"},
+				{label : "Manual Stimulation",		section: "generalInfo.content",	model : "manualStimulation",		datatype : "checkbox"},
+				{label : "Full Nudity",				section: "generalInfo.content",	model : "fullNudity",				datatype : "checkbox"},
+				{label : "Bestiality",				section: "generalInfo.content",	model : "bestiality",				datatype : "checkbox"},
+				{label : "Kissing",					section: "generalInfo.content",	model : "kissing",					datatype : "checkbox"},
+				{label : "Vaginal Penetration",		section: "generalInfo.content",	model : "vaginalPenetration",		datatype : "checkbox"},
+				{label : "Drugged Sleeping",		section: "generalInfo.content",	model : "druggedSleeping",			datatype : "checkbox"},
+				{label : "Anal Penetration",		section: "generalInfo.content",	model : "analPenetration",			datatype : "checkbox"},
+				{label : "Other Sexual Content",	section: "generalInfo.content",	model : "otherSexualContent",		datatype : "checkbox"},
 				]
 		}
 	}
@@ -139,24 +139,37 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		return {
 			data : [	
 				
-				{label : "Number of Offenders",	section: "generalInfo.summaryStatistics",	model : "number_offenders",				datatype : "string"},
-				{label : "Number of Images",		section: "generalInfo.summaryStatistics",	model : "number_images",				datatype : "string"},
-				{label : "Number of Victims",		section: "generalInfo.summaryStatistics",	model : "number_child_victims",				datatype : "string"},
+				{label : "Number of Offenders",	section: "generalInfo.media",	model : "numberOffenders",				datatype : "string"},
+				{label : "Number of Images/Video Files",		section: "generalInfo.media",	model : "numberImages",				datatype : "string"},
+				{label : "Number of Victims",		section: "generalInfo.media",	model : "numberChildVictims",				datatype : "string"},
 				
 				]
 		}
 	}
+
+var generalImageType = function(){
+		return {
+			data : [	
+				
+				{label : "Color",	section: "generalInfo.media",	model : "color",			datatype : "checkbox"},
+				{label : "Black and White",		section: "generalInfo.media",	model : "blackAndWhite",				datatype : "checkbox"},
+				
+				
+				]
+		}
+	}
+
 	// DATA FOR MEDIA //////////////////////////////
 	var generalMedia = function(){
 		return {
 			data : [	
-				{label : "Videotape",		section: "generalInfo.media",	model : "media_videotape",		datatype : "checkbox"},
-				{label : "Digital Photos",	section: "generalInfo.media",	model : "media_digital_photos",	datatype : "checkbox"},
-				{label : "Camera Phone",	section: "generalInfo.media",	model : "media_camera_phone",	datatype : "checkbox"},
-				{label : "Digital Video", 	section: "generalInfo.media",	model : "media_digital_video",	datatype : "checkbox"},
-				{label : "Magazine",		section: "generalInfo.media",	model : "media_magazine",		datatype : "checkbox"},
-				{label : "Web Cam",			section: "generalInfo.media",	model : "web_cam",				datatype : "checkbox"},
-				{label : "Photographs",		section: "generalInfo.media",	model : "media_photographs",	datatype : "checkbox"},
+				{label : "Videotape",		section: "generalInfo.media",	model : "mediaVideotape",		datatype : "checkbox"},
+				{label : "Digital Photos",	section: "generalInfo.media",	model : "mediaDigitalPhotos",	datatype : "checkbox"},
+				{label : "Camera Phone",	section: "generalInfo.media",	model : "mediaCameraPhone",		datatype : "checkbox"},
+				{label : "Digital Video", 	section: "generalInfo.media",	model : "mediaDigitalVideo",	datatype : "checkbox"},
+				{label : "Magazine",		section: "generalInfo.media",	model : "mediaMagazine",		datatype : "checkbox"},
+				{label : "Web Cam",			section: "generalInfo.content",	model : "webCam",				datatype : "checkbox"},
+				{label : "Photographs",		section: "generalInfo.media",	model : "mediaPhotographs",	datatype : "checkbox"},
 				]
 		}
 	}
@@ -402,9 +415,9 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 //		console.log(url);
 //		console.log(data);
 
-		console.log("FROM DATA SEND");
-		console.log(url);
-		console.log(data);
+//		console.log("FROM DATA SEND");
+		//console.log(url);
+		//console.log(data);
 
 		// console.log("FROM DATA SEND");
 		// console.log(url);
@@ -497,7 +510,9 @@ http://cvipcmsdev1.ncmecad.net:8080/series/rest/cases/subjecttypes
 		generalIdenTimeline : generalIdenTimeline,
 		generalDateRecordStarted : generalDateRecordStarted,
 		generalActivity : generalActivity,
-		generalSummaryStats : generalSummaryStats
+		generalSummaryStats : generalSummaryStats,
+		generalImageType : generalImageType,
+		//generalDescription: generalDescription
 		//dropdownData	: dropdownData
 	};
 }]);

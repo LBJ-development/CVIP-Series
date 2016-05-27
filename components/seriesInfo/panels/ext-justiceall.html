@@ -1,0 +1,82 @@
+
+<div class="sectionHolder"  >
+		<div class="sub-title" ng-if="!editable">Justice For All Act</div>
+		<div class="h-sep" style="margin:5px 0px 10px 0" ng-if="!editable"></div>
+		
+		 <div ng-if="editable">
+			<div class="row ">
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding-bottom:10px" >
+					
+						<label>Victim Notification: </label>
+						<input type='checkbox'  ng-model='generalInfo.victim.victimNotification'  ng-checked="generalInfo.victim.victimNotification">
+				   
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding-bottom:10px">
+					
+						<label>Victim Impact Statement: </label>
+						<input type='text'  ng-model='generalInfo.victim.victimImpactState'  class="form-control">
+				    
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding-bottom:10px">
+					
+						<label>Need CEOS review?</label>
+						<input type='checkbox'  ng-model='generalInfo.status.ceosNeedReview' ng-checked="generalInfo.status.ceosNeedReview">
+					
+				</div>
+                
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter">
+						
+							<label>Approved</label>
+							<input type="radio" 
+						value="Approved" 
+						ng-model="generalInfo.status.ceosReviewStatus">
+						
+					</div>
+					<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						
+							<label>Not Approved</label>
+							<input type="radio" value="Not Approved" ng-model="generalInfo.status.ceosReviewStatus">
+						
+					</div>
+			   
+
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style="padding-top:10px">
+					<!-- <div class="sharedCol4"> -->
+						<label>CEOS's comment:</label>
+						<input type="text"  ng-model="generalInfo.status.ceosReviewComment"  class="form-control">
+					<!-- </div> -->
+				</div>
+			</div>
+		</div>
+			 
+		<div ng-if="!editable">
+			<div class="row ">
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='generalInfo.victim.victimNotification' style="padding-bottom:10px">
+					<label>Victim Notification? </label>
+					<span> Yes</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='generalInfo.victim.victimImpactState.length>0' style="padding-bottom:10px">
+					<label>Victim Impact Statement: </label>
+					<span> {{generalInfo.victim.victimImpactState}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='generalInfo.status.ceosNeedReview' style="padding-bottom:10px">
+					<label>Need CEOS review?</label>
+					<span> Yes</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+					<label>Approved?</label>
+					<input type="radio" disabled="true" 
+					value="Approved" 
+					ng-checked="generalInfo.status.ceosReviewStatus=='Approved'">
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+					<label>Not Approved?</label>
+					<input type="radio" disabled="true" value="Not Approved" ng-checked="generalInfo.status.ceosReviewStatus=='Not Approved'">
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='generalInfo.status.ceosReviewComment.length>0' style="padding-top:10px">
+					<label>CEOS's comment:</label>
+					<span> {{generalInfo.status.ceosReviewComment}}</span>
+				</div>
+		    </div>
+         </div>
+</div>

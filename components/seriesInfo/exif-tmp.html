@@ -1,0 +1,90 @@
+
+<div ng-if="exifsList.length > 0">
+	<div class="tabHead">
+		<span class="tab-title">EXIF : {{exifsList[itemIndex].filename}}</span>
+		
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveExif()" >Save</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn addPers-btn" ng-if="editable"><a href="" ng-click="addExif()" >Add Exif</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="deleteExif()" >Delete</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+		</ul>
+	</div>
+	<div class="sectionHolder">
+	
+		<div ng-if="editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group" >
+						<label>File Name: </label>
+						<input type="text" class="form-control" ng-model="exifsList[itemIndex].filename" />
+				</div>
+				<div class="col-sm-3 form-group" >
+					    <label>Analyst: </label>
+						<input type="text" class="form-control" ng-model="exifsList[itemIndex].analyst" />
+				</div>
+				<div class="col-sm-3 form-group" >
+						<label>Camera: </label>
+						<input type="text" class="form-control" ng-model="exifsList[itemIndex].camera" />
+				</div>
+				<div class="col-sm-3 form-group" >
+						<label>Date of Image: </label>
+						<input input kendo-date-picker  class="form-control" ng-model="exifsList[itemIndex].dateOfImage" />
+
+				</div>
+				<div class="col-sm-3 form-group" >
+						<label>Include in IA Report? </label>
+						<input type="checkbox"  ng-model="exifsList[itemIndex].includeInIar" ng-checked="exifsList[itemIndex].includeInIar" />
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter"  >
+						<label>EXIF Data: </label>
+						<textarea  rows="30" columns="150" class="form-control" ng-model="exifsList[itemIndex].exifData"> {{exifsList[itemIndex].exifData}}</textarea>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<label>Significant Information: </label>
+						<textarea  rows="4" columns="150" class="form-control" ng-model="exifsList[itemIndex].significantInfo"> {{exifsList[itemIndex].significantInfo}}</textarea>
+				</div>
+
+			</div> 
+		</div> 
+		
+		<div ng-if="!editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group" ng-if='exifsList[itemIndex].filename.length>0'>
+						<label>File Name: </label>
+						<span> {{exifsList[itemIndex].filename}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='exifsList[itemIndex].analyst.length>0'>
+					    <label>Analyst: </label>
+						<span> {{exifsList[itemIndex].analyst}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='exifsList[itemIndex].camera.length>0'>
+						<label>Camera: </label>
+						<span> {{exifsList[itemIndex].camera}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='exifsList[itemIndex].dateOfImage.length>0'>
+						<label>Date of Image: </label>
+						<span> {{exifsList[itemIndex].dateOfImage}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='exifsList[itemIndex].includeInIar'>
+						<label>Include in IA Report? </label>
+						<span> Yes</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='exifsList[itemIndex].exifData.length>0' >
+						<label>EXIF Data: </label>
+						<textarea disabled rows="30" columns="150" class="form-control"> {{exifsList[itemIndex].exifData}}</textarea>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='exifsList[itemIndex].significantInfo.length>0'>
+						<label>Significant Information: </label>
+						<textarea disabled rows="4" columns="150" class="form-control"> {{exifsList[itemIndex].significantInfo}}</textarea>
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+</div>

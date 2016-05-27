@@ -1,0 +1,57 @@
+<div>
+	<!--<div class="row ">
+<span style="font-weight: bold; color:blue; display: inline-block; float:left; padding: 30px 0 0 20px; text-align:left">{{msg}}</span>
+</div>-->
+	<div class="tabHead">
+		<span class="tab-title">Series {{generalInfo.general.seriesName}} - Be On The Look Out</span>
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit </a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveBolo()" >Save BOLO</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<!--li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="" >Delete</a></li>
+			<li class="tab-sep" ng-if="editable"></li>-->
+		</ul>
+	</div>
+
+	<div class="backgroundColor">
+		<!-- ////////////////////////////////////////////////////////// -->
+		<div ng-if="editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group" style='padding-left:15px; padding-top:15px'>
+						<label>BOLO - (Distribution)? </label>
+						<input type='checkbox'   
+						ng-model='generalInfo.bolo.bolo' ng-checked="generalInfo.bolo.bolo">
+				</div>
+				<div class="col-sm-3 form-group" style='padding-left:15px; padding-top:15px'>
+						<label>BOLO - (Other) </label>
+						<input type='checkbox' 
+						ng-model='generalInfo.bolo.boloOtherFlag' ng-checked="generalInfo.bolo.boloOtherFlag">
+				</div>
+				<div class="col-sm-3 form-group" style='padding-left:15px; padding-top:15px'>
+						<label>BOLO - (Other) Note: </label>
+						<input type="text" class="form-control" ng-model='generalInfo.bolo.boloOtherNote' />
+				</div>
+	        </div>
+   		</div>
+   		<div ng-if="!editable">
+				<div class="row ">
+					<div class="col-sm-3 form-group" ng-if='generalInfo.bolo.bolo' style="padding-left:15px; padding-top:15px">
+						<label>BOLO - (Distribution)? </label>
+						<span> Yes</span>
+					</div>
+					<div class="col-sm-3 form-group" ng-if='generalInfo.bolo.boloOtherFlag' style="padding-left:15px; padding-top:15px">
+						<label>BOLO - (Other)? </label>
+						<span> Yes</span>
+					</div>
+					<div class="col-sm-3 form-group" style="padding-left:15px; padding-top:15px">
+						<label>BOLO - (Other) Note  </label>
+						<span> {{generalInfo.bolo.boloOtherNote}}</span>
+					</div>
+				</div>
+			</div>
+    </div>
+
+	
+</div>

@@ -1,0 +1,218 @@
+
+<div ng-if="leapocsList.length > 0">
+	<div class="tabHead">
+		<span class="tab-title">{{leapocsList[itemIndex].agency}}</span>
+		 <span class="tab-title" ng-if='leapocsList[itemIndex].name.length>0'>- </span>
+		 <span class="tab-title">{{leapocsList[itemIndex].name}} </span>
+		<ul>
+			<li class="tab-btn editNeg-btn" ng-if="!editable" ><a href="" ng-click="editItem()" >Edit</a></li>
+			<li class="tab-btn summaryNeg-btn" ng-if="editable"><a href="" ng-click="editItem()">View</a></li>
+			<li class="tab-sep"></li>
+			<li class="tab-btn saveNeg-btn"ng-if="editable"><a href="" ng-click="saveLeaPOC()" >Save</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn addPers-btn" ng-if="editable"><a href="" ng-click="addleaPoc()" >Add a Lea POC</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+			<li class="tab-btn deleteNeg-btn" ng-if="editable"><a href="" ng-click="deleteLeaPoc()" >Delete</a></li>
+			<li class="tab-sep" ng-if="editable"></li>
+		</ul>
+	</div>
+	<div class="sectionHolder">
+	
+		<div ng-if="editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group" >
+					<div drop-down label="Agency" column="submissiontypes"  model="leapocsList[itemIndex].agency"></div>
+				</div>
+				<div class="col-sm-3 form-group" >
+						<label>Case Number </label>
+						<input type="text" class="form-control" ng-model="leapocsList[itemIndex].caseNumber" />
+				</div>
+				<div class="col-sm-3 form-group" >
+						<div drop-down label="Status" column="contactstatus"  model="leapocsList[itemIndex].status"></div>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Primary Contact? </label>
+						<input type="radio"  value="Primary" ng-model="leapocsList[itemIndex].contactType"  >
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Secondary Contact? </label>
+						<input type="radio"  value="Secondary" ng-model="leapocsList[itemIndex].contactType">
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Alternate Contact? </label>
+						<input type="radio" value="Alternate" ng-model="leapocsList[itemIndex].contactType">
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>None? </label>
+						<input type="radio" value="None" ng-model="leapocsList[itemIndex].contactType">
+				</div>
+
+			</div>
+
+
+			<div class="h-sep" style="margin:5px 0px 10px 0"></div>
+
+			<div class="row ">
+            
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+					<label> <strong>For IA Cases Only: </strong></label>
+				</div>
+
+				<div class="col-sm-3 form-group" >
+						<label>Date Report Sent: </label>
+						<input input kendo-date-picker  class="form-control" ng-model="leapocsList[itemIndex].iaReportSentDate" />
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<label>Notes: </label>
+						<textarea rows="4" columns="150" ng-model='leapocsList[itemIndex].notes' class="form-control"  ></textarea>
+				</div> 
+            </div>
+            <div class="sub-title">Contact Information:</div>
+			<div class="h-sep" style="margin:5px 0px 10px 0"></div>
+			<div class="row ">
+                 <div class="col-sm-3 form-group" >
+						<label>Name: </label>
+						<input type="text" class="form-control" ng-model="leapocsList[itemIndex].name" />
+                 </div>	
+                  <div class="col-sm-3 form-group" >
+						<label>Phone Number: </label>
+						<input type="text" class="form-control" ng-model="leapocsList[itemIndex].phone" />
+                 </div>
+                  <div class="col-sm-3 form-group" >
+						<label>Email: </label>
+						<input type="text" class="form-control" ng-model="leapocsList[itemIndex].email" />
+                 </div>	
+                  <div class="col-sm-3 form-group" >
+						<label>Address: </label>
+						<input type="text" class="form-control" ng-model="leapocsList[itemIndex].address" />
+                 </div>	
+                  <div class="col-sm-3 form-group" >
+						<label>City: </label>
+						<input type="text" class="form-control" ng-model="leapocsList[itemIndex].city" />
+                 </div>
+                 <div class="col-sm-3 form-group" >
+						<div drop-down label="State" column="states"  model="leapocsList[itemIndex].state"></div>
+                 </div>
+                   <div class="col-sm-3 form-group" >
+						<label>Zip Code: </label>
+						<input type="text" class="form-control" ng-model="leapocsList[itemIndex].postalCode" />
+                 </div>	
+                  <div class="col-sm-3 form-group">
+						<div drop-down label="Country" column="countries"  model="leapocsList[itemIndex].country"></div>
+                 </div>	
+                   <div class="col-sm-3 form-group" >
+						<div drop-down label="Best Method of Contact" column="contactmethods"  model="leapocsList[itemIndex].preferredContact"></div>
+                 </div>					
+
+			</div>	
+			 <div class="sub-title">Survey:</div>
+			<div class="h-sep" style="margin:5px 0px 10px 0"></div>
+			<div class="row ">
+						<div class="col-sm-3 form-group" >
+						
+							<a ui-sref="seriesInfo.survey" ng-click="selectSection($event)">Enter Survey</a>
+					     
+						</div>
+            </div>
+		</div> 
+		
+		<div ng-if="!editable">
+			<div class="row ">
+				<div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].name.length>0'>
+						<label>Agency: </label>
+						<span> {{leapocsList[itemIndex].name}}</span>
+					
+				</div>
+				<div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].caseNumber.length>0'>
+					<label>Case Number: </label>
+						<span> {{leapocsList[itemIndex].case_number}}</span>
+				</div>
+				<div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].status.length>0'>
+						<label>Status: </label>
+						<span> {{leapocsList[itemIndex].status}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Primary Contact? </label>
+						<input type="radio" disabled ng-checked="leapocsList[itemIndex].contactType=='Primary'"  >
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Secondary Contact? </label>
+						<input type="radio" disabled="true" ng-checked="leapocsList[itemIndex].contactType=='Secondary'">
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>Alternate Contact? </label>
+						<input type="radio" disabled ng-checked="leapocsList[itemIndex].contactType=='Alternate'">
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+						<label>None? </label>
+						<input type="radio"disabled ng-checked="leapocsList[itemIndex].contactType=='None'">
+				</div>
+
+			</div>
+
+
+			<div class="h-sep" style="margin:5px 0px 10px 0"></div>
+
+			<div class="row ">
+            
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" style='padding-top:10px'>
+					<label> <strong>For IA Cases Only: </strong></label>
+				</div>
+
+				<div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].iaReportSentDate.length>0'>
+						<label>Date Report Sent: </label>
+						<span> {{leapocsList[itemIndex].ia_report_sent_date}}</span>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" ng-if='leapocsList[itemIndex].notes.length>0'>
+						<label>Notes: </label>
+						<span> {{leapocsList[itemIndex].notes}}</span>
+				</div> 
+            </div>
+
+            <br> <br>
+            <div class="sub-title">Contact Information:</div>
+			<div class="h-sep" style="margin:5px 0px 10px 0"></div>
+			<div class="row ">
+                 <div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].name.length>0'>
+						<label>Name: </label>
+						<span> {{leapocsList[itemIndex].name}}</span>
+                 </div>	
+                  <div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].phone.length>0'>
+						<label>Phone Number: </label>
+						<span> {{leapocsList[itemIndex].phone}}</span>
+                 </div>
+                  <div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].email.length>0'>
+						<label>Email: </label>
+						<span> {{leapocsList[itemIndex].email}}</span>
+                 </div>	
+                  <div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].address.length>0'>
+						<label>Address: </label>
+						<span> {{leapocsList[itemIndex].address}}</span>
+                 </div>	
+                  <div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].city.length>0'>
+						<label>City: </label>
+						<span> {{leapocsList[itemIndex].city}}</span>
+                 </div>
+                 <div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].state.length>0'>
+						<label>State: </label>
+						<span> {{leapocsList[itemIndex].state}}</span>
+                 </div>
+                   <div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].postalCode.length>0'>
+						<label>Zip Code: </label>
+						<span> {{leapocsList[itemIndex].postalcode}}</span>
+                 </div>	
+                  <div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].country.length>0'>
+						<label>Country: </label>
+						<span> {{leapocsList[itemIndex].country}}</span>
+                 </div>	
+                   <div class="col-sm-3 form-group" ng-if='leapocsList[itemIndex].preferredContact.length>0'>
+						<label>Preferred Method of Contact: </label>
+						<span> {{leapocsList[itemIndex].preferredContact}}</span>
+                 </div>					
+
+			</div>	
+			
+		</div>
+		
+	</div>
+</div>

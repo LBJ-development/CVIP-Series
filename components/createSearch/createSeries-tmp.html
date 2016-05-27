@@ -1,0 +1,68 @@
+<div class="row ">
+	<div class="col-sm-12 ">
+		
+			<label style="text-align:right; width:125px; padding:0px 0px 0 0">Use Series ID 
+			<input type="checkbox" id="NCMECcase"  ng-click=" " style="float:left; margin-top:5px" ng-model="seriesID" >  </label>
+		
+		<span class="captionText" style="display: inline-block; float:left; padding: 0px 0 0 20px; text-align:left">(If not actively traded, click "Use Series ID") </span>
+	</div>
+</div>
+
+<form name = "myForm">
+
+<div class="row ">
+	<span style="font-weight: bold; color:red; display: inline-block; float:left; padding: 30px 0 0 20px; text-align:left">{{errorMsg}}</span>
+
+    <!--<span style="font-weight: bold; color:red; display: inline-block; float:left; padding: 30px 0 0 0px; text-align:left"
+    ng-if="myForm.seriesName.$error.required">Name is required.</span>
+    <span style="font-weight: bold; color:red; display: inline-block; float:left; padding: 30px 0 0 0px; text-align:left"
+    ng-if="myForm.analyst.$error.required">Analyst is required.</span>-->
+
+</div>
+
+
+	<div class="row ">	
+		<div class="col-sm-3 field-form-group" ng-if="!seriesID">
+			<div class="sharedCol4">
+				<label> <span style="font-weight: bold; color:red;">*</span>  Series Name:</label>
+				<input type='text' class='form-control' name="seriesName" ng-model='initialInfo.seriesName' 
+				  placeholder="New series name..."  
+				   typeahead="name for name in seriesName | filter:$viewValue | limitTo:8" 
+				    />
+				 
+			</div>
+		</div>
+		<div class="col-sm-3 field-form-group" >
+			<div class="sharedCol4">
+
+				<div  drop-down label="Analyst Name" column="analysts" name ="analyst" model="initialInfo.analystName"></div>
+				
+			</div>
+		</div> 
+		<div class="col-sm-3 field-form-group" >
+			<div class="sharedCol4">
+				<div  drop-down label="Series Type" column="subjecttype"  model="initialInfo.seriesType"></div>
+				
+			</div>
+		</div> 
+		<div class="col-sm-3 field-form-group">
+			<div class="sharedCol4">
+
+				<label>Related to TA#: </label>
+				<input type='text' class='form-control' ng-model='initialInfo.relatedToCTTA' />
+
+				<label>Related to CT: </label>
+				<input type='text' class='form-control' ng-model='initialInfo.relatedToCT' />
+
+			</div>
+		</div>
+	</div>
+</form>
+
+<div class="row ">	
+	<div class="col-sm-2  field-form-group">
+		<button class="btn-primary" style="float:left; margin-top:23px"  ng-click="myForm.$valid && createSeries()">Create New Series
+		</button>
+	</div>
+</div>
+

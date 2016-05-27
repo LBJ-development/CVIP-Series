@@ -1,14 +1,66 @@
 <div ng-controller="ReportsCtrl">
-	reports
-	<!-- <div  class="content-wrapper" ng-show="isShowReferrals">
-		<div style="display: inline-block; float:left; width: 100%" >
-			<span class="sub-title" style="display: inline-block; float:left">IA Referrals</span>
-		</div>
-		<div class="tabWrapper" style="opacity: 1; display:inline-block; background-color:white">
-			<div role="datagrid" class="grid-holder" >
-				<div kendo-grid="iaGrid" id="iagrid" k-options="iaGridOptions" k-rebind="iaGridOptions"  k-ng-delay="iaGridOptions">
-				</div> 
-			</div> 
-		</div>
-	</div> -->
+
+<div style="sectionHolder" class="content-wrapper">
+			<div class="tabHead">
+				<span class="tab-title">Available Reports</span>
+			</div>
+			<div class="row ">
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">Number of Series</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">	Relationship to Offender - All</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">	Relationship to Offender - Known</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">	Relationship to Offender - Actively Traded</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">	Victim Statistics</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">	Victim Statistics - Actively Traded</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">	Offender Statistics</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">	Offender Statistics - Actively Traded</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">   Survey Summary</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">   Survey Report - Time</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">   Submitting Agency</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">  	Series by Submission Year</span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">  	Series Details by Jurisdiction   </span></a>
+				</div>
+			</div>
+			<div class="sub-title" style="margin-top:10px" >QA for CMS:</div>
+			<div class="h-sep" style="margin:10px 0px 0px 0" ></div>
+			<div class="row ">
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">  Missing Series Information   </span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">  Missing Child Information   </span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">  Missing Submission Information   </span></a>
+				</div>
+				<div class="col-xs-6 col-md-8 col-lg-10 vcenter" >
+						<a href=""><span style="display: inline-block; float:left; padding-top:5px">  	General Missing Information  </span></a>
+				</div>
+			</div>
+
+		</div> 
 </div>
